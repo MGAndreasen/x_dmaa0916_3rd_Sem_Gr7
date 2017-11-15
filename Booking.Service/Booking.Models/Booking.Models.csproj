@@ -43,6 +43,7 @@
     <Compile Include="Booking.cs" />
     <Compile Include="City.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="Destination.cs" />
     <Compile Include="Passenger.cs" />
     <Compile Include="Payment.cs" />
     <Compile Include="Plane.cs" />
