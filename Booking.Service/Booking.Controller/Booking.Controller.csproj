@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="BookingCtrl.cs" />
     <Compile Include="CityCtrl.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="CustomerCtrl.cs" />
     <Compile Include="DestinationCtrl.cs" />
     <Compile Include="PassengerCtrl.cs" />
