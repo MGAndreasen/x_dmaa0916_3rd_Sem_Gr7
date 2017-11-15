@@ -17,6 +17,6 @@ namespace Booking.Models
         public int Zipcode { get; set; }
         public string Address { get; set; }
         public string Password { get; set; }
-        public bool Confirmeds { get; set; }
+        public bool Confirmed { get; set; }
     }
 }

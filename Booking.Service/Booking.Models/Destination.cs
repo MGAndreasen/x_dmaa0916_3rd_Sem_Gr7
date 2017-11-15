@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Booking.Models
 {
-    public class Plane
+    public class Destination
     {
         public int Id { get; set; }
-        public string Type { get; set; }
-        public List<Row> Rows { get; set; }
-
+        public string LocationName { get; set; }
 
     }
 }
