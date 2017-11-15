@@ -48,5 +48,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Booking.Service\Booking.Service.csproj">
+      <Project>{ae78e613-6b6a-4271-afb0-7b5817457d4b}</Project>
+      <Name>Booking.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
