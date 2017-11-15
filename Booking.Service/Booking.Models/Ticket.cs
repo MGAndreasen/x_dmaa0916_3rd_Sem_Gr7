@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Booking.Models
 {
-    public class User
+    class Ticket
     {
     }
 }
