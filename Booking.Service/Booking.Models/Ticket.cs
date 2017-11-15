@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Booking.Models
 {
-    class Ticket
+    public class Ticket
     {
+        public int Id { get; set; }
+        
     }
 }

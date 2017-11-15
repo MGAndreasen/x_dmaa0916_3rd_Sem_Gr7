@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Booking.Models
 {
-    class City
+    public class City
     {
+        public int Zipcode { get; set; }
+        public string CityName { get; set; }
     }
 }
