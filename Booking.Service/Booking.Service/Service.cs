@@ -28,6 +28,24 @@ namespace Booking.Service
         //    return composite;
         //}
 
+        public string Login(string s)
+        {
+            string[] sa = s.Split('&');
+            sa[0].TrimStart('?');
+            sa[1].TrimStart('&');
+            sa[0].Replace("username=", "");
+            sa[1].Replace("password=", "");
+
+            if (sa[0].ToLower() == "tester" && sa[1] == "1234Qwer!")
+            {
+                return "MINHASHKODE....";
+            }
+            else
+            {
+                return "NOT VALID";
+            }
+        }
+
         public string Post(string s)
         {
             return "Du postede " + s;
