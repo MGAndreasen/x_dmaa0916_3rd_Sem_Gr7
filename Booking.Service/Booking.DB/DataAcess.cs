@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Booking.DB
 {
-    public class Class1
+    class DataAcess
     {
     }
 }
