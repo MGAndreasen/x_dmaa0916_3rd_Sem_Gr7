@@ -7,7 +7,8 @@ using Booking.Models;
 
 namespace Booking.Controller
 {
-    class DestinationCtrl
+    public class DestinationCtrl
     {
+
     }
 }
