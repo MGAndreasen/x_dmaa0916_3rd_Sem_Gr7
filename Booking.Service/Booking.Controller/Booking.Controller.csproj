@@ -53,5 +53,19 @@
     <Compile Include="SeatSchemaCtrl.cs" />
     <Compile Include="TicketCtrl.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Booking.DB\Booking.DB.csproj">
+      <Project>{991f1ba7-d95f-4143-af23-33ceec175c8d}</Project>
+      <Name>Booking.DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Booking.Exceptions\Booking.Exceptions.csproj">
+      <Project>{abc18a1d-bb4e-43bf-84b7-251afcc00e49}</Project>
+      <Name>Booking.Exceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Booking.Models\Booking.Models.csproj">
+      <Project>{e28dd068-1322-4023-a51e-e7bb13e7bc9d}</Project>
+      <Name>Booking.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
