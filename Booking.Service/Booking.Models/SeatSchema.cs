@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Booking.Models
 {
-    class SeatSchema
+    public class SeatSchema
     {
+        public int Row { get; set; }
+        public string Layout { get; set; }
+        
     }
 }

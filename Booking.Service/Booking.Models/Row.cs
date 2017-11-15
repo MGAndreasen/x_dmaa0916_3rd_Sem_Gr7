@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Booking.Models
 {
-    class Row
+    public class Row
     {
+        public int Id { get; set; }
+        public int SeatNumber { get; set; }
+        public double Price { get; set; }
+
     }
 }
