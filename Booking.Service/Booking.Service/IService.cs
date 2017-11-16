@@ -11,6 +11,7 @@ namespace Booking.Service
     [ServiceContract]
     public interface IService
     {
+   
         //[OperationContract]
         //string GetData(int value);
 
