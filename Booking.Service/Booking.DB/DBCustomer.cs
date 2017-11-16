@@ -14,6 +14,10 @@ namespace Booking.DB
 
         public void Create(Customer obj)
         {
+            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+            {
+                con.Open();
+            }
             throw new NotImplementedException();
         }
 
