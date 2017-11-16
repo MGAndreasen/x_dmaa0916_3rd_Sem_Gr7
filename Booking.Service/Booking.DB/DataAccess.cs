@@ -12,13 +12,29 @@ namespace Booking.DB
 {
     public class DataAccess
     {
-        private string connectionString;
+        private static DataAccess instance = null;
 
-        public DataAccess()
+        private DataAccess()
         {
-            this.connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+
         }
 
+        public static DataAccess Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DataAccess();
+                }
+                return instance;
+            }
+        }
+
+        public string GetConnectionString()
+        {
+            return ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        }
 
     }
 }
