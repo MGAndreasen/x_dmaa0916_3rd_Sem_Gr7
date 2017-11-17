@@ -11,9 +11,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Booking.Models;
+
 namespace Booking.DB
 {
-    public class DbBooking : IDbCRUD<Booking>
+    public class DbBooking : IDbCRUD<Bookings>
     {
         private DataAccess data = DataAccess.Instance;
 
@@ -22,12 +23,12 @@ namespace Booking.DB
             throw new NotImplementedException();
         }
 
-        public Booking Get(int id)
+        public Bookings Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Insert(Booking obj)
+        public void Insert(Bookings obj)
         {
             using (/*Transaction*/)
             {

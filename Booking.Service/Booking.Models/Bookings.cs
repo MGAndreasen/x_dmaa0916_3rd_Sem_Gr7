@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Booking.Models
 {
-    public class Booking
+    public class Bookings
     {
         public int Id { get; set; }
         public Destination StartDestination { get; set; }
