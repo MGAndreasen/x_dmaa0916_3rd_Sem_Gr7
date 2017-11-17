@@ -7,9 +7,6 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 using System.Data.Sql;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Booking.Models;
 using System.Transactions;
 
