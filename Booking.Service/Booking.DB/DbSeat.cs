@@ -6,28 +6,43 @@ using System.Threading.Tasks;
 
 namespace Booking.DB
 {
-    public class DbSeat
+    public class DbSeat : IDbCRUD<Seat>
     {
+        private DataAccess data = DataAccess.Instance;
 
-
-        public void InsertSeat(int ID, int Number, bool Available)
+        public void Delete(int id)
         {
-            //Open
-            using (SqlCommand cmd = new SqlCommand())
-            {
-                
-                try
-                {
-                    cmd.CommandText = "Insert into dbo.Seat(ID, Number, Avaliable)";
-                    cmd.Execute;
-                }
+            throw new NotImplementedException();
+        }
 
-                catch
+        public Seat Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Insert(Seat obj)
+        {
+            using (/*Transaction*/)
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
-                    Console.WriteLine("Den gider sgu ikke lige");
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO ........", con);
+                    //cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = variable;
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        //tilføj til model.
+                    }
                 }
-                //open
             }
         }
+
+        public void Update(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
+
+}
 }

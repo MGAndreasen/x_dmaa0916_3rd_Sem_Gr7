@@ -6,7 +6,43 @@ using System.Threading.Tasks;
 
 namespace Booking.DB
 {
-    public class DbPassenger
+    public class DbPassenger : IDbCRUD<Passenger>
+
     {
+        private DataAccess data = DataAccess.Instance;
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Passenger Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Insert(Passenger obj)
+        {
+            using (/*Transaction*/)
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO ........", con);
+                    //cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = variable;
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        //tilføj til model.
+                    }
+                }
+            }
+        }
+
+        public void Update(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
+}
 }

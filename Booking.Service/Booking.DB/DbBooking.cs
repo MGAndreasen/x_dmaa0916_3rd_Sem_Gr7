@@ -13,57 +13,41 @@ using System.Threading.Tasks;
 using Booking.Models;
 namespace Booking.DB
 {
-    public class DbBooking
+    public class DbBooking : IDbCRUD<Booking>
     {
-       private DbBooking()
-        {
-            
-        }
-       
-        public void InsertBooking(Destination StartDestination, Destination EndDestination)
-        {
-            //Open
-            using (SqlCommand cmd = new SqlCommand())
-            {
-                dbCon.open();
-                try { 
-                cmd.CommandText = "Insert into dbo.Booking(StartDestination, EndDestination)";
-                }
+        private DataAccess data = DataAccess.Instance;
 
-                catch
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Booking Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Insert(Booking obj)
+        {
+            using (/*Transaction*/)
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
-                    Console.WriteLine("Noget gik sku galt med CreateBooking");
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO ........", con);
+                    //cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = variable;
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        //tilføj til model.
+                    }
                 }
-                //open
             }
         }
 
-        public void deleteBooking(//Booking  bookingId)
+        public void Update(int id)
         {
-            using (SqlCommand cmd = new SqlCommand())
-            {
-                try
-                {
-                    cmd.CommandText = "Delete where Id is (bookingId == bookingId) in dbo.Booking";
-                    cmd.Execute();
-                }
-
-                catch
-                {
-                    Console.WriteLine("Noget gik galt med DeleteBooking");
-                }
-            }
-
+            throw new NotImplementedException();
         }
-
-
-
-
-        public void getBooking()
-        {
-            //
-        }
-
-
     }
 }
