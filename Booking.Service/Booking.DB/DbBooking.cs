@@ -25,6 +25,7 @@ namespace Booking.DB
             //Open
             using (SqlCommand cmd = new SqlCommand())
             {
+                dbCon.open();
                 try { 
                 cmd.CommandText = "Insert into dbo.Booking(StartDestination, EndDestination)";
                 }
@@ -39,11 +40,12 @@ namespace Booking.DB
 
         public void deleteBooking(//Booking  bookingId)
         {
-            using(SqlCommand cmd = new SqlCommand())
+            using (SqlCommand cmd = new SqlCommand())
             {
-                try { 
-                cmd.CommandText = "Delete where Id is (bookingId == bookingId) in dbo.Booking";
-                cmd.Execute();
+                try
+                {
+                    cmd.CommandText = "Delete where Id is (bookingId == bookingId) in dbo.Booking";
+                    cmd.Execute();
                 }
 
                 catch

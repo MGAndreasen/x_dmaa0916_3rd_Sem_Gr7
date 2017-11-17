@@ -8,7 +8,7 @@ namespace Booking.DB
 {
     public interface IDbCRUD<T>
     {
-        void Create(T obj);
+        void Insert(T obj);
         T Get(int id);
         void Update(int id);
         void Delete(int id);

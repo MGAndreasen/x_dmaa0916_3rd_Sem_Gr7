@@ -15,6 +15,7 @@ namespace Booking.DB
             //Open
             using (SqlCommand cmd = new SqlCommand())
             {
+                
                 try
                 {
                     cmd.CommandText = "Insert into dbo.Seat(ID, Number, Avaliable)";
