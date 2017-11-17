@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace Booking.DB
 {
@@ -25,7 +26,8 @@ namespace Booking.DB
 
         public void Insert(Customer obj)
         {
-            using (/*Transaction*/)
+            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
