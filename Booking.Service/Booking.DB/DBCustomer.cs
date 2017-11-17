@@ -1,6 +1,7 @@
 ﻿using Booking.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -12,15 +13,6 @@ namespace Booking.DB
     {
         private DataAccess data = DataAccess.Instance;
 
-        public void Create(Customer obj)
-        {
-            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
-            {
-                con.Open();
-            }
-            throw new NotImplementedException();
-        }
-
         public void Delete(int id)
         {
             throw new NotImplementedException();
@@ -29,6 +21,24 @@ namespace Booking.DB
         public Customer Get(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public void Insert(Customer obj)
+        {
+            using (/*Transaction*/)
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO ........", con);
+                    //cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = variable;
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        //tilføj til model.
+                    }
+                }
+            }
         }
 
         public void Update(int id)
