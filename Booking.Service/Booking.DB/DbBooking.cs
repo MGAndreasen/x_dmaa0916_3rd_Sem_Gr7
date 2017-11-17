@@ -20,7 +20,7 @@ namespace Booking.DB
             
         }
        
-        public void CreateBooking(Destination StartDestination, Destination EndDestination)
+        public void InsertBooking(Destination StartDestination, Destination EndDestination)
         {
             //Open
             using (SqlCommand cmd = new SqlCommand())
@@ -43,6 +43,7 @@ namespace Booking.DB
             {
                 try { 
                 cmd.CommandText = "Delete where Id is (bookingId == bookingId) in dbo.Booking";
+                cmd.Execute();
                 }
 
                 catch

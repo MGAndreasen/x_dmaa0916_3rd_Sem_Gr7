@@ -10,7 +10,7 @@ namespace Booking.DB
     {
 
 
-        public void CreateSeat(int ID, int Number, bool Available)
+        public void InsertSeat(int ID, int Number, bool Available)
         {
             //Open
             using (SqlCommand cmd = new SqlCommand())
@@ -18,6 +18,7 @@ namespace Booking.DB
                 try
                 {
                     cmd.CommandText = "Insert into dbo.Seat(ID, Number, Avaliable)";
+                    cmd.Execute;
                 }
 
                 catch
