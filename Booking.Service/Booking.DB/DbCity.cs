@@ -25,7 +25,7 @@ namespace Booking.DB
             throw new NotImplementedException();
         }
 
-        public void Insert(City obj)
+        public void Create(City obj)
         {
             TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
