@@ -39,12 +39,12 @@ namespace Booking.DB
                     cmd.Parameters.Add("@Name", SqlDbType.VarChar).Value = obj.CityName;
 
                     cmd.ExecuteNonQuery();
-                    scope.Complete(); 
                 }
+                scope.Complete();
             }
         }
 
-        public void Update(string name)
+        public void Update(City obj)
         {
             TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
@@ -52,13 +52,15 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_City WHERE City=@City", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_City SET Zipcode=@zipcode, Name=@name WHERE Id=@id", con);
 
-                    cmd.Parameters.Add("@City", SqlDbType.VarChar).Value = name; 
+                    cmd.Parameters.AddWithValue("name", obj.CityName);
+                    cmd.Parameters.AddWithValue("zipcode", obj.Zipcode);
+                    //cmd.Parameters.AddWithValue("id", obj.Id);  VI SKAL TILFØJE ID I DATABASEN OG I MODEL
 
                     cmd.ExecuteNonQuery();
-                    scope.Complete(); 
                 }
+                scope.Complete();
             }
 
         }

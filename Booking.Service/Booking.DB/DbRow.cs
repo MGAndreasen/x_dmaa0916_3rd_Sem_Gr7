@@ -16,7 +16,24 @@ namespace Booking.DB
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                {
+                    con.Open();
+
+                    using (SqlCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = "DELETE FROM Row WHERE Id=@id";
+                        cmd.Parameters.AddWithValue("id", id);
+                        cmd.ExecuteNonQuery();
+                        scope.Complete();
+
+                    }
+
+                }
+            }
         }
 
         public Row Get(int id)
@@ -56,8 +73,10 @@ namespace Booking.DB
                     SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Booking (@Id, @SeatNumber, @Price", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
                     cmd.Parameters.Add("@SeatNumber", SqlDbType.Int).Value = obj.SeatNumber;
-                    cmd.Parameters.Add("@Price", SqlDbType.Int).Value = obj.Price;
+                    cmd.Parameters.Add("@Price", SqlDbType.Float).Value = obj.Price;
                     cmd.ExecuteNonQuery();
+                    scope.Complete();
+
                     {
                         //tilføj til model.
                     }
@@ -68,6 +87,34 @@ namespace Booking.DB
         public void Update(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<Row> GetAll()
+        {
+            List<Row> rows = new List<Row>();
+            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+            {
+                con.Open();
+
+                using (SqlCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM Row";
+                    var rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        Row r = new Row
+                        {
+                            Id = (int)rdr["Id"],
+                            SeatNumber = (int)rdr["SeatNumber"],
+                            Price = (double)rdr["Price"],
+                        };
+                       rows.Add(r);
+                    }
+                }
+
+            }
+            return rows;
         }
     }
 }
