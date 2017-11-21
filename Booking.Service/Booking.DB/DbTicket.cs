@@ -22,7 +22,32 @@ namespace Booking.DB
 
         public Ticket Get(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                try
+                {
+                    
+
+                    SqlDataReader rdr = null;
+                    SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Ticket WHERE Id = @id", con);
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                    rdr = cmd.ExecuteReader();
+                    if (rdr.HasRows())
+                    {
+                        while (rdr.Read())
+                        {
+                            return new Ticket
+                            {
+                                Id = rdr.GetInt32(0),
+
+                            };
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
+
         }
 
         public void Create(Ticket obj)
