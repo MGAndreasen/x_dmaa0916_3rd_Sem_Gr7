@@ -57,12 +57,10 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Booking Id", con);
-                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = obj.Id;
-                    cmd.Parameters.Add("@StartDestination", SqlDbType.VarChar).Value = obj.StartDestination;
-                    cmd.Parameters.Add("@EndDestination", SqlDbType.VarChar).Value = obj.EndDestination;
-                    cmd.Parameters.Add("@Date", SqlDbType.DateTime).Value = obj.Date;
-                    cmd.Parameters.Add("@Price", SqlDbType.Int).Value = obj.TotalPrice;
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking WHERE Id=@Id", con);
+                        
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+
 
                     cmd.ExecuteNonQuery();
 
@@ -71,5 +69,4 @@ namespace Booking.DB
             }
         }
     }
-    }
-}
+ }
