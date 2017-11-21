@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Booking.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -11,7 +12,7 @@ namespace Booking.Service
     [ServiceContract]
     public interface IService
     {
-   
+        #region Michael's sjeit.
         //[OperationContract]
         //string GetData(int value);
 
@@ -36,6 +37,14 @@ namespace Booking.Service
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/destination/{id}")]
         string GetDestination(string id);
+
+        #endregion
+
+        #region CustomerCtrl
+
+        [OperationContract]
+        Customer Get(int id);
+        #endregion 
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.

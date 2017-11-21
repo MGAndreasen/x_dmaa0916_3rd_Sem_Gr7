@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Booking.Client
 {
-    public partial class Form1 : Form
+    public partial class MainFrame : Form
     {
-        public Form1()
+        public MainFrame()
         {
             InitializeComponent();
+        }
+
+        private void MainFrame_Load(object sender, EventArgs e)
+        {
+                
         }
     }
 }
