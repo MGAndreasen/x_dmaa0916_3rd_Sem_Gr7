@@ -57,6 +57,10 @@
       <Project>{970ea190-0540-4fed-856c-9b06b03bbcf4}</Project>
       <Name>Booking.Controller</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Booking.Models\Booking.Models.csproj">
+      <Project>{E28DD068-1322-4023-A51E-E7BB13E7BC9D}</Project>
+      <Name>Booking.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
