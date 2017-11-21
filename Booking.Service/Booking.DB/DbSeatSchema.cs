@@ -1,6 +1,7 @@
 ﻿using Booking.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,28 @@ namespace Booking.DB
 
         public SeatSchema Get(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                try
+                {
+                    SqlDataReader rdr = null;
+                    SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_SeatSchema WHERE Id = @id", con);
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                    rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                       {
+                            return new SeatSchema
+                            {
+                                Row = rdr.GetInt32(0),
+                                Layout = rdr.GetString(1)
+                            };
+                        }
+                    
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
+
         }
 
         public void Create(SeatSchema obj)
@@ -31,10 +53,10 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO ........", con);
-                    //cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = variable;
-                    var reader = cmd.ExecuteReader();
-                    if (reader.Read())
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Booking (@Row, @Layout", con);
+                    cmd.Parameters.Add("@Row", SqlDbType.Int).Value = obj.Row;
+                    cmd.Parameters.Add("@Layout", SqlDbType.NVarChar).Value = obj.Layout;
+                    cmd.ExecuteNonQuery();
                     {
                         //tilføj til model.
                     }

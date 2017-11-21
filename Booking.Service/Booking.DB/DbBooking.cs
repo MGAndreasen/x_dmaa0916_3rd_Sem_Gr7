@@ -33,7 +33,7 @@ namespace Booking.DB
             using (scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
             { 
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
-                {
+                { 
                     con.Open();
                     SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Booking (@id, @StartDestination, @EndDestination, @Date, @Price", con);
                     cmd.Parameters.Add("@id", SqlDbType.Int).Value = variable;

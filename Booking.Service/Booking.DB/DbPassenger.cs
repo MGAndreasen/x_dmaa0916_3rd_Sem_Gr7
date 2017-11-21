@@ -1,11 +1,13 @@
 ﻿using Booking.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
+
 
 namespace Booking.DB
 {
@@ -32,10 +34,14 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO ........", con);
-                    //cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = variable;
-                    var reader = cmd.ExecuteReader();
-                    if (reader.Read())
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Passenger (@Id, @FirstName, @LastName, @Cpr, @PassportId, @Luggage", con);
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                    cmd.Parameters.Add("@FirstName", SqlDbType.NVarChar).Value = obj.FirstName;
+                    cmd.Parameters.Add("@LastName", SqlDbType.NVarChar).Value = obj.LastName;
+                    cmd.Parameters.Add("@Cpr", SqlDbType.BigInt).Value = obj.CPR;
+                    cmd.Parameters.Add("@PassportId", SqlDbType.BigInt).Value = obj.PassportNumber;
+                    cmd.Parameters.Add("@Luggage", SqlDbType.Bit).Value = obj.ExtraLuggage;
+                    cmd.ExecuteNonQuery();
                     {
                         //tilføj til model.
                     }
