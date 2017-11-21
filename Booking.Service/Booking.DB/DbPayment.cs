@@ -22,26 +22,16 @@ namespace Booking.DB
         public Payment Get(int id)
         {
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
-                try
                 {
-                    SqlDataReader rdr = null;
                     SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Payment WHERE Id = @id", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
-                    rdr = cmd.ExecuteReader();
-                    while (rdr.Read())
-                    {
+                    SqlDataReader rdr = cmd.ExecuteReader();
                         return new Payment
                         {
                             Id = rdr.GetInt32(0),
                             Amount = rdr.GetInt32(1),
                             Date = rdr.GetDateTime(2)
                         };
-                    }
-
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
                 }
         }
 

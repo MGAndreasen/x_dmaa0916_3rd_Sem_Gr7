@@ -57,7 +57,7 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Booking Id();
+                    SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Booking Id", con);
                     cmd.Parameters.Add("@id", SqlDbType.Int).Value = obj.Id;
                     cmd.Parameters.Add("@StartDestination", SqlDbType.VarChar).Value = obj.StartDestination;
                     cmd.Parameters.Add("@EndDestination", SqlDbType.VarChar).Value = obj.EndDestination;
