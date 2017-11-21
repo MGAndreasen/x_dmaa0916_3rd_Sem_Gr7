@@ -18,12 +18,34 @@ namespace Booking.DB
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("DELETE FROM dbo.Booking_City WHERE Id=@id", con); //VI SKAL TILFØJE ID TIL CITY I DATABASEN
+                    cmd.Parameters.AddWithValue("id", id);
+                    cmd.ExecuteNonQuery();
+                }
+                scope.Complete();
+            }
         }
 
         public City Get(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT s.Zipcode, s.Name FROM dbo.Booking_City AS s WHERE Id = @id", con);
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                SqlDataReader reader = cmd.ExecuteReader();
+                return new City
+                {
+                    Zipcode = reader.GetInt32(0),
+                    CityName = reader.GetString(1),
+                };
+            }
         }
 
         public void Create(City obj)
