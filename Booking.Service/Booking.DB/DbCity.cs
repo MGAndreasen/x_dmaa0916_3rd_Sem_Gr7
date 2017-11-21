@@ -34,22 +34,37 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_City (@Zipcode, @Name", con);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_City (@Zipcode, @Name)", con);
                     cmd.Parameters.Add("@Zipcode", SqlDbType.SmallInt).Value = obj.Zipcode;
                     cmd.Parameters.Add("@Name", SqlDbType.VarChar).Value = obj.CityName;
 
                     cmd.ExecuteNonQuery();
+                    scope.Complete(); 
                 }
             }
         }
 
-        public void Update(int id)
+        public void Update(string name)
         {
-            throw new NotImplementedException();
+            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_City WHERE City=@City", con);
+
+                    cmd.Parameters.Add("@City", SqlDbType.VarChar).Value = name; 
+
+                    cmd.ExecuteNonQuery();
+                    scope.Complete(); 
+                }
+            }
+
         }
     }
 }
 
 
-    
+
 
