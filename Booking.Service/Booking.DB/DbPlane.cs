@@ -21,7 +21,27 @@ namespace Booking.DB
 
         public Plane Get(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                try
+                {
+                    SqlDataReader rdr = null;
+                    SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Plane WHERE Id = @id", con);
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                    rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        return new Plane
+                        {
+                            Id = rdr.GetInt32(0),
+                            Type = rdr.GetString(1)
+                        };
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
         }
 
         public void Create(Plane obj)

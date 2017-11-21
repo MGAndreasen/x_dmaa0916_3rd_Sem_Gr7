@@ -23,7 +23,31 @@ namespace Booking.DB
 
         public Passenger Get(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                try
+                {
+                    SqlDataReader rdr = null;
+                    SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Passenger WHERE Id = @id", con);
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                    rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        return new Passenger
+                        {
+                            Id = rdr.GetInt32(0),
+                            FirstName = rdr.GetString(1),
+                            LastName = rdr.GetString(2),
+                            CPR = rdr.GetInt64(3),
+                            PassportId = rdr.GetInt64(4),
+                            Luggage = rdr.GetBoolean(5),
+                        };
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
         }
 
         public void Create(Passenger obj)
@@ -39,8 +63,8 @@ namespace Booking.DB
                     cmd.Parameters.Add("@FirstName", SqlDbType.NVarChar).Value = obj.FirstName;
                     cmd.Parameters.Add("@LastName", SqlDbType.NVarChar).Value = obj.LastName;
                     cmd.Parameters.Add("@Cpr", SqlDbType.BigInt).Value = obj.CPR;
-                    cmd.Parameters.Add("@PassportId", SqlDbType.BigInt).Value = obj.PassportNumber;
-                    cmd.Parameters.Add("@Luggage", SqlDbType.Bit).Value = obj.ExtraLuggage;
+                    cmd.Parameters.Add("@PassportId", SqlDbType.BigInt).Value = obj.PassportId;
+                    cmd.Parameters.Add("@Luggage", SqlDbType.Bit).Value = obj.Luggage;
                     cmd.ExecuteNonQuery();
                     {
                         //tilføj til model.
