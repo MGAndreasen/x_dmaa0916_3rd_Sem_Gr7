@@ -16,31 +16,43 @@ namespace Booking.DB
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("DELETE FROM dbo.Booking_Seat WHERE Id=@id", con);
+
+                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+
+                    cmd.ExecuteNonQuery();
+
+                    scope.Complete();
+                }
+            }
+
         }
 
         public Seat Get(int id)
         {
-            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
- //               try
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
-                    SqlDataReader rdr = null;
-                    SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Seat WHERE Id = @id", con);
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Booking_Seat WHERE Id=@Id", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
-                    rdr = cmd.ExecuteReader();
-                         return new Seat
-                        {
-                            Id = rdr.GetInt32(0),
-                            Number = rdr.GetInt32(1),
-                            Available = rdr.GetBoolean(2)
-                        };
 
+                    SqlDataReader rdr = cmd.ExecuteReader();
+                    return new Seat
+                    {
+                        Id = rdr.GetInt32(0),
+                        Number = rdr.GetInt32(1),
+                        Availability = rdr.GetBoolean(2),
+                    };
                 }
-                //catch (Exception e)
-                //{
-                //    Console.WriteLine(e.ToString());
-                    
-                //}
+
+            }
         }
 
         public void Create(Seat obj)
@@ -51,21 +63,36 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Seat (@Id, @Number, @Availability", con);
-                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Seat (@id, @Number, @Availability)", con);
+                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = obj.Id;
                     cmd.Parameters.Add("@Number", SqlDbType.Int).Value = obj.Number;
-                    cmd.Parameters.Add("@Availability", SqlDbType.Bit).Value = obj.Available;
+                    cmd.Parameters.Add("@Availability", SqlDbType.Bit).Value = obj.Availability;
+
                     cmd.ExecuteNonQuery();
-                    {
-                        //tilføj til model.
-                    }
+
+                    scope.Complete();
                 }
             }
         }
-
-        public void Update(int id)
+        public void Update(Seat obj)
         {
-            throw new NotImplementedException();
+            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Id=@Id, Number=@Number, Availability=@Availability", con);
+
+                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = obj.Id;
+                    cmd.Parameters.Add("@Number", SqlDbType.Int).Value = obj.Number;
+                    cmd.Parameters.Add("@Availability", SqlDbType.Bit).Value = obj.Availability;
+
+                    cmd.ExecuteNonQuery();
+                    scope.Complete();
+                }
+            }
+
         }
     }
 

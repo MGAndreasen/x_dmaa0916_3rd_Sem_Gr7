@@ -58,10 +58,6 @@ namespace Booking.DB
                 }
                 
             }
-
-
-
-
         }
 
         public void Create(Bookings obj)
