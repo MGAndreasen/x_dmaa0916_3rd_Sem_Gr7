@@ -4,6 +4,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using Booking.Models;
+using Booking.Controller;
 
 namespace Booking.Service
 {
@@ -69,6 +71,12 @@ namespace Booking.Service
         public string GetDestination(string id)
         {
             return "Du postede " + id;
+        }
+
+        public Customer Get(int id)
+        {
+            CustomerCtrl cCtrl = new CustomerCtrl();
+            return cCtrl.Get(id);
         }
     }
 }

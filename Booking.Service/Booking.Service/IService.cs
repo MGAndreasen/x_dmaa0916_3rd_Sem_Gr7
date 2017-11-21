@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Booking.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -41,6 +42,8 @@ namespace Booking.Service
 
         #region CustomerCtrl
 
+        [OperationContract]
+        Customer Get(int id);
         #endregion 
     }
 
