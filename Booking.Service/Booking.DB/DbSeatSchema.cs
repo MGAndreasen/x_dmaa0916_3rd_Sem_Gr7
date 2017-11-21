@@ -29,7 +29,7 @@ namespace Booking.DB
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                     rdr = cmd.ExecuteReader();
                     while (rdr.Read())
-                       {
+                     {
                             return new SeatSchema
                             {
                                 Row = rdr.GetInt32(0),
