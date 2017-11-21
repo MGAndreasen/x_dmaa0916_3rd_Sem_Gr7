@@ -24,30 +24,22 @@ namespace Booking.DB
         public Passenger Get(int id)
         {
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
-                try
-                {
-                    SqlDataReader rdr = null;
-                    SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Passenger WHERE Id = @id", con);
-                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
-                    rdr = cmd.ExecuteReader();
-                    while (rdr.Read())
+            {
+                SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Passenger WHERE Id = @id", con);
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                SqlDataReader rdr = cmd.ExecuteReader();
+                    return new Passenger
                     {
-                        return new Passenger
-                        {
-                            Id = rdr.GetInt32(0),
-                            FirstName = rdr.GetString(1),
-                            LastName = rdr.GetString(2),
-                            CPR = rdr.GetInt64(3),
-                            PassportId = rdr.GetInt64(4),
-                            Luggage = rdr.GetBoolean(5),
-                        };
-                    }
+                        Id = rdr.GetInt32(0),
+                        FirstName = rdr.GetString(1),
+                        LastName = rdr.GetString(2),
+                        CPR = rdr.GetInt64(3),
+                        PassportId = rdr.GetInt64(4),
+                        Luggage = rdr.GetBoolean(5),
+                    };
 
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                }
+            }
+
         }
 
         public void Create(Passenger obj)

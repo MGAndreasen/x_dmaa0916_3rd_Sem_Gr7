@@ -22,29 +22,25 @@ namespace Booking.DB
         public Seat Get(int id)
         {
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
-                try
+ //               try
                 {
                     SqlDataReader rdr = null;
                     SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Seat WHERE Id = @id", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                     rdr = cmd.ExecuteReader();
-                    while (rdr.Read())
-                    {
                          return new Seat
                         {
                             Id = rdr.GetInt32(0),
                             Number = rdr.GetInt32(1),
                             Available = rdr.GetBoolean(2)
                         };
-                        
-                    }
 
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
+                //catch (Exception e)
+                //{
+                //    Console.WriteLine(e.ToString());
                     
-                }
+                //}
         }
 
         public void Create(Seat obj)
