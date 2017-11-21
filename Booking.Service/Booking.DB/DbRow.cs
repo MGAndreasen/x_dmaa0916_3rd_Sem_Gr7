@@ -21,7 +21,28 @@ namespace Booking.DB
 
         public Row Get(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                try
+                {
+                    SqlDataReader rdr = null;
+                    SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Row WHERE Id = @id", con);
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                    rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        return new Row
+                        {
+                            Id = rdr.GetInt32(0),
+                            SeatNumber = rdr.GetInt32(1),
+                            Price = rdr.GetInt32(2)
+                        };
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
         }
 
         public void Create(Row obj)

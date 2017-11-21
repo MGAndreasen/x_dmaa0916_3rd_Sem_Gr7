@@ -11,9 +11,9 @@ namespace Booking.Models
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int CPR { get; set; }
-        public int PassportNumber { get; set; }
-        public int ExtraLuggage { get; set; }
+        public long CPR { get; set; }
+        public long PassportId { get; set; }
+        public bool Luggage { get; set; }
         public Seat SeatNumber { get; set; }
         
     }
