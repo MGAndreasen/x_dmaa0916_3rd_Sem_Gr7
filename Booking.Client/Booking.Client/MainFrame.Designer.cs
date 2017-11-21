@@ -1,6 +1,6 @@
 ﻿namespace Booking.Client
 {
-    partial class Form1
+    partial class MainFrame
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // MainFrame
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(282, 253);
+            this.Name = "MainFrame";
+            this.Text = "MainFrame";
+            this.Load += new System.EventHandler(this.MainFrame_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
     }
 }
-
