@@ -46,6 +46,8 @@ namespace Booking.DB
 
                     cmd.ExecuteNonQuery();
 
+                    scope.Complete();
+
                 }
             }
         }
