@@ -25,7 +25,7 @@ namespace Booking.DB
 
                     using (SqlCommand cmd = con.CreateCommand())
                     {
-                        cmd.CommandText = "DELETE FROM Plane WHERE Id=@id";
+                        cmd.CommandText = "DELETE FROM bdo.Booking_Plane WHERE Id=@id";
                         cmd.Parameters.AddWithValue("id", id);
                         cmd.ExecuteNonQuery();
                         scope.Complete();
@@ -40,6 +40,7 @@ namespace Booking.DB
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
  //               try
                 {
+                    con.Open();
                     SqlDataReader rdr = null;
                     SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Plane WHERE Id = @id", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
@@ -77,9 +78,24 @@ namespace Booking.DB
             }
         }
 
-        public void Update(int id)
+        public void Update(Plane obj)
         {
-            throw new NotImplementedException();
+            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Plane SET Id=@Id, Type=@TP", con);
+
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                    cmd.Parameters.Add("@TP", SqlDbType.NVarChar).Value = obj.Type;
+
+
+                    cmd.ExecuteNonQuery();
+                    scope.Complete();
+                }
+            }
         }
 
         public IEnumerable<Plane> GetAll()
@@ -91,7 +107,7 @@ namespace Booking.DB
 
                 using (SqlCommand cmd = con.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM Plane";
+                    cmd.CommandText = "SELECT * FROM bdo.Booking_Plane";
                     var rdr = cmd.ExecuteReader();
 
                     while (rdr.Read())

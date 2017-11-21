@@ -80,9 +80,27 @@ namespace Booking.DB
             }
         }
 
-        public void Update(int id)
+        public void Update(Passenger obj)
         {
-            throw new NotImplementedException();
+            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Passenger SET Id=@Id, FirstName=@FN, LastName=@LN, Cpr=@CPR, PassportId=@PI, Luggage=@LG", con);
+
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                    cmd.Parameters.Add("@FN", SqlDbType.NVarChar).Value = obj.FirstName;
+                    cmd.Parameters.Add("@LN", SqlDbType.NVarChar).Value = obj.LastName;
+                    cmd.Parameters.Add("@Cpr", SqlDbType.BigInt).Value = obj.CPR;
+                    cmd.Parameters.Add("@PI", SqlDbType.BigInt).Value = obj.PassportId;
+                    cmd.Parameters.Add("@LG", SqlDbType.Bit).Value = obj.Luggage;
+
+                    cmd.ExecuteNonQuery();
+                    scope.Complete();
+                }
+            }
         }
     }
     public IEnumerable<Passenger> GetAll()
@@ -94,7 +112,7 @@ namespace Booking.DB
 
             using (SqlCommand cmd = con.CreateCommand())
             {
-                cmd.CommandText = "SELECT * FROM Payment";
+                cmd.CommandText = "SELECT * FROM bdo.Booking_Passenger";
                 var rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
