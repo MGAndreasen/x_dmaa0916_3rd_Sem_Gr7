@@ -31,9 +31,7 @@ namespace Booking.DB
                     SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Ticket WHERE Id = @id", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                     rdr = cmd.ExecuteReader();
-                    if (rdr.HasRows())
-                    {
-                        while (rdr.Read())
+                    while (rdr.Read())
                         {
                             return new Ticket
                             {
@@ -41,7 +39,7 @@ namespace Booking.DB
 
                             };
                         }
-                    }
+                    
                 }
                 catch (Exception e)
                 {
