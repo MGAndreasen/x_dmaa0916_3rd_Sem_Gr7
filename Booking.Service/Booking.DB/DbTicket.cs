@@ -17,34 +17,41 @@ namespace Booking.DB
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("DELETE FROM dbo.Booking_Ticket WHERE Id=@id", con);
+
+                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+
+                    cmd.ExecuteNonQuery();
+
+                    scope.Complete();
+                }
+            }
         }
 
         public Ticket Get(int id)
         {
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
-                try
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
-                    
-
-                    SqlDataReader rdr = null;
-                    SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Ticket WHERE Id = @id", con);
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Booking_Booking WHERE Id=@Id", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
-                    rdr = cmd.ExecuteReader();
-                    while (rdr.Read())
-                        {
-                            return new Ticket
-                            {
-                                Id = rdr.GetInt32(0),
 
-                            };
-                        }
-                    
+                    SqlDataReader rdr = cmd.ExecuteReader();
+                    return new Ticket
+                    {
+                        Id = rdr.GetInt32(0),
+                    };
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                }
+
+            }
 
         }
 
@@ -56,19 +63,32 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Ticket (@Id", con);
-                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Booking (@id)", con);
+                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = obj.Id;
+     
+
                     cmd.ExecuteNonQuery();
-                    {
-                        //tilføj til model.
-                    }
+
+                    scope.Complete();
                 }
             }
         }
-
-        public void Update(int id)
+        public void Update(Ticket obj)
         {
-            throw new NotImplementedException();
+            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Id=@Id", con);
+
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+
+                    cmd.ExecuteNonQuery();
+                    scope.Complete();
+                }
+            }
         }
     }
 }

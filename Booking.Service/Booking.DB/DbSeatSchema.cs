@@ -16,30 +16,42 @@ namespace Booking.DB
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("DELETE FROM dbo.Booking_SeatSchema WHERE Id=@id", con);
+
+                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+
+                    cmd.ExecuteNonQuery();
+
+                    scope.Complete();
+                }
+            }
+
         }
 
         public SeatSchema Get(int id)
         {
-            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
-  //              try
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
-                    SqlDataReader rdr = null;
-                    SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_SeatSchema WHERE Id = @id", con);
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Booking_SeatSchema WHERE Id=@Id", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
-                    rdr = cmd.ExecuteReader();
 
-                            return new SeatSchema
-                            {
-                                Row = rdr.GetInt32(0),
-                                Layout = rdr.GetString(1)
-                            };
-                    
+                    SqlDataReader rdr = cmd.ExecuteReader();
+                    return new SeatSchema
+                    {
+                        Row = rdr.GetInt32(0),
+                        Layout = rdr.GetString(1),
+                    };
                 }
-                //catch (Exception e)
-                //{
-                //    Console.WriteLine(e.ToString());
-                //}
+
+            }
 
         }
 
@@ -51,20 +63,35 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Booking (@Row, @Layout", con);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_SeatSchema (@Row, @Layout)", con);
                     cmd.Parameters.Add("@Row", SqlDbType.Int).Value = obj.Row;
-                    cmd.Parameters.Add("@Layout", SqlDbType.NVarChar).Value = obj.Layout;
+                    cmd.Parameters.Add("@Layout", SqlDbType.VarChar).Value = obj.Layout;
+
                     cmd.ExecuteNonQuery();
-                    {
-                        //tilføj til model.
-                    }
+
+                    scope.Complete();
                 }
             }
         }
 
-        public void Update(int id)
+        public void Update(SeatSchema obj)
         {
-            throw new NotImplementedException();
+            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_SeatSchema SET Row=@Row, Layout=@Layout", con);
+
+                    cmd.Parameters.Add("@Row", SqlDbType.Int).Value = obj.Row;
+                    cmd.Parameters.Add("@Layout", SqlDbType.Int).Value = obj.Layout;
+
+
+                    cmd.ExecuteNonQuery();
+                    scope.Complete();
+                }
+            }
         }
     }
 }
