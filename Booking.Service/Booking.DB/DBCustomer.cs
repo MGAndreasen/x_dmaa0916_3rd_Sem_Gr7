@@ -67,14 +67,7 @@ namespace Booking.DB
 
                         cmd.ExecuteNonQuery();
 
-                    }
                 }
-            }
-            catch (Exception e)
-            {
-
-                Console.WriteLine(e.ToString());
-                
             }
         }
 
