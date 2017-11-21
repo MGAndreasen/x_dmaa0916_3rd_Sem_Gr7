@@ -74,7 +74,7 @@ namespace Booking.DB
 
         public void Update(int id)
         {
-            throw new NotImplementedException();
+            
         }
 
     }

@@ -10,7 +10,7 @@ namespace Booking.DB
     {
         void Create(T obj);
         T Get(int id);
-        void Update(int id);
+        void Update(T obj);
         void Delete(int id);
     }
 }
