@@ -1,6 +1,7 @@
 ﻿using Booking.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -32,10 +33,9 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO ........", con);
-                    //cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = variable;
-                    var reader = cmd.ExecuteReader();
-                    if (reader.Read())
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Ticket (@Id", con);
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                    cmd.ExecuteNonQuery();
                     {
                         //tilføj til model.
                     }
