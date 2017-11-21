@@ -65,17 +65,36 @@ namespace Booking.DB
                     cmd.Parameters.Add("@Comfirmed", SqlDbType.Bit).Value = obj.Confirmed;
 
                     cmd.ExecuteNonQuery();
-
                 }
+                scope.Complete();
             }
 
         }
 
 
-        public void Update(int id)
+        public void Update(Customer obj)
         {
-            
-        }
+            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                {
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Customer SET Cpr=@cpr, PhoneNo=@pho, Zipcode=@city, FirstName=@fn, LastName=@ln, Email=@em, Address=@a, Password=@p, Confirmed=@con WHERE ID=@id", con);
+                    cmd.Parameters.AddWithValue("id", obj.Id);
+                    cmd.Parameters.AddWithValue("cpr", obj.CPR);
+                    cmd.Parameters.AddWithValue("pho", obj.PhoneNumber);
+                    cmd.Parameters.AddWithValue("city", obj.City);
+                    cmd.Parameters.AddWithValue("fn", obj.FirstName);
+                    cmd.Parameters.AddWithValue("ln", obj.LastName);
+                    cmd.Parameters.AddWithValue("em", obj.Email);
+                    cmd.Parameters.AddWithValue("a", obj.Address);
+                    cmd.Parameters.AddWithValue("p", obj.Password);
+                    cmd.Parameters.AddWithValue("con", obj.Confirmed);
 
+                    cmd.ExecuteNonQuery();
+                }
+                scope.Complete();
+            }
+        }
     }
 }
