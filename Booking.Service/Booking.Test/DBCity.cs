@@ -9,14 +9,14 @@ namespace Booking.Test
         [TestMethod()]
         public void Create()
         {
-            Booking.Models.City c = new Models.City(9999, "Test");
-            Booking.DB.DbCity dbCity = new DB.DbCity();
+            Booking.Models.Ticket c = new Models.Ticket(1);
+            Booking.DB.DbTicket dbT = new DB.DbTicket();
 
-            Assert.AreNotEqual(c, dbCity.Get(9999));
+            Assert.AreNotEqual(c, dbT.Get(1));
 
-            dbCity.Create(c);
+            dbT.Create(c);
 
-            Assert.AreEqual(c, dbCity.Get(9999));
+            Assert.AreEqual(c, dbT.Get(9999));
 
 
             

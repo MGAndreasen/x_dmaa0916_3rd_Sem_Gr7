@@ -1,6 +1,7 @@
 ﻿using Booking.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace Booking.DB
 
     {
         private DataAccess data = DataAccess.Instance;
+        private string ConnectionString;
 
         public void Delete(int id)
         {
@@ -36,7 +38,8 @@ namespace Booking.DB
 
         public Ticket Get(int id)
         {
-            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+            this.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(this.ConnectionString))
             {
              
                     con.Open();
@@ -44,7 +47,7 @@ namespace Booking.DB
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
 
                     SqlDataReader rdr = cmd.ExecuteReader();
-                    return new Ticket
+                    return new Ticket()
                     {
                         Id = rdr.GetInt32(0),
                     };
