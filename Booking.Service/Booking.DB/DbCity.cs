@@ -24,7 +24,7 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("DELETE FROM dbo.Booking_City WHERE Id=@id", con); //VI SKAL TILFØJE ID TIL CITY I DATABASEN
+                    SqlCommand cmd = new SqlCommand("DELETE FROM dbo.Booking_City WHERE Zipcode=@id", con); //VI SKAL TILFØJE ID TIL CITY I DATABASEN
                     cmd.Parameters.AddWithValue("id", id);
                     cmd.ExecuteNonQuery();
                 }
@@ -34,25 +34,30 @@ namespace Booking.DB
 
         public City Get(int id)
         {
-            string Query = "SELECT s.Zipcode, s.Name FROM dbo.Booking_City AS s WHERE s.Zipcode = @ID";
+            string Query = "SELECT Zipcode, Name FROM dbo.Booking_City WHERE Zipcode = @ID";
 
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
                 
-                SqlCommand cmd = new SqlCommand(Query, con);
-                cmd.Parameters.Add("@ID", SqlDbType.SmallInt);
-                cmd.Parameters["@ID"].Value = 9999;
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandText = Query;
+                cmd.Parameters.AddWithValue("ID", id);
+                
 
                 con.Open();
+               
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                //reader.NextResult();
+               
+
+                
                 if (reader.HasRows)
                 {
+                    reader.Read();
 
                     return new City
                     (
-                        reader.GetInt32(0),
+                        reader.GetInt16(0),
                         reader.GetString(1)
                     );
                 }
@@ -69,9 +74,10 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_City (@Zipcode, @Name)", con);
-                    cmd.Parameters.AddWithValue("@Zipcode", obj.Zipcode);
-                    cmd.Parameters.AddWithValue("@Name", obj.CityName);
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandText = "INSERT INTO dbo.Booking_City (Zipcode, Name) VALUES (@ZipCode, @Name)";
+                    cmd.Parameters.AddWithValue("Zipcode", obj.Zipcode);
+                    cmd.Parameters.AddWithValue("Name", obj.CityName);
                     con.Open();
                     cmd.ExecuteNonQuery();
                 }

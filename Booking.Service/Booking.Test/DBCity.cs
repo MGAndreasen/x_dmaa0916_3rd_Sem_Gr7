@@ -12,7 +12,9 @@ namespace Booking.Test
             Booking.Models.City c = new Models.City(9999, "Test");
             Booking.DB.DbCity dbCity = new DB.DbCity();
 
-            Assert.AreNotEqual(c, dbCity.Get(9999));
+            dbCity.Delete(9999);
+
+            Assert.IsNull(dbCity.Get(9999));
 
             dbCity.Create(c);
 
