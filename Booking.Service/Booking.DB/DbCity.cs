@@ -34,17 +34,30 @@ namespace Booking.DB
 
         public City Get(int id)
         {
+            string Query = "SELECT s.Zipcode, s.Name FROM dbo.Booking_City AS s WHERE s.Zipcode = @ID";
+
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
+                
+                SqlCommand cmd = new SqlCommand(Query, con);
+                cmd.Parameters.Add("@ID", SqlDbType.SmallInt);
+                cmd.Parameters["@ID"].Value = 9999;
+
                 con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT s.Zipcode, s.Name FROM dbo.Booking_City AS s WHERE Id = @id", con);
-                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                 SqlDataReader reader = cmd.ExecuteReader();
-                return new City
+
+                //reader.NextResult();
+                if (reader.HasRows)
                 {
-                    Zipcode = reader.GetInt32(0),
-                    CityName = reader.GetString(1),
-                };
+
+                    return new City
+                    (
+                        reader.GetInt32(0),
+                        reader.GetString(1)
+                    );
+                }
+
+                return null;
             }
         }
 
@@ -55,11 +68,11 @@ namespace Booking.DB
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
-                    con.Open();
+                    
                     SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_City (@Zipcode, @Name)", con);
-                    cmd.Parameters.Add("@Zipcode", SqlDbType.SmallInt).Value = obj.Zipcode;
-                    cmd.Parameters.Add("@Name", SqlDbType.VarChar).Value = obj.CityName;
-
+                    cmd.Parameters.AddWithValue("@Zipcode", obj.Zipcode);
+                    cmd.Parameters.AddWithValue("@Name", obj.CityName);
+                    con.Open();
                     cmd.ExecuteNonQuery();
                 }
                 scope.Complete();
@@ -74,11 +87,12 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_City SET Zipcode=@zipcode, Name=@name WHERE Id=@id", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_City SET Zipcode=@zipcode, Name=@name WHERE Zipcode=@zipcode", con);
 
                     cmd.Parameters.AddWithValue("name", obj.CityName);
                     cmd.Parameters.AddWithValue("zipcode", obj.Zipcode);
                     //cmd.Parameters.AddWithValue("id", obj.Id);  VI SKAL TILFØJE ID I DATABASEN OG I MODEL
+                    // Nej vi skal bare benytte Zipcode som ID da denne er uniq
 
                     cmd.ExecuteNonQuery();
                 }

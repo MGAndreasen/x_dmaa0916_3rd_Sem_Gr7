@@ -10,5 +10,11 @@ namespace Booking.Models
     {
         public int Zipcode { get; set; }
         public string CityName { get; set; }
+
+        public City(int zipcode, string cityname)
+        {
+            Zipcode = zipcode;
+            CityName = cityname;
+        }
     }
 }

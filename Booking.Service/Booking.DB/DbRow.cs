@@ -41,25 +41,31 @@ namespace Booking.DB
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 try
                 {
+                    
                     SqlDataReader rdr = null;
                     SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Row WHERE Id = @id", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                     rdr = cmd.ExecuteReader();
-                    while (rdr.Read())
-                    {
+                    //while (rdr.Read())
+                    //{
+                    rdr.Read();
                         return new Row
                         {
                             Id = rdr.GetInt32(0),
                             SeatNumber = rdr.GetInt32(1),
                             Price = rdr.GetInt32(2)
                         };
-                    }
+                    //}
+
+
 
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e.ToString());
                 }
+
+            return null;
         }
 
         public void Create(Row obj)
@@ -115,6 +121,11 @@ namespace Booking.DB
 
             }
             return rows;
+        }
+
+        public void Update(Row obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }
