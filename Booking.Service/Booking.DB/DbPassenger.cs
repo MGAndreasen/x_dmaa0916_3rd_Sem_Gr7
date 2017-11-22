@@ -27,8 +27,8 @@ namespace Booking.DB
 
                     using (SqlCommand cmd = con.CreateCommand())
                     {
-                        cmd.CommandText = "DELETE FROM Passenger WHERE Id=@id";
-                        cmd.Parameters.AddWithValue("id", id);
+                        cmd.CommandText = "DELETE FROM Booking_Passenger WHERE Id=@id";
+                        cmd.Parameters.AddWithValue("Id", id);
                         cmd.ExecuteNonQuery();
                         scope.Complete();
                     }
@@ -40,18 +40,29 @@ namespace Booking.DB
         {
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
-                SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Passenger WHERE Id = @id", con);
-                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
-                SqlDataReader rdr = cmd.ExecuteReader();
+                con.Open();
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandText= "SELECT * FROM Booking_Passenger WHERE Id = @id";
+                cmd.Parameters.AddWithValue("Id", id);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+
                     return new Passenger
                     {
-                        Id = rdr.GetInt32(0),
-                        FirstName = rdr.GetString(1),
-                        LastName = rdr.GetString(2),
-                        CPR = rdr.GetInt64(3),
-                        PassportId = rdr.GetInt64(4),
-                        Luggage = rdr.GetBoolean(5),
+                        Id = reader.GetInt32(0),
+                        FirstName = reader.GetString(1),
+                        LastName = reader.GetString(2),
+                        CPR = reader.GetInt64(3),
+                        PassportId = reader.GetInt64(4),
+                        Luggage = reader.GetBoolean(5),
                     };
+
+                }
+
+                return null;
 
             }
 
@@ -65,18 +76,18 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Passenger (@Id, @FirstName, @LastName, @Cpr, @PassportId, @Luggage", con);
-                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
-                    cmd.Parameters.Add("@FirstName", SqlDbType.NVarChar).Value = obj.FirstName;
-                    cmd.Parameters.Add("@LastName", SqlDbType.NVarChar).Value = obj.LastName;
-                    cmd.Parameters.Add("@Cpr", SqlDbType.BigInt).Value = obj.CPR;
-                    cmd.Parameters.Add("@PassportId", SqlDbType.BigInt).Value = obj.PassportId;
-                    cmd.Parameters.Add("@Luggage", SqlDbType.Bit).Value = obj.Luggage;
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Passenger (Id, FirstName, LastName, Cpr, PassportId, Luggage) Values (@Id, @FirstName, @LastName, @Cpr, @PassportId, @Luggage)", con);
+                    cmd.Parameters.Add("Id", SqlDbType.Int).Value = obj.Id;
+                    cmd.Parameters.Add("FirstName", SqlDbType.NVarChar).Value = obj.FirstName;
+                    cmd.Parameters.Add("LastName", SqlDbType.NVarChar).Value = obj.LastName;
+                    cmd.Parameters.Add("Cpr", SqlDbType.BigInt).Value = obj.CPR;
+                    cmd.Parameters.Add("PassportId", SqlDbType.BigInt).Value = obj.PassportId;
+                    cmd.Parameters.Add("Luggage", SqlDbType.Bit).Value = obj.Luggage;
                     cmd.ExecuteNonQuery();
-                    {
-                        //tilføj til model.
-                    }
+          
                 }
+                scope.Complete();
+
             }
         }
 
