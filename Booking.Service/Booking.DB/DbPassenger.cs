@@ -91,14 +91,28 @@ namespace Booking.DB
             }
         }
 
-        public void Update(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Update(Passenger obj)
         {
-            throw new NotImplementedException();
+            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE Booking_Passenger SET Id = @Id, FirstName = @FirstName, LastName = @LastName, Cpr = @Cpr, PassportId = @PassportId, Luggage = @Luggage WHERE Id=@Id", con);
+                    
+                    cmd.Parameters.AddWithValue("Id", obj.Id);
+                    cmd.Parameters.AddWithValue("FirstName", obj.FirstName);
+                    cmd.Parameters.AddWithValue("LastName", obj.LastName);
+                    cmd.Parameters.AddWithValue("Cpr", obj.CPR);
+                    cmd.Parameters.AddWithValue("PassportId", obj.PassportId);
+                    cmd.Parameters.AddWithValue("Luggage", obj.Luggage);
+
+
+                    cmd.ExecuteNonQuery();
+                }
+                scope.Complete();
+            }
         }
         public IEnumerable<Passenger> GetAll()
         {

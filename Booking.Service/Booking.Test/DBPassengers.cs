@@ -59,7 +59,7 @@ namespace Booking.Test
         {
 
             Models.Passenger p = new Models.Passenger();
-            p.Id = -1;
+            p.Id = 999999;
             p.FirstName = "Svend";
             p.LastName = "Andersen";
             p.Luggage = true;
@@ -68,19 +68,19 @@ namespace Booking.Test
 
 
             DB.DbPassenger dbPass = new DB.DbPassenger();
-            dbPass.Delete(-1);
+            dbPass.Delete(999999);
 
-            Assert.AreNotEqual(p.PassportId, dbPass.Get(-1).PassportId);
+            Assert.IsNull(dbPass.Get(999999));
 
             dbPass.Create(p);
 
-            Assert.AreEqual(p.PassportId, dbPass.Get(-1).PassportId);
+            Assert.AreEqual(p.PassportId, dbPass.Get(999999).PassportId);
 
             p.PassportId = 0987654321;
 
             dbPass.Update(p);
 
-            Assert.AreEqual(p.PassportId, dbPass.Get(-1).PassportId);
+            Assert.AreEqual(p.PassportId, dbPass.Get(999999).PassportId);
 
         }
 
