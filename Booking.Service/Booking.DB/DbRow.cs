@@ -25,7 +25,7 @@ namespace Booking.DB
 
                     using (SqlCommand cmd = con.CreateCommand())
                     {
-                        cmd.CommandText = "DELETE FROM bdo.Booking_Row WHERE Id=@id";
+                        cmd.CommandText = "DELETE FROM Row WHERE Id=@id";
                         cmd.Parameters.AddWithValue("id", id);
                         cmd.ExecuteNonQuery();
                         scope.Complete();
@@ -41,7 +41,6 @@ namespace Booking.DB
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 try
                 {
-                    con.Open();
                     SqlDataReader rdr = null;
                     SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Row WHERE Id = @id", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
@@ -85,23 +84,9 @@ namespace Booking.DB
             }
         }
 
-        public void Update(Row obj)
+        public void Update(int id)
         {
-            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
-            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
-            {
-                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
-                {
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Row SET Id=@Id, SeatNumber=@SN, Price=@PR", con);
-
-                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
-                    cmd.Parameters.Add("@SN", SqlDbType.Int).Value = obj.SeatNumber;
-                    cmd.Parameters.Add("@PR", SqlDbType.Int).Value = obj.Price;
-                    cmd.ExecuteNonQuery();
-                    scope.Complete();
-                }
-            }
+            throw new NotImplementedException();
         }
 
         public IEnumerable<Row> GetAll()
@@ -113,7 +98,7 @@ namespace Booking.DB
 
                 using (SqlCommand cmd = con.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM bdo.Booking_Row";
+                    cmd.CommandText = "SELECT * FROM Row";
                     var rdr = cmd.ExecuteReader();
 
                     while (rdr.Read())
