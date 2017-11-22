@@ -38,8 +38,7 @@ namespace Booking.DB
         {
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
-                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
-                {
+             
                     con.Open();
                     SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Booking_Booking WHERE Id=@Id", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
@@ -49,7 +48,7 @@ namespace Booking.DB
                     {
                         Id = rdr.GetInt32(0),
                     };
-                }
+                
 
             }
 

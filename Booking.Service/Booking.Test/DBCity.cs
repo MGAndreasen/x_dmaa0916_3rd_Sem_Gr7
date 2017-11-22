@@ -6,7 +6,7 @@ namespace Booking.Test
     [TestClass]
     public class DBCity
     {
-        [TestMethod]
+        [TestMethod()]
         public void Create()
         {
             Booking.Models.City c = new Models.City(9999, "Test");
