@@ -41,10 +41,10 @@ namespace Booking.DB
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                 SqlDataReader reader = cmd.ExecuteReader();
                 return new City
-                {
-                    Zipcode = reader.GetInt32(0),
-                    CityName = reader.GetString(1),
-                };
+                (
+                    reader.GetInt32(0),
+                    reader.GetString(1)
+                );
             }
         }
 

@@ -45,5 +45,10 @@ namespace Booking.DB
         {
             throw new NotImplementedException();
         }
+
+        public void Update(Destination obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
