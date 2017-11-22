@@ -84,38 +84,44 @@ namespace Booking.DB
         {
             throw new NotImplementedException();
         }
-    }
-    public IEnumerable<Passenger> GetAll()
-    {
-        List<Passenger> passengers = new List<Passenger>();
-        using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+
+        public void Update(Passenger obj)
         {
-            con.Open();
-
-            using (SqlCommand cmd = con.CreateCommand())
-            {
-                cmd.CommandText = "SELECT * FROM Payment";
-                var rdr = cmd.ExecuteReader();
-
-                while (rdr.Read())
-                {
-                    Passenger p = new Passenger
-                    {
-                        Id = (int)rdr["Id"],
-                        FirstName = (String)rdr["FirstName"],
-                        LastName = (String)rdr["LastName"],
-                        CPR = (long)rdr["Cpr"],
-                        PassportId = (long)rdr["PassportId"],
-                        Luggage = (bool)rdr["Luggage"]
-                            
-                    };
-                    passengers.Add(p);
-                }
-            }
-
+            throw new NotImplementedException();
         }
-        return passengers;
+        public IEnumerable<Passenger> GetAll()
+        {
+            List<Passenger> passengers = new List<Passenger>();
+            using (SqlConnection con = new SqlConnection(DB.DataAccess.Instance.GetConnectionString()))
+            {
+                con.Open();
+
+                using (SqlCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM Payment";
+                    var rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        Passenger p = new Passenger
+                        {
+                            Id = (int)rdr["Id"],
+                            FirstName = (String)rdr["FirstName"],
+                            LastName = (String)rdr["LastName"],
+                            CPR = (long)rdr["Cpr"],
+                            PassportId = (long)rdr["PassportId"],
+                            Luggage = (bool)rdr["Luggage"]
+
+                        };
+                        passengers.Add(p);
+                    }
+                }
+
+            }
+            return passengers;
+        }
     }
+    
      
     
 }

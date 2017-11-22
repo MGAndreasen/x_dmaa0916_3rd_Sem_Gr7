@@ -17,6 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Booking.Exceptions", "Booki
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Booking.ServiceSelfHosted", "Booking.ServiceSelfHosted\Booking.ServiceSelfHosted.csproj", "{B43F575D-4526-4485-AB75-16CE22108C9A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Booking.Test", "Booking.Test\Booking.Test.csproj", "{21DE0D12-D749-44C4-A230-4BCDAC234881}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C2050737-5DE1-42A5-9CC6-012BE50192DD} = {C2050737-5DE1-42A5-9CC6-012BE50192DD}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +56,10 @@ Global
 		{B43F575D-4526-4485-AB75-16CE22108C9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B43F575D-4526-4485-AB75-16CE22108C9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B43F575D-4526-4485-AB75-16CE22108C9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21DE0D12-D749-44C4-A230-4BCDAC234881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21DE0D12-D749-44C4-A230-4BCDAC234881}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21DE0D12-D749-44C4-A230-4BCDAC234881}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21DE0D12-D749-44C4-A230-4BCDAC234881}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

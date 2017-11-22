@@ -10,6 +10,17 @@ namespace Booking.Models
     {
         public bool Availability;
 
+        public Seat()
+        {
+        }
+
+        public Seat(int id, int number, bool available)
+        {
+            this.Id = id;
+            this.Number = number;
+            this.Availability = available;
+        }
+
         public int Id { get; set; }
         public int Number { get; set; }
         public bool Available { get; set; }

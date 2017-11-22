@@ -110,5 +110,10 @@ namespace Booking.DB
             }
             return planes;
         }
+
+        public void Update(Plane obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

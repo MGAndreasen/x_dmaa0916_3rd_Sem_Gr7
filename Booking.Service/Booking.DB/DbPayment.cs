@@ -103,5 +103,10 @@ namespace Booking.DB
                 }
             }
         }
+
+        public void Update(Payment obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
