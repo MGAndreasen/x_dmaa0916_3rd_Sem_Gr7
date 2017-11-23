@@ -68,15 +68,255 @@ namespace Booking.Service
             return lst;
         }
 
-        public string GetDestination(string id)
+        //public string GetDestination(string id)
+        //{
+        //    return "Du postede " + id;
+        //}
+
+        #region Customer
+        public void CreateCustomer(Customer obj)
         {
-            return "Du postede " + id;
+            throw new NotImplementedException();
         }
 
-        public Customer Get(int id)
+        public Customer GetCustomer(int id)
         {
-            CustomerCtrl cCtrl = new CustomerCtrl();
-            return cCtrl.Get(id);
+            throw new NotImplementedException();
         }
+
+        public void UpdateCustomer(Customer obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteCustomer(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Booking
+        public void CreateBooking(Bookings obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Bookings GetBooking(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateBooking(Bookings obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteBooking(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region City
+        public void CreateCity(City obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public City GetCity(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateCity(City obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteCity(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Destination
+        public void CreateDestination(Destination obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Destination GetDestination(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateDestination(Destination obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteDestination(int id)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
+        #region Passenger
+        public void CreatePassenger(Passenger obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Passenger GetPassenger(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdatePassenger(Passenger obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeletePassenger(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Payment
+        public void CreatePayment(Payment obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Payment GetPayment(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdatePayment(Payment obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeletePayment(int id)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
+        #region Plane
+        public void CreatePlane(Plane obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Plane GetPlane(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdatePlane(Plane obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeletePlane(int id)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
+        #region Row
+        public void CreateRow(Row obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Row GetRow(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateRow(Row obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteRow(int id)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
+        #region Seat
+        public void CreateSeat(Seat obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Seat GetSeat(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateSeat(Seat obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteSeat(int id)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
+        #region SeatSchema
+        public void CreateSeatSchema(SeatSchema obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public SeatSchema GetSetSchema(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateSeatSchema(SeatSchema obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteSeatSchema(int id)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
+        #region Ticket
+        public void CreateTicket(Ticket obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Ticket GetTicket(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateTicket(Ticket obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteTicket(int id)
+        {
+            throw new NotImplementedException();
+        }
+#endregion
     }
 }
