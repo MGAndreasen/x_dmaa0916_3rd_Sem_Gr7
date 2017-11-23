@@ -13,23 +13,22 @@ namespace Booking.Controller
         private static DbSeat dbs = new DbSeat();
         public void Create(Seat obj)
         {
-            obj = new Seat();
             dbs.Create(obj);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            dbs.Delete(id);
         }
 
         public Seat Get(int id)
         {
-            throw new NotImplementedException();
+            return dbs.Get(id);
         }
 
-        public void Update(int id)
+        public void Update(int id, Seat obj)
         {
-            throw new NotImplementedException();
+            dbs.Update(obj);
         }
     }
 }
