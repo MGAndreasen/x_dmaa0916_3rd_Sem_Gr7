@@ -12,6 +12,7 @@ namespace Booking.Service
     [ServiceContract]
     public interface IService
     {
+
         #region Michael's sjeit.
         //[OperationContract]
         //string GetData(int value);
@@ -42,9 +43,147 @@ namespace Booking.Service
 
         #region CustomerCtrl
 
-        //[OperationContract]
-        //Customer Get(int id);
+        [OperationContract]
+        void CreateCustomer(Customer obj);
+        [OperationContract]
+        Customer GetCustomer(int id);
+        [OperationContract]
+        void UpdateCustomer(Customer obj);
+        [OperationContract]
+        void DeleteCustomer(int id);
+
         #endregion 
+
+        #region BookingCtrl
+
+        [OperationContract]
+        void CreateBooking(Bookings obj);
+        [OperationContract]
+        Bookings GetBooking(int id);
+        [OperationContract]
+        void UpdateBooking(Bookings obj);
+        [OperationContract]
+        void DeleteBooking(int id);
+
+        #endregion 
+
+        #region CityCtrl
+
+        [OperationContract]
+        void CreateCity(City obj);
+        [OperationContract]
+        City GetCity(int id);
+        [OperationContract]
+        void UpdateCity(City obj);
+        [OperationContract]
+        void DeleteCity(int id);
+
+        #endregion 
+
+        #region DestinationCtrl
+
+        [OperationContract]
+        void CreateDestination(Destination obj);
+        [OperationContract]
+        Destination GetDestination(int id);
+        [OperationContract]
+        void UpdateDestination(Destination obj);
+        [OperationContract]
+        void DeleteDestination(int id);
+
+        #endregion 
+
+        #region PassengerCtrl
+
+        [OperationContract]
+        void CreatePassenger(Passenger obj);
+        [OperationContract]
+        Passenger GetPassenger(int id);
+        [OperationContract]
+        void UpdatePassenger(Passenger obj);
+        [OperationContract]
+        void DeletePassenger(int id);
+
+        #endregion 
+
+        #region PaymentCtrl
+
+        [OperationContract]
+        void CreatePayment(Payment obj);
+        [OperationContract]
+        Payment GetPayment(int id);
+        [OperationContract]
+        void UpdatePayment(Payment obj);
+        [OperationContract]
+        void DeletePayment(int id);
+
+        #endregion 
+
+        #region PlaneCtrl
+
+        [OperationContract]
+        void CreatePlane(Plane obj);
+        [OperationContract]
+        Plane GetPlane(int id);
+        [OperationContract]
+        void UpdatePlane(Plane obj);
+        [OperationContract]
+        void DeletePlane(int id);
+
+        #endregion 
+
+        #region RowCtrl
+
+        [OperationContract]
+        void CreateRow(Row obj);
+        [OperationContract]
+        Row GetRow(int id);
+        [OperationContract]
+        void UpdateRow(Row obj);
+        [OperationContract]
+        void DeleteRow(int id);
+
+        #endregion 
+
+        #region SeatCtrl
+
+        [OperationContract]
+        void CreateSeat(Seat obj);
+        [OperationContract]
+        Seat GetSeat(int id);
+        [OperationContract]
+        void UpdateSeat(Seat obj);
+        [OperationContract]
+        void DeleteSeat(int id);
+
+        #endregion 
+
+        #region SeatSchemaCtrl
+
+        [OperationContract]
+        void CreateSeatSchema(SeatSchema obj);
+        [OperationContract]
+        SeatSchema GetSetSchema(int id);
+        [OperationContract]
+        void UpdateSeatSchema(SeatSchema obj);
+        [OperationContract]
+        void DeleteSeatSchema(int id);
+
+        #endregion 
+
+        #region TicketCtrl
+
+        [OperationContract]
+        void CreateTicket(Ticket obj);
+        [OperationContract]
+        Ticket GetTicket(int id);
+        [OperationContract]
+        void UpdateTicket(Ticket obj);
+        [OperationContract]
+        void DeleteTicket(int id);
+
+        #endregion 
+
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
