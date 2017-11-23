@@ -31,15 +31,12 @@ namespace Booking.Controller
             DbBooking DBB = new DbBooking();
             Bookings b = DBB.Get(id); 
 
-
             return b; 
         }
 
-        public void Update(int id, Bookings obj)
+        public void Update(Bookings obj)
         {
             DbBooking DBB = new DbBooking();
-            obj = DBB.Get(id);
-
             DBB.Update(obj);
         }
     }
