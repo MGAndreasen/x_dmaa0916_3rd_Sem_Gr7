@@ -8,38 +8,31 @@ using Booking.DB;
 
 namespace Booking.Controller
 {
-    public class CityCtrl : ICRUD<City>
+    class CityCtrl : ICRUD<City>
     {
         public void Create(City obj)
         {
-            obj = new City();
-            DbCity DBCI = new DbCity();
-
-            DBCI.Create(obj);
+            throw new NotImplementedException();
         }
 
         public void Delete(int id)
         {
-            DbCity DBCI = new DbCity();
-            DBCI.Delete(id);
-
-            
+            throw new NotImplementedException();
         }
 
         public City Get(int id)
         {
-            DbCity DBCI = new DbCity();
-            City c = DBCI.Get(id);
-
-            return c; 
+            throw new NotImplementedException();
         }
 
-        public void Update(City obj, int id)
+        public List<City> GetAll()
         {
-            DbCity DBCI = new DbCity();
-            obj = DBCI.Get(id);
+            throw new NotImplementedException();
+        }
 
-            DBCI.Update(obj);
+        public void Update(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

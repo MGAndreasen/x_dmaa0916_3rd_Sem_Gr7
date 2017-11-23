@@ -10,7 +10,8 @@ namespace Booking.Controller
     {
         void Create(T obj);
         T Get(int id);
-        void Update(T obj, int id);
+        //List<T> GetAll(T);
+        void Update(int id);
         void Delete(int id);
     }
 }
