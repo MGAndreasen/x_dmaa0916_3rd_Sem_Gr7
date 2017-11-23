@@ -14,6 +14,7 @@ namespace Booking.Service
     {
         private CustomerCtrl customerCtrl;
         private BookingCtrl bookingCtrl;
+        private CityCtrl cityCtrl; 
         private DestinationCtrl destinationCtrl;
         private PassengerCtrl passengerCtrl;
         private PaymentCtrl paymentCtrl;
@@ -109,22 +110,22 @@ namespace Booking.Service
         #region Booking
         public void CreateBooking(Bookings obj)
         {
-            throw new NotImplementedException();
+            bookingCtrl.Create(obj);
         }
 
         public Bookings GetBooking(int id)
         {
-            throw new NotImplementedException();
+            return bookingCtrl.Get(id);
         }
 
         public void UpdateBooking(Bookings obj)
         {
-            throw new NotImplementedException();
+            bookingCtrl.Update(obj);
         }
 
         public void DeleteBooking(int id)
         {
-            throw new NotImplementedException();
+            bookingCtrl.Delete(id);
         }
 
         #endregion
@@ -132,22 +133,22 @@ namespace Booking.Service
         #region City
         public void CreateCity(City obj)
         {
-            throw new NotImplementedException();
+            cityCtrl.Create(obj);
         }
 
         public City GetCity(int id)
         {
-            throw new NotImplementedException();
+            return cityCtrl.Get(id);
         }
 
         public void UpdateCity(City obj)
         {
-            throw new NotImplementedException();
+            cityCtrl.Update(obj);
         }
 
         public void DeleteCity(int id)
         {
-            throw new NotImplementedException();
+            cityCtrl.Delete(id);
         }
 
         #endregion
@@ -155,44 +156,44 @@ namespace Booking.Service
         #region Destination
         public void CreateDestination(Destination obj)
         {
-            throw new NotImplementedException();
+            destinationCtrl.Create(obj);
         }
 
         public Destination GetDestination(int id)
         {
-            throw new NotImplementedException();
+            return destinationCtrl.Get(id);
         }
 
         public void UpdateDestination(Destination obj)
         {
-            throw new NotImplementedException();
+            destinationCtrl.Update(obj);
         }
 
         public void DeleteDestination(int id)
         {
-            throw new NotImplementedException();
+            destinationCtrl.Delete(id);
         }
         #endregion
 
         #region Passenger
         public void CreatePassenger(Passenger obj)
         {
-            throw new NotImplementedException();
+            passengerCtrl.Create(obj);
         }
 
         public Passenger GetPassenger(int id)
         {
-            throw new NotImplementedException();
+            return passengerCtrl.Get(id);
         }
 
         public void UpdatePassenger(Passenger obj)
         {
-            throw new NotImplementedException();
+            passengerCtrl.Update(obj);
         }
 
         public void DeletePassenger(int id)
         {
-            throw new NotImplementedException();
+            passengerCtrl.Delete(id);
         }
 
         #endregion
@@ -200,132 +201,132 @@ namespace Booking.Service
         #region Payment
         public void CreatePayment(Payment obj)
         {
-            throw new NotImplementedException();
+            paymentCtrl.Create(obj);
         }
 
         public Payment GetPayment(int id)
         {
-            throw new NotImplementedException();
+            return paymentCtrl.Get(id);
         }
 
         public void UpdatePayment(Payment obj)
         {
-            throw new NotImplementedException();
+            paymentCtrl.Update(obj);
         }
 
         public void DeletePayment(int id)
         {
-            throw new NotImplementedException();
+            paymentCtrl.Delete(id);
         }
         #endregion
 
         #region Plane
         public void CreatePlane(Plane obj)
         {
-            throw new NotImplementedException();
+            planeCtrl.Create(obj);
         }
 
         public Plane GetPlane(int id)
         {
-            throw new NotImplementedException();
+            return planeCtrl.Get(id);
         }
 
         public void UpdatePlane(Plane obj)
         {
-            throw new NotImplementedException();
+            planeCtrl.Update(obj);
         }
 
         public void DeletePlane(int id)
         {
-            throw new NotImplementedException();
+            planeCtrl.Delete(id);
         }
         #endregion
 
         #region Row
         public void CreateRow(Row obj)
         {
-            throw new NotImplementedException();
+            rowCtrl.Create(obj);
         }
 
         public Row GetRow(int id)
         {
-            throw new NotImplementedException();
+            return rowCtrl.Get(id);
         }
 
         public void UpdateRow(Row obj)
         {
-            throw new NotImplementedException();
+            rowCtrl.Update(obj);
         }
 
         public void DeleteRow(int id)
         {
-            throw new NotImplementedException();
+            rowCtrl.Delete(id);
         }
         #endregion
 
         #region Seat
         public void CreateSeat(Seat obj)
         {
-            throw new NotImplementedException();
+            seatCtrl.Create(obj);
         }
 
         public Seat GetSeat(int id)
         {
-            throw new NotImplementedException();
+            return seatCtrl.Get(id);
         }
 
         public void UpdateSeat(Seat obj)
         {
-            throw new NotImplementedException();
+            seatCtrl.Update(obj);
         }
 
         public void DeleteSeat(int id)
         {
-            throw new NotImplementedException();
+            seatCtrl.Delete(id);
         }
         #endregion
 
         #region SeatSchema
         public void CreateSeatSchema(SeatSchema obj)
         {
-            throw new NotImplementedException();
+            seatSchemaCtrl.Create(obj);
         }
 
         public SeatSchema GetSetSchema(int id)
         {
-            throw new NotImplementedException();
+            return seatSchemaCtrl.Get(id);
         }
 
         public void UpdateSeatSchema(SeatSchema obj)
         {
-            throw new NotImplementedException();
+            seatSchemaCtrl.Update(obj);
         }
 
         public void DeleteSeatSchema(int id)
         {
-            throw new NotImplementedException();
+            seatSchemaCtrl.Delete(id);
         }
         #endregion
 
         #region Ticket
         public void CreateTicket(Ticket obj)
         {
-            throw new NotImplementedException();
+            ticketCtrl.Create(obj);
         }
 
         public Ticket GetTicket(int id)
         {
-            throw new NotImplementedException();
+           return ticketCtrl.Get(id);
         }
 
         public void UpdateTicket(Ticket obj)
         {
-            throw new NotImplementedException();
+            ticketCtrl.Update(obj);
         }
 
         public void DeleteTicket(int id)
         {
-            throw new NotImplementedException();
+            ticketCtrl.Delete(id);
         }
 #endregion
     }
