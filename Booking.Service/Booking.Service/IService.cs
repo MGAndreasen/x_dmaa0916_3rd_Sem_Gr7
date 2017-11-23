@@ -12,39 +12,10 @@ namespace Booking.Service
     [ServiceContract]
     public interface IService
     {
-        #region Michael's sjeit.
-        //[OperationContract]
-        //string GetData(int value);
+       
 
-        //[OperationContract]
-        //CompositeType GetDataUsingDataContract(CompositeType composite);
 
-        // Token play
-        [OperationContract]
-        [WebInvoke(Method = "GET",  ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/login/")]
-        string Login(string s);
 
-        // App stuff
-
-        [OperationContract]
-        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "{s}")]
-        string Post(string s);
-
-        [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/route/{id}")]
-        List<string> GetRoute(string id);
-
-        [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/destination/{id}")]
-        string GetDestination(string id);
-
-        #endregion
-
-        #region CustomerCtrl
-
-        [OperationContract]
-        Customer Get(int id);
-        #endregion 
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.

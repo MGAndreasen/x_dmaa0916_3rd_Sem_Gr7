@@ -12,23 +12,34 @@ namespace Booking.Controller
     {
         public void Create(Customer obj)
         {
-            throw new NotImplementedException();
+            obj = new Customer();
+            DbCustomer DBC = new DbCustomer();
+
+            DBC.Create(obj);
+
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            DbCustomer DBC = new DbCustomer();
+
+            DBC.Delete(id);
         }
 
         public Customer Get(int id)
         {
-            DbCustomer dbCustomer = new DbCustomer();
-            return dbCustomer.Get(id);
+            DbCustomer DBC = new DbCustomer();
+            Customer c = DBC.Get(id);
+
+            return c;
         }
 
-        public void Update(int id)
+        public void Update(Customer obj, int id)
         {
-            throw new NotImplementedException();
+            DbCustomer DBC = new DbCustomer();
+            obj = DBC.Get(id);
+
+            DBC.Update(obj);
         }
     }
 }

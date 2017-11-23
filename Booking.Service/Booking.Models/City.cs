@@ -16,5 +16,9 @@ namespace Booking.Models
             Zipcode = zipcode;
             CityName = cityname;
         }
+
+        public City()
+        {
+        }
     }
 }
