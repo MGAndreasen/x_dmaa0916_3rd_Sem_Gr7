@@ -20,9 +20,9 @@ namespace Booking.Service
         //CompositeType GetDataUsingDataContract(CompositeType composite);
 
         // Token play
-        [OperationContract]
-        [WebInvoke(Method = "GET",  ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/login/")]
-        string Login(string s);
+        //[OperationContract]
+        //[WebInvoke(Method = "GET",  ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/login/")]
+        //string Login(string s);
 
         // App stuff
 
@@ -42,8 +42,8 @@ namespace Booking.Service
 
         #region CustomerCtrl
 
-        [OperationContract]
-        Customer Get(int id);
+        //[OperationContract]
+        //Customer Get(int id);
         #endregion 
     }
 
