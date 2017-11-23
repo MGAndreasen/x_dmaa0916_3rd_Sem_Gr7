@@ -34,7 +34,7 @@ namespace Booking.Controller
             return c;
         }
 
-        public void Update(Customer obj, int id)
+        public void Update(int id, Customer obj)
         {
             DbCustomer DBC = new DbCustomer();
             obj = DBC.Get(id);
