@@ -11,7 +11,7 @@ namespace Booking.Controller
         void Create(T obj);
         T Get(int id);
         //List<T> GetAll(T);
-        void Update(int id, T obj);
+        void Update(T obj);
         void Delete(int id);
     }
 }

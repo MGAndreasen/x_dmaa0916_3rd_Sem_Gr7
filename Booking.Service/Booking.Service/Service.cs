@@ -91,17 +91,17 @@ namespace Booking.Service
 
         public Customer GetCustomer(int id)
         {
-            throw new NotImplementedException();
+           return customerCtrl.Get(id);
         }
 
         public void UpdateCustomer(Customer obj)
         {
-            throw new NotImplementedException();
+            customerCtrl.Update(obj); 
         }
 
         public void DeleteCustomer(int id)
         {
-            throw new NotImplementedException();
+            customerCtrl.Delete(id);
         }
 
         #endregion
