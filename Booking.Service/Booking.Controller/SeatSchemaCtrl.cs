@@ -7,7 +7,7 @@ using Booking.Models;
 
 namespace Booking.Controller
 {
-    class SeatSchemaCtrl
+    public class SeatSchemaCtrl
     {
     }
 }

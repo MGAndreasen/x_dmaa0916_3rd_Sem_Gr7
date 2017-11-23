@@ -13,6 +13,15 @@ namespace Booking.Service
     public class Service : IService
     {
         private CustomerCtrl customerCtrl;
+        private BookingCtrl bookingCtrl;
+        private DestinationCtrl destinationCtrl;
+        private PassengerCtrl passengerCtrl;
+        private PaymentCtrl paymentCtrl;
+        private PlaneCtrl planeCtrl;
+        private RowCtrl rowCtrl;
+        private SeatCtrl seatCtrl;
+        private SeatSchemaCtrl seatSchemaCtrl;
+        private TicketCtrl ticketCtrl; 
         //public string GetData(int value)
         //{
         //    return string.Format("You entered: {0}", value);

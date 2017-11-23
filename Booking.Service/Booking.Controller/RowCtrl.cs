@@ -7,7 +7,7 @@ using Booking.Models;
 
 namespace Booking.Controller
 {
-    class RowCtrl
+    public class RowCtrl
     {
     }
 }
