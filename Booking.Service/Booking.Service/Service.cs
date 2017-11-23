@@ -12,6 +12,7 @@ namespace Booking.Service
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
     public class Service : IService
     {
+        private CustomerCtrl customerCtrl;
         //public string GetData(int value)
         //{
         //    return string.Format("You entered: {0}", value);
@@ -76,7 +77,7 @@ namespace Booking.Service
         #region Customer
         public void CreateCustomer(Customer obj)
         {
-            throw new NotImplementedException();
+            customerCtrl.Create(obj);
         }
 
         public Customer GetCustomer(int id)
