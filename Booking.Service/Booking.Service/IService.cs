@@ -25,7 +25,7 @@ namespace Booking.Service
         //[WebInvoke(Method = "GET",  ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/login/")]
         //string Login(string s);
 
-        // App stuff
+        
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "{s}")]
@@ -35,8 +35,8 @@ namespace Booking.Service
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/route/{id}")]
         List<string> GetRoute(string id);
 
-        [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/destination/{id}")]
+        //[OperationContract]
+        //[WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/destination/{id}")]
         //string GetDestination(string id);
 
         #endregion
@@ -45,10 +45,13 @@ namespace Booking.Service
 
         [OperationContract]
         void CreateCustomer(Customer obj);
+
         [OperationContract]
         Customer GetCustomer(int id);
+
         [OperationContract]
         void UpdateCustomer(Customer obj);
+
         [OperationContract]
         void DeleteCustomer(int id);
 
