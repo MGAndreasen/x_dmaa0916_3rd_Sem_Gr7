@@ -328,6 +328,12 @@ namespace Booking.Service
         {
             ticketCtrl.Delete(id);
         }
-#endregion
+
+        #endregion
+
+        public string GetDestinationWeb(string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

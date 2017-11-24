@@ -37,7 +37,7 @@ namespace Booking.Service
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/destination/{id}")]
-        //string GetDestination(string id);
+        string GetDestinationWeb(string id);
 
         #endregion
 
