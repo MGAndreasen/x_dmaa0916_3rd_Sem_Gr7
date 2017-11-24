@@ -65,8 +65,8 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Booking (@id)", con);
-                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = obj.Id;
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Booking (id) VALUES (@id)", con);
+                    cmd.Parameters.Add("id", SqlDbType.Int).Value = obj.Id;
      
 
                     cmd.ExecuteNonQuery();
@@ -85,7 +85,7 @@ namespace Booking.DB
                     con.Open();
                     SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Id=@Id", con);
 
-                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                    cmd.Parameters.Add("Id", SqlDbType.Int).Value = obj.Id;
 
                     cmd.ExecuteNonQuery();
                     scope.Complete();

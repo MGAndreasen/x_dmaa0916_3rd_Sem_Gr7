@@ -1,4 +1,4 @@
-﻿using Booking.Client.ServiceRemote;
+﻿using Booking.Client.ServiceReference1;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
