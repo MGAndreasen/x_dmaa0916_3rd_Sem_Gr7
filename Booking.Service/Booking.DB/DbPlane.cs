@@ -91,7 +91,7 @@ namespace Booking.DB
 
                 using (SqlCommand cmd = con.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM Plane";
+                    cmd.CommandText = "SELECT * FROM bdo.Booking_Plane";
                     var rdr = cmd.ExecuteReader();
 
                     while (rdr.Read())

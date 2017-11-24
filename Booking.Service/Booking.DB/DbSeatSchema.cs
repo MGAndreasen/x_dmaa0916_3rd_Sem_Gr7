@@ -63,9 +63,9 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_SeatSchema (@Row, @Layout)", con);
-                    cmd.Parameters.Add("@Row", SqlDbType.Int).Value = obj.Row;
-                    cmd.Parameters.Add("@Layout", SqlDbType.VarChar).Value = obj.Layout;
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_SeatSchema (Row, Layout) VALUES (@Row, @Layout)", con);
+                    cmd.Parameters.Add("Row", SqlDbType.Int).Value = obj.Row;
+                    cmd.Parameters.Add("Layout", SqlDbType.VarChar).Value = obj.Layout;
 
                     cmd.ExecuteNonQuery();
 

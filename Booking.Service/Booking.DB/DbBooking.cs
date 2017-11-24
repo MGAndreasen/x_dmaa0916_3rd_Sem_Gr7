@@ -68,12 +68,12 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 { 
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Booking (@id, @StartDestination, @EndDestination, @Date, @Price)", con);
-                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = obj.Id;
-                    cmd.Parameters.Add("@StartDestination", SqlDbType.VarChar).Value = obj.StartDestination;
-                    cmd.Parameters.Add("@EndDestination", SqlDbType.VarChar).Value = obj.EndDestination;
-                    cmd.Parameters.Add("@Date", SqlDbType.DateTime).Value = obj.Date;
-                    cmd.Parameters.Add("@Price", SqlDbType.Int).Value = obj.TotalPrice;
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Booking (id, StartDestination, EndDestination, Date, Price) VALUES (@id, @StartDestination, @EndDestination, @Date, @Price)", con);
+                    cmd.Parameters.Add("id", SqlDbType.Int).Value = obj.Id;
+                    cmd.Parameters.Add("StartDestination", SqlDbType.VarChar).Value = obj.StartDestination;
+                    cmd.Parameters.Add("EndDestination", SqlDbType.VarChar).Value = obj.EndDestination;
+                    cmd.Parameters.Add("Date", SqlDbType.DateTime).Value = obj.Date;
+                    cmd.Parameters.Add("Price", SqlDbType.Int).Value = obj.TotalPrice;
 
                     cmd.ExecuteNonQuery();
                   
