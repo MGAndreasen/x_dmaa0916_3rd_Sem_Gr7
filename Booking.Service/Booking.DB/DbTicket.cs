@@ -85,7 +85,7 @@ namespace Booking.DB
                     con.Open();
                     SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Id=@Id", con);
 
-                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                    cmd.Parameters.Add("Id", SqlDbType.Int).Value = obj.Id;
 
                     cmd.ExecuteNonQuery();
                     scope.Complete();
