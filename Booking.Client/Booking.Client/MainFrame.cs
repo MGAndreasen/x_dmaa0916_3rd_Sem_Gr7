@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Booking.Client.ServiceRemote;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,14 @@ namespace Booking.Client
         public MainFrame()
         {
             InitializeComponent();
+            VisPassager();
+        }
+
+        public void VisPassager()
+        {
+            ServiceClient client = new ServiceClient();
+            Passenger p = client.GetPassenger(1);
+            listView1.Items.Add(p.ToString());
         }
 
         private void MainFrame_Load(object sender, EventArgs e)
@@ -45,6 +54,11 @@ namespace Booking.Client
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }

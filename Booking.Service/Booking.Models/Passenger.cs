@@ -15,6 +15,10 @@ namespace Booking.Models
         public long PassportId { get; set; }
         public bool Luggage { get; set; }
         public Seat SeatNumber { get; set; }
-        
+
+        public override string ToString()
+        {
+            return "Navn: " + FirstName.ToString() + " ";
+        }
     }
 }

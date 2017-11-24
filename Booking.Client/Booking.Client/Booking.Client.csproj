@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\BookingServiceRemote\Reference.cs">
+    <Compile Include="Connected Services\ServiceRemote\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -81,50 +81,50 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Bookings.datasource">
+    <None Include="Connected Services\ServiceRemote\Booking.Client.ServiceRemote.Bookings.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.City.datasource">
+    <None Include="Connected Services\ServiceRemote\Booking.Client.ServiceRemote.City.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Customer.datasource">
+    <None Include="Connected Services\ServiceRemote\Booking.Client.ServiceRemote.Customer.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Destination.datasource">
+    <None Include="Connected Services\ServiceRemote\Booking.Client.ServiceRemote.Destination.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Passenger.datasource">
+    <None Include="Connected Services\ServiceRemote\Booking.Client.ServiceRemote.Passenger.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Payment.datasource">
+    <None Include="Connected Services\ServiceRemote\Booking.Client.ServiceRemote.Payment.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Plane.datasource">
+    <None Include="Connected Services\ServiceRemote\Booking.Client.ServiceRemote.Plane.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Row.datasource">
+    <None Include="Connected Services\ServiceRemote\Booking.Client.ServiceRemote.Row.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Seat.datasource">
+    <None Include="Connected Services\ServiceRemote\Booking.Client.ServiceRemote.Seat.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.SeatSchema.datasource">
+    <None Include="Connected Services\ServiceRemote\Booking.Client.ServiceRemote.SeatSchema.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Ticket.datasource">
+    <None Include="Connected Services\ServiceRemote\Booking.Client.ServiceRemote.Ticket.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\BookingServiceRemote\Service.wsdl" />
-    <None Include="Connected Services\BookingServiceRemote\Service.xsd">
+    <None Include="Connected Services\ServiceRemote\Service.wsdl" />
+    <None Include="Connected Services\ServiceRemote\Service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\BookingServiceRemote\Service1.xsd">
+    <None Include="Connected Services\ServiceRemote\Service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\BookingServiceRemote\Service2.xsd">
+    <None Include="Connected Services\ServiceRemote\Service2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\BookingServiceRemote\Service3.xsd">
+    <None Include="Connected Services\ServiceRemote\Service3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
@@ -144,19 +144,16 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\BookingServiceRemote\" />
+    <WCFMetadataStorage Include="Connected Services\ServiceRemote\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\BookingServiceRemote\Service.disco" />
+    <None Include="Connected Services\ServiceRemote\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\BookingServiceRemote\configuration91.svcinfo" />
+    <None Include="Connected Services\ServiceRemote\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\BookingServiceRemote\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\BookingServiceRemote\Reference.svcmap">
+    <None Include="Connected Services\ServiceRemote\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
