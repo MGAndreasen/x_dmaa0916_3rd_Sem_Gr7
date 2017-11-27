@@ -243,7 +243,7 @@ namespace Booking.Service
 
         public IEnumerable<Plane> getAllPlanes()
         {
-            planeCtrl.getAllPlanes();
+            return planeCtrl.getAllPlanes();
         }
         #endregion
 
