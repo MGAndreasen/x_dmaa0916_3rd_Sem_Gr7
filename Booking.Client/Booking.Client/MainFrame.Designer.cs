@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabCreateRoute = new System.Windows.Forms.TabPage();
             this.listBoxPlanes = new System.Windows.Forms.ListBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxDestination_ListOfPlanes = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.Button = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.CreateRoute_EndDestination = new System.Windows.Forms.TextBox();
+            this.CreateRoute_StartDestination = new System.Windows.Forms.TextBox();
             this.tabPageSeats = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -52,15 +52,16 @@
             this.listBoxPassengers = new System.Windows.Forms.ListBox();
             this.label8 = new System.Windows.Forms.Label();
             this.comboBoxPassengers_Planes = new System.Windows.Forms.ComboBox();
+            this.CreateRoute_monthCalendar = new System.Windows.Forms.MonthCalendar();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabCreateRoute.SuspendLayout();
             this.tabPageSeats.SuspendLayout();
             this.tabPagePassengers.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabCreateRoute);
             this.tabControl1.Controls.Add(this.tabPageSeats);
             this.tabControl1.Controls.Add(this.tabPagePassengers);
             this.tabControl1.Location = new System.Drawing.Point(-2, -1);
@@ -69,41 +70,43 @@
             this.tabControl1.Size = new System.Drawing.Size(1086, 707);
             this.tabControl1.TabIndex = 0;
             // 
-            // tabPage1
+            // tabCreateRoute
             // 
-            this.tabPage1.Controls.Add(this.listBoxPlanes);
-            this.tabPage1.Controls.Add(this.comboBox1);
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.Button);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.textBox3);
-            this.tabPage1.Controls.Add(this.textBox2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1078, 674);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Plane Destination";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabCreateRoute.Controls.Add(this.CreateRoute_monthCalendar);
+            this.tabCreateRoute.Controls.Add(this.listBoxPlanes);
+            this.tabCreateRoute.Controls.Add(this.comboBoxDestination_ListOfPlanes);
+            this.tabCreateRoute.Controls.Add(this.label4);
+            this.tabCreateRoute.Controls.Add(this.Button);
+            this.tabCreateRoute.Controls.Add(this.label3);
+            this.tabCreateRoute.Controls.Add(this.label2);
+            this.tabCreateRoute.Controls.Add(this.label1);
+            this.tabCreateRoute.Controls.Add(this.CreateRoute_EndDestination);
+            this.tabCreateRoute.Controls.Add(this.CreateRoute_StartDestination);
+            this.tabCreateRoute.Location = new System.Drawing.Point(4, 29);
+            this.tabCreateRoute.Name = "tabCreateRoute";
+            this.tabCreateRoute.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCreateRoute.Size = new System.Drawing.Size(1078, 674);
+            this.tabCreateRoute.TabIndex = 0;
+            this.tabCreateRoute.Text = "Plane Destination";
+            this.tabCreateRoute.UseVisualStyleBackColor = true;
             // 
             // listBoxPlanes
             // 
             this.listBoxPlanes.FormattingEnabled = true;
             this.listBoxPlanes.ItemHeight = 20;
-            this.listBoxPlanes.Location = new System.Drawing.Point(598, 37);
+            this.listBoxPlanes.Location = new System.Drawing.Point(598, 57);
             this.listBoxPlanes.Name = "listBoxPlanes";
-            this.listBoxPlanes.Size = new System.Drawing.Size(468, 624);
+            this.listBoxPlanes.Size = new System.Drawing.Size(468, 604);
             this.listBoxPlanes.TabIndex = 10;
             // 
-            // comboBox1
+            // comboBoxDestination_ListOfPlanes
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(67, 261);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 28);
-            this.comboBox1.TabIndex = 9;
+            this.comboBoxDestination_ListOfPlanes.FormattingEnabled = true;
+            this.comboBoxDestination_ListOfPlanes.Location = new System.Drawing.Point(67, 261);
+            this.comboBoxDestination_ListOfPlanes.Name = "comboBoxDestination_ListOfPlanes";
+            this.comboBoxDestination_ListOfPlanes.Size = new System.Drawing.Size(124, 28);
+            this.comboBoxDestination_ListOfPlanes.TabIndex = 9;
+            this.comboBoxDestination_ListOfPlanes.SelectedIndexChanged += new System.EventHandler(this.ComboBoxDestination_ListOfPlanes_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -120,7 +123,7 @@
             this.Button.Name = "Button";
             this.Button.Size = new System.Drawing.Size(124, 56);
             this.Button.TabIndex = 7;
-            this.Button.Text = "GO";
+            this.Button.Text = "Create";
             this.Button.UseVisualStyleBackColor = true;
             // 
             // label3
@@ -151,19 +154,19 @@
             this.label1.Text = "Start Destination ";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBox3
+            // CreateRoute_EndDestination
             // 
-            this.textBox3.Location = new System.Drawing.Point(67, 155);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(114, 26);
-            this.textBox3.TabIndex = 1;
+            this.CreateRoute_EndDestination.Location = new System.Drawing.Point(67, 155);
+            this.CreateRoute_EndDestination.Name = "CreateRoute_EndDestination";
+            this.CreateRoute_EndDestination.Size = new System.Drawing.Size(124, 26);
+            this.CreateRoute_EndDestination.TabIndex = 1;
             // 
-            // textBox2
+            // CreateRoute_StartDestination
             // 
-            this.textBox2.Location = new System.Drawing.Point(67, 57);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(114, 26);
-            this.textBox2.TabIndex = 0;
+            this.CreateRoute_StartDestination.Location = new System.Drawing.Point(67, 57);
+            this.CreateRoute_StartDestination.Name = "CreateRoute_StartDestination";
+            this.CreateRoute_StartDestination.Size = new System.Drawing.Size(124, 26);
+            this.CreateRoute_StartDestination.TabIndex = 0;
             // 
             // tabPageSeats
             // 
@@ -299,6 +302,12 @@
             this.comboBoxPassengers_Planes.TabIndex = 0;
             this.comboBoxPassengers_Planes.SelectedIndexChanged += new System.EventHandler(this.ComboBoxPassengers_SelectedIndexChanged);
             // 
+            // CreateRoute_monthCalendar
+            // 
+            this.CreateRoute_monthCalendar.Location = new System.Drawing.Point(283, 57);
+            this.CreateRoute_monthCalendar.Name = "CreateRoute_monthCalendar";
+            this.CreateRoute_monthCalendar.TabIndex = 11;
+            // 
             // MainFrame
             // 
             this.ClientSize = new System.Drawing.Size(1080, 704);
@@ -306,8 +315,8 @@
             this.Name = "MainFrame";
             this.Load += new System.EventHandler(this.MainFrame_Load_1);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tabCreateRoute.ResumeLayout(false);
+            this.tabCreateRoute.PerformLayout();
             this.tabPageSeats.ResumeLayout(false);
             this.tabPageSeats.PerformLayout();
             this.tabPagePassengers.ResumeLayout(false);
@@ -320,12 +329,12 @@
 
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabCreateRoute;
         private System.Windows.Forms.TabPage tabPageSeats;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox CreateRoute_EndDestination;
+        private System.Windows.Forms.TextBox CreateRoute_StartDestination;
+        private System.Windows.Forms.ComboBox comboBoxDestination_ListOfPlanes;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button Button;
         private System.Windows.Forms.Label label3;
@@ -343,5 +352,6 @@
         private System.Windows.Forms.ListBox listBoxPassengers;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboBoxPassengers_Planes;
+        private System.Windows.Forms.MonthCalendar CreateRoute_monthCalendar;
     }
 }

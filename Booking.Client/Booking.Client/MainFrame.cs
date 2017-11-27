@@ -95,9 +95,13 @@ namespace Booking.Client
             
         }
 
-        private void listBoxPlanes_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxDestination_ListOfPlanes_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            List<Plane> list = myService.getAllPlanes();
+            foreach (var item in list)
+            {
+                comboBoxDestination_ListOfPlanes.Items.Add(item.ToString());
+            }
         }
     }
 }
