@@ -103,5 +103,17 @@ namespace Booking.Client
                 comboBoxDestination_ListOfPlanes.Items.Add(item.ToString());
             }
         }
+
+        private void DestinationCreate_Click(object sender, EventArgs e)
+        {
+            Destination d = new Destination();
+            
+            myService.CreateDestination(d);
+        }
+
+        private void RefreshDestinations_Click(object sender, EventArgs e)
+        {
+            //List<Destination> list = myService.GetAllDestinations();
+        }
     }
 }
