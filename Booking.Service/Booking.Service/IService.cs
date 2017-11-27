@@ -25,7 +25,7 @@ namespace Booking.Service
         //[WebInvoke(Method = "GET",  ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/login/")]
         //string Login(string s);
 
-        
+
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "{s}")]
@@ -132,6 +132,8 @@ namespace Booking.Service
         void UpdatePlane(Plane obj);
         [OperationContract]
         void DeletePlane(int id);
+        [OperationContract]
+        IEnumerable<Plane> getAllPlanes();
 
         #endregion 
 
