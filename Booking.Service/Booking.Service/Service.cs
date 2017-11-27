@@ -12,17 +12,17 @@ namespace Booking.Service
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
     public class Service : IService
     {
-        private CustomerCtrl customerCtrl;
-        private BookingCtrl bookingCtrl;
-        private CityCtrl cityCtrl; 
-        private DestinationCtrl destinationCtrl;
-        private PassengerCtrl passengerCtrl;
-        private PaymentCtrl paymentCtrl;
-        private PlaneCtrl planeCtrl;
-        private RowCtrl rowCtrl;
-        private SeatCtrl seatCtrl;
-        private SeatSchemaCtrl seatSchemaCtrl;
-        private TicketCtrl ticketCtrl; 
+        private CustomerCtrl customerCtrl = new CustomerCtrl();
+        private BookingCtrl bookingCtrl = new BookingCtrl();
+        private CityCtrl cityCtrl = new CityCtrl();
+        private DestinationCtrl destinationCtrl = new DestinationCtrl();
+        private PassengerCtrl passengerCtrl = new PassengerCtrl();
+        private PaymentCtrl paymentCtrl = new PaymentCtrl();
+        private PlaneCtrl planeCtrl = new PlaneCtrl();
+        private RowCtrl rowCtrl = new RowCtrl();
+        private SeatCtrl seatCtrl = new SeatCtrl();
+        private SeatSchemaCtrl seatSchemaCtrl = new SeatSchemaCtrl();
+        private TicketCtrl ticketCtrl = new TicketCtrl();
         //public string GetData(int value)
         //{
         //    return string.Format("You entered: {0}", value);

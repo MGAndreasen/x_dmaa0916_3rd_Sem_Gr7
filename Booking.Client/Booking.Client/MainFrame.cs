@@ -1,4 +1,4 @@
-﻿using Booking.Client.ServiceReference1;
+﻿using Booking.Client.BookingServiceRemote;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,9 +21,9 @@ namespace Booking.Client
 
         public void VisPassager()
         {
-            ServiceRemote.ServiceClient myService = new ServiceRemote.ServiceClient();
+            ServiceClient myService = new ServiceClient();
             Passenger p = myService.GetPassenger(1);
-            listView1.Items.Add(p.ToString());
+            listBoxPlanes.Items.Add(p.ToString());
         }
 
         public void VisPassagers()
