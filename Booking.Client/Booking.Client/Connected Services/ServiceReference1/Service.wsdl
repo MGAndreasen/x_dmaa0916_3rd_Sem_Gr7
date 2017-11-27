@@ -1,0 +1,1218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/Booking.Models" />
+      <xs:element name="Post">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="s" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PostResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="PostResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetRoute">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetRouteResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetRouteResult" nillable="true" type="q1:ArrayOfstring" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateCustomer">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q2:Customer" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateCustomerResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCustomer">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCustomerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetCustomerResult" nillable="true" type="q3:Customer" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateCustomer">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q4:Customer" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateCustomerResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteCustomer">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteCustomerResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateBooking">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q5:Bookings" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateBookingResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetBooking">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetBookingResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetBookingResult" nillable="true" type="q6:Bookings" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateBooking">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q7:Bookings" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateBookingResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteBooking">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteBookingResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateCity">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q8:City" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateCityResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCity">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCityResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetCityResult" nillable="true" type="q9:City" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateCity">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q10:City" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateCityResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteCity">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteCityResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateDestination">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q11:Destination" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateDestinationResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDestination">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDestinationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetDestinationResult" nillable="true" type="q12:Destination" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateDestination">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q13:Destination" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateDestinationResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteDestination">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteDestinationResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreatePassenger">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q14:Passenger" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreatePassengerResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPassenger">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPassengerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetPassengerResult" nillable="true" type="q15:Passenger" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdatePassenger">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q16:Passenger" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdatePassengerResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeletePassenger">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeletePassengerResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreatePayment">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q17:Payment" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreatePaymentResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPayment">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPaymentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetPaymentResult" nillable="true" type="q18:Payment" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdatePayment">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q19:Payment" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdatePaymentResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeletePayment">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeletePaymentResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreatePlane">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q20:Plane" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreatePlaneResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPlane">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPlaneResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetPlaneResult" nillable="true" type="q21:Plane" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdatePlane">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q22:Plane" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdatePlaneResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeletePlane">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeletePlaneResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateRow">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q23:Row" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateRowResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetRow">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetRowResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetRowResult" nillable="true" type="q24:Row" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateRow">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q25:Row" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateRowResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteRow">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteRowResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateSeat">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q26:Seat" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateSeatResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSeat">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSeatResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetSeatResult" nillable="true" type="q27:Seat" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateSeat">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q28:Seat" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateSeatResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteSeat">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteSeatResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateSeatSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q29:SeatSchema" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateSeatSchemaResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSetSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSetSchemaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetSetSchemaResult" nillable="true" type="q30:SeatSchema" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateSeatSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q31:SeatSchema" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateSeatSchemaResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteSeatSchema">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteSeatSchemaResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateTicket">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q32:Ticket" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateTicketResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTicket">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTicketResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetTicketResult" nillable="true" type="q33:Ticket" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateTicket">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q34:Ticket" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateTicketResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteTicket">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteTicketResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfstring">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Booking.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Booking.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="Customer">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CPR" type="xs:int" />
+          <xs:element minOccurs="0" name="City" nillable="true" type="tns:City" />
+          <xs:element minOccurs="0" name="Confirmed" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PhoneNumber" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Customer" nillable="true" type="tns:Customer" />
+      <xs:complexType name="City">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Zipcode" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="City" nillable="true" type="tns:City" />
+      <xs:complexType name="Bookings">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="EndDestination" nillable="true" type="tns:Destination" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="StartDestination" nillable="true" type="tns:Destination" />
+          <xs:element minOccurs="0" name="TotalPrice" type="xs:double" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Bookings" nillable="true" type="tns:Bookings" />
+      <xs:complexType name="Destination">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="LocationName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Destination" nillable="true" type="tns:Destination" />
+      <xs:complexType name="Passenger">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CPR" type="xs:long" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Luggage" type="xs:boolean" />
+          <xs:element minOccurs="0" name="PassportId" type="xs:long" />
+          <xs:element minOccurs="0" name="SeatNumber" nillable="true" type="tns:Seat" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Passenger" nillable="true" type="tns:Passenger" />
+      <xs:complexType name="Seat">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Availability" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Available" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Number" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Seat" nillable="true" type="tns:Seat" />
+      <xs:complexType name="Payment">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Amount" type="xs:double" />
+          <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Payment" nillable="true" type="tns:Payment" />
+      <xs:complexType name="Plane">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Rows" nillable="true" type="tns:ArrayOfRow" />
+          <xs:element minOccurs="0" name="SeatSchema" nillable="true" type="tns:ArrayOfSeatSchema" />
+          <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Plane" nillable="true" type="tns:Plane" />
+      <xs:complexType name="ArrayOfRow">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Row" nillable="true" type="tns:Row" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfRow" nillable="true" type="tns:ArrayOfRow" />
+      <xs:complexType name="Row">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Price" type="xs:double" />
+          <xs:element minOccurs="0" name="SeatNumber" type="xs:int" />
+          <xs:element minOccurs="0" name="Seats" nillable="true" type="tns:ArrayOfSeat" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Row" nillable="true" type="tns:Row" />
+      <xs:complexType name="ArrayOfSeat">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Seat" nillable="true" type="tns:Seat" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfSeat" nillable="true" type="tns:ArrayOfSeat" />
+      <xs:complexType name="ArrayOfSeatSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="SeatSchema" nillable="true" type="tns:SeatSchema" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfSeatSchema" nillable="true" type="tns:ArrayOfSeatSchema" />
+      <xs:complexType name="SeatSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Layout" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Row" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SeatSchema" nillable="true" type="tns:SeatSchema" />
+      <xs:complexType name="Ticket">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Ticket" nillable="true" type="tns:Ticket" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IService_Post_InputMessage">
+    <wsdl:part name="parameters" element="tns:Post" />
+  </wsdl:message>
+  <wsdl:message name="IService_Post_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PostResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetRoute_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoute" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetRoute_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRouteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateBooking" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBooking" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBooking" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBooking" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateCity_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCity" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateCity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetCity_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCity" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetCity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateCity_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCity" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateCity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteCity_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCity" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteCity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateDestination_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateDestination" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateDestination_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateDestinationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetDestination_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDestination" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetDestination_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDestinationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateDestination_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDestination" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateDestination_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDestinationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteDestination_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDestination" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteDestination_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDestinationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreatePassenger_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePassenger" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreatePassenger_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePassengerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetPassenger_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPassenger" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetPassenger_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPassengerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdatePassenger_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePassenger" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdatePassenger_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePassengerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeletePassenger_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePassenger" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeletePassenger_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePassengerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreatePayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePayment" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreatePayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetPayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPayment" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetPayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdatePayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePayment" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdatePayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeletePayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePayment" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeletePayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreatePlane_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePlane" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreatePlane_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePlaneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetPlane_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlane" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetPlane_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlaneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdatePlane_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePlane" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdatePlane_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePlaneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeletePlane_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePlane" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeletePlane_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePlaneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateRow_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRow" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateRow_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRowResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetRow_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRow" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetRow_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRowResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateRow_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRow" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateRow_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRowResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteRow_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRow" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteRow_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRowResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateSeat_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSeat" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateSeat_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSeatResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetSeat_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeat" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetSeat_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeatResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateSeat_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSeat" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateSeat_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSeatResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteSeat_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSeat" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteSeat_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSeatResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateSeatSchema_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSeatSchema" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateSeatSchema_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSeatSchemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetSetSchema_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSetSchema" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetSetSchema_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSetSchemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateSeatSchema_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSeatSchema" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateSeatSchema_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSeatSchemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteSeatSchema_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSeatSchema" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteSeatSchema_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSeatSchemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateTicket_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateTicket" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateTicket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetTicket_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTicket" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetTicket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateTicket_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTicket" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateTicket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteTicket_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTicket" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteTicket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTicketResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService">
+    <wsdl:operation name="Post">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/Post" message="tns:IService_Post_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/PostResponse" message="tns:IService_Post_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoute">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetRoute" message="tns:IService_GetRoute_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetRouteResponse" message="tns:IService_GetRoute_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateCustomer" message="tns:IService_CreateCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateCustomerResponse" message="tns:IService_CreateCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetCustomer" message="tns:IService_GetCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetCustomerResponse" message="tns:IService_GetCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateCustomer" message="tns:IService_UpdateCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateCustomerResponse" message="tns:IService_UpdateCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteCustomer" message="tns:IService_DeleteCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteCustomerResponse" message="tns:IService_DeleteCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateBooking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateBooking" message="tns:IService_CreateBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateBookingResponse" message="tns:IService_CreateBooking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBooking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetBooking" message="tns:IService_GetBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetBookingResponse" message="tns:IService_GetBooking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBooking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateBooking" message="tns:IService_UpdateBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateBookingResponse" message="tns:IService_UpdateBooking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBooking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteBooking" message="tns:IService_DeleteBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteBookingResponse" message="tns:IService_DeleteBooking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateCity" message="tns:IService_CreateCity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateCityResponse" message="tns:IService_CreateCity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetCity" message="tns:IService_GetCity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetCityResponse" message="tns:IService_GetCity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateCity" message="tns:IService_UpdateCity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateCityResponse" message="tns:IService_UpdateCity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteCity" message="tns:IService_DeleteCity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteCityResponse" message="tns:IService_DeleteCity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateDestination">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateDestination" message="tns:IService_CreateDestination_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateDestinationResponse" message="tns:IService_CreateDestination_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDestination">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetDestination" message="tns:IService_GetDestination_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetDestinationResponse" message="tns:IService_GetDestination_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDestination">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateDestination" message="tns:IService_UpdateDestination_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateDestinationResponse" message="tns:IService_UpdateDestination_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDestination">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteDestination" message="tns:IService_DeleteDestination_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteDestinationResponse" message="tns:IService_DeleteDestination_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePassenger">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreatePassenger" message="tns:IService_CreatePassenger_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreatePassengerResponse" message="tns:IService_CreatePassenger_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPassenger">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetPassenger" message="tns:IService_GetPassenger_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetPassengerResponse" message="tns:IService_GetPassenger_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassenger">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdatePassenger" message="tns:IService_UpdatePassenger_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdatePassengerResponse" message="tns:IService_UpdatePassenger_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePassenger">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeletePassenger" message="tns:IService_DeletePassenger_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeletePassengerResponse" message="tns:IService_DeletePassenger_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePayment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreatePayment" message="tns:IService_CreatePayment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreatePaymentResponse" message="tns:IService_CreatePayment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPayment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetPayment" message="tns:IService_GetPayment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetPaymentResponse" message="tns:IService_GetPayment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePayment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdatePayment" message="tns:IService_UpdatePayment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdatePaymentResponse" message="tns:IService_UpdatePayment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePayment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeletePayment" message="tns:IService_DeletePayment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeletePaymentResponse" message="tns:IService_DeletePayment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePlane">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreatePlane" message="tns:IService_CreatePlane_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreatePlaneResponse" message="tns:IService_CreatePlane_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlane">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetPlane" message="tns:IService_GetPlane_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetPlaneResponse" message="tns:IService_GetPlane_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePlane">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdatePlane" message="tns:IService_UpdatePlane_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdatePlaneResponse" message="tns:IService_UpdatePlane_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePlane">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeletePlane" message="tns:IService_DeletePlane_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeletePlaneResponse" message="tns:IService_DeletePlane_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateRow">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateRow" message="tns:IService_CreateRow_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateRowResponse" message="tns:IService_CreateRow_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRow">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetRow" message="tns:IService_GetRow_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetRowResponse" message="tns:IService_GetRow_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRow">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateRow" message="tns:IService_UpdateRow_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateRowResponse" message="tns:IService_UpdateRow_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRow">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteRow" message="tns:IService_DeleteRow_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteRowResponse" message="tns:IService_DeleteRow_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateSeat">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateSeat" message="tns:IService_CreateSeat_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateSeatResponse" message="tns:IService_CreateSeat_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSeat">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetSeat" message="tns:IService_GetSeat_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetSeatResponse" message="tns:IService_GetSeat_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSeat">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateSeat" message="tns:IService_UpdateSeat_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateSeatResponse" message="tns:IService_UpdateSeat_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSeat">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteSeat" message="tns:IService_DeleteSeat_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteSeatResponse" message="tns:IService_DeleteSeat_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateSeatSchema">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateSeatSchema" message="tns:IService_CreateSeatSchema_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateSeatSchemaResponse" message="tns:IService_CreateSeatSchema_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSetSchema">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetSetSchema" message="tns:IService_GetSetSchema_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetSetSchemaResponse" message="tns:IService_GetSetSchema_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSeatSchema">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateSeatSchema" message="tns:IService_UpdateSeatSchema_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateSeatSchemaResponse" message="tns:IService_UpdateSeatSchema_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSeatSchema">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteSeatSchema" message="tns:IService_DeleteSeatSchema_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteSeatSchemaResponse" message="tns:IService_DeleteSeatSchema_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTicket">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateTicket" message="tns:IService_CreateTicket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateTicketResponse" message="tns:IService_CreateTicket_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTicket">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetTicket" message="tns:IService_GetTicket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetTicketResponse" message="tns:IService_GetTicket_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTicket">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateTicket" message="tns:IService_UpdateTicket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateTicketResponse" message="tns:IService_UpdateTicket_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTicket">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteTicket" message="tns:IService_DeleteTicket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteTicketResponse" message="tns:IService_DeleteTicket_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="Service" />
+</wsdl:definitions>
