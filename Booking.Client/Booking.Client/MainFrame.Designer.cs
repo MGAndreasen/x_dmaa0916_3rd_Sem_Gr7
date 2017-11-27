@@ -40,12 +40,14 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabPageSeats = new System.Windows.Forms.TabPage();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxSeats_ListOfPlanes = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPageSeats.SuspendLayout();
@@ -159,6 +161,8 @@
             // 
             // tabPageSeats
             // 
+            this.tabPageSeats.Controls.Add(this.label7);
+            this.tabPageSeats.Controls.Add(this.textBox4);
             this.tabPageSeats.Controls.Add(this.radioButton2);
             this.tabPageSeats.Controls.Add(this.radioButton1);
             this.tabPageSeats.Controls.Add(this.label6);
@@ -173,6 +177,47 @@
             this.tabPageSeats.Text = "Seats";
             this.tabPageSeats.UseVisualStyleBackColor = true;
             this.tabPageSeats.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(25, 147);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(62, 17);
+            this.radioButton2.TabIndex = 6;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Booked";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(25, 106);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(68, 17);
+            this.radioButton1.TabIndex = 5;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Available";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(37, 65);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 13);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Availability";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(57, 197);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Create seat ";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -191,46 +236,22 @@
             this.comboBoxSeats_ListOfPlanes.Size = new System.Drawing.Size(248, 21);
             this.comboBoxSeats_ListOfPlanes.TabIndex = 0;
             // 
-            // button1
+            // textBox4
             // 
-            this.button1.Location = new System.Drawing.Point(32, 82);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Create seat ";
-            this.button1.UseVisualStyleBackColor = true;
+            this.textBox4.Location = new System.Drawing.Point(117, 106);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 7;
             // 
-            // label6
+            // label7
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 20);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 13);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Availability";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(32, 36);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(68, 17);
-            this.radioButton1.TabIndex = 5;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Available";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(32, 59);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(62, 17);
-            this.radioButton2.TabIndex = 6;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Booked";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(161, 65);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(15, 13);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "id";
             // 
             // MainFrame
             // 
@@ -268,5 +289,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }
