@@ -568,7 +568,15 @@ namespace Booking.Client.BookingServiceRemote {
 
         public override string ToString()
         {
-            return "Name: " + FirstName.ToString() + "";
+            string luggage = "Yes";
+            if (Luggage == false)
+            {
+                luggage = "No";
+            }
+
+            return "Id: " + Id.ToString() + "   Name: " + FirstName.ToString() + " " + LastName.ToString() + "   CPR: " + CPR.ToString() +
+            "   Passport ID: " + PassportId.ToString() + /*"   Seat: " + SeatNumber.Id.ToString() +*/ "   Extra luggage: " + luggage + "";
+
         }
 
         protected void RaisePropertyChanged(string propertyName) {
