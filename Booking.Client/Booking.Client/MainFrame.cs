@@ -12,16 +12,15 @@ using System.Windows.Forms;
 namespace Booking.Client
 {
     public partial class MainFrame : Form
-    {  
+    {
+        ServiceClient myService = new ServiceClient();
         public MainFrame()
         {
             InitializeComponent();
-            VisPassager();
         }
 
         public void VisPassager()
         {
-            ServiceClient myService = new ServiceClient();
             Passenger p = myService.GetPassenger(1);
             listBoxPlanes.Items.Add(p.ToString());
         }
@@ -71,6 +70,12 @@ namespace Booking.Client
         private void label6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //myservice.getallplanes
+            //comboBoxPassengers_Planes.Items.Add();
         }
     }
 }
