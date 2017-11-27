@@ -113,7 +113,7 @@ namespace Booking.Client
 
         private void RefreshDestinations_Click(object sender, EventArgs e)
         {
-            //List<Destination> list = myService.GetAllDestinations();
+            //List<Destination> list = myService.getallesdiedestinationes.
         }
     }
 }
