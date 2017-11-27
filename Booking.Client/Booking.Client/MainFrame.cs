@@ -72,13 +72,32 @@ namespace Booking.Client
 
         }
 
-        private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxPassengers_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<Plane> list = myService.getAllPlanes();
             foreach (var item in list)
             {
                 comboBoxPassengers_Planes.Items.Add(item.ToString());
             }
+        }
+
+        private void ComboBoxSeat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<Plane> list = myService.getAllPlanes();
+            foreach (var item in list)
+            {
+                comboBoxSeats_ListOfPlanes.Items.Add(item.ToString());
+            }
+        }
+
+        public void TapSeat_ShowPassengersOnPlane()
+        {
+            
+        }
+
+        private void listBoxPlanes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
