@@ -36,12 +36,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabPageSeats = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxSeats_ListOfPlanes = new System.Windows.Forms.ComboBox();
+            this.listBoxPlanes = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPageSeats.SuspendLayout();
@@ -59,13 +59,13 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.listBoxPlanes);
             this.tabPage1.Controls.Add(this.comboBox1);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.Button);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.listView1);
             this.tabPage1.Controls.Add(this.textBox3);
             this.tabPage1.Controls.Add(this.textBox2);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
@@ -130,15 +130,6 @@
             this.label1.Text = "Start Destination ";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // listView1
-            // 
-            this.listView1.Location = new System.Drawing.Point(596, 34);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(457, 641);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
-            // 
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(67, 155);
@@ -183,6 +174,15 @@
             this.comboBoxSeats_ListOfPlanes.Size = new System.Drawing.Size(248, 28);
             this.comboBoxSeats_ListOfPlanes.TabIndex = 0;
             // 
+            // listBoxPlanes
+            // 
+            this.listBoxPlanes.FormattingEnabled = true;
+            this.listBoxPlanes.ItemHeight = 20;
+            this.listBoxPlanes.Location = new System.Drawing.Point(643, 37);
+            this.listBoxPlanes.Name = "listBoxPlanes";
+            this.listBoxPlanes.Size = new System.Drawing.Size(423, 624);
+            this.listBoxPlanes.TabIndex = 10;
+            // 
             // MainFrame
             // 
             this.ClientSize = new System.Drawing.Size(1080, 704);
@@ -205,7 +205,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPageSeats;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -215,5 +214,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBoxSeats_ListOfPlanes;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListBox listBoxPlanes;
     }
 }

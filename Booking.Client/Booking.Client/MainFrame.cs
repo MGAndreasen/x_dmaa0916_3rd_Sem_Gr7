@@ -23,7 +23,7 @@ namespace Booking.Client
         {
             ServiceClient myService = new ServiceClient();
             Passenger p = myService.GetPassenger(1);
-            listView1.Items.Add(p.ToString());
+            listBoxPlanes.Items.Add(p.ToString());
         }
 
         public void VisPassagers()

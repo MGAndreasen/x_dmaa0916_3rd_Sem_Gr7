@@ -565,7 +565,12 @@ namespace Booking.Client.BookingServiceRemote {
         }
         
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
+
+        public override string ToString()
+        {
+            return "Name: " + FirstName.ToString() + "";
+        }
+
         protected void RaisePropertyChanged(string propertyName) {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
