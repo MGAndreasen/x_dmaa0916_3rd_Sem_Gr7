@@ -106,14 +106,16 @@ namespace Booking.Client
 
         private void DestinationCreate_Click(object sender, EventArgs e)
         {
-            Destination d = new Destination();
-            
+            Destination d = new Destination
+            {
+                LocationName = CreateRoute_EndDestination.Text.ToString()
+            };
             myService.CreateDestination(d);
         }
 
         private void RefreshDestinations_Click(object sender, EventArgs e)
         {
-            //List<Destination> list = myService.getallesdiedestinationes.
+            //List<Destination> list = myService.allesdiedestinationes!
         }
     }
 }
