@@ -48,21 +48,21 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxSeats_ListOfPlanes = new System.Windows.Forms.ComboBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPagePassengers = new System.Windows.Forms.TabPage();
             this.listBoxPassengers = new System.Windows.Forms.ListBox();
             this.label8 = new System.Windows.Forms.Label();
             this.comboBoxPassengers_Planes = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPageSeats.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tabPagePassengers.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPageSeats);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPagePassengers);
             this.tabControl1.Location = new System.Drawing.Point(-2, -1);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -259,18 +259,18 @@
             this.comboBoxSeats_ListOfPlanes.Size = new System.Drawing.Size(248, 28);
             this.comboBoxSeats_ListOfPlanes.TabIndex = 0;
             // 
-            // tabPage2
+            // tabPagePassengers
             // 
-            this.tabPage2.Controls.Add(this.listBoxPassengers);
-            this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.comboBoxPassengers_Planes);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1078, 674);
-            this.tabPage2.TabIndex = 2;
-            this.tabPage2.Text = "tabPassengers";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPagePassengers.Controls.Add(this.listBoxPassengers);
+            this.tabPagePassengers.Controls.Add(this.label8);
+            this.tabPagePassengers.Controls.Add(this.comboBoxPassengers_Planes);
+            this.tabPagePassengers.Location = new System.Drawing.Point(4, 29);
+            this.tabPagePassengers.Name = "tabPagePassengers";
+            this.tabPagePassengers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPagePassengers.Size = new System.Drawing.Size(1078, 674);
+            this.tabPagePassengers.TabIndex = 2;
+            this.tabPagePassengers.Text = "Passengers";
+            this.tabPagePassengers.UseVisualStyleBackColor = true;
             // 
             // listBoxPassengers
             // 
@@ -310,8 +310,8 @@
             this.tabPage1.PerformLayout();
             this.tabPageSeats.ResumeLayout(false);
             this.tabPageSeats.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tabPagePassengers.ResumeLayout(false);
+            this.tabPagePassengers.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -339,7 +339,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.ListBox listBoxPlanes;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPagePassengers;
         private System.Windows.Forms.ListBox listBoxPassengers;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboBoxPassengers_Planes;

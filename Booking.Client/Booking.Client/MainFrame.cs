@@ -74,8 +74,11 @@ namespace Booking.Client
 
         private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //myservice.getallplanes
-            //comboBoxPassengers_Planes.Items.Add();
+            List<Plane> list = myService.getAllPlanes();
+            foreach (var item in list)
+            {
+                comboBoxPassengers_Planes.Items.Add(item.ToString());
+            }
         }
     }
 }
