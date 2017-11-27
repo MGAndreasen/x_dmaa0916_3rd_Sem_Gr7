@@ -24,7 +24,7 @@ namespace Booking.Client
 
         private void button1_Click(object sender, EventArgs e)
         {
-             //Hides LoginFrame (The main applicantion)
+            //Hides LoginFrame (The main applicantion)
             this.Hide();
 
             //Starts a new window

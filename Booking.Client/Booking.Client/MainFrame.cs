@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace Booking.Client
 {
     public partial class MainFrame : Form
-    {
+    {  
         public MainFrame()
         {
             InitializeComponent();
@@ -21,9 +21,16 @@ namespace Booking.Client
 
         public void VisPassager()
         {
-            ServiceClient client = new ServiceClient();
-            Passenger p = client.GetPassenger(1);
+            ServiceRemote.ServiceClient myService = new ServiceRemote.ServiceClient();
+            Passenger p = myService.GetPassenger(1);
             listView1.Items.Add(p.ToString());
+        }
+
+        public void VisPassagers()
+        {
+          //  ServiceClient client = new ServiceClient();
+           // Passenger p = client.GetPassenger(1);
+            // listView1.Items.Add(p.ToString());
         }
 
         private void MainFrame_Load(object sender, EventArgs e)
