@@ -107,5 +107,40 @@ namespace Booking.DB
                 scope.Complete();
             }
         }
+
+        public IEnumerable<Customer> GetAllCustomers()
+        {
+            List<Customer> customers = new List<Customer>();
+            DbCity dbCity = new DbCity();
+            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+            {
+                con.Open();
+
+                using (SqlCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM Customer";
+                    var rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        customers.Add(new Customer
+                        {
+                            Id = (int)rdr["Id"],
+                            FirstName = (string)rdr["FirstName"],
+                            LastName = (string)rdr["LastName"],
+                            Email = (string)rdr[""],
+                            CPR = (long)rdr["Cpr"],
+                            PhoneNumber = (long)rdr["PhoneNo"],
+                            City = dbCity.Get((int)rdr["ZipCode"]),
+                            Address = (string)rdr["Address"],
+                            Password = (string)rdr["Password"]
+
+                        });
+                    }
+                }
+
+            }
+            return customers;
+        }
     }
 }

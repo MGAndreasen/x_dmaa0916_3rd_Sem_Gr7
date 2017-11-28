@@ -115,7 +115,7 @@ namespace Booking.Client
 
         private void RefreshDestinations_Click(object sender, EventArgs e)
         {
-            //List<Destination> list = myService.allesdiedestinationes!
+            //List<Destination> list = myService.g
         }
     }
 }
