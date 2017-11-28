@@ -53,6 +53,7 @@
     <Compile Include="SeatCtrl.cs" />
     <Compile Include="SeatSchemaCtrl.cs" />
     <Compile Include="TicketCtrl.cs" />
+    <Compile Include="UserCtrl.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Booking.DB\Booking.DB.csproj">

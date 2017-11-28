@@ -54,6 +54,7 @@
     <Compile Include="DbSeat.cs" />
     <Compile Include="DbSeatSchema.cs" />
     <Compile Include="DbTicket.cs" />
+    <Compile Include="DbUser.cs" />
     <Compile Include="IDbCRUD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

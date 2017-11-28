@@ -6,12 +6,16 @@ using System.ServiceModel;
 using System.Text;
 using Booking.Models;
 using Booking.Controller;
+using System.Security.Permissions;
 
 namespace Booking.Service
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
+    //[ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
     public class Service : IService
     {
+        // Nix pille
+        public UserController UserController { get; set; }
+
         private CustomerCtrl customerCtrl = new CustomerCtrl();
         private BookingCtrl bookingCtrl = new BookingCtrl();
         private CityCtrl cityCtrl = new CityCtrl();
@@ -23,6 +27,19 @@ namespace Booking.Service
         private SeatCtrl seatCtrl = new SeatCtrl();
         private SeatSchemaCtrl seatSchemaCtrl = new SeatSchemaCtrl();
         private TicketCtrl ticketCtrl = new TicketCtrl();
+
+        public Service()
+        {
+            UserController = new UserController();
+        }
+
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        public string GetUserData(int value)
+        {
+            var found = UserController.GetUser(1337);
+            return string.Format("Pssst, the data you requested back was: {0}, hi {1}, you are allowed to know!", value, OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.Name);
+        }
+
         //public string GetData(int value)
         //{
         //    return string.Format("You entered: {0}", value);
