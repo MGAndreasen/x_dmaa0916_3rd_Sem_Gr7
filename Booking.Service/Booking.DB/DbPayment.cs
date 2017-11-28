@@ -26,8 +26,8 @@ namespace Booking.DB
                         return new Payment
                         {
                             Id = rdr.GetInt32(0),
-                            Amount = rdr.GetInt32(1),
-                            Date = rdr.GetDateTime(2)
+                            Date = rdr.GetDateTime(1),
+                            Amount = rdr.GetInt32(2)  
                         };
                 }
         }
@@ -45,17 +45,12 @@ namespace Booking.DB
                     cmd.Parameters.Add("Amount", SqlDbType.Int).Value = obj.Amount;
                     cmd.Parameters.Add("Date", SqlDbType.DateTime).Value = obj.Date;
                     cmd.ExecuteNonQuery();
-                    {
-                        //tilføj til model.
-                    }
+
                 }
+                scope.Complete();
             }
         }
 
-        public void Update(int id)
-        {
-            throw new NotImplementedException();
-        }
         public IEnumerable<Payment> GetAll()
         {
             List<Payment> payments = new List<Payment>();
@@ -106,7 +101,7 @@ namespace Booking.DB
 
         public void Update(Payment obj)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(); // <------------------------- // <------------------------- // <------------------------- // <-------------------------
         }
     }
 }

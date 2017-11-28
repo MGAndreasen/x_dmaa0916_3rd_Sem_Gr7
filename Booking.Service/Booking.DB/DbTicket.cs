@@ -38,8 +38,8 @@ namespace Booking.DB
 
         public Ticket Get(int id)
         {
-            this.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(this.ConnectionString))
+            DbPassenger dbp = new DbPassenger();
+            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
              
                     con.Open();
@@ -50,8 +50,8 @@ namespace Booking.DB
                     return new Ticket()
                     {
                         Id = rdr.GetInt32(0),
+                        Passenger = dbp.Get(rdr.GetInt32(1))
                     };
-                
 
             }
 
@@ -65,14 +65,14 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Booking (id) VALUES (@id)", con);
-                    cmd.Parameters.Add("id", SqlDbType.Int).Value = obj.Id;
-     
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Booking (Id, Passenger_Id) VALUES (@Id, @Passenger_Id)", con);
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                    cmd.Parameters.Add("@Passenger_Id", SqlDbType.Int).Value = obj.Passenger;
 
                     cmd.ExecuteNonQuery();
 
-                    scope.Complete();
                 }
+                scope.Complete();
             }
         }
         public void Update(Ticket obj)
@@ -83,13 +83,14 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Id=@Id", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Id=@Id, Passenger_Id=@Passenger_Id", con);
 
-                    cmd.Parameters.Add("Id", SqlDbType.Int).Value = obj.Id;
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                    cmd.Parameters.Add("@Passenger_Id", SqlDbType.Int).Value = obj.Passenger;
 
                     cmd.ExecuteNonQuery();
-                    scope.Complete();
                 }
+                scope.Complete();
             }
         }
     }

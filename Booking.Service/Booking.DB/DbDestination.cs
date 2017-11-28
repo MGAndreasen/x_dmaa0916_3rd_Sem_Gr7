@@ -26,7 +26,7 @@ namespace Booking.DB
 
                     using (SqlCommand cmd = con.CreateCommand())
                     {
-                        cmd.CommandText = "DELETE FROM bdo.booking_Destination WHERE Id=@id";
+                        cmd.CommandText = "DELETE FROM dbo.booking_Destination WHERE Id=@id";
                         cmd.Parameters.AddWithValue("id", id);
                         cmd.ExecuteNonQuery();
                         scope.Complete();
@@ -38,16 +38,18 @@ namespace Booking.DB
 
         public Destination Get(int id)
         {
+            DbPlane dbp = new DbPlane();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT  Id FROM dbo.Booking_Destination AS s WHERE Id = @id", con);
+                SqlCommand cmd = new SqlCommand("SELECT s.Id, s.Plane_Id, s.NameDestination FROM dbo.Booking_Destination AS s WHERE Id = @id", con);
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                 SqlDataReader reader = cmd.ExecuteReader();
                 return new Destination
                 {
                     Id = reader.GetInt32(0),
-                    NameDestination = reader.GetString(1)
+                    Plane = dbp.Get(reader.GetInt32(1)), // <-------------------------
+                    NameDestination = reader.GetString(2)
                 };
             }
         }
@@ -60,14 +62,15 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO bdo.Booking_Destination (Id, NameDestination) VALUES (@Id, @Name)", con);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO bdo.Booking_Destination (Id, Plane_Id, NameDestination) VALUES (@Id, @Pi, @Name)", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                    cmd.Parameters.Add("@Pi", SqlDbType.Int).Value = obj.Plane; // <-------------------------
                     cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = obj.NameDestination;
-                   
-                    {
-                        //tilføj til model.
-                    }
+
+                    cmd.ExecuteNonQuery();
                 }
+
+                scope.Complete();
             }
         }
 
@@ -79,20 +82,23 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Destination SET Id=@Id, NameDestination=@Name", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Destination SET Id=@Id, Plane_Id=@pi, NameDestination=@Name", con);
 
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                    cmd.Parameters.Add("@pi", SqlDbType.Int).Value = obj.Plane;
                     cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = obj.NameDestination;
 
 
                     cmd.ExecuteNonQuery();
-                    scope.Complete();
                 }
+
+                scope.Complete();
             }
         }
 
         public IEnumerable<Destination> GetAll()
         {
+            DbPlane dbp = new DbPlane();
             List<Destination> destinations = new List<Destination>();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
@@ -108,7 +114,8 @@ namespace Booking.DB
                         Destination d = new Destination
                         {
                             Id = (int)rdr["Id"],
-                            NameDestination = (String)rdr["Type"],
+                            Plane = dbp.Get((int)rdr["Plane_Id"]),
+                            NameDestination = (String)rdr["NameDestination"],
 
                         };
                         destinations.Add(d);

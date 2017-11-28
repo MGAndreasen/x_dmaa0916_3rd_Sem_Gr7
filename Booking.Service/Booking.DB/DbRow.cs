@@ -25,7 +25,7 @@ namespace Booking.DB
 
                     using (SqlCommand cmd = con.CreateCommand())
                     {
-                        cmd.CommandText = "DELETE FROM Row WHERE Id=@id";
+                        cmd.CommandText = "DELETE * FROM Row WHERE Id=@id";
                         cmd.Parameters.AddWithValue("id", id);
                         cmd.ExecuteNonQuery();
                         scope.Complete();
@@ -38,26 +38,22 @@ namespace Booking.DB
 
         public Row Get(int id)
         {
+            DbSeatSchema dbs = new DbSeatSchema();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 try
                 {
-                    
                     SqlDataReader rdr = null;
-                    SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Row WHERE Id = @id", con);
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Booking_Row WHERE Id = @id", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                     rdr = cmd.ExecuteReader();
-                    //while (rdr.Read())
-                    //{
+
                     rdr.Read();
                         return new Row
                         {
                             Id = rdr.GetInt32(0),
-                            SeatNumber = rdr.GetInt32(1),
+                            SeatNumber = dbs.Get(rdr.GetInt32(1)),
                             Price = rdr.GetInt32(2)
                         };
-                    //}
-
-
 
                 }
                 catch (Exception e)
@@ -81,12 +77,9 @@ namespace Booking.DB
                     cmd.Parameters.Add("SeatNumber", SqlDbType.Int).Value = obj.SeatNumber;
                     cmd.Parameters.Add("Price", SqlDbType.Float).Value = obj.Price;
                     cmd.ExecuteNonQuery();
-                    scope.Complete();
-
-                    {
-                        //tilføj til model.
-                    }
+                    
                 }
+                scope.Complete();
             }
         }
 
@@ -97,6 +90,7 @@ namespace Booking.DB
 
         public IEnumerable<Row> GetAll()
         {
+            DbSeatSchema dbs = new DbSeatSchema();
             List<Row> rows = new List<Row>();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
@@ -112,8 +106,8 @@ namespace Booking.DB
                         Row r = new Row
                         {
                             Id = (int)rdr["Id"],
-                            SeatNumber = (int)rdr["SeatNumber"],
-                            Price = (double)rdr["Price"],
+                            SeatNumber = dbs.Get((int)rdr["SeatNumber"]),
+                            Price = (int)rdr["Price"],
                         };
                        rows.Add(r);
                     }

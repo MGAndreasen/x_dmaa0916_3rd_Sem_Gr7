@@ -38,6 +38,8 @@ namespace Booking.DB
 
         public Passenger Get(int id)
         {
+            DbBooking dbb = new DbBooking();
+            DbSeat dbs = new DbSeat();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
                 con.Open();
@@ -53,11 +55,13 @@ namespace Booking.DB
                     return new Passenger
                     {
                         Id = reader.GetInt32(0),
-                        FirstName = reader.GetString(1),
-                        LastName = reader.GetString(2),
-                        CPR = reader.GetInt64(3),
-                        PassportId = reader.GetInt64(4),
-                        Luggage = reader.GetBoolean(5),
+                        Booking = dbb.Get(reader.GetInt32(1)), // <-------------------------
+                        SeatNumber = dbs.Get(reader.GetInt32(2)), // <-------------------------
+                        FirstName = reader.GetString(3),
+                        LastName = reader.GetString(4),
+                        CPR = reader.GetInt64(5),
+                        PassportId = reader.GetInt64(6),
+                        Luggage = reader.GetBoolean(7),
                     };
 
                 }
@@ -76,13 +80,15 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Passenger (Id, FirstName, LastName, Cpr, PassportId, Luggage) Values (@Id, @FirstName, @LastName, @Cpr, @PassportId, @Luggage)", con);
-                    cmd.Parameters.Add("Id", SqlDbType.Int).Value = obj.Id;
-                    cmd.Parameters.Add("FirstName", SqlDbType.NVarChar).Value = obj.FirstName;
-                    cmd.Parameters.Add("LastName", SqlDbType.NVarChar).Value = obj.LastName;
-                    cmd.Parameters.Add("Cpr", SqlDbType.BigInt).Value = obj.CPR;
-                    cmd.Parameters.Add("PassportId", SqlDbType.BigInt).Value = obj.PassportId;
-                    cmd.Parameters.Add("Luggage", SqlDbType.Bit).Value = obj.Luggage;
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Passenger (Id, Booking_Id, Seat_Id, FirstName, LastName, Cpr, PassportId, Luggage) Values (@Id, @Bo, @Seat, @FirstName, @LastName, @Cpr, @PassportId, @Luggage)", con);
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                    cmd.Parameters.Add("@Bo", SqlDbType.Int).Value = obj.Booking; // <-------------------------
+                    cmd.Parameters.Add("@Seat", SqlDbType.Int).Value = obj.SeatNumber; // <-------------------------
+                    cmd.Parameters.Add("@FirstName", SqlDbType.NVarChar).Value = obj.FirstName;
+                    cmd.Parameters.Add("@LastName", SqlDbType.NVarChar).Value = obj.LastName;
+                    cmd.Parameters.Add("@Cpr", SqlDbType.BigInt).Value = obj.CPR;
+                    cmd.Parameters.Add("@PassportId", SqlDbType.BigInt).Value = obj.PassportId;
+                    cmd.Parameters.Add("@Luggage", SqlDbType.Bit).Value = obj.Luggage;
                     cmd.ExecuteNonQuery();
           
                 }
@@ -99,9 +105,11 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE Booking_Passenger SET Id = @Id, FirstName = @FirstName, LastName = @LastName, Cpr = @Cpr, PassportId = @PassportId, Luggage = @Luggage WHERE Id=@Id", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE Booking_Passenger SET Id = @Id, Booking_Id=@Bo, Seat_Id=@Seat, FirstName = @FirstName, LastName = @LastName, Cpr = @Cpr, PassportId = @PassportId, Luggage = @Luggage WHERE Id=@Id", con);
                     
                     cmd.Parameters.AddWithValue("Id", obj.Id);
+                    cmd.Parameters.AddWithValue("Bo", obj.Booking); // <-------------------------
+                    cmd.Parameters.AddWithValue("Seat", obj.SeatNumber); // <-------------------------
                     cmd.Parameters.AddWithValue("FirstName", obj.FirstName);
                     cmd.Parameters.AddWithValue("LastName", obj.LastName);
                     cmd.Parameters.AddWithValue("Cpr", obj.CPR);
@@ -116,6 +124,8 @@ namespace Booking.DB
         }
         public IEnumerable<Passenger> GetAll()
         {
+            DbBooking dbb = new DbBooking();
+            DbSeat dbs = new DbSeat();
             List<Passenger> passengers = new List<Passenger>();
             using (SqlConnection con = new SqlConnection(DB.DataAccess.Instance.GetConnectionString()))
             {
@@ -131,8 +141,10 @@ namespace Booking.DB
                         Passenger p = new Passenger
                         {
                             Id = (int)rdr["Id"],
-                            FirstName = (String)rdr["FirstName"],
-                            LastName = (String)rdr["LastName"],
+                            Booking = dbb.Get((int)rdr["Booking_Id"]),
+                            SeatNumber = dbs.Get((int)rdr["Seat_Id"]),
+                            FirstName = (string)rdr["FirstName"],
+                            LastName = (string)rdr["LastName"],
                             CPR = (long)rdr["Cpr"],
                             PassportId = (long)rdr["PassportId"],
                             Luggage = (bool)rdr["Luggage"]
