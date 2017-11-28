@@ -68,11 +68,11 @@ namespace Booking.DB
                     cmd.Parameters.Add("Cpr", SqlDbType.BigInt).Value = obj.CPR;
                     cmd.Parameters.Add("PhoneNo", SqlDbType.BigInt).Value = obj.PhoneNumber;
                     cmd.Parameters.Add("Zipcode", SqlDbType.SmallInt).Value = obj.City;
-                    cmd.Parameters.Add("FirstName", SqlDbType.VarChar).Value = obj.FirstName;
-                    cmd.Parameters.Add("LastName", SqlDbType.VarChar).Value = obj.LastName;
-                    cmd.Parameters.Add("Email", SqlDbType.VarChar).Value = obj.Email;
-                    cmd.Parameters.Add("Address", SqlDbType.VarChar).Value = obj.Address;
-                    cmd.Parameters.Add("Password", SqlDbType.VarChar).Value = obj.Password;
+                    cmd.Parameters.Add("FirstName", SqlDbType.NVarChar).Value = obj.FirstName;
+                    cmd.Parameters.Add("LastName", SqlDbType.NVarChar).Value = obj.LastName;
+                    cmd.Parameters.Add("Email", SqlDbType.NVarChar).Value = obj.Email;
+                    cmd.Parameters.Add("Address", SqlDbType.NVarChar).Value = obj.Address;
+                    cmd.Parameters.Add("Password", SqlDbType.NVarChar).Value = obj.Password;
                     cmd.Parameters.Add("Comfirmed", SqlDbType.Bit).Value = obj.Confirmed;
 
                     cmd.ExecuteNonQuery();

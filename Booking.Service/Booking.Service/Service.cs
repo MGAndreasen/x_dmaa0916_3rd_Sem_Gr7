@@ -257,6 +257,11 @@ namespace Booking.Service
         {
             planeCtrl.Delete(id);
         }
+
+        public IEnumerable<Plane> getAllPlanes()
+        {
+            return planeCtrl.getAllPlanes();
+        }
         #endregion
 
         #region Row

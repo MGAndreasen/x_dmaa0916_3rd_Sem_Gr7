@@ -111,6 +111,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SeatSchema" nillable="true" type="tns:SeatSchema" />
+  <xs:complexType name="ArrayOfPlane">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Plane" nillable="true" type="tns:Plane" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlane" nillable="true" type="tns:ArrayOfPlane" />
   <xs:complexType name="Ticket">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:int" />

@@ -18,7 +18,8 @@ namespace Booking.Models
 
         public override string ToString()
         {
-            return "Navn: " + FirstName.ToString() + " ";
+            return "Id: " + Id.ToString() + "   Name: " + FirstName.ToString() + " " + LastName.ToString() + "   CPR: " + CPR.ToString() +
+                "   Passport ID: " + PassportId.ToString() + "   Seat: " + SeatNumber.ToString() + "   Luggage: " + Luggage.ToString();
         }
     }
 }
