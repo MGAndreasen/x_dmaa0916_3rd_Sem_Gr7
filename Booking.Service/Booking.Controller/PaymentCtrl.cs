@@ -10,31 +10,24 @@ namespace Booking.Controller
 {
     public class PaymentCtrl : ICRUD<Payment>
     {
+        private DbPayment DBP = new DbPayment();
         public void Create(Payment obj)
         {
-            obj = new Payment();
-            DbPayment DBP = new DbPayment();
-
             DBP.Create(obj);
         }
 
         public void Delete(int id)
         {
-            DbPayment DBP = new DbPayment();
             DBP.Delete(id);
         }
 
         public Payment Get(int id)
         {
-            DbPayment DBP = new DbPayment();
-            Payment pm = DBP.Get(id);
-
-            return pm;
+            return DBP.Get(id);
         }
 
         public void Update(Payment obj)
         {
-            DbPayment DBP = new DbPayment();
             DBP.Update(obj);
         }
     }

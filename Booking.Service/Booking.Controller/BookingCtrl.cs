@@ -10,33 +10,25 @@ namespace Booking.Controller
 {
     public class BookingCtrl : ICRUD<Bookings>
     {
+        private DbBooking DBB = new DbBooking();
         public void Create(Bookings obj)
         {
-            obj = new Bookings();
-            DbBooking DBB = new DbBooking();
-
             DBB.Create(obj);
         }
 
         public void Delete(int id)
         {
-            DbBooking DBB = new DbBooking();
-
             DBB.Delete(id);
         }
 
         public Bookings Get(int id)
         {
 
-            DbBooking DBB = new DbBooking();
-            Bookings b = DBB.Get(id); 
-
-            return b; 
+            return DBB.Get(id);
         }
 
         public void Update(Bookings obj)
         {
-            DbBooking DBB = new DbBooking();
             DBB.Update(obj);
         }
     }

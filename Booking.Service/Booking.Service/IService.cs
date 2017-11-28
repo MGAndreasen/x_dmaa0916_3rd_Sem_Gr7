@@ -54,6 +54,8 @@ namespace Booking.Service
 
         [OperationContract]
         void DeleteCustomer(int id);
+        [OperationContract]
+        IEnumerable<Customer> GetAllCustomers();
 
         #endregion 
 
@@ -93,6 +95,8 @@ namespace Booking.Service
         void UpdateDestination(Destination obj);
         [OperationContract]
         void DeleteDestination(int id);
+        [OperationContract]
+        IEnumerable<Destination> GetAllDestinations();
 
         #endregion 
 
@@ -106,6 +110,8 @@ namespace Booking.Service
         void UpdatePassenger(Passenger obj);
         [OperationContract]
         void DeletePassenger(int id);
+        [OperationContract]
+        IEnumerable<Passenger> GetAllPassengers();
 
         #endregion 
 
@@ -133,7 +139,7 @@ namespace Booking.Service
         [OperationContract]
         void DeletePlane(int id);
         [OperationContract]
-        IEnumerable<Plane> getAllPlanes();
+        IEnumerable<Plane> GetAllPlanes();
 
         #endregion 
 

@@ -14,6 +14,7 @@ namespace Booking.Client
     public partial class MainFrame : Form
     {
         ServiceClient myService = new ServiceClient();
+
         public MainFrame()
         {
             InitializeComponent();
@@ -115,7 +116,16 @@ namespace Booking.Client
 
         private void RefreshDestinations_Click(object sender, EventArgs e)
         {
-            //List<Destination> list = myService.allesdiedestinationes!
+            //List<Destination> list = myService.GetAllDestinations();
+            //foreach (var item in list)
+            //{
+            //    listBoxPlanes.Items.Add(item.ToString());
+            //}
+        }
+
+        private void CreateRoute_monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            textBoxDateTime.Text = CreateRoute_monthCalendar.SelectionRange.Start.ToShortDateString();
         }
     }
 }

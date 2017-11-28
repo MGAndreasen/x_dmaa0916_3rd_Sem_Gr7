@@ -10,35 +10,30 @@ namespace Booking.Controller
 {
     public class PassengerCtrl : ICRUD<Passenger>
     {
+        private DbPassenger dbp = new DbPassenger();
         public void Create(Passenger obj)
         {
-            obj = new Passenger();
-            DbPassenger DBP = new DbPassenger();
-
-
-            DBP.Create(obj);
+            dbp.Create(obj);
         }
 
         public void Delete(int id)
         {
-            DbPassenger DBP = new DbPassenger();
-            DBP.Delete(id);
+            dbp.Delete(id);
         }
 
         public Passenger Get(int id)
         {
-            DbPassenger DBP = new DbPassenger();
-            Passenger p = DBP.Get(id);
-
-            return p; 
-            
+            return dbp.Get(id);            
         }
 
         public void Update(Passenger obj)
         {
-            DbPassenger DBP = new DbPassenger();
+            dbp.Update(obj);
+        }
 
-            DBP.Update(obj);
+        public IEnumerable<Passenger> GetAllPassengers()
+        {
+            return dbp.GetAll();
         }
     }
 }
