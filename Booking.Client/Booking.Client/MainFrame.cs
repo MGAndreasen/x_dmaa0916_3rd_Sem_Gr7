@@ -15,6 +15,7 @@ namespace Booking.Client
     {
         ServiceClient myService = new ServiceClient();
 
+
         public MainFrame()
         {
             InitializeComponent();
@@ -23,8 +24,8 @@ namespace Booking.Client
 
         public void VisPassager()
         {
-            City c = myService.GetCity(9000);
-            listBoxPassengers.Items.Add(c.ToString());
+           // City c = myService.GetCity(9000);
+           // listBoxPassengers.Items.Add(c.ToString());
         }
 
         public void VisPassagers()
@@ -105,14 +106,21 @@ namespace Booking.Client
                 comboBoxDestination_ListOfPlanes.Items.Add(item.ToString());
             }
         }
-
         private void DestinationCreate_Click(object sender, EventArgs e)
         {
-            Destination d = new Destination
-            {
-                LocationName = CreateRoute_EndDestination.Text.ToString()
-            };
-            myService.CreateDestination(d);
+            Destination dc = new Destination();
+
+            string meldmig = CreateRoute_StartDestination.Text;
+            dc.Equals(meldmig);
+
+            myService.CreateDestination(dc);
+            
+            
+
+            // City c = myService.GetCity(9000);
+            // listBoxPassengers.Items.Add(c.ToString());
+
+
         }
 
         private void RefreshDestinations_Click(object sender, EventArgs e)
@@ -127,6 +135,16 @@ namespace Booking.Client
         private void CreateRoute_monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
         {
             textBoxDateTime.Text = CreateRoute_monthCalendar.SelectionRange.Start.ToShortDateString();
+        }
+
+        private void tabCreateRoute_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CreateRoute_StartDestination_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

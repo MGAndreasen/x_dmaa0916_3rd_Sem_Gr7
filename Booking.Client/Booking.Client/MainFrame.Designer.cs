@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabCreateRoute = new System.Windows.Forms.TabPage();
+            this.textBoxDateTime = new System.Windows.Forms.TextBox();
             this.RefreshDestinations = new System.Windows.Forms.Button();
             this.CreateRoute_monthCalendar = new System.Windows.Forms.MonthCalendar();
             this.listBoxPlanes = new System.Windows.Forms.ListBox();
@@ -54,7 +55,6 @@
             this.listBoxPassengers = new System.Windows.Forms.ListBox();
             this.label8 = new System.Windows.Forms.Label();
             this.comboBoxPassengers_Planes = new System.Windows.Forms.ComboBox();
-            this.textBoxDateTime = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabCreateRoute.SuspendLayout();
             this.tabPageSeats.SuspendLayout();
@@ -86,13 +86,22 @@
             this.tabCreateRoute.Controls.Add(this.label1);
             this.tabCreateRoute.Controls.Add(this.CreateRoute_EndDestination);
             this.tabCreateRoute.Controls.Add(this.CreateRoute_StartDestination);
-            this.tabCreateRoute.Location = new System.Drawing.Point(4, 29);
+            this.tabCreateRoute.Location = new System.Drawing.Point(4, 25);
             this.tabCreateRoute.Name = "tabCreateRoute";
             this.tabCreateRoute.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCreateRoute.Size = new System.Drawing.Size(1078, 674);
+            this.tabCreateRoute.Size = new System.Drawing.Size(1078, 678);
             this.tabCreateRoute.TabIndex = 0;
             this.tabCreateRoute.Text = "Plane Destination";
             this.tabCreateRoute.UseVisualStyleBackColor = true;
+            this.tabCreateRoute.Click += new System.EventHandler(this.tabCreateRoute_Click);
+            // 
+            // textBoxDateTime
+            // 
+            this.textBoxDateTime.Location = new System.Drawing.Point(319, 321);
+            this.textBoxDateTime.Name = "textBoxDateTime";
+            this.textBoxDateTime.ReadOnly = true;
+            this.textBoxDateTime.Size = new System.Drawing.Size(143, 22);
+            this.textBoxDateTime.TabIndex = 13;
             // 
             // RefreshDestinations
             // 
@@ -114,10 +123,10 @@
             // listBoxPlanes
             // 
             this.listBoxPlanes.FormattingEnabled = true;
-            this.listBoxPlanes.ItemHeight = 20;
+            this.listBoxPlanes.ItemHeight = 16;
             this.listBoxPlanes.Location = new System.Drawing.Point(598, 57);
             this.listBoxPlanes.Name = "listBoxPlanes";
-            this.listBoxPlanes.Size = new System.Drawing.Size(468, 604);
+            this.listBoxPlanes.Size = new System.Drawing.Size(468, 596);
             this.listBoxPlanes.TabIndex = 10;
             // 
             // comboBoxDestination_ListOfPlanes
@@ -125,7 +134,7 @@
             this.comboBoxDestination_ListOfPlanes.FormattingEnabled = true;
             this.comboBoxDestination_ListOfPlanes.Location = new System.Drawing.Point(67, 261);
             this.comboBoxDestination_ListOfPlanes.Name = "comboBoxDestination_ListOfPlanes";
-            this.comboBoxDestination_ListOfPlanes.Size = new System.Drawing.Size(124, 28);
+            this.comboBoxDestination_ListOfPlanes.Size = new System.Drawing.Size(124, 24);
             this.comboBoxDestination_ListOfPlanes.TabIndex = 9;
             this.comboBoxDestination_ListOfPlanes.SelectedIndexChanged += new System.EventHandler(this.ComboBoxDestination_ListOfPlanes_SelectedIndexChanged);
             // 
@@ -134,7 +143,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(752, 14);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(184, 20);
+            this.label4.Size = new System.Drawing.Size(165, 17);
             this.label4.TabIndex = 8;
             this.label4.Text = "List Of All Plane Routes: ";
             // 
@@ -153,7 +162,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(64, 241);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 20);
+            this.label3.Size = new System.Drawing.Size(100, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "Select A Plane";
             // 
@@ -162,7 +171,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(64, 135);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 20);
+            this.label2.Size = new System.Drawing.Size(108, 17);
             this.label2.TabIndex = 4;
             this.label2.Text = "End Destination";
             // 
@@ -171,7 +180,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(64, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 20);
+            this.label1.Size = new System.Drawing.Size(117, 17);
             this.label1.TabIndex = 3;
             this.label1.Text = "Start Destination ";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -180,15 +189,16 @@
             // 
             this.CreateRoute_EndDestination.Location = new System.Drawing.Point(67, 155);
             this.CreateRoute_EndDestination.Name = "CreateRoute_EndDestination";
-            this.CreateRoute_EndDestination.Size = new System.Drawing.Size(124, 26);
+            this.CreateRoute_EndDestination.Size = new System.Drawing.Size(124, 22);
             this.CreateRoute_EndDestination.TabIndex = 1;
             // 
             // CreateRoute_StartDestination
             // 
             this.CreateRoute_StartDestination.Location = new System.Drawing.Point(67, 57);
             this.CreateRoute_StartDestination.Name = "CreateRoute_StartDestination";
-            this.CreateRoute_StartDestination.Size = new System.Drawing.Size(124, 26);
+            this.CreateRoute_StartDestination.Size = new System.Drawing.Size(124, 22);
             this.CreateRoute_StartDestination.TabIndex = 0;
+            this.CreateRoute_StartDestination.TextChanged += new System.EventHandler(this.CreateRoute_StartDestination_TextChanged);
             // 
             // tabPageSeats
             // 
@@ -200,10 +210,10 @@
             this.tabPageSeats.Controls.Add(this.button1);
             this.tabPageSeats.Controls.Add(this.label5);
             this.tabPageSeats.Controls.Add(this.comboBoxSeats_ListOfPlanes);
-            this.tabPageSeats.Location = new System.Drawing.Point(4, 29);
+            this.tabPageSeats.Location = new System.Drawing.Point(4, 25);
             this.tabPageSeats.Name = "tabPageSeats";
             this.tabPageSeats.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSeats.Size = new System.Drawing.Size(1078, 674);
+            this.tabPageSeats.Size = new System.Drawing.Size(1078, 678);
             this.tabPageSeats.TabIndex = 1;
             this.tabPageSeats.Text = "Seats";
             this.tabPageSeats.UseVisualStyleBackColor = true;
@@ -214,7 +224,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(165, 201);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(21, 20);
+            this.label7.Size = new System.Drawing.Size(19, 17);
             this.label7.TabIndex = 8;
             this.label7.Text = "id";
             // 
@@ -223,7 +233,7 @@
             this.textBox4.Location = new System.Drawing.Point(128, 240);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(100, 26);
+            this.textBox4.Size = new System.Drawing.Size(100, 22);
             this.textBox4.TabIndex = 7;
             // 
             // radioButton2
@@ -231,7 +241,7 @@
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(25, 281);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(89, 24);
+            this.radioButton2.Size = new System.Drawing.Size(77, 21);
             this.radioButton2.TabIndex = 6;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Booked";
@@ -242,7 +252,7 @@
             this.radioButton1.AutoSize = true;
             this.radioButton1.Location = new System.Drawing.Point(25, 242);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(97, 24);
+            this.radioButton1.Size = new System.Drawing.Size(86, 21);
             this.radioButton1.TabIndex = 5;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Available";
@@ -253,7 +263,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(33, 201);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(81, 20);
+            this.label6.Size = new System.Drawing.Size(74, 17);
             this.label6.TabIndex = 4;
             this.label6.Text = "Availability";
             this.label6.Click += new System.EventHandler(this.label6_Click);
@@ -272,7 +282,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(21, 39);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(110, 20);
+            this.label5.Size = new System.Drawing.Size(98, 17);
             this.label5.TabIndex = 1;
             this.label5.Text = "Select a plane";
             // 
@@ -281,7 +291,7 @@
             this.comboBoxSeats_ListOfPlanes.FormattingEnabled = true;
             this.comboBoxSeats_ListOfPlanes.Location = new System.Drawing.Point(25, 62);
             this.comboBoxSeats_ListOfPlanes.Name = "comboBoxSeats_ListOfPlanes";
-            this.comboBoxSeats_ListOfPlanes.Size = new System.Drawing.Size(248, 28);
+            this.comboBoxSeats_ListOfPlanes.Size = new System.Drawing.Size(248, 24);
             this.comboBoxSeats_ListOfPlanes.TabIndex = 0;
             // 
             // tabPagePassengers
@@ -289,10 +299,10 @@
             this.tabPagePassengers.Controls.Add(this.listBoxPassengers);
             this.tabPagePassengers.Controls.Add(this.label8);
             this.tabPagePassengers.Controls.Add(this.comboBoxPassengers_Planes);
-            this.tabPagePassengers.Location = new System.Drawing.Point(4, 29);
+            this.tabPagePassengers.Location = new System.Drawing.Point(4, 25);
             this.tabPagePassengers.Name = "tabPagePassengers";
             this.tabPagePassengers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePassengers.Size = new System.Drawing.Size(1078, 674);
+            this.tabPagePassengers.Size = new System.Drawing.Size(1078, 678);
             this.tabPagePassengers.TabIndex = 2;
             this.tabPagePassengers.Text = "Passengers";
             this.tabPagePassengers.UseVisualStyleBackColor = true;
@@ -300,10 +310,10 @@
             // listBoxPassengers
             // 
             this.listBoxPassengers.FormattingEnabled = true;
-            this.listBoxPassengers.ItemHeight = 20;
+            this.listBoxPassengers.ItemHeight = 16;
             this.listBoxPassengers.Location = new System.Drawing.Point(31, 116);
             this.listBoxPassengers.Name = "listBoxPassengers";
-            this.listBoxPassengers.Size = new System.Drawing.Size(324, 544);
+            this.listBoxPassengers.Size = new System.Drawing.Size(324, 532);
             this.listBoxPassengers.TabIndex = 2;
             // 
             // label8
@@ -311,7 +321,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(27, 36);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(110, 20);
+            this.label8.Size = new System.Drawing.Size(98, 17);
             this.label8.TabIndex = 1;
             this.label8.Text = "Select a plane";
             // 
@@ -320,17 +330,9 @@
             this.comboBoxPassengers_Planes.FormattingEnabled = true;
             this.comboBoxPassengers_Planes.Location = new System.Drawing.Point(31, 59);
             this.comboBoxPassengers_Planes.Name = "comboBoxPassengers_Planes";
-            this.comboBoxPassengers_Planes.Size = new System.Drawing.Size(186, 28);
+            this.comboBoxPassengers_Planes.Size = new System.Drawing.Size(186, 24);
             this.comboBoxPassengers_Planes.TabIndex = 0;
             this.comboBoxPassengers_Planes.SelectedIndexChanged += new System.EventHandler(this.ComboBoxPassengers_SelectedIndexChanged);
-            // 
-            // textBoxDateTime
-            // 
-            this.textBoxDateTime.Location = new System.Drawing.Point(319, 321);
-            this.textBoxDateTime.Name = "textBoxDateTime";
-            this.textBoxDateTime.Size = new System.Drawing.Size(143, 26);
-            this.textBoxDateTime.TabIndex = 13;
-            this.textBoxDateTime.ReadOnly = true;
             // 
             // MainFrame
             // 
