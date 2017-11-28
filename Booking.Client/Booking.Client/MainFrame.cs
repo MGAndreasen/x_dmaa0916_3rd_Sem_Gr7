@@ -18,19 +18,20 @@ namespace Booking.Client
         public MainFrame()
         {
             InitializeComponent();
+            VisPassager();
         }
 
         public void VisPassager()
         {
-            Passenger p = myService.GetPassenger(1);
-            listBoxPlanes.Items.Add(p.ToString());
+            City c = myService.GetCity(9000);
+            listBoxPassengers.Items.Add(c.ToString());
         }
 
         public void VisPassagers()
         {
-          //  ServiceClient client = new ServiceClient();
-           // Passenger p = client.GetPassenger(1);
-            // listView1.Items.Add(p.ToString());
+            //ServiceClient client = new ServiceClient();
+            //Passenger p = client.GetPassenger(1);
+            //listView1.Items.Add(p.ToString());
         }
 
         private void MainFrame_Load(object sender, EventArgs e)
@@ -75,7 +76,7 @@ namespace Booking.Client
 
         private void ComboBoxPassengers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<Plane> list = myService.getAllPlanes();
+            List<Plane> list = myService.GetAllPlanes();
             foreach (var item in list)
             {
                 comboBoxPassengers_Planes.Items.Add(item.ToString());
@@ -84,7 +85,7 @@ namespace Booking.Client
 
         private void ComboBoxSeat_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<Plane> list = myService.getAllPlanes();
+            List<Plane> list = myService.GetAllPlanes();
             foreach (var item in list)
             {
                 comboBoxSeats_ListOfPlanes.Items.Add(item.ToString());
@@ -98,7 +99,7 @@ namespace Booking.Client
 
         private void ComboBoxDestination_ListOfPlanes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<Plane> list = myService.getAllPlanes();
+            List<Plane> list = myService.GetAllPlanes();
             foreach (var item in list)
             {
                 comboBoxDestination_ListOfPlanes.Items.Add(item.ToString());
@@ -116,11 +117,11 @@ namespace Booking.Client
 
         private void RefreshDestinations_Click(object sender, EventArgs e)
         {
-            //List<Destination> list = myService.GetAllDestinations();
-            //foreach (var item in list)
-            //{
-            //    listBoxPlanes.Items.Add(item.ToString());
-            //}
+            List<Destination> list = myService.GetAllDestinations();
+            foreach (var item in list)
+            {
+                listBoxPlanes.Items.Add(item.ToString());
+            }
         }
 
         private void CreateRoute_monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
