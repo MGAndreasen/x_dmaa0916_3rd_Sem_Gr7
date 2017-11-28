@@ -15,13 +15,13 @@
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
     <UseSerializerForFaults>true</UseSerializerForFaults>
-    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
     <ReferencedAssemblies />
     <ReferencedDataContractTypes />
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:55078/Service.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://127.0.0.1:6868/mex" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="Service.disco" MetadataType="Disco" ID="af777713-b25e-447e-b09b-7430e44d59e6" SourceId="1" SourceUrl="http://localhost:55078/Service.svc?disco" />
