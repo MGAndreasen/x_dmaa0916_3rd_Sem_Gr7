@@ -11,7 +11,7 @@ namespace Booking.Test
         [TestMethod]
         public void TestMethod1()
         {
-            Booking.Models.Ticket c = new Models.Ticket();
+            Booking.Models.Ticket c = new Models.Ticket(1, new Passenger());
             Booking.DB.DbTicket dbT = new DB.DbTicket();
 
             Assert.AreNotEqual(c, dbT.Get(1));

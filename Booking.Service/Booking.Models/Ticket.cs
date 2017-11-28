@@ -10,6 +10,12 @@ namespace Booking.Models
     {
         public int Id { get; set; }
         public Passenger Passenger { get; set; }
-        
+
+        // Constructors
+        public Ticket(int id, Passenger p)
+        {
+            Id = id;
+            Passenger = p;
+        }
     }
 }
