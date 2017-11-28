@@ -1,25 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Booking.Models
 {
+    [DataContract]
     public class City
     {
-        public int Zipcode { get; set; }
-        public string CityName { get; set; }
-
         // Constructors
+
+        public City()
+        {
+        }
+
         public City(int zipcode, string name)
         {
             Zipcode = zipcode;
             CityName = name;
         }
 
-        public City()
-        {
-        }
+        // Properties
+
+        [DataMember]
+        public int Zipcode { get; set; }
+
+        [DataMember]
+        public string CityName { get; set; }
     }
 }
