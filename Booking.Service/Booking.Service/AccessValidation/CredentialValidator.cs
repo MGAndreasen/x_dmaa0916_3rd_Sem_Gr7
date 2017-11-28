@@ -11,10 +11,10 @@ namespace Booking.Service.AccessValidation
 {
     public class CredentialValidator : UserNamePasswordValidator
     {
-        private UserController UserCtrl = new UserController();
+        private UserCtrl uCtrl = new UserCtrl();
         public override void Validate(string userName, string password)
         {
-            var foundUser = UserCtrl.GetUser(userName);
+            var foundUser = uCtrl.GetUser(userName);
             if (foundUser != null && foundUser.Email == userName && foundUser.Password == password)
             {
                 //email pw are valid
