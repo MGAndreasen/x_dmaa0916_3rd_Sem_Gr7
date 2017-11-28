@@ -26,5 +26,11 @@ namespace Booking.Web.Controllers
 
             return View();
         }
+        public ActionResult Plane()
+        {
+            ViewBag.Message = "Book a flight";
+
+            return View();
+        }
     }
 }
