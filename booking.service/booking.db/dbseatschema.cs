@@ -28,8 +28,8 @@ namespace Booking.DB
 
                     cmd.ExecuteNonQuery();
 
-                    scope.Complete();
                 }
+                scope.Complete();
             }
 
         }
@@ -46,8 +46,9 @@ namespace Booking.DB
                     SqlDataReader rdr = cmd.ExecuteReader();
                     return new SeatSchema
                     {
-                        Row = rdr.GetInt32(0),
-                        Layout = rdr.GetString(1),
+                        Id = rdr.GetInt32(0),
+                        Row = rdr.GetInt32(1),
+                        Layout = rdr.GetString(2),
                     };
                 }
 
@@ -63,14 +64,15 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_SeatSchema (Row, Layout) VALUES (@Row, @Layout)", con);
-                    cmd.Parameters.Add("Row", SqlDbType.Int).Value = obj.Row;
-                    cmd.Parameters.Add("Layout", SqlDbType.VarChar).Value = obj.Layout;
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_SeatSchema (Id, Row, Layout) VALUES (@Id, @Row, @Layout)", con);
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                    cmd.Parameters.Add("@Row", SqlDbType.Int).Value = obj.Row;
+                    cmd.Parameters.Add("@Layout", SqlDbType.VarChar).Value = obj.Layout;
 
                     cmd.ExecuteNonQuery();
 
-                    scope.Complete();
                 }
+                scope.Complete();
             }
         }
 
@@ -82,15 +84,16 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_SeatSchema SET Row=@Row, Layout=@Layout", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_SeatSchema SET Id=@Id Row=@Row, Layout=@Layout", con);
 
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Row;
                     cmd.Parameters.Add("@Row", SqlDbType.Int).Value = obj.Row;
                     cmd.Parameters.Add("@Layout", SqlDbType.Int).Value = obj.Layout;
 
 
                     cmd.ExecuteNonQuery();
-                    scope.Complete();
                 }
+                scope.Complete();
             }
         }
     }
