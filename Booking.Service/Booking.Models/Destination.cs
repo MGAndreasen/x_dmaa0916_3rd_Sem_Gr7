@@ -9,6 +9,7 @@ namespace Booking.Models
     public class Destination
     {
         public int Id { get; set; }
-        public string LocationName { get; set; }
+        public Plane Plane { get; set; }
+        public string NameDestination { get; set; }
     }
 }

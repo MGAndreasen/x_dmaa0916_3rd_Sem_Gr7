@@ -50,8 +50,8 @@ namespace Booking.DB
                     return new Bookings
                     {
                         Id = rdr.GetInt32(0),
-                        //StartDestination = rdr.(1),
-                        //EndDestination = rdr.GetString(2),
+                        StartDestination = rdr.(1),
+                        EndDestination = rdr.GetString(2),
                         Date = rdr.GetDateTime(3),
                         TotalPrice = rdr.GetDouble(4),
                     };

@@ -47,7 +47,7 @@ namespace Booking.DB
                 return new Destination
                 {
                     Id = reader.GetInt32(0),
-                    LocationName = reader.GetString(1)
+                    NameDestination = reader.GetString(1)
                 };
             }
         }
@@ -62,7 +62,7 @@ namespace Booking.DB
                     con.Open();
                     SqlCommand cmd = new SqlCommand("INSERT INTO bdo.Booking_Destination (Id, NameDestination) VALUES (@Id, @Name)", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
-                    cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = obj.LocationName;
+                    cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = obj.NameDestination;
                    
                     {
                         //tilføj til model.
@@ -82,7 +82,7 @@ namespace Booking.DB
                     SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Destination SET Id=@Id, NameDestination=@Name", con);
 
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
-                    cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = obj.LocationName;
+                    cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = obj.NameDestination;
 
 
                     cmd.ExecuteNonQuery();
@@ -108,7 +108,7 @@ namespace Booking.DB
                         Destination d = new Destination
                         {
                             Id = (int)rdr["Id"],
-                            LocationName = (String)rdr["Type"],
+                            NameDestination = (String)rdr["Type"],
 
                         };
                         destinations.Add(d);

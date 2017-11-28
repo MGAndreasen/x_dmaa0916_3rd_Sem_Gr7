@@ -15,11 +15,6 @@ namespace Booking.Models
         public long PassportId { get; set; }
         public bool Luggage { get; set; }
         public Seat SeatNumber { get; set; }
-
-        public override string ToString()
-        {
-            return "Id: " + Id.ToString() + "   Name: " + FirstName.ToString() + " " + LastName.ToString() + "   CPR: " + CPR.ToString() +
-                "   Passport ID: " + PassportId.ToString() + "   Seat: " + SeatNumber.ToString() + "   Luggage: " + Luggage.ToString();
-        }
+        public Bookings Booking { get; set; }
     }
 }

@@ -9,11 +9,11 @@ namespace Booking.Models
     public class Bookings
     {
         public int Id { get; set; }
+        public Payment Payment { get; set; }
+        public Customer Customer { get; set; }
         public Destination StartDestination { get; set; }
         public Destination EndDestination { get; set; }
         public DateTime Date { get; set; }
-        public double TotalPrice { get; set; }
-
-
+        public int TotalPrice { get; set; }
     }
 }
