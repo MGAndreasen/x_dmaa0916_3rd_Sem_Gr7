@@ -8,6 +8,10 @@ namespace Booking.Models
 {
     public class Row
     {
+        public Row()
+        {
+        }
+
         public int Id { get; set; }
         public SeatSchema SeatNumber { get; set; }
         public double Price { get; set; }

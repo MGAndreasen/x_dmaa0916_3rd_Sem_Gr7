@@ -8,6 +8,10 @@ namespace Booking.Models
 {
     public class SeatSchema
     {
+        public SeatSchema()
+        {
+        }
+
         public int Id { get; set; }
         public int Row { get; set; }
         public string Layout { get; set; }

@@ -17,5 +17,9 @@ namespace Booking.Models
             Id = id;
             Passenger = p;
         }
+
+        public Ticket()
+        {
+        }
     }
 }

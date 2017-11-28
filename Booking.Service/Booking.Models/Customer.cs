@@ -8,6 +8,10 @@ namespace Booking.Models
 {
     public class Customer
     {
+        public Customer()
+        {
+        }
+
         public int Id { get; set; }
         public City City { get; set; }
         public string FirstName { get; set; }

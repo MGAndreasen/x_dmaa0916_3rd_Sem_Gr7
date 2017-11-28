@@ -8,6 +8,10 @@ namespace Booking.Models
 {
     public class Seat
     {
+        public Seat()
+        {
+        }
+
         public int Id { get; set; }
         public int Number { get; set; }
         public bool Available { get; set; }
