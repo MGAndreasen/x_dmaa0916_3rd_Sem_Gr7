@@ -11,13 +11,13 @@ namespace Booking.Service.AccessValidation
 {
     public class RoleValidator : ServiceAuthorizationManager
     {
-        private UserController UserCtrl = new UserController();
+        private UserCtrl uCtrl = new UserCtrl();
         protected override bool CheckAccessCore(OperationContext operationContext)
         {
             //Get the current pipeline user context
             var identity = operationContext.ServiceSecurityContext.PrimaryIdentity;
             //simulate that we get a user and all his roles from the database
-            var userFound = UserCtrl.GetUser(identity.Name);
+            var userFound = uCtrl.GetUser(identity.Name);
             string[] userRolesFound = userFound.Roles.Select(x => x.Name).ToArray();
             if (userFound == null)
             {

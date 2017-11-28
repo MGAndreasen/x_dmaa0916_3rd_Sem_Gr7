@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Booking.Models;
+using Booking.DB;
 
 namespace Booking.Test
 {

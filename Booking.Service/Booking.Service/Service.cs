@@ -14,7 +14,7 @@ namespace Booking.Service
     public class Service : IService
     {
         // Nix pille
-        public UserController UserController { get; set; }
+        public UserCtrl uCtrl { get; set; }
 
         private CustomerCtrl customerCtrl = new CustomerCtrl();
         private BookingCtrl bookingCtrl = new BookingCtrl();
@@ -30,13 +30,13 @@ namespace Booking.Service
 
         public Service()
         {
-            UserController = new UserController();
+            uCtrl = new UserCtrl();
         }
 
         [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         public string GetUserData(int value)
         {
-            var found = UserController.GetUser(1337);
+            var found = uCtrl.GetUser(1);
             return string.Format("Pssst, the data you requested back was: {0}, hi {1}, you are allowed to know!", value, OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.Name);
         }
 
