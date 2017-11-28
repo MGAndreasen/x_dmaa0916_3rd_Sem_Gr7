@@ -57,7 +57,7 @@ namespace Booking.DB
 
                     return new City
                     (
-                        reader.GetInt16(0),
+                        reader.GetInt32(0),
                         reader.GetString(1)
                     );
                 }
