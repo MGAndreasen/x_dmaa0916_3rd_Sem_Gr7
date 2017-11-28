@@ -7,6 +7,8 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
+namespace Booking.Service.AccessValidation
+{
     public class RoleValidator : ServiceAuthorizationManager
     {
         private UserController UserCtrl = new UserController();
@@ -32,3 +34,4 @@ using System.Threading.Tasks;
             }
         }
     }
+}

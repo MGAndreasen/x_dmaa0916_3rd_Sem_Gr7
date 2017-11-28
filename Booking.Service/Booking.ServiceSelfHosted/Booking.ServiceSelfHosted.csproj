@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="MyCert.pfx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Booking.Service\Booking.Service.csproj">
