@@ -122,6 +122,11 @@ namespace Booking.Service
             customerCtrl.Delete(id);
         }
 
+        public IEnumerable<Customer> GetAllCustomers()
+        {
+            return customerCtrl.GetAllCustomers();
+        }
+
         #endregion
 
         #region Booking
@@ -190,6 +195,12 @@ namespace Booking.Service
         {
             destinationCtrl.Delete(id);
         }
+
+        public IEnumerable<Destination> GetAllDestinations()
+        {
+            return destinationCtrl.GetAllDestinations();
+        }
+
         #endregion
 
         #region Passenger
@@ -211,6 +222,11 @@ namespace Booking.Service
         public void DeletePassenger(int id)
         {
             passengerCtrl.Delete(id);
+        }
+
+        public IEnumerable<Passenger> GetAllPassengers()
+        {
+            return passengerCtrl.GetAllPassengers();
         }
 
         #endregion
@@ -258,9 +274,9 @@ namespace Booking.Service
             planeCtrl.Delete(id);
         }
 
-        public IEnumerable<Plane> getAllPlanes()
+        public IEnumerable<Plane> GetAllPlanes()
         {
-            return planeCtrl.getAllPlanes();
+            return planeCtrl.GetAllPlanes();
         }
         #endregion
 

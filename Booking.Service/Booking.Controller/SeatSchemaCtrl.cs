@@ -10,32 +10,24 @@ namespace Booking.Controller
 {
     public class SeatSchemaCtrl : ICRUD<SeatSchema>
     {
+        private DbSeatSchema dbss = new DbSeatSchema();
         public void Create(SeatSchema obj)
         {
-            obj = new SeatSchema();
-            DbSeatSchema dbss = new DbSeatSchema();
-
             dbss.Create(obj);
         }
 
         public void Delete(int id)
         {
-            DbSeatSchema dbss = new DbSeatSchema();
-
             dbss.Delete(id);
         }
 
         public SeatSchema Get(int id)
         {
-            DbSeatSchema dbss = new DbSeatSchema();
-            SeatSchema ss = dbss.Get(id);
-
-            return ss; 
+            return dbss.Get(id);
         }
 
         public void Update(SeatSchema obj)
         {
-            DbSeatSchema dbss = new DbSeatSchema();
             dbss.Update(obj);
         }
     }
