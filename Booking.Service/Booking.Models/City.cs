@@ -10,5 +10,12 @@ namespace Booking.Models
     {
         public int Zipcode { get; set; }
         public string CityName { get; set; }
+
+        // Constructors
+        public City(int zipcode, string name)
+        {
+            Zipcode = zipcode;
+            CityName = name;
+        }
     }
 }

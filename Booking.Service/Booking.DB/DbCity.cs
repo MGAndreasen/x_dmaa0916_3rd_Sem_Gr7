@@ -51,11 +51,7 @@ namespace Booking.DB
                 {
                     reader.Read();
 
-                    return new City
-                    {
-                        Zipcode = (int)reader["ZipCode"],
-                        CityName = (string)reader["Name"]
-                    };
+                    return new City((int)reader["ZipCode"], (string)reader["Name"]);
                         
                 }
 
