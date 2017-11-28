@@ -9,9 +9,8 @@ namespace Booking.DB
 {
     public class DbUser
     {
-        public User Get(int id)
+        public Booking.Models.User Get(int id)
         {
-
             User u = null;
 
             if (id == 1)
@@ -32,7 +31,7 @@ namespace Booking.DB
             return u;
         }
 
-        public User Get(string email)
+        public Booking.Models.User Get(string email)
         {
             User u = null;
 
@@ -52,7 +51,6 @@ namespace Booking.DB
             }
 
             return u;
-            
         }
     }
 }
