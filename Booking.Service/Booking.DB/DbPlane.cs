@@ -37,6 +37,7 @@ namespace Booking.DB
 
         public Plane Get(int id)
         {
+            DbSeatSchema dbs = new DbSeatSchema();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
  //               try
                 {
@@ -48,7 +49,8 @@ namespace Booking.DB
                         return new Plane
                         {
                             Id = rdr.GetInt32(0),
-                            Type = rdr.GetString(1)
+                            SeatSchema = dbs.Get((int)rdr.GetInt32(1)),
+                            Type = rdr.GetString(2)
                         };
 
                 }
@@ -66,24 +68,24 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Plane (@Id, @Type", con);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Plane (@Id, @SeatSchema_Id, @Type)", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                    cmd.Parameters.Add("@SeatSchema_Id", SqlDbType.Int).Value = obj.SeatSchema;
                     cmd.Parameters.Add("@Type", SqlDbType.NVarChar).Value = obj.Type;
                     cmd.ExecuteNonQuery();
-                    {
-                        //tilføj til model.
-                    }
                 }
+                scope.Complete();
             }
         }
 
         public void Update(int id)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(); // <-------------------------- // <-------------------------- // <--------------------------// <--------------------------
         }
 
         public IEnumerable<Plane> GetAll()
         {
+            DbSeatSchema dbs = new DbSeatSchema();
             List<Plane> planes = new List<Plane>();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
@@ -99,6 +101,7 @@ namespace Booking.DB
                         Plane p = new Plane
                         {
                             Id = (int)rdr["Id"],
+                            SeatSchema = dbs.Get((int)rdr["SeatSchema_Id"]),
                             Type = (String)rdr["Type"],
                             
 

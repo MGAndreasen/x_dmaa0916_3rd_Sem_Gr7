@@ -36,7 +36,7 @@ namespace Booking.DB
 
         public Seat Get(int id)
         {
-            {
+            DbRow dbRow = new DbRow();
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
@@ -47,12 +47,11 @@ namespace Booking.DB
                     return new Seat
                     {
                         Id = rdr.GetInt32(0),
-                        Number = rdr.GetInt32(1),
-                        Availability = rdr.GetBoolean(2),
+                        Row = dbRow.Get(rdr.GetInt32(1)),
+                        Number = rdr.GetInt32(2),
+                        Available = rdr.GetBoolean(3),
                     };
                 }
-
-            }
         }
 
         public void Create(Seat obj)
@@ -63,15 +62,16 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Seat (id, Number, Availability) VALUES (@id, @Number, @Availability)", con);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Seat (id, Row_Id, Number, Availability) VALUES (@id, @Number, @Availability)", con);
                     cmd.Parameters.Add("id", SqlDbType.Int).Value = obj.Id;
+                    cmd.Parameters.Add("Row_Id", SqlDbType.Int).Value = obj.Row;
                     cmd.Parameters.Add("Number", SqlDbType.Int).Value = obj.Number;
-                    cmd.Parameters.Add("Availability", SqlDbType.Bit).Value = obj.Availability;
+                    cmd.Parameters.Add("Availability", SqlDbType.Bit).Value = obj.Available;
 
                     cmd.ExecuteNonQuery();
-
-                    scope.Complete();
+ 
                 }
+                scope.Complete();
             }
         }
         public void Update(Seat obj)
@@ -82,18 +82,17 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Id=@Id, Number=@Number, Availability=@Availability", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Id=@Id, Row_Id=@Row Number=@Number, Availability=@Availability", con);
 
                     cmd.Parameters.Add("@id", SqlDbType.Int).Value = obj.Id;
+                    cmd.Parameters.Add("@Row", SqlDbType.Int).Value = obj.Row;
                     cmd.Parameters.Add("@Number", SqlDbType.Int).Value = obj.Number;
-                    cmd.Parameters.Add("@Availability", SqlDbType.Bit).Value = obj.Availability;
+                    cmd.Parameters.Add("@Availability", SqlDbType.Bit).Value = obj.Available;
 
-                    cmd.ExecuteNonQuery();
-                    scope.Complete();
+                    cmd.ExecuteNonQuery();       
                 }
+                scope.Complete();
             }
-
         }
     }
-
 }

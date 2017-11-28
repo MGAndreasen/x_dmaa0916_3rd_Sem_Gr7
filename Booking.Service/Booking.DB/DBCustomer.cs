@@ -32,10 +32,11 @@ namespace Booking.DB
 
         public Customer Get(int id)
         {
+            DbCity dbc = new DbCity();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT s.Id, s.Cpr, s.PhoneNo, s.Zipcode, s.FirstName, s.LastName, s.Email, s.Address, s.Password, s.Comfirmed FROM dbo.Booking_Customer AS s WHERE Id = @id", con);
+                SqlCommand cmd = new SqlCommand("SELECT s.Id, s.Cpr, s.PhoneNo, s.City_Id, s.FirstName, s.LastName, s.Email, s.Address, s.Password, s.Comfirmed FROM dbo.Booking_Customer AS s WHERE Id = @id", con);
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                 SqlDataReader reader = cmd.ExecuteReader();
                 return new Customer
@@ -43,7 +44,7 @@ namespace Booking.DB
                     Id = reader.GetInt32(0),
                     CPR = reader.GetInt32(1),
                     PhoneNumber = reader.GetInt32(2),
-                    //zipcode
+                    City = dbc.Get(reader.GetInt32(3)),
                     FirstName = reader.GetString(4),
                     LastName = reader.GetString(5),
                     Email = reader.GetString(6),
@@ -63,11 +64,11 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Customer (Id, Cpr, PhoneNo, Zipcode, FirstName, LastName, Email, Address, Password, Comfirmed) VALUES (@Id, @Cpr, @PhoneNo, @Zipcode, @FirstName, @LastName, @Email. @Address, @Password, @Comfirmed)", con);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Customer (Id, Cpr, PhoneNo, City_Id, FirstName, LastName, Email, Address, Password, Comfirmed) VALUES (@Id, @Cpr, @PhoneNo, @City, @FirstName, @LastName, @Email. @Address, @Password, @Comfirmed)", con);
                     cmd.Parameters.Add("Id", SqlDbType.Int).Value = obj.Id;
                     cmd.Parameters.Add("Cpr", SqlDbType.BigInt).Value = obj.CPR;
                     cmd.Parameters.Add("PhoneNo", SqlDbType.BigInt).Value = obj.PhoneNumber;
-                    cmd.Parameters.Add("Zipcode", SqlDbType.SmallInt).Value = obj.City;
+                    cmd.Parameters.Add("City", SqlDbType.Int).Value = obj.City;
                     cmd.Parameters.Add("FirstName", SqlDbType.NVarChar).Value = obj.FirstName;
                     cmd.Parameters.Add("LastName", SqlDbType.NVarChar).Value = obj.LastName;
                     cmd.Parameters.Add("Email", SqlDbType.NVarChar).Value = obj.Email;
@@ -90,7 +91,7 @@ namespace Booking.DB
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
-                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Customer SET Cpr=@cpr, PhoneNo=@pho, Zipcode=@city, FirstName=@fn, LastName=@ln, Email=@em, Address=@a, Password=@p, Confirmed=@con WHERE ID=@id", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Customer SET Cpr=@cpr, PhoneNo=@pho, City_Id=@city, FirstName=@fn, LastName=@ln, Email=@em, Address=@a, Password=@p, Confirmed=@con WHERE ID=@id", con);
                     cmd.Parameters.AddWithValue("id", obj.Id);
                     cmd.Parameters.AddWithValue("cpr", obj.CPR);
                     cmd.Parameters.AddWithValue("pho", obj.PhoneNumber);
