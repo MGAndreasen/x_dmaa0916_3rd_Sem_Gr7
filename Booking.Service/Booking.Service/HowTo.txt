@@ -14,4 +14,4 @@ Export-PfxCertificate -cert cert:\localMachine\my\1B969C7CAC2B069A84049E3CAB36B1
 // Registrer ssl cert på maskinen via:
 Netsh
 1) http add sslcert ipport=127.0.0.1:6969 certhash=1B969C7CAC2B069A84049E3CAB36B1A4C20D1BE3 appid={b43f575d-4526-4485-ab75-16ce22108c9a} clientcertnegotiation=enable
-2) http add sslcert ipport=127.0.0.1:6868 appid={b43f575d-4526-4485-ab75-16ce22108c9a} certhash=1B969C7CAC2B069A84049E3CAB36B1A4C20D1BE3 clientcertnegotiation=enable
+2) http add sslcert ipport=127.0.0.1:6868 certhash=1B969C7CAC2B069A84049E3CAB36B1A4C20D1BE3 appid={b43f575d-4526-4485-ab75-16ce22108c9a} clientcertnegotiation=enable
