@@ -38,7 +38,7 @@ namespace Booking.Controller
             DbPlane DBP = new DbPlane();
             DBP.Update(obj);
         }
-        public IEnumerable<Plane> getAllPlanes()
+        public IEnumerable<Plane> GetAllPlanes()
         {
             DbPlane DBP = new DbPlane();
 

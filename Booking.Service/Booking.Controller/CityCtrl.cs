@@ -10,31 +10,24 @@ namespace Booking.Controller
 {
     public class CityCtrl : ICRUD<City>
     {
+        private DbCity DBCI = new DbCity();
         public void Create(City obj)
         {
-            obj = new City();
-            DbCity DBCI = new DbCity();
-
             DBCI.Create(obj); 
         }
 
         public void Delete(int id)
         {
-            DbCity DBCI = new DbCity();
             DBCI.Delete(id);
         }
 
         public City Get(int id)
         {
-            DbCity DBCI = new DbCity();
-            City ci = DBCI.Get(id);
-
-            return ci; 
+            return DBCI.Get(id);
         }
 
         public void Update(City obj)
         {
-            DbCity DBCI = new DbCity();
             DBCI.Update(obj);
         }
     }

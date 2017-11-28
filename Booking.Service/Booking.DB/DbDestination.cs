@@ -110,7 +110,6 @@ namespace Booking.DB
                             Id = (int)rdr["Id"],
                             LocationName = (String)rdr["Type"],
 
-
                         };
                         destinations.Add(d);
                     }

@@ -11,10 +11,8 @@ namespace Booking.Controller
     public class SeatCtrl : ICRUD<Seat>
     {
         private static DbSeat dbs = new DbSeat();
-
         public void Create(Seat obj)
         {
-            obj = new Seat();
             dbs.Create(obj);
         }
 
@@ -25,9 +23,7 @@ namespace Booking.Controller
 
         public Seat Get(int id)
         {
-            Seat s = dbs.Get(id);
-
-            return s; 
+            return dbs.Get(id);
         }
 
         public void Update(Seat obj)

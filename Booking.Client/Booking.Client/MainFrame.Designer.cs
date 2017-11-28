@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabCreateRoute = new System.Windows.Forms.TabPage();
+            this.RefreshDestinations = new System.Windows.Forms.Button();
             this.CreateRoute_monthCalendar = new System.Windows.Forms.MonthCalendar();
             this.listBoxPlanes = new System.Windows.Forms.ListBox();
             this.comboBoxDestination_ListOfPlanes = new System.Windows.Forms.ComboBox();
@@ -53,7 +54,7 @@
             this.listBoxPassengers = new System.Windows.Forms.ListBox();
             this.label8 = new System.Windows.Forms.Label();
             this.comboBoxPassengers_Planes = new System.Windows.Forms.ComboBox();
-            this.RefreshDestinations = new System.Windows.Forms.Button();
+            this.textBoxDateTime = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabCreateRoute.SuspendLayout();
             this.tabPageSeats.SuspendLayout();
@@ -73,6 +74,7 @@
             // 
             // tabCreateRoute
             // 
+            this.tabCreateRoute.Controls.Add(this.textBoxDateTime);
             this.tabCreateRoute.Controls.Add(this.RefreshDestinations);
             this.tabCreateRoute.Controls.Add(this.CreateRoute_monthCalendar);
             this.tabCreateRoute.Controls.Add(this.listBoxPlanes);
@@ -92,11 +94,22 @@
             this.tabCreateRoute.Text = "Plane Destination";
             this.tabCreateRoute.UseVisualStyleBackColor = true;
             // 
+            // RefreshDestinations
+            // 
+            this.RefreshDestinations.Location = new System.Drawing.Point(462, 584);
+            this.RefreshDestinations.Name = "RefreshDestinations";
+            this.RefreshDestinations.Size = new System.Drawing.Size(101, 56);
+            this.RefreshDestinations.TabIndex = 12;
+            this.RefreshDestinations.Text = "Refresh";
+            this.RefreshDestinations.UseVisualStyleBackColor = true;
+            this.RefreshDestinations.Click += new System.EventHandler(this.RefreshDestinations_Click);
+            // 
             // CreateRoute_monthCalendar
             // 
             this.CreateRoute_monthCalendar.Location = new System.Drawing.Point(283, 57);
             this.CreateRoute_monthCalendar.Name = "CreateRoute_monthCalendar";
             this.CreateRoute_monthCalendar.TabIndex = 11;
+            this.CreateRoute_monthCalendar.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.CreateRoute_monthCalendar_DateChanged);
             // 
             // listBoxPlanes
             // 
@@ -311,15 +324,13 @@
             this.comboBoxPassengers_Planes.TabIndex = 0;
             this.comboBoxPassengers_Planes.SelectedIndexChanged += new System.EventHandler(this.ComboBoxPassengers_SelectedIndexChanged);
             // 
-            // RefreshDestinations
+            // textBoxDateTime
             // 
-            this.RefreshDestinations.Location = new System.Drawing.Point(462, 584);
-            this.RefreshDestinations.Name = "RefreshDestinations";
-            this.RefreshDestinations.Size = new System.Drawing.Size(101, 56);
-            this.RefreshDestinations.TabIndex = 12;
-            this.RefreshDestinations.Text = "Refresh";
-            this.RefreshDestinations.UseVisualStyleBackColor = true;
-            this.RefreshDestinations.Click += new System.EventHandler(this.RefreshDestinations_Click);
+            this.textBoxDateTime.Location = new System.Drawing.Point(319, 321);
+            this.textBoxDateTime.Name = "textBoxDateTime";
+            this.textBoxDateTime.Size = new System.Drawing.Size(143, 26);
+            this.textBoxDateTime.TabIndex = 13;
+            this.textBoxDateTime.ReadOnly = true;
             // 
             // MainFrame
             // 
@@ -367,5 +378,6 @@
         private System.Windows.Forms.ComboBox comboBoxPassengers_Planes;
         private System.Windows.Forms.MonthCalendar CreateRoute_monthCalendar;
         private System.Windows.Forms.Button RefreshDestinations;
+        private System.Windows.Forms.TextBox textBoxDateTime;
     }
 }

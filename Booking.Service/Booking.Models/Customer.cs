@@ -12,8 +12,8 @@ namespace Booking.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public int CPR { get; set; }
-        public int PhoneNumber { get; set; }
+        public long CPR { get; set; }
+        public long PhoneNumber { get; set; }
         public City City { get; set; }
         public string Address { get; set; }
         public string Password { get; set; }
