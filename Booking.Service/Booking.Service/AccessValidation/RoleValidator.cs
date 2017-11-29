@@ -22,7 +22,7 @@ namespace Booking.Service.AccessValidation
             
             if (userFound == null)
             {
-                //throw new Exception("User not found");
+                throw new FaultException("User not found");
 
                 string[] userRolesFound = {"NotLoggedIn"};
                 //Assign roles to the Principal property for runtime to match with PrincipalPermissionAttributes decorated on the service operation.
