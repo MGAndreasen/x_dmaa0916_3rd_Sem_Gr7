@@ -24,7 +24,13 @@ namespace Booking.Service.AccessValidation
             {
                 //throw new Exception("User not found");
 
-                return false;
+                string[] userRolesFound = {"NotLoggedIn"};
+                //Assign roles to the Principal property for runtime to match with PrincipalPermissionAttributes decorated on the service operation.
+                var principal = new GenericPrincipal(operationContext.ServiceSecurityContext.PrimaryIdentity, userRolesFound);
+                //assign principal to auth context with the users roles
+                operationContext.ServiceSecurityContext.AuthorizationContext.Properties["Principal"] = principal;
+                //return true if all goes well
+                return true;
             }
             else
             {
