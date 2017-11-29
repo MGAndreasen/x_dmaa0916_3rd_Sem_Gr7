@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
@@ -93,50 +94,167 @@
     <None Include="Connected Services\BookingAuthRemote\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Bookings.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.City.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Customer.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Destination.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Passenger.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Payment.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Plane.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Row.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Seat.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.SeatSchema.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Ticket.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\BookingServiceRemote\Service.wsdl" />
-    <None Include="Connected Services\BookingServiceRemote\Service.xsd">
+    <None Include="Connected Services\BookingServiceRemote\Arrays.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\BookingServiceRemote\Service1.xsd">
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.CreateBookingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.CreateCityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.CreateCustomerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.CreateDestinationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.CreatePassengerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.CreatePaymentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.CreatePlaneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.CreateRowResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.CreateSeatResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.CreateSeatSchemaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.CreateTicketResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.DeleteBookingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.DeleteCityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.DeleteCustomerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.DeleteDestinationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.DeletePassengerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.DeletePaymentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.DeletePlaneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.DeleteRowResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.DeleteSeatResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.DeleteSeatSchemaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.DeleteTicketResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.GetAllCustomersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.GetAllDestinationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.GetAllPassengersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.GetAllPlanesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.GetBookingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.GetCityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.GetCustomerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.GetDestinationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.GetPassengerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.GetPaymentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.GetPlaneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.GetRouteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.GetRowResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.GetSeatResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.GetSetSchemaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.GetTicketResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.PostResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.UpdateBookingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.UpdateCityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.UpdateCustomerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.UpdateDestinationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.UpdatePassengerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.UpdatePaymentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.UpdatePlaneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.UpdateRowResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.UpdateSeatResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.UpdateSeatSchemaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.UpdateTicketResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Models.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\BookingServiceRemote\Service2.xsd">
+    <None Include="Connected Services\BookingServiceRemote\service.wsdl" />
+    <None Include="Connected Services\BookingServiceRemote\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\BookingServiceRemote\Service3.xsd">
+    <None Include="Connected Services\BookingServiceRemote\service1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
@@ -160,7 +278,16 @@
     <WCFMetadataStorage Include="Connected Services\BookingServiceRemote\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\BookingServiceRemote\Service.disco" />
+    <None Include="Connected Services\BookingAuthRemote\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BookingAuthRemote\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BookingAuthRemote\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\BookingServiceRemote\configuration91.svcinfo" />
@@ -170,18 +297,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\BookingServiceRemote\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\BookingAuthRemote\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\BookingAuthRemote\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\BookingAuthRemote\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

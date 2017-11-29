@@ -47,11 +47,7 @@ namespace Booking.DB
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
 
                     SqlDataReader rdr = cmd.ExecuteReader();
-                    return new Ticket()
-                    {
-                        Id = rdr.GetInt32(0),
-                        Passenger = dbp.Get(rdr.GetInt32(1))
-                    };
+                return new Ticket(rdr.GetInt32(0), dbp.Get(rdr.GetInt32(1)));
 
             }
 

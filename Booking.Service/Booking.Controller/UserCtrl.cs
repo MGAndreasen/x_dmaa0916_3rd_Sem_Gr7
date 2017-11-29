@@ -8,11 +8,11 @@ using Booking.DB;
 
 namespace Booking.Controller
 {
-    public class UserController
+    public class UserCtrl
     {
         private DbUser dbUser;
 
-        public UserController()
+        public UserCtrl()
         {
             dbUser = new DbUser();
         }
