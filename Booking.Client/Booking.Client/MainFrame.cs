@@ -19,13 +19,13 @@ namespace Booking.Client
         public MainFrame()
         {
             InitializeComponent();
-            VisPassager();
+           // VisPassager();
         }
 
         public void VisPassager()
         {
-           // City c = myService.GetCity(9000);
-           // listBoxPassengers.Items.Add(c.ToString());
+            //City c = myService.GetCity(9000);
+            //listBoxPassengers.Items.Add(c.ToString());
         }
 
         public void VisPassagers()
@@ -77,20 +77,20 @@ namespace Booking.Client
 
         private void ComboBoxPassengers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<Plane> list = myService.GetAllPlanes();
-            foreach (var item in list)
-            {
-                comboBoxPassengers_Planes.Items.Add(item.ToString());
-            }
+            //List<Plane> list = myService.GetAllPlanes();
+            //foreach (var item in list)
+            //{
+            //    comboBoxPassengers_Planes.Items.Add(item.ToString());
+            //}
         }
 
         private void ComboBoxSeat_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<Plane> list = myService.GetAllPlanes();
-            foreach (var item in list)
-            {
-                comboBoxSeats_ListOfPlanes.Items.Add(item.ToString());
-            }
+            //List<Plane> list = myService.GetAllPlanes();
+            //foreach (var item in list)
+            //{
+            //    comboBoxSeats_ListOfPlanes.Items.Add(item.ToString());
+            //}
         }
 
         public void TapSeat_ShowPassengersOnPlane()
@@ -100,33 +100,33 @@ namespace Booking.Client
 
         private void ComboBoxDestination_ListOfPlanes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<Plane> list = myService.GetAllPlanes();
-            foreach (var item in list)
-            {
-                comboBoxDestination_ListOfPlanes.Items.Add(item.ToString());
-            }
+            //List<Plane> list = myService.GetAllPlanes();
+            //foreach (var item in list)
+            //{
+            //    comboBoxDestination_ListOfPlanes.Items.Add(item.ToString());
+            //}
         }
         private void DestinationCreate_Click(object sender, EventArgs e)
         {
 
-            Destination DS = new Destination();
+            //City DS = new City();
 
-            CreateDestinationRequest request = new CreateDestinationRequest(DS);
+            GetCityRequest request = new GetCityRequest(9000);
 
-            myService.CreateDestination(request);
+            //myService.GetCity(request);
 
-            // City c = myService.GetCity(9000);
-            // listBoxPassengers.Items.Add(c.ToString
+            myService.GetCity(request);
+            listBoxPassengers.Items.Add(myService.GetCity(request));
 
         }  
 
         private void RefreshDestinations_Click(object sender, EventArgs e)
         {
-            List<Destination> list = myService.GetAllDestinations();
-            foreach (var item in list)
-            {
-                listBoxPlanes.Items.Add(item.ToString());
-            }
+            //List<Destination> list = myService.GetAllDestinations();
+            //foreach (var item in list)
+            //{
+            //    listBoxPlanes.Items.Add(item.ToString());
+            //}
         }
 
         private void CreateRoute_monthCalendar_DateChanged(object sender, DateRangeEventArgs e)

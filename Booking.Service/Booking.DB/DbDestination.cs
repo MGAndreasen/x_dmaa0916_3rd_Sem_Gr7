@@ -62,7 +62,7 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO bdo.Booking_Destination (Id, Plane_Id, NameDestination) VALUES (@Id, @Pi, @Name)", con);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Destination (Id, Plane_Id, NameDestination) VALUES (@Id, @Pi, @Name)", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
                     cmd.Parameters.Add("@Pi", SqlDbType.Int).Value = obj.Plane; // <-------------------------
                     cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = obj.NameDestination;
