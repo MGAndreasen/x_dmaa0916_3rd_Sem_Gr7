@@ -85,7 +85,7 @@ namespace Booking.DB
                     SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Destination SET Id=@Id, Plane_Id=@pi, NameDestination=@Name", con);
 
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
-                    cmd.Parameters.Add("@pi", SqlDbType.Int).Value = obj.Plane;
+           //         cmd.Parameters.Add("@pi", SqlDbType.Int).Value = obj.Plane;
                     cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = obj.NameDestination;
 
 

@@ -108,20 +108,17 @@ namespace Booking.Client
         }
         private void DestinationCreate_Click(object sender, EventArgs e)
         {
-            Destination dc = new Destination();
 
-            string meldmig = CreateRoute_StartDestination.Text;
-            dc.Equals(meldmig);
+            Destination DS = new Destination();
 
-            myService.CreateDestination(dc);
-            
-            
+            CreateDestinationRequest request = new CreateDestinationRequest(DS);
+
+            myService.CreateDestination(request);
 
             // City c = myService.GetCity(9000);
-            // listBoxPassengers.Items.Add(c.ToString());
+            // listBoxPassengers.Items.Add(c.ToString
 
-
-        }
+        }  
 
         private void RefreshDestinations_Click(object sender, EventArgs e)
         {
