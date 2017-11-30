@@ -16,31 +16,28 @@ namespace Booking.Service.AccessValidation
         {
             //Get the current pipeline user context
             var identity = operationContext.ServiceSecurityContext.PrimaryIdentity;
-            //simulate that we get a user and all his roles from the database
-
             var userFound = uCtrl.GetUser(identity.Name);
-            
-            if (userFound == null)
-            {
-                throw new FaultException("User not found");
 
-                string[] userRolesFound = {"NotLoggedIn"};
+            if (operationContext.EndpointDispatcher.ContractName == "IMetadataExchange")
+            {
+                return true;
+            }
+            else if (userFound != null)
+            {
+                string[] userRolesFound = userFound.Roles.Select(x => x.Name).ToArray();
+
                 //Assign roles to the Principal property for runtime to match with PrincipalPermissionAttributes decorated on the service operation.
                 var principal = new GenericPrincipal(operationContext.ServiceSecurityContext.PrimaryIdentity, userRolesFound);
+
                 //assign principal to auth context with the users roles
                 operationContext.ServiceSecurityContext.AuthorizationContext.Properties["Principal"] = principal;
+
                 //return true if all goes well
                 return true;
             }
             else
             {
-                string[] userRolesFound = userFound.Roles.Select(x => x.Name).ToArray();
-                //Assign roles to the Principal property for runtime to match with PrincipalPermissionAttributes decorated on the service operation.
-                var principal = new GenericPrincipal(operationContext.ServiceSecurityContext.PrimaryIdentity, userRolesFound);
-                //assign principal to auth context with the users roles
-                operationContext.ServiceSecurityContext.AuthorizationContext.Properties["Principal"] = principal;
-                //return true if all goes well
-                return true;
+                throw new FaultException("User not found");
             }
         }
     }
