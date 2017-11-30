@@ -24,17 +24,12 @@ namespace Booking.Client
 
         public void VisPassager()
         {
-            var request = new GetAllCustomersRequest();
-
-            var response = myService.GetAllCustomers(request);
-            var customerList = response.GetAllCustomersResult;
-
             //var request = new GetBookingRequest();
 
             //myService.GetBooking()
 
-            //City c = myService.GetCity(9000);
-            //listBoxPassengers.Items.Add(c.ToString());
+            City c = myService.GetCity(9000);
+            listBoxPassengers.Items.Add(c.ToString());
         }
 
         public void VisPassagers()

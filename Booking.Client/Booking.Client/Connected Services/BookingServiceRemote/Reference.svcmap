@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="27f7cc2b-0dae-444f-ae39-bccca07c4bb1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="50e4b616-51ac-41e2-98e1-0a11b1ba324b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -7,7 +7,7 @@
     <ExcludedTypes />
     <ImportXmlTypes>false</ImportXmlTypes>
     <GenerateInternalTypes>false</GenerateInternalTypes>
-    <GenerateMessageContracts>true</GenerateMessageContracts>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
     <NamespaceMappings />
     <CollectionMappings />
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
@@ -22,11 +22,11 @@
     <MetadataSource Address="https://127.0.0.1:6868/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="94eb7636-109a-4f72-a078-5c06cd869e67" SourceId="1" SourceUrl="https://127.0.0.1:6868/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="db8a4b7b-c1c1-4bba-8c6b-411ed9933816" SourceId="1" SourceUrl="https://127.0.0.1:6868/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="fd26d29c-c311-4e07-8c87-9bb26ce1423b" SourceId="1" SourceUrl="https://127.0.0.1:6868/mex" />
-    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="9f2b2b82-c043-4497-bdcc-9ebb0a26fab6" SourceId="1" SourceUrl="https://127.0.0.1:6868/mex" />
-    <MetadataFile FileName="Booking.Models.xsd" MetadataType="Schema" ID="7268d651-729d-4e09-ac11-11ea6c23ba11" SourceId="1" SourceUrl="https://127.0.0.1:6868/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="8a7ea573-6bd8-4a61-8794-cecda0babc04" SourceId="1" SourceUrl="https://127.0.0.1:6868/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="e3e59e8a-0091-48b1-bb8e-e2a96fbf1b9d" SourceId="1" SourceUrl="https://127.0.0.1:6868/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="cd395ac5-f50c-440e-817a-f3c08515c24e" SourceId="1" SourceUrl="https://127.0.0.1:6868/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="abbd1d44-2a75-44da-b060-c8b1cf788f52" SourceId="1" SourceUrl="https://127.0.0.1:6868/mex" />
+    <MetadataFile FileName="Booking.Models.xsd" MetadataType="Schema" ID="7e182ee9-6fc4-4542-9bd4-dfcd4a124225" SourceId="1" SourceUrl="https://127.0.0.1:6868/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
