@@ -38,9 +38,9 @@ namespace Booking.Client
 
         public void VisPassagers()
         {
-            //ServiceClient client = new ServiceClient();
-            //Passenger p = client.GetPassenger(1);
-            //listView1.Items.Add(p.ToString());
+            ServiceClient client = new ServiceClient();
+            Passenger p = client.GetPassenger(1);
+            listBoxPassengers.Items.Add(p.ToString());
         }
 
         private void MainFrame_Load(object sender, EventArgs e)
@@ -135,6 +135,8 @@ namespace Booking.Client
         private void CreateRoute_monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
         {
             textBoxDateTime.Text = CreateRoute_monthCalendar.SelectionRange.Start.ToShortDateString();
+            CreateRoute_monthCalendar.MaxDate = DateTime.Now;
+            
         }
 
         private void tabCreateRoute_Click(object sender, EventArgs e)
