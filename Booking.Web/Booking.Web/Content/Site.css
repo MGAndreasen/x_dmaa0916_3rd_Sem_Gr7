@@ -1,6 +1,12 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #fff;
+}
+
+footer p {
+    text-align: center;
+    margin: 0 auto;
 }
 
 /* Set padding to keep content from hitting the edges */

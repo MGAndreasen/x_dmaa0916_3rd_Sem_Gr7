@@ -22,8 +22,8 @@ namespace Booking.Client
         public MainFrame()
         {
             InitializeComponent();
-            ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;  
-           // VisPassager();
+            ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
+            // VisPassager();
         }
 
         public void VisPassager()
