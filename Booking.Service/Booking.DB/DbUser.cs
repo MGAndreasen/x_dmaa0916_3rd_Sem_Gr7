@@ -34,7 +34,7 @@ namespace Booking.DB
 
         public Booking.Models.User Get(string email)
         {
-            email = "admin@test.dk";
+            //email = "admin@test.dk";
 
             User u = null;
 
@@ -43,7 +43,7 @@ namespace Booking.DB
                 List<Role> userRoles = new List<Role> { new Role { Id = 1, Name = "Admin" } };
                 u =  new User { Id = 1, Email = "admin@test.dk", Password = "1234", Roles = userRoles };
             }
-            else if (email == "admin@test.dk")
+            else if (email == "user@test.dk")
             {
                 List<Role> userRoles = new List<Role> { new Role { Id = 2, Name = "User" } };
                 u = new User { Id = 2, Email = "user@test.dk", Password = "1234", Roles = userRoles };

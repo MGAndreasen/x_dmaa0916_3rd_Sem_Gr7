@@ -20,6 +20,9 @@ namespace Booking.Service.AccessValidation
 
             if (operationContext.EndpointDispatcher.ContractName == "IMetadataExchange")
             {
+                string[] userRolesFound = { "None" };
+                var principal = new GenericPrincipal(operationContext.ServiceSecurityContext.PrimaryIdentity, userRolesFound);
+                operationContext.ServiceSecurityContext.AuthorizationContext.Properties["Principal"] = principal;
                 return true;
             }
             else if (userFound != null)
