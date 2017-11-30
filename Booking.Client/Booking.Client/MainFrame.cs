@@ -1,4 +1,5 @@
 ﻿using Booking.Client.BookingServiceRemote;
+using Booking.Client.BookingAuthRemote;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net; 
+using System.ServiceModel.Security;
 
 namespace Booking.Client
 {
@@ -19,6 +22,7 @@ namespace Booking.Client
         public MainFrame()
         {
             InitializeComponent();
+            ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;  
            // VisPassager();
         }
 
@@ -112,16 +116,11 @@ namespace Booking.Client
         }
         private void DestinationCreate_Click(object sender, EventArgs e)
         {
+            string text = CreateRoute_StartDestination.Text;
+            Destination d = new Destination();
+            text.Equals(d);
 
-            //City DS = new City();
-
-            GetCityRequest request = new GetCityRequest(9000);
-
-            //myService.GetCity(request);
-
-            myService.GetCity(request);
-            listBoxPassengers.Items.Add(myService.GetCity(request));
-
+            myService.CreateDestination(d);
         }  
 
         private void RefreshDestinations_Click(object sender, EventArgs e)
@@ -139,11 +138,6 @@ namespace Booking.Client
         }
 
         private void tabCreateRoute_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CreateRoute_StartDestination_TextChanged(object sender, EventArgs e)
         {
 
         }
