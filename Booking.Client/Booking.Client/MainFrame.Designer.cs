@@ -198,7 +198,6 @@
             this.CreateRoute_StartDestination.Name = "CreateRoute_StartDestination";
             this.CreateRoute_StartDestination.Size = new System.Drawing.Size(124, 22);
             this.CreateRoute_StartDestination.TabIndex = 0;
-            this.CreateRoute_StartDestination.TextChanged += new System.EventHandler(this.CreateRoute_StartDestination_TextChanged);
             // 
             // tabPageSeats
             // 
