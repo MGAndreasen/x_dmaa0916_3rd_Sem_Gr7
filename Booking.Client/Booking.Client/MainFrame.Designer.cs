@@ -58,12 +58,12 @@
             this.tabPageBookings = new System.Windows.Forms.TabPage();
             this.listBoxListOfBookings = new System.Windows.Forms.ListBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox_Bookings_StartDestination = new System.Windows.Forms.TextBox();
+            this.textBox_Bookings_EndDestination = new System.Windows.Forms.TextBox();
+            this.textBox_Bookings_Plane = new System.Windows.Forms.TextBox();
+            this.textBox_Bookings_Date = new System.Windows.Forms.TextBox();
+            this.textBox__Bookings_Customer = new System.Windows.Forms.TextBox();
+            this.comboBox__Bookings_Passengers = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -72,13 +72,13 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label_Bookings_Passenger = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox_Bookings_Passenger_FirstName = new System.Windows.Forms.TextBox();
+            this.textBox__Bookings_Passenger_LastName = new System.Windows.Forms.TextBox();
+            this.textBox__Bookings_Passenger_CPR = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox__Bookings_Passenger_PassportNo = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabCreateRoute.SuspendLayout();
@@ -363,13 +363,13 @@
             // tabPageBookings
             // 
             this.tabPageBookings.Controls.Add(this.label20);
-            this.tabPageBookings.Controls.Add(this.textBox11);
+            this.tabPageBookings.Controls.Add(this.textBox__Bookings_Passenger_PassportNo);
             this.tabPageBookings.Controls.Add(this.label19);
             this.tabPageBookings.Controls.Add(this.label18);
             this.tabPageBookings.Controls.Add(this.label17);
-            this.tabPageBookings.Controls.Add(this.textBox10);
-            this.tabPageBookings.Controls.Add(this.textBox9);
-            this.tabPageBookings.Controls.Add(this.textBox8);
+            this.tabPageBookings.Controls.Add(this.textBox__Bookings_Passenger_CPR);
+            this.tabPageBookings.Controls.Add(this.textBox__Bookings_Passenger_LastName);
+            this.tabPageBookings.Controls.Add(this.textBox_Bookings_Passenger_FirstName);
             this.tabPageBookings.Controls.Add(this.label_Bookings_Passenger);
             this.tabPageBookings.Controls.Add(this.label16);
             this.tabPageBookings.Controls.Add(this.label15);
@@ -378,12 +378,12 @@
             this.tabPageBookings.Controls.Add(this.label12);
             this.tabPageBookings.Controls.Add(this.label11);
             this.tabPageBookings.Controls.Add(this.label10);
-            this.tabPageBookings.Controls.Add(this.comboBox1);
-            this.tabPageBookings.Controls.Add(this.textBox7);
-            this.tabPageBookings.Controls.Add(this.textBox6);
-            this.tabPageBookings.Controls.Add(this.textBox5);
-            this.tabPageBookings.Controls.Add(this.textBox3);
-            this.tabPageBookings.Controls.Add(this.textBox2);
+            this.tabPageBookings.Controls.Add(this.comboBox__Bookings_Passengers);
+            this.tabPageBookings.Controls.Add(this.textBox__Bookings_Customer);
+            this.tabPageBookings.Controls.Add(this.textBox_Bookings_Date);
+            this.tabPageBookings.Controls.Add(this.textBox_Bookings_Plane);
+            this.tabPageBookings.Controls.Add(this.textBox_Bookings_EndDestination);
+            this.tabPageBookings.Controls.Add(this.textBox_Bookings_StartDestination);
             this.tabPageBookings.Controls.Add(this.label9);
             this.tabPageBookings.Controls.Add(this.listBoxListOfBookings);
             this.tabPageBookings.Location = new System.Drawing.Point(4, 29);
@@ -412,48 +412,48 @@
             this.label9.TabIndex = 1;
             this.label9.Text = "List of bookings";
             // 
-            // textBox2
+            // textBox_Bookings_StartDestination
             // 
-            this.textBox2.Location = new System.Drawing.Point(721, 79);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(179, 26);
-            this.textBox2.TabIndex = 2;
+            this.textBox_Bookings_StartDestination.Location = new System.Drawing.Point(721, 79);
+            this.textBox_Bookings_StartDestination.Name = "textBox_Bookings_StartDestination";
+            this.textBox_Bookings_StartDestination.Size = new System.Drawing.Size(179, 26);
+            this.textBox_Bookings_StartDestination.TabIndex = 2;
             // 
-            // textBox3
+            // textBox_Bookings_EndDestination
             // 
-            this.textBox3.Location = new System.Drawing.Point(721, 120);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(179, 26);
-            this.textBox3.TabIndex = 3;
+            this.textBox_Bookings_EndDestination.Location = new System.Drawing.Point(721, 120);
+            this.textBox_Bookings_EndDestination.Name = "textBox_Bookings_EndDestination";
+            this.textBox_Bookings_EndDestination.Size = new System.Drawing.Size(179, 26);
+            this.textBox_Bookings_EndDestination.TabIndex = 3;
             // 
-            // textBox5
+            // textBox_Bookings_Plane
             // 
-            this.textBox5.Location = new System.Drawing.Point(721, 162);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(179, 26);
-            this.textBox5.TabIndex = 4;
+            this.textBox_Bookings_Plane.Location = new System.Drawing.Point(721, 162);
+            this.textBox_Bookings_Plane.Name = "textBox_Bookings_Plane";
+            this.textBox_Bookings_Plane.Size = new System.Drawing.Size(179, 26);
+            this.textBox_Bookings_Plane.TabIndex = 4;
             // 
-            // textBox6
+            // textBox_Bookings_Date
             // 
-            this.textBox6.Location = new System.Drawing.Point(721, 205);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(179, 26);
-            this.textBox6.TabIndex = 5;
+            this.textBox_Bookings_Date.Location = new System.Drawing.Point(721, 205);
+            this.textBox_Bookings_Date.Name = "textBox_Bookings_Date";
+            this.textBox_Bookings_Date.Size = new System.Drawing.Size(179, 26);
+            this.textBox_Bookings_Date.TabIndex = 5;
             // 
-            // textBox7
+            // textBox__Bookings_Customer
             // 
-            this.textBox7.Location = new System.Drawing.Point(721, 247);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(179, 26);
-            this.textBox7.TabIndex = 6;
+            this.textBox__Bookings_Customer.Location = new System.Drawing.Point(721, 247);
+            this.textBox__Bookings_Customer.Name = "textBox__Bookings_Customer";
+            this.textBox__Bookings_Customer.Size = new System.Drawing.Size(179, 26);
+            this.textBox__Bookings_Customer.TabIndex = 6;
             // 
-            // comboBox1
+            // comboBox__Bookings_Passengers
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(721, 288);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(179, 28);
-            this.comboBox1.TabIndex = 7;
+            this.comboBox__Bookings_Passengers.FormattingEnabled = true;
+            this.comboBox__Bookings_Passengers.Location = new System.Drawing.Point(721, 288);
+            this.comboBox__Bookings_Passengers.Name = "comboBox__Bookings_Passengers";
+            this.comboBox__Bookings_Passengers.Size = new System.Drawing.Size(179, 28);
+            this.comboBox__Bookings_Passengers.TabIndex = 7;
             // 
             // label10
             // 
@@ -528,26 +528,26 @@
             this.label_Bookings_Passenger.TabIndex = 15;
             this.label_Bookings_Passenger.Text = "Chosen passenger";
             // 
-            // textBox8
+            // textBox_Bookings_Passenger_FirstName
             // 
-            this.textBox8.Location = new System.Drawing.Point(721, 427);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(179, 26);
-            this.textBox8.TabIndex = 16;
+            this.textBox_Bookings_Passenger_FirstName.Location = new System.Drawing.Point(721, 427);
+            this.textBox_Bookings_Passenger_FirstName.Name = "textBox_Bookings_Passenger_FirstName";
+            this.textBox_Bookings_Passenger_FirstName.Size = new System.Drawing.Size(179, 26);
+            this.textBox_Bookings_Passenger_FirstName.TabIndex = 16;
             // 
-            // textBox9
+            // textBox__Bookings_Passenger_LastName
             // 
-            this.textBox9.Location = new System.Drawing.Point(721, 468);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(179, 26);
-            this.textBox9.TabIndex = 17;
+            this.textBox__Bookings_Passenger_LastName.Location = new System.Drawing.Point(721, 468);
+            this.textBox__Bookings_Passenger_LastName.Name = "textBox__Bookings_Passenger_LastName";
+            this.textBox__Bookings_Passenger_LastName.Size = new System.Drawing.Size(179, 26);
+            this.textBox__Bookings_Passenger_LastName.TabIndex = 17;
             // 
-            // textBox10
+            // textBox__Bookings_Passenger_CPR
             // 
-            this.textBox10.Location = new System.Drawing.Point(721, 510);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(179, 26);
-            this.textBox10.TabIndex = 18;
+            this.textBox__Bookings_Passenger_CPR.Location = new System.Drawing.Point(721, 510);
+            this.textBox__Bookings_Passenger_CPR.Name = "textBox__Bookings_Passenger_CPR";
+            this.textBox__Bookings_Passenger_CPR.Size = new System.Drawing.Size(179, 26);
+            this.textBox__Bookings_Passenger_CPR.TabIndex = 18;
             // 
             // label17
             // 
@@ -576,12 +576,12 @@
             this.label19.TabIndex = 21;
             this.label19.Text = "CPR";
             // 
-            // textBox11
+            // textBox__Bookings_Passenger_PassportNo
             // 
-            this.textBox11.Location = new System.Drawing.Point(721, 553);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(179, 26);
-            this.textBox11.TabIndex = 22;
+            this.textBox__Bookings_Passenger_PassportNo.Location = new System.Drawing.Point(721, 553);
+            this.textBox__Bookings_Passenger_PassportNo.Name = "textBox__Bookings_Passenger_PassportNo";
+            this.textBox__Bookings_Passenger_PassportNo.Size = new System.Drawing.Size(179, 26);
+            this.textBox__Bookings_Passenger_PassportNo.TabIndex = 22;
             // 
             // label20
             // 
@@ -651,20 +651,20 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ComboBox comboBox__Bookings_Passengers;
+        private System.Windows.Forms.TextBox textBox__Bookings_Customer;
+        private System.Windows.Forms.TextBox textBox_Bookings_Date;
+        private System.Windows.Forms.TextBox textBox_Bookings_Plane;
+        private System.Windows.Forms.TextBox textBox_Bookings_EndDestination;
+        private System.Windows.Forms.TextBox textBox_Bookings_StartDestination;
         private System.Windows.Forms.Label label_Bookings_Passenger;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox textBox__Bookings_Passenger_PassportNo;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox__Bookings_Passenger_CPR;
+        private System.Windows.Forms.TextBox textBox__Bookings_Passenger_LastName;
+        private System.Windows.Forms.TextBox textBox_Bookings_Passenger_FirstName;
     }
 }
