@@ -15,8 +15,7 @@ namespace Booking.DB
 
     {
         private DataAccess data = DataAccess.Instance;
-        private string ConnectionString;
-
+        
         public void Delete(int id)
         {
             TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt

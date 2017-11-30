@@ -11,6 +11,7 @@ namespace Booking.DB
     {
         public Booking.Models.User Get(int id)
         {
+            id = 1;
             User u = null;
 
             if (id == 1)
@@ -33,6 +34,8 @@ namespace Booking.DB
 
         public Booking.Models.User Get(string email)
         {
+            email = "admin@test.dk";
+
             User u = null;
 
             if (email == "admin@test.dk")
