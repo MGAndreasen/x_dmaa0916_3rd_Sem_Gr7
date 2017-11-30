@@ -47,25 +47,6 @@ namespace Booking.Client
             //    MessageBox.Show("Wrong Password!");
             //}
 
-            if (textBox1.Text == "Bush" && textBox2.Text == "Did911")
-            {
-                //Hides LoginFrame(The main applicantion)
-                this.Hide();
-
-                //Starts a new window
-                MainFrame MF = new MainFrame();
-                MF.ShowDialog();
-
-                //Closes the LoginFrame after the other window has opened.
-                this.Close();
-            }
-            else
-            {
-                //Cheat
-            }
-
-
-
         }
 
     }
