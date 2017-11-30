@@ -521,9 +521,10 @@
             // label_Bookings_Passenger
             // 
             this.label_Bookings_Passenger.AutoSize = true;
-            this.label_Bookings_Passenger.Location = new System.Drawing.Point(688, 377);
+            this.label_Bookings_Passenger.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Bookings_Passenger.Location = new System.Drawing.Point(717, 377);
             this.label_Bookings_Passenger.Name = "label_Bookings_Passenger";
-            this.label_Bookings_Passenger.Size = new System.Drawing.Size(143, 20);
+            this.label_Bookings_Passenger.Size = new System.Drawing.Size(159, 20);
             this.label_Bookings_Passenger.TabIndex = 15;
             this.label_Bookings_Passenger.Text = "Chosen passenger";
             // 
