@@ -23,7 +23,7 @@ namespace Booking.Client
         public LoginFrame()
         {
             InitializeComponent();
-            //ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
+            ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -35,7 +35,10 @@ namespace Booking.Client
         {
 
 
-                //authClient.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.None;
+            //authClient.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.None;
+
+            ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
+
 
             isLoggedin = authClient.Login(textBox1.Text.ToString().Trim(), textBox2.Text.ToString().Trim());
 
@@ -46,6 +49,7 @@ namespace Booking.Client
                 serviceClient.ClientCredentials.UserName.UserName = textBox1.Text.ToString().Trim();
                 serviceClient.ClientCredentials.UserName.Password = textBox2.Text.ToString().Trim();
 
+                
 
                 MessageBox.Show(serviceClient.GetCity(9000).CityName.ToString());
             }
