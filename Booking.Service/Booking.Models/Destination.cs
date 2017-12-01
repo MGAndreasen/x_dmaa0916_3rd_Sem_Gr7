@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization;
 
 namespace Booking.Models
 {
@@ -23,9 +18,5 @@ namespace Booking.Models
         [DataMember]
         public string NameDestination { get; set; }
 
-        public override string ToString()
-        {
-            return NameDestination.ToString() + " ";
-        }
     }
 }
