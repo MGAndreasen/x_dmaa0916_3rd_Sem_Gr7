@@ -254,12 +254,7 @@ namespace Booking.Client.BookingServiceRemote {
         }
         
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        public override string ToString()
-        {
-            return Zipcode.ToString() + " " + CityName.ToString();
-        }
-
+        
         protected void RaisePropertyChanged(string propertyName) {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
@@ -477,12 +472,7 @@ namespace Booking.Client.BookingServiceRemote {
         }
         
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        public override string ToString()
-        {
-            return "Destination: " + NameDestination.ToString() + "         " + Plane.ToString() + "";
-        }
-
+        
         protected void RaisePropertyChanged(string propertyName) {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
@@ -636,12 +626,7 @@ namespace Booking.Client.BookingServiceRemote {
         }
         
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        public override string ToString()
-        {
-            return "Fly: " + Type.ToString();
-        }
-
+        
         protected void RaisePropertyChanged(string propertyName) {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
@@ -663,7 +648,7 @@ namespace Booking.Client.BookingServiceRemote {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LayoutField;
+        private int LayoutField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int RowField;
@@ -692,12 +677,12 @@ namespace Booking.Client.BookingServiceRemote {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Layout {
+        public int Layout {
             get {
                 return this.LayoutField;
             }
             set {
-                if ((object.ReferenceEquals(this.LayoutField, value) != true)) {
+                if ((this.LayoutField.Equals(value) != true)) {
                     this.LayoutField = value;
                     this.RaisePropertyChanged("Layout");
                 }
@@ -718,12 +703,7 @@ namespace Booking.Client.BookingServiceRemote {
         }
         
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        public override string ToString()
-        {
-            return "Layout: " + Layout.ToString();
-        }
-
+        
         protected void RaisePropertyChanged(string propertyName) {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {

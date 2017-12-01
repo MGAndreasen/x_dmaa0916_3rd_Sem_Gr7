@@ -78,11 +78,6 @@ namespace Booking.DB
             }
         }
 
-        public void Update(int id)
-        {
-            throw new NotImplementedException(); // <-------------------------- // <-------------------------- // <--------------------------// <--------------------------
-        }
-
         public IEnumerable<Plane> GetAll()
         {
             DbSeatSchema dbs = new DbSeatSchema();
