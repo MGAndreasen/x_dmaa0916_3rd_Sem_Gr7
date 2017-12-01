@@ -32,5 +32,10 @@ namespace Booking.Models
         public Seat SeatNumber { get; set; }
         [DataMember]
         public Bookings Booking { get; set; }
+
+        public override string ToString()
+        {
+            return FirstName.ToString() + " " + LastName.ToString() + " " + CPR.ToString() + " " + PassportId.ToString();
+        }
     }
 }

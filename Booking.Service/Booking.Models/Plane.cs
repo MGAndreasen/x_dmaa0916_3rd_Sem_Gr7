@@ -23,6 +23,10 @@ namespace Booking.Models
         public string Type { get; set; }
         [DataMember]
         public SeatSchema SeatSchema { get; set; }
-        
+
+        public override string ToString()
+        {
+            return Type.ToString() + " ";
+        }
     }
 }
