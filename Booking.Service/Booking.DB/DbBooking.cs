@@ -19,7 +19,7 @@ namespace Booking.DB
 
         public void Delete(int id)
         {
-            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
@@ -65,7 +65,7 @@ namespace Booking.DB
 
         public void Create(Bookings obj)
         {
-            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
@@ -89,7 +89,7 @@ namespace Booking.DB
 
         public void Update(Bookings obj)
         {
-            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
@@ -98,10 +98,10 @@ namespace Booking.DB
                     SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Id=@Id, Payment_Id=@PI, Customer_Id=@CI, StartDestination=@SD, EndDestination=@ED, Date=@Date, Price=@Price", con);
 
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
-                    cmd.Parameters.Add("@PI", SqlDbType.Int).Value = obj.Payment; // <-------------------------
-                    cmd.Parameters.Add("@CI", SqlDbType.Int).Value = obj.Customer; // <-------------------------
-                    cmd.Parameters.Add("@SD", SqlDbType.Int).Value = obj.StartDestination; // <-------------------------
-                    cmd.Parameters.Add("@ED", SqlDbType.Int).Value = obj.EndDestination; // <-------------------------
+                    cmd.Parameters.Add("@PI", SqlDbType.Int).Value = obj.Payment.Id; // <-------------------------
+                    cmd.Parameters.Add("@CI", SqlDbType.Int).Value = obj.Customer.Id; // <-------------------------
+                    cmd.Parameters.Add("@SD", SqlDbType.Int).Value = obj.StartDestination.Id; // <-------------------------
+                    cmd.Parameters.Add("@ED", SqlDbType.Int).Value = obj.EndDestination.Id; // <-------------------------
                     cmd.Parameters.Add("@Date", SqlDbType.DateTime).Value = obj.Date;
                     cmd.Parameters.Add("@Price", SqlDbType.Int).Value = obj.Date;
 

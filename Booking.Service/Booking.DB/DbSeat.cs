@@ -16,7 +16,7 @@ namespace Booking.DB
 
         public void Delete(int id)
         {
-            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
@@ -56,7 +56,7 @@ namespace Booking.DB
 
         public void Create(Seat obj)
         {
-            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
@@ -64,7 +64,7 @@ namespace Booking.DB
                     con.Open();
                     SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Seat (id, Row_Id, Number, Availability) VALUES (@id, @Number, @Availability)", con);
                     cmd.Parameters.Add("id", SqlDbType.Int).Value = obj.Id;
-                    cmd.Parameters.Add("Row_Id", SqlDbType.Int).Value = obj.Row;
+                    cmd.Parameters.Add("Row_Id", SqlDbType.Int).Value = obj.Row.Id;
                     cmd.Parameters.Add("Number", SqlDbType.Int).Value = obj.Number;
                     cmd.Parameters.Add("Availability", SqlDbType.Bit).Value = obj.Available;
 
@@ -76,7 +76,7 @@ namespace Booking.DB
         }
         public void Update(Seat obj)
         {
-            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
@@ -85,12 +85,12 @@ namespace Booking.DB
                     SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Id=@Id, Row_Id=@Row Number=@Number, Availability=@Availability", con);
 
                     cmd.Parameters.Add("@id", SqlDbType.Int).Value = obj.Id;
-                    cmd.Parameters.Add("@Row", SqlDbType.Int).Value = obj.Row;
+                    cmd.Parameters.Add("@Row", SqlDbType.Int).Value = obj.Row.Id;
                     cmd.Parameters.Add("@Number", SqlDbType.Int).Value = obj.Number;
                     cmd.Parameters.Add("@Availability", SqlDbType.Bit).Value = obj.Available;
 
                     cmd.ExecuteNonQuery();       
-                }
+                } 
                 scope.Complete();
             }
         }
