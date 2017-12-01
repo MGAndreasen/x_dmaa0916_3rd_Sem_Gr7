@@ -77,11 +77,6 @@ namespace Booking.DB
             }
         }
 
-        public void Update(int id)
-        {
-            throw new NotImplementedException(); // <-------------------------- // <-------------------------- // <--------------------------// <--------------------------
-        }
-
         public IEnumerable<Plane> GetAll()
         {
             DbSeatSchema dbs = new DbSeatSchema();
@@ -92,7 +87,7 @@ namespace Booking.DB
 
                 using (SqlCommand cmd = con.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM bdo.Booking_Plane";
+                    cmd.CommandText = "SELECT * FROM dbo.Booking_Plane";
                     var rdr = cmd.ExecuteReader();
 
                     while (rdr.Read())

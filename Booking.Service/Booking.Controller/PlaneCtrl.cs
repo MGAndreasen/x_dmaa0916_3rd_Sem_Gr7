@@ -10,38 +10,28 @@ namespace Booking.Controller
 {
     public class PlaneCtrl : ICRUD<Plane>
     {
+        private DbPlane DBP = new DbPlane();
         public void Create(Plane obj)
         {
-            obj = new Plane();
-            DbPlane DBP = new DbPlane();
-
             DBP.Create(obj);
         }
 
         public void Delete(int id)
         {
-            DbPlane DBP = new DbPlane();
-
             DBP.Delete(id);
         }
 
         public Plane Get(int id)
         {
-            DbPlane DBP = new DbPlane();
-            Plane pl = DBP.Get(id);
-
-            return pl; 
+            return DBP.Get(id);
         }
 
         public void Update(Plane obj)
         {
-            DbPlane DBP = new DbPlane();
             DBP.Update(obj);
         }
         public IEnumerable<Plane> GetAllPlanes()
         {
-            DbPlane DBP = new DbPlane();
-
             return DBP.GetAll();
         }
     }

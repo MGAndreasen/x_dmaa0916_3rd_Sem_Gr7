@@ -22,5 +22,10 @@ namespace Booking.Models
         public Plane Plane { get; set; }
         [DataMember]
         public string NameDestination { get; set; }
+
+        public override string ToString()
+        {
+            return NameDestination.ToString() + " ";
+        }
     }
 }
