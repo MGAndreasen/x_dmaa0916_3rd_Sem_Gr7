@@ -21,6 +21,6 @@ namespace Booking.Models
         public int Row { get; set; }
 
         [DataMember]
-        public string Layout { get; set; }
+        public int Layout { get; set; }
     }
 }

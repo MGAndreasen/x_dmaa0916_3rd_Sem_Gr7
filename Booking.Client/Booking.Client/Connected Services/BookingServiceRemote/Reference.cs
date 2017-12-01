@@ -254,7 +254,12 @@ namespace Booking.Client.BookingServiceRemote {
         }
         
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
+
+        public override string ToString()
+        {
+            return Zipcode.ToString() + " " + CityName.ToString();
+        }
+
         protected void RaisePropertyChanged(string propertyName) {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
@@ -472,7 +477,12 @@ namespace Booking.Client.BookingServiceRemote {
         }
         
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
+
+        public override string ToString()
+        {
+            return "Destination: " + NameDestination.ToString() + "         " + Plane.ToString() + "";
+        }
+
         protected void RaisePropertyChanged(string propertyName) {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
@@ -626,7 +636,12 @@ namespace Booking.Client.BookingServiceRemote {
         }
         
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
+
+        public override string ToString()
+        {
+            return "Fly: " + Type.ToString();
+        }
+
         protected void RaisePropertyChanged(string propertyName) {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
@@ -703,7 +718,12 @@ namespace Booking.Client.BookingServiceRemote {
         }
         
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
+
+        public override string ToString()
+        {
+            return "Layout: " + Layout.ToString();
+        }
+
         protected void RaisePropertyChanged(string propertyName) {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
@@ -1111,10 +1131,10 @@ namespace Booking.Client.BookingServiceRemote {
         System.Threading.Tasks.Task<string> PostAsync(string s);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetRoute", ReplyAction="http://tempuri.org/IService/GetRouteResponse")]
-        string[] GetRoute(string id);
+        System.Collections.Generic.List<string> GetRoute(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetRoute", ReplyAction="http://tempuri.org/IService/GetRouteResponse")]
-        System.Threading.Tasks.Task<string[]> GetRouteAsync(string id);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<string>> GetRouteAsync(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateCustomer", ReplyAction="http://tempuri.org/IService/CreateCustomerResponse")]
         void CreateCustomer(Booking.Client.BookingServiceRemote.Customer obj);
@@ -1141,10 +1161,10 @@ namespace Booking.Client.BookingServiceRemote {
         System.Threading.Tasks.Task DeleteCustomerAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllCustomers", ReplyAction="http://tempuri.org/IService/GetAllCustomersResponse")]
-        Booking.Client.BookingServiceRemote.Customer[] GetAllCustomers();
+        System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Customer> GetAllCustomers();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllCustomers", ReplyAction="http://tempuri.org/IService/GetAllCustomersResponse")]
-        System.Threading.Tasks.Task<Booking.Client.BookingServiceRemote.Customer[]> GetAllCustomersAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Customer>> GetAllCustomersAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateBooking", ReplyAction="http://tempuri.org/IService/CreateBookingResponse")]
         void CreateBooking(Booking.Client.BookingServiceRemote.Bookings obj);
@@ -1219,10 +1239,10 @@ namespace Booking.Client.BookingServiceRemote {
         System.Threading.Tasks.Task DeleteDestinationAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllDestinations", ReplyAction="http://tempuri.org/IService/GetAllDestinationsResponse")]
-        Booking.Client.BookingServiceRemote.Destination[] GetAllDestinations();
+        System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Destination> GetAllDestinations();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllDestinations", ReplyAction="http://tempuri.org/IService/GetAllDestinationsResponse")]
-        System.Threading.Tasks.Task<Booking.Client.BookingServiceRemote.Destination[]> GetAllDestinationsAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Destination>> GetAllDestinationsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreatePassenger", ReplyAction="http://tempuri.org/IService/CreatePassengerResponse")]
         void CreatePassenger(Booking.Client.BookingServiceRemote.Passenger obj);
@@ -1249,10 +1269,10 @@ namespace Booking.Client.BookingServiceRemote {
         System.Threading.Tasks.Task DeletePassengerAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllPassengers", ReplyAction="http://tempuri.org/IService/GetAllPassengersResponse")]
-        Booking.Client.BookingServiceRemote.Passenger[] GetAllPassengers();
+        System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Passenger> GetAllPassengers();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllPassengers", ReplyAction="http://tempuri.org/IService/GetAllPassengersResponse")]
-        System.Threading.Tasks.Task<Booking.Client.BookingServiceRemote.Passenger[]> GetAllPassengersAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Passenger>> GetAllPassengersAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreatePayment", ReplyAction="http://tempuri.org/IService/CreatePaymentResponse")]
         void CreatePayment(Booking.Client.BookingServiceRemote.Payment obj);
@@ -1303,10 +1323,10 @@ namespace Booking.Client.BookingServiceRemote {
         System.Threading.Tasks.Task DeletePlaneAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllPlanes", ReplyAction="http://tempuri.org/IService/GetAllPlanesResponse")]
-        Booking.Client.BookingServiceRemote.Plane[] GetAllPlanes();
+        System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Plane> GetAllPlanes();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllPlanes", ReplyAction="http://tempuri.org/IService/GetAllPlanesResponse")]
-        System.Threading.Tasks.Task<Booking.Client.BookingServiceRemote.Plane[]> GetAllPlanesAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Plane>> GetAllPlanesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateRow", ReplyAction="http://tempuri.org/IService/CreateRowResponse")]
         void CreateRow(Booking.Client.BookingServiceRemote.Row obj);
@@ -1440,11 +1460,11 @@ namespace Booking.Client.BookingServiceRemote {
             return base.Channel.PostAsync(s);
         }
         
-        public string[] GetRoute(string id) {
+        public System.Collections.Generic.List<string> GetRoute(string id) {
             return base.Channel.GetRoute(id);
         }
         
-        public System.Threading.Tasks.Task<string[]> GetRouteAsync(string id) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<string>> GetRouteAsync(string id) {
             return base.Channel.GetRouteAsync(id);
         }
         
@@ -1480,11 +1500,11 @@ namespace Booking.Client.BookingServiceRemote {
             return base.Channel.DeleteCustomerAsync(id);
         }
         
-        public Booking.Client.BookingServiceRemote.Customer[] GetAllCustomers() {
+        public System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Customer> GetAllCustomers() {
             return base.Channel.GetAllCustomers();
         }
         
-        public System.Threading.Tasks.Task<Booking.Client.BookingServiceRemote.Customer[]> GetAllCustomersAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Customer>> GetAllCustomersAsync() {
             return base.Channel.GetAllCustomersAsync();
         }
         
@@ -1584,11 +1604,11 @@ namespace Booking.Client.BookingServiceRemote {
             return base.Channel.DeleteDestinationAsync(id);
         }
         
-        public Booking.Client.BookingServiceRemote.Destination[] GetAllDestinations() {
+        public System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Destination> GetAllDestinations() {
             return base.Channel.GetAllDestinations();
         }
         
-        public System.Threading.Tasks.Task<Booking.Client.BookingServiceRemote.Destination[]> GetAllDestinationsAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Destination>> GetAllDestinationsAsync() {
             return base.Channel.GetAllDestinationsAsync();
         }
         
@@ -1624,11 +1644,11 @@ namespace Booking.Client.BookingServiceRemote {
             return base.Channel.DeletePassengerAsync(id);
         }
         
-        public Booking.Client.BookingServiceRemote.Passenger[] GetAllPassengers() {
+        public System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Passenger> GetAllPassengers() {
             return base.Channel.GetAllPassengers();
         }
         
-        public System.Threading.Tasks.Task<Booking.Client.BookingServiceRemote.Passenger[]> GetAllPassengersAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Passenger>> GetAllPassengersAsync() {
             return base.Channel.GetAllPassengersAsync();
         }
         
@@ -1696,11 +1716,11 @@ namespace Booking.Client.BookingServiceRemote {
             return base.Channel.DeletePlaneAsync(id);
         }
         
-        public Booking.Client.BookingServiceRemote.Plane[] GetAllPlanes() {
+        public System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Plane> GetAllPlanes() {
             return base.Channel.GetAllPlanes();
         }
         
-        public System.Threading.Tasks.Task<Booking.Client.BookingServiceRemote.Plane[]> GetAllPlanesAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Plane>> GetAllPlanesAsync() {
             return base.Channel.GetAllPlanesAsync();
         }
         

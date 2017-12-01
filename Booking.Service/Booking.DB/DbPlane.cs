@@ -3,9 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Transactions;
 
 namespace Booking.DB
@@ -41,24 +38,25 @@ namespace Booking.DB
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
  //               try
                 {
-                    con.Open();
-                    SqlDataReader rdr = null;
-                    SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Plane WHERE Id = @id", con);
-                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
-                    rdr = cmd.ExecuteReader();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT s.Id, s.SeatSchema_Id, s.Type FROM dbo.Booking_Plane AS s WHERE Id = @id", con);
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                var rdr = cmd.ExecuteReader();
 
-                        return new Plane
-                        {
-                            Id = rdr.GetInt32(0),
-                            SeatSchema = dbs.Get((int)rdr.GetInt32(1)),
-                            Type = rdr.GetString(2)
-                        };
+                while (rdr.HasRows)
+                {
+                    rdr.Read();
+
+                    return new Plane
+                    {
+                        Id = (int)rdr["Id"],
+                        SeatSchema = dbs.Get((int)rdr["SeatSchema_Id"]),
+                        Type = (string)rdr["Type"]
+                    };
 
                 }
-                //catch (Exception e)
-                //{
-                //    Console.WriteLine(e.ToString());
-                //}
+                return null;
+                }
         }
 
         public void Create(Plane obj)
