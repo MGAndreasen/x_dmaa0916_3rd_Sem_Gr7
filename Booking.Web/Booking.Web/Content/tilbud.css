@@ -1,11 +1,13 @@
-﻿#TilbudUnListed {
-    border: 100px solid green;
-    background-color: blue;
-}
-.Boxed {
-    display: block;
+﻿.Boxed {
     width: 250px;
     height: 250px;
-    background-color: green;
-    border: 1px solid green;
+    display: block;
+    border-color: red;
+
+}
+
+.Boxed1 {
+    width: 250px;
+    height: 250px;
+    background-color: darkred;
 }
