@@ -25,10 +25,13 @@ namespace Booking.Client
             ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
             myService.ClientCredentials.UserName.UserName = "admin@test.dk";
             myService.ClientCredentials.UserName.Password = "1234";
-            VisPassager();
+            ShowPassager();
+            ShowPlanesComboBox();
+            ShowDestinations();
+            
         }
 
-        public void VisPassager()
+        public void ShowPassager()
         {
             //var request = new GetBookingRequest();
 
@@ -38,11 +41,23 @@ namespace Booking.Client
             listBoxPassengers.Items.Add(c.ToString());
         }
 
-        public void VisPassagers()
+        public void ShowPlanesComboBox()
         {
-            ServiceClient client = new ServiceClient();
-            Passenger p = client.GetPassenger(1);
-            listBoxPassengers.Items.Add(p.ToString());
+            List<Plane> list = myService.GetAllPlanes();
+            foreach (var item in list)
+            {
+                comboBoxDestination_ListOfPlanes.Items.Add(item.ToString());
+            }
+        }
+
+        public void ShowDestinations()
+        {
+            List<Destination> list = myService.GetAllDestinations();
+            listBoxPlanes.Items.Clear();
+            foreach (var item in list)
+            {
+                listBoxPlanes.Items.Add(item.ToString());
+            }
         }
 
         private void MainFrame_Load(object sender, EventArgs e)
@@ -108,14 +123,6 @@ namespace Booking.Client
             
         }
 
-        private void ComboBoxDestination_ListOfPlanes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            List<Plane> list = myService.GetAllPlanes();
-            foreach (var item in list)
-            {
-                comboBoxDestination_ListOfPlanes.Items.Add(item.ToString());
-            }
-        }
         private void DestinationCreate_Click(object sender, EventArgs e)
         {
             myService.CreateDestination(new Destination
@@ -128,23 +135,21 @@ namespace Booking.Client
 
         private void RefreshDestinations_Click(object sender, EventArgs e)
         {
-            
-            List<Destination> list = myService.GetAllDestinations();
             listBoxPlanes.Items.Clear();
-            foreach (var item in list)
-            {
-                listBoxPlanes.Items.Add(item.ToString());
-            }
-        }
-
-        private void CreateRoute_monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
-        {
-            textBoxDateTime.Text = CreateRoute_monthCalendar.SelectionRange.Start.ToShortDateString();
-            CreateRoute_monthCalendar.MinDate = DateTime.Now;
-            
+            ShowDestinations();
         }
 
         private void tabCreateRoute_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox_Bookings_StartDestination_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ListBoxPlanes_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

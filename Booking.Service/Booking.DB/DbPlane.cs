@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Transactions;
+using Booking.DB.ScopeHelper;
 
 namespace Booking.DB
 {
@@ -13,7 +14,7 @@ namespace Booking.DB
 
         public void Delete(int id)
         {
-            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
@@ -61,7 +62,7 @@ namespace Booking.DB
 
         public void Create(Plane obj)
         {
-            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
@@ -77,11 +78,6 @@ namespace Booking.DB
             }
         }
 
-        public void Update(int id)
-        {
-            throw new NotImplementedException(); // <-------------------------- // <-------------------------- // <--------------------------// <--------------------------
-        }
-
         public IEnumerable<Plane> GetAll()
         {
             DbSeatSchema dbs = new DbSeatSchema();
@@ -92,7 +88,7 @@ namespace Booking.DB
 
                 using (SqlCommand cmd = con.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM bdo.Booking_Plane";
+                    cmd.CommandText = "SELECT * FROM dbo.Booking_Plane";
                     var rdr = cmd.ExecuteReader();
 
                     while (rdr.Read())
