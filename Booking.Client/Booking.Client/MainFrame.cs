@@ -148,5 +148,10 @@ namespace Booking.Client
         {
 
         }
+
+        private void textBox_Bookings_StartDestination_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -36,7 +36,6 @@ namespace Booking.DB
 
         public SeatSchema Get(int id)
         {
-            {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
@@ -44,15 +43,21 @@ namespace Booking.DB
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
 
                     SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.HasRows)
+                {
+                    rdr.Read();
+
                     return new SeatSchema
                     {
                         Id = rdr.GetInt32(0),
                         Row = rdr.GetInt32(1),
-                        Layout = rdr.GetString(2),
+                        Layout = rdr.GetInt32(2),
                     };
-                }
 
-            }
+                }
+                return null;
+                }
 
         }
 
@@ -67,7 +72,7 @@ namespace Booking.DB
                     SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_SeatSchema (Id, Row, Layout) VALUES (@Id, @Row, @Layout)", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
                     cmd.Parameters.Add("@Row", SqlDbType.Int).Value = obj.Row;
-                    cmd.Parameters.Add("@Layout", SqlDbType.VarChar).Value = obj.Layout;
+                    cmd.Parameters.Add("@Layout", SqlDbType.Int).Value = obj.Layout;
 
                     cmd.ExecuteNonQuery();
 
