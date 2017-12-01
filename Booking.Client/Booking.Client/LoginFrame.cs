@@ -49,9 +49,12 @@ namespace Booking.Client
                 serviceClient.ClientCredentials.UserName.UserName = textBox1.Text.ToString().Trim();
                 serviceClient.ClientCredentials.UserName.Password = textBox2.Text.ToString().Trim();
 
-                
+                this.Hide();
+                MainFrame MF = new MainFrame();
+                MF.ShowDialog();
+                this.Close();
 
-                MessageBox.Show(serviceClient.GetCity(9000).CityName.ToString());
+                //MessageBox.Show(serviceClient.GetCity(9000).CityName.ToString());
             }
             else
             {

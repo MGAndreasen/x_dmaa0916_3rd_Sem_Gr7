@@ -14,8 +14,8 @@ namespace Booking.Service.AccessValidation
         private UserCtrl uCtrl = new UserCtrl();
         public override void Validate(string userName, string password)
         {
-            if (OperationContext.Current.EndpointDispatcher.ContractName != "IMetadataExchange")
-            {
+            //if (OperationContext.Current.EndpointDispatcher.ContractName != "IMetadataExchange")
+            //{
                 var foundUser = uCtrl.GetUser(userName);
 
                 if (foundUser != null && foundUser.Email == userName && foundUser.Password == password)
@@ -26,7 +26,7 @@ namespace Booking.Service.AccessValidation
                 {
                     throw new FaultException<Exception>(new Exception("Invalid Login..."), "Invalid Credentials");
                 }
-            }
+            //}
         }
     }
 }

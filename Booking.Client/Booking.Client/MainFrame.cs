@@ -23,7 +23,9 @@ namespace Booking.Client
         {
             InitializeComponent();
             ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
-            // VisPassager();
+            myService.ClientCredentials.UserName.UserName = "admin@test.dk";
+            myService.ClientCredentials.UserName.Password = "1234";
+            VisPassager();
         }
 
         public void VisPassager()
@@ -108,28 +110,31 @@ namespace Booking.Client
 
         private void ComboBoxDestination_ListOfPlanes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //List<Plane> list = myService.GetAllPlanes();
-            //foreach (var item in list)
-            //{
-            //    comboBoxDestination_ListOfPlanes.Items.Add(item.ToString());
-            //}
+            List<Plane> list = myService.GetAllPlanes();
+            foreach (var item in list)
+            {
+                comboBoxDestination_ListOfPlanes.Items.Add(item.ToString());
+            }
         }
         private void DestinationCreate_Click(object sender, EventArgs e)
         {
-            string text = CreateRoute_StartDestination.Text;
-            Destination d = new Destination();
-            text.Equals(d);
-
-            myService.CreateDestination(d);
+            myService.CreateDestination(new Destination
+            {
+                NameDestination = CreateRoute_StartDestination.Text.ToString(),
+                Plane = (Booking.Client.BookingServiceRemote.Plane)comboBoxDestination_ListOfPlanes.SelectedItem
+                
+            });
         }  
 
         private void RefreshDestinations_Click(object sender, EventArgs e)
         {
-            //List<Destination> list = myService.GetAllDestinations();
-            //foreach (var item in list)
-            //{
-            //    listBoxPlanes.Items.Add(item.ToString());
-            //}
+            
+            List<Destination> list = myService.GetAllDestinations();
+            listBoxPlanes.Items.Clear();
+            foreach (var item in list)
+            {
+                listBoxPlanes.Items.Add(item.ToString());
+            }
         }
 
         private void CreateRoute_monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
