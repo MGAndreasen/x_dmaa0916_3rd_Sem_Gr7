@@ -135,7 +135,7 @@ namespace Booking.Client
         private void CreateRoute_monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
         {
             textBoxDateTime.Text = CreateRoute_monthCalendar.SelectionRange.Start.ToShortDateString();
-            CreateRoute_monthCalendar.MaxDate = DateTime.Now;
+            CreateRoute_monthCalendar.MinDate = DateTime.Now;
             
         }
 
