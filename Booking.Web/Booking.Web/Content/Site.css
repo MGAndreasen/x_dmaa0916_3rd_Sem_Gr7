@@ -9,11 +9,20 @@ html, body {
 }
 
 body {
-	background-color: #fff;
+    background-color: #f1f1f1;
 }
 
 a {
 	color: #2b2929;
+}
+div.homePoster {
+    background-color: #222;
+    width: 100%;
+    height: 300px;
+    background-image: url('/Content/poster.jpg');
+}
+div.lePage {
+margin-top: 5px;
 }
 
 #topMenu {
