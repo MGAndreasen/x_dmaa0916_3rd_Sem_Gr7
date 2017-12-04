@@ -280,7 +280,6 @@
             this.comboBoxSeats_ListOfPlanes.Name = "comboBoxSeats_ListOfPlanes";
             this.comboBoxSeats_ListOfPlanes.Size = new System.Drawing.Size(248, 24);
             this.comboBoxSeats_ListOfPlanes.TabIndex = 0;
-            this.comboBoxSeats_ListOfPlanes.SelectedIndexChanged += new System.EventHandler(this.comboBoxSeats_ListOfPlanes_SelectedIndexChanged);
             // 
             // tabPagePassengers
             // 
