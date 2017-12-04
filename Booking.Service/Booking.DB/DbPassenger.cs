@@ -133,7 +133,7 @@ namespace Booking.DB
 
                 using (SqlCommand cmd = con.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM Payment";
+                    cmd.CommandText = "SELECT * FROM dbo.Booking_Payment";
                     var rdr = cmd.ExecuteReader();
 
                     while (rdr.Read())

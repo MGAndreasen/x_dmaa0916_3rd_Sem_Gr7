@@ -37,21 +37,24 @@ namespace Booking.DB
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT s.Id, s.Cpr, s.PhoneNo, s.City_Id, s.FirstName, s.LastName, s.Email, s.Address, s.Password, s.Comfirmed FROM dbo.Booking_Customer AS s WHERE Id = @id", con);
+                SqlCommand cmd = new SqlCommand("SELECT Id, Cpr, PhoneNo, City_Id, FirstName, LastName, Email, Address, Password, Comfirmed FROM dbo.Booking_Customer WHERE Id = @id", con);
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
-                SqlDataReader reader = cmd.ExecuteReader();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                rdr.Read();
                 return new Customer
                 {
-                    Id = reader.GetInt32(0),
-                    CPR = reader.GetInt32(1),
-                    PhoneNumber = reader.GetInt32(2),
-                    City = dbc.Get(reader.GetInt32(3)),
-                    FirstName = reader.GetString(4),
-                    LastName = reader.GetString(5),
-                    Email = reader.GetString(6),
-                    Address = reader.GetString(7),
-                    Password = reader.GetString(8),
-                    Confirmed = reader.GetBoolean(9)
+                   
+                    Id = (int)rdr["Id"],
+                    CPR = (int)rdr["Payment_Id"],
+                    PhoneNumber = (int)rdr["Customer_Id"],
+                    City = dbc.Get((int)rdr["City_Id"]),
+                    FirstName = ((string)rdr["FirstName"]),
+                    LastName = (string)rdr["LastName"],
+                    Email = (string)rdr["Email"],
+                    Address = (string)rdr["Address"],
+                    Password = (string)rdr["Password"],
+                    Confirmed = (bool)rdr["Confirmed"]
+                   
                 };
             }
         }
