@@ -7,7 +7,8 @@ namespace Booking.DB.ScopeHelper
 
         public static TransactionOptions GetDefault()
         {
-            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted }
+            TransactionOptions isoLevel = new TransactionOptions();
+            isoLevel.IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted;
             return isoLevel;
         }
     }
