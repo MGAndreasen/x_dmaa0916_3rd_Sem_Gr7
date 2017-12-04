@@ -18,7 +18,7 @@ namespace Booking.DB
 
         public void Delete(int id)
         {
-            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
@@ -44,7 +44,7 @@ namespace Booking.DB
             {
                 con.Open();
                 SqlCommand cmd = con.CreateCommand();
-                cmd.CommandText= "SELECT * FROM Booking_Passenger WHERE Id = @id";
+                cmd.CommandText= "SELECT * FROM dbo.Booking_Passenger WHERE Id = @id";
                 cmd.Parameters.AddWithValue("Id", id);
                 SqlDataReader reader = cmd.ExecuteReader();
 
@@ -74,7 +74,7 @@ namespace Booking.DB
 
         public void Create(Passenger obj)
         {
-            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
@@ -82,8 +82,8 @@ namespace Booking.DB
                     con.Open();
                     SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Passenger (Id, Booking_Id, Seat_Id, FirstName, LastName, Cpr, PassportId, Luggage) Values (@Id, @Bo, @Seat, @FirstName, @LastName, @Cpr, @PassportId, @Luggage)", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
-                    cmd.Parameters.Add("@Bo", SqlDbType.Int).Value = obj.Booking; // <-------------------------
-                    cmd.Parameters.Add("@Seat", SqlDbType.Int).Value = obj.SeatNumber; // <-------------------------
+                    cmd.Parameters.Add("@Bo", SqlDbType.Int).Value = obj.Booking.Id; // <-------------------------
+                    cmd.Parameters.Add("@Seat", SqlDbType.Int).Value = obj.SeatNumber.Id; // <-------------------------
                     cmd.Parameters.Add("@FirstName", SqlDbType.NVarChar).Value = obj.FirstName;
                     cmd.Parameters.Add("@LastName", SqlDbType.NVarChar).Value = obj.LastName;
                     cmd.Parameters.Add("@Cpr", SqlDbType.BigInt).Value = obj.CPR;
@@ -99,7 +99,7 @@ namespace Booking.DB
 
         public void Update(Passenger obj)
         {
-            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
@@ -108,8 +108,8 @@ namespace Booking.DB
                     SqlCommand cmd = new SqlCommand("UPDATE Booking_Passenger SET Id = @Id, Booking_Id=@Bo, Seat_Id=@Seat, FirstName = @FirstName, LastName = @LastName, Cpr = @Cpr, PassportId = @PassportId, Luggage = @Luggage WHERE Id=@Id", con);
                     
                     cmd.Parameters.AddWithValue("Id", obj.Id);
-                    cmd.Parameters.AddWithValue("Bo", obj.Booking); // <-------------------------
-                    cmd.Parameters.AddWithValue("Seat", obj.SeatNumber); // <-------------------------
+                    cmd.Parameters.AddWithValue("Bo", obj.Booking.Id); // <-------------------------
+                    cmd.Parameters.AddWithValue("Seat", obj.SeatNumber.Id); // <-------------------------
                     cmd.Parameters.AddWithValue("FirstName", obj.FirstName);
                     cmd.Parameters.AddWithValue("LastName", obj.LastName);
                     cmd.Parameters.AddWithValue("Cpr", obj.CPR);

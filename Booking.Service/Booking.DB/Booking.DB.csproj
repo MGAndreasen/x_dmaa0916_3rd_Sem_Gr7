@@ -57,6 +57,7 @@
     <Compile Include="DbUser.cs" />
     <Compile Include="IDbCRUD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScopeHelper\ScopeHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Booking.Exceptions\Booking.Exceptions.csproj">

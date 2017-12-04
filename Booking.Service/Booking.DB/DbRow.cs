@@ -16,7 +16,7 @@ namespace Booking.DB
 
         public void Delete(int id)
         {
-            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
@@ -25,7 +25,7 @@ namespace Booking.DB
 
                     using (SqlCommand cmd = con.CreateCommand())
                     {
-                        cmd.CommandText = "DELETE * FROM Row WHERE Id=@id";
+                        cmd.CommandText = "DELETE * FROM dbo.Booking_Row WHERE Id=@id";
                         cmd.Parameters.AddWithValue("id", id);
                         cmd.ExecuteNonQuery();
                         scope.Complete();
@@ -66,7 +66,7 @@ namespace Booking.DB
 
         public void Create(Row obj)
         {
-            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))

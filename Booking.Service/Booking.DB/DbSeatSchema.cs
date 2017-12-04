@@ -16,7 +16,7 @@ namespace Booking.DB
 
         public void Delete(int id)
         {
-            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
@@ -83,7 +83,7 @@ namespace Booking.DB
 
         public void Update(SeatSchema obj)
         {
-            TransactionOptions isoLevel = new TransactionOptions { IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted };//her kan i sætte isolation om nødvendigt
+            TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
