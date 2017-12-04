@@ -21,15 +21,17 @@ namespace Booking.DB
         {
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
-                    SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Payment WHERE Id = @id", con);
-                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
-                    SqlDataReader rdr = cmd.ExecuteReader();
-                        return new Payment
-                        {
-                            Id = rdr.GetInt32(0),
-                            Date = rdr.GetDateTime(1),
-                            Amount = rdr.GetInt32(2)  
-                        };
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Payment WHERE Id = @id", con);
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                SqlDataReader rdr = cmd.ExecuteReader();
+                rdr.Read();
+                return new Payment
+                {
+                    Id = rdr.GetInt32(0),
+                    Date = rdr.GetDateTime(1),
+                    Amount = rdr.GetInt32(2)
+                };
                 }
         }
 

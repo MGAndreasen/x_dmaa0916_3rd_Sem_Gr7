@@ -1,35 +1,101 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-    background-color: #fff;
+﻿* {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
 }
 
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+    background-color: #f1f1f1;
+}
+
+a {
+	color: #2b2929;
+}
+div.homePoster {
+    background-color: #222;
+    width: 100%;
+    height: 300px;
+    background-image: url('/Content/poster.jpg');
+}
+div.lePage {
+margin-top: 5px;
+}
+
+#topMenu {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 1001;
+	height: 54px;
+	width: 100%;
+	background-color: #fff;
+}
+
+	#topMenu ul {
+		list-style-type: none;
+	}
+
+	#topMenu li {
+		float: left;
+		height: 28px;
+		margin-left: 4px;
+		padding: 12px;
+		color: #fff;
+		font-family: Calibri;
+		font-size: 19px;
+		font-weight: lighter;
+		text-align: justify;
+		word-wrap: break-word;
+		border: 1px solid #333;
+		border-radius: 5px 5px 5px 5px;
+	}
+
+		#topMenu li a {
+			text-decoration: none;
+			color: #2b2929;
+		}
+
+			#topMenu li a:hover {
+				text-decoration: none;
+				color: #2b2929;
+			}
+
 footer p {
-    text-align: center;
-    margin: 0 auto;
+	text-align: center;
+	margin: 0 auto;
 }
 
 #MenuLogo {
-    background-color: #d81939;
-    width: 175px;
+	background-color: #d81939;
+	height: 54px;
+	float: right;
 }
 
+#MenuLogo img {
+		height: 54px;
+	}
+
 /* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.lePage {
+    padding-top: 54px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
 .dl-horizontal dt {
-    white-space: normal;
+	white-space: normal;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
-    max-width: 280px;
+	max-width: 280px;
 }
