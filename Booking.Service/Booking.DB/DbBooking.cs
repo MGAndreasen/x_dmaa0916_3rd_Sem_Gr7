@@ -36,6 +36,41 @@ namespace Booking.DB
             }
 
         }
+        public IEnumerable<Bookings> GetAllBookings()
+        {
+            DbPayment dbp = new DbPayment();
+            DbCustomer dbc = new DbCustomer();
+            DbDestination dbd = new DbDestination();
+            List<Bookings> bookings = new List<Bookings>();
+            DbCity dbCity = new DbCity();
+            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+            {
+                con.Open();
+
+                using (SqlCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM dbo.Booking_Booking";
+                    var rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        bookings.Add(new Bookings
+                        {
+                            Id = (int)rdr["Id"],
+                            Payment = dbp.Get((int)rdr["Payment_Id"]),
+                            Customer = dbc.Get((int)rdr["Customer_Id"]),
+                            StartDestination = dbd.Get((int)rdr["StartDestination"]),
+                            EndDestination = dbd.Get((int)rdr["EndDestination"]),
+                            Date = (DateTime)rdr["Date"],
+                            TotalPrice = (int)rdr["Price"]
+
+                        });
+                    }
+                }
+
+            }
+            return bookings;
+        }
 
         public Bookings Get(int id)
         {
