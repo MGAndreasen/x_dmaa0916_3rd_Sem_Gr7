@@ -18,7 +18,8 @@ namespace Booking.Client
     {
         AuthClient authClient = new AuthClient();
         ServiceClient serviceClient = new ServiceClient();
-        Boolean isLoggedin = false;
+
+        BookingAuthRemote.User isLoggedin = null;
 
         public LoginFrame()
         {
@@ -43,21 +44,25 @@ namespace Booking.Client
             {
                 isLoggedin = authClient.Login(textBox1.Text.ToString().Trim(), textBox2.Text.ToString().Trim());
 
-                if (isLoggedin)
+                if (isLoggedin != null)
                 {
-                    serviceClient.ClientCredentials.UserName.UserName = textBox1.Text.ToString().Trim();
-                    serviceClient.ClientCredentials.UserName.Password = textBox2.Text.ToString().Trim();
+                    serviceClient.ClientCredentials.UserName.UserName = isLoggedin.Email.ToString();
+                    serviceClient.ClientCredentials.UserName.Password = isLoggedin.Password.ToString();
 
                     this.Hide();
                     MainFrame MF = new MainFrame();
                     MF.ShowDialog();
                     this.Close();
                 }
+                else
+                {
+                   // MessageBox.Show("Brugernavn eller adgangskode ikke korrekt!");
+                }
             }
             catch (Exception)
             {
-
-                throw new Exception("Brugernavn eller adgangskode ikke korrekt!");
+                
+                //throw new Exception("Brugernavn eller adgangskode ikke korrekt!");
             }
             
             //if (textBox1.Text == serviceClient.ClientCredentials.UserName.UserName && textBox2.Text == serviceClient.ClientCredentials.UserName.Password)

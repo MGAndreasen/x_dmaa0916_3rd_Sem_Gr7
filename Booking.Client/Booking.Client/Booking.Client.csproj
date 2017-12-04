@@ -87,6 +87,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Connected Services\BookingAuthRemote\Booking.Client.BookingAuthRemote.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BookingAuthRemote\Booking.Models.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\BookingAuthRemote\service.wsdl" />
     <None Include="Connected Services\BookingAuthRemote\service.xsd">
       <SubType>Designer</SubType>

@@ -53,7 +53,7 @@ namespace Booking.DB
                 // Ingen bruger
                 u = null;
             }
-
+            Console.WriteLine("Login: " + (u  != null ? "someone logged in as:" + u.Email.ToString() : "someone tried to login as: " + email + " (but failed!)"));
             return u;
         }
     }
