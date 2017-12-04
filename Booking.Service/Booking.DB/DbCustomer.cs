@@ -37,7 +37,7 @@ namespace Booking.DB
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT Id, Cpr, PhoneNo, City_Id, FirstName, LastName, Email, Address, Password, Comfirmed FROM dbo.Booking_Customer WHERE Id = @id", con);
+                SqlCommand cmd = new SqlCommand("SELECT Id, Cpr, PhoneNo, City_Id, FirstName, LastName, Email, Address, Password, cofirmed as Comfirmed FROM dbo.Booking_Customer WHERE Id = @id", con);
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                 SqlDataReader rdr = cmd.ExecuteReader();
                 rdr.Read();

@@ -34,51 +34,66 @@ namespace Booking.Client
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-
-            //authClient.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.None;
-
-            ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
-
-            try
+            if (textBox1.Text.ToString().Trim() == "" || textBox2.Text.ToString().Trim() == "")
             {
-                isLoggedin = authClient.Login(textBox1.Text.ToString().Trim(), textBox2.Text.ToString().Trim());
+                string fejl = "";
 
-                if (isLoggedin != null)
+                if (textBox1.Text.ToString().Trim() == "")
                 {
-                    serviceClient.ClientCredentials.UserName.UserName = isLoggedin.Email.ToString();
-                    serviceClient.ClientCredentials.UserName.Password = isLoggedin.Password.ToString();
-
-                    this.Hide();
-                    MainFrame MF = new MainFrame();
-                    MF.ShowDialog();
-                    this.Close();
+                    // Brugernavn må ikke være blankt!
+                    fejl += "Brugernavn";
+                    
                 }
-                else
+
+                if (textBox2.Text.ToString().Trim() == "")
                 {
-                   // MessageBox.Show("Brugernavn eller adgangskode ikke korrekt!");
+                    // Password må ikke være blankt!
+                    fejl += (fejl.Length > 0 ? " og Password" : "Password");
+                }
+
+                lblStatus.Text = fejl + " må ikke være blankt!";
+            }
+            else
+            {
+
+                try
+                {
+                    isLoggedin = authClient.Login(textBox1.Text.ToString().Trim(), textBox2.Text.ToString().Trim());
+
+                    if (isLoggedin != null)
+                    {
+                        lblStatus.Text = "";
+
+                        if (isLoggedin.Roles.First().Name.ToString().ToLower() == "admin")
+                        {
+                            serviceClient.ClientCredentials.UserName.UserName = isLoggedin.Email.ToString();
+                            serviceClient.ClientCredentials.UserName.Password = isLoggedin.Password.ToString();
+
+                            this.Hide();
+                            MainFrame MF = new MainFrame();
+                            MF.ShowDialog();
+                            this.Close();
+                        }
+                        else
+                        {
+                            lblStatus.Text = "Kun Administratore kan logge ind her!";
+                            isLoggedin = null;
+                        }
+                    }
+                    else
+                    {
+                        lblStatus.Text = "Brugernavn eller Password var forkert!";
+                    }
+                }
+                catch (Exception)
+                {
+                    lblStatus.Text = "Der er sket en fejl!";
+                    //throw new Exception("Brugernavn eller adgangskode ikke korrekt!");
                 }
             }
-            catch (Exception)
-            {
-                
-                //throw new Exception("Brugernavn eller adgangskode ikke korrekt!");
-            }
-            
-            //if (textBox1.Text == serviceClient.ClientCredentials.UserName.UserName && textBox2.Text == serviceClient.ClientCredentials.UserName.Password)
-            //{
-            //    this.Hide();
-            //    MainFrame MF = new MainFrame();
-            //    MF.ShowDialog();
-            //    this.Close();
-            //}
-            //else
-            //{
-
-            //}
 
         }
 
     }
-   }
+}
 
