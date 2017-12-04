@@ -1170,6 +1170,12 @@ namespace Booking.Client.BookingServiceRemote {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteBooking", ReplyAction="http://tempuri.org/IService/DeleteBookingResponse")]
         System.Threading.Tasks.Task DeleteBookingAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllBookings", ReplyAction="http://tempuri.org/IService/GetAllBookingsResponse")]
+        System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Bookings> GetAllBookings();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllBookings", ReplyAction="http://tempuri.org/IService/GetAllBookingsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Bookings>> GetAllBookingsAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateCity", ReplyAction="http://tempuri.org/IService/CreateCityResponse")]
         void CreateCity(Booking.Client.BookingServiceRemote.City obj);
         
@@ -1518,6 +1524,14 @@ namespace Booking.Client.BookingServiceRemote {
         
         public System.Threading.Tasks.Task DeleteBookingAsync(int id) {
             return base.Channel.DeleteBookingAsync(id);
+        }
+        
+        public System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Bookings> GetAllBookings() {
+            return base.Channel.GetAllBookings();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Bookings>> GetAllBookingsAsync() {
+            return base.Channel.GetAllBookingsAsync();
         }
         
         public void CreateCity(Booking.Client.BookingServiceRemote.City obj) {

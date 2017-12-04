@@ -39,18 +39,19 @@ namespace Booking.DB
             DbRow dbRow = new DbRow();
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Booking_Seat WHERE Id=@Id", con);
-                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Booking_Seat WHERE Id=@Id", con);
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
 
-                    SqlDataReader rdr = cmd.ExecuteReader();
-                    return new Seat
-                    {
-                        Id = rdr.GetInt32(0),
-                        Row = dbRow.Get(rdr.GetInt32(1)),
-                        Number = rdr.GetInt32(2),
-                        Available = rdr.GetBoolean(3),
-                    };
+                SqlDataReader rdr = cmd.ExecuteReader();
+                rdr.Read();
+                return new Seat
+                {
+                    Id = rdr.GetInt32(0),
+                    Row = dbRow.Get(rdr.GetInt32(1)),
+                    Number = rdr.GetInt32(2),
+                    Available = rdr.GetBoolean(3),
+                };
                 }
         }
 

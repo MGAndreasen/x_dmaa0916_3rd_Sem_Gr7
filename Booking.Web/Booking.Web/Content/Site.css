@@ -1,6 +1,6 @@
 ﻿* {
-	margin: 0px 0px 0px 0px;
-	padding: 0px 0px 0px 0px;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
 }
 
 html, body {
@@ -9,51 +9,72 @@ html, body {
 }
 
 body {
-	background-color: #fff;
+    background-color: #f1f1f1;
 }
 
 a {
 	color: #2b2929;
 }
 
+.floatLeft {
+    float: left;
+}
+
+.floatRight {
+    float: right;
+}
+
+.homePoster {
+    background-color: #222;
+    width: 100%;
+    height: 300px;
+    background-image: url('/Content/poster.jpg');
+}
+
+.lePage {
+    margin-top: 5px;
+}
+
 #topMenu {
 	position: fixed;
-	top: 0px;
-	left: 0px;
+	top: 0;
+	left: 0;
 	z-index: 1001;
 	height: 54px;
 	width: 100%;
 	background-color: #fff;
 }
 
-	#topMenu ul {
-		list-style-type: none;
-	}
+#topMenu ul {
+    margin-left: 15px;
+    margin-right: 15px;
+	list-style-type: none;
+}
 
-	#topMenu li {
-		float: left;
-		height: 28px;
-		margin-left: 4px;
-		padding: 12px;
-		color: #fff;
-		font-family: Calibri;
-		font-size: 19px;
-		font-weight: lighter;
-		text-align: justify;
-		word-wrap: break-word;
-		border: 1px solid #333;
-		border-radius: 5px 5px 5px 5px;
-	}
+#topMenu li {
+	float: left;
+	height: 28px;
+	margin-left: 4px;
+	padding: 12px;
+	color: #fff;
+	font-family: Calibri;
+	font-size: 19px;
+	font-weight: lighter;
+	text-align: justify;
+	word-wrap: break-word;
+	border: 1px solid #333;
+	border-radius: 5px 5px 5px 5px;
+}
 
-		#topMenu li a {
-			text-decoration: none;
-			color: #2b2929;
-		}
+#topMenu li a {
+	text-decoration: none;
+	color: #2b2929;
+}
 
-			#topMenu li a:hover {
-				text-decoration: none;
-				color: #2b2929;
-			}
+#topMenu li a:hover {
+	text-decoration: none;
+	color: #2b2929;
+}
 
 footer p {
 	text-align: center;
@@ -67,8 +88,8 @@ footer p {
 }
 
 #MenuLogo img {
-		height: 54px;
-	}
+    height: 54px;
+}
 
 /* Set padding to keep content from hitting the edges */
 .lePage {

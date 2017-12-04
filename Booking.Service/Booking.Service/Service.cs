@@ -149,7 +149,11 @@ namespace Booking.Service
         {
             bookingCtrl.Delete(id);
         }
-
+        public IEnumerable<Bookings> GetAllBookings()
+        {
+            return bookingCtrl.GetAllBookings();
+        }
+            
         #endregion
 
         #region City

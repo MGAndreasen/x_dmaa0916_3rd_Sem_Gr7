@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Norwegian</title>
     @Styles.Render("~/Content/css")
+    
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     @Html.Partial("_Menu")
     <div class="lePage">
         @RenderBody()
-        <hr />
     </div>
     @Html.Partial("_Tilbud")
     @Html.Partial("_Footer")
