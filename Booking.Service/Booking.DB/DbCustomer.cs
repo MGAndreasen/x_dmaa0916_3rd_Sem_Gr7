@@ -34,10 +34,11 @@ namespace Booking.DB
         public Customer Get(int id)
         {
             DbCity dbc = new DbCity();
+            DbPayment dbp = new DbPayment();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT Id, Cpr, PhoneNo, City_Id, FirstName, LastName, Email, Address, Password, cofirmed as Comfirmed FROM dbo.Booking_Customer WHERE Id = @id", con);
+                SqlCommand cmd = new SqlCommand("SELECT Id, Cpr, PhoneNo, City_Id,Payment_Id, FirstName, LastName, Email, Address, Password, cofirmed as Comfirmed FROM dbo.Booking_Customer WHERE Id = @id", con);
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                 SqlDataReader rdr = cmd.ExecuteReader();
                 rdr.Read();
@@ -53,7 +54,8 @@ namespace Booking.DB
                     Email = (string)rdr["Email"],
                     Address = (string)rdr["Address"],
                     Password = (string)rdr["Password"],
-                    Confirmed = (bool)rdr["Confirmed"]
+                    Confirmed = (bool)rdr["Confirmed"],
+                    Payment = dbp.Get((int)rdr["Payment_Id"])
                    
                 };
             }
@@ -68,7 +70,7 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Customer (Id, Cpr, PhoneNo, City_Id, FirstName, LastName, Email, Address, Password, Comfirmed) VALUES (@Id, @Cpr, @PhoneNo, @City, @FirstName, @LastName, @Email. @Address, @Password, @Comfirmed)", con);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Customer (Id, Cpr, PhoneNo, City_Id, FirstName, LastName, Email, Address, Password, Cofirmed) VALUES (@Id, @Cpr, @PhoneNo, @City, @FirstName, @LastName, @Email. @Address, @Password, @Cofirmed)", con);
                     cmd.Parameters.Add("Id", SqlDbType.Int).Value = obj.Id;
                     cmd.Parameters.Add("Cpr", SqlDbType.BigInt).Value = obj.CPR;
                     cmd.Parameters.Add("PhoneNo", SqlDbType.BigInt).Value = obj.PhoneNumber;
@@ -78,7 +80,7 @@ namespace Booking.DB
                     cmd.Parameters.Add("Email", SqlDbType.NVarChar).Value = obj.Email;
                     cmd.Parameters.Add("Address", SqlDbType.NVarChar).Value = obj.Address;
                     cmd.Parameters.Add("Password", SqlDbType.NVarChar).Value = obj.Password;
-                    cmd.Parameters.Add("Comfirmed", SqlDbType.Bit).Value = obj.Confirmed;
+                    cmd.Parameters.Add("Cofirmed", SqlDbType.Bit).Value = obj.Confirmed;
 
                     cmd.ExecuteNonQuery();
                 }
@@ -118,6 +120,7 @@ namespace Booking.DB
         {
             List<Customer> customers = new List<Customer>();
             DbCity dbCity = new DbCity();
+            DbPayment dbp = new DbPayment();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
                 con.Open();
@@ -139,7 +142,9 @@ namespace Booking.DB
                             PhoneNumber = (long)rdr["PhoneNo"],
                             City = dbCity.Get((int)rdr["ZipCode"]),
                             Address = (string)rdr["Address"],
-                            Password = (string)rdr["Password"]
+                            Password = (string)rdr["Password"],
+                            Confirmed = (bool)rdr["Cofirmed"],
+                            Payment = dbp.Get((int)rdr["Payment_Id"])
 
                         });
                     }
