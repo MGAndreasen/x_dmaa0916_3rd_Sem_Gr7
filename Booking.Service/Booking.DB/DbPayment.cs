@@ -22,7 +22,7 @@ namespace Booking.DB
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT FROM dbo.Booking_Payment WHERE Id = @id", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Booking_Payment WHERE Id = @id", con);
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                 SqlDataReader rdr = cmd.ExecuteReader();
                 rdr.Read();
