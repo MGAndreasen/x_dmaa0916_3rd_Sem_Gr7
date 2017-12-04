@@ -48,7 +48,7 @@ namespace Booking.DB
                     CPR = (int)rdr["Payment_Id"],
                     PhoneNumber = (int)rdr["Customer_Id"],
                     City = dbc.Get((int)rdr["City_Id"]),
-                    FirstName = ((string)rdr["FirstName"]),
+                    FirstName = (string)rdr["FirstName"],
                     LastName = (string)rdr["LastName"],
                     Email = (string)rdr["Email"],
                     Address = (string)rdr["Address"],
