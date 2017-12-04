@@ -175,6 +175,12 @@
   <wsdl:message name="IService_DeleteBooking_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteBookingResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_GetAllBookings_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBookings" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetAllBookings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBookingsResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_CreateCity_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateCity" />
   </wsdl:message>
@@ -454,6 +460,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteBooking" message="tns:IService_DeleteBooking_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteBookingResponse" message="tns:IService_DeleteBooking_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllBookings">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllBookings" message="tns:IService_GetAllBookings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllBookingsResponse" message="tns:IService_GetAllBookings_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CreateCity">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateCity" message="tns:IService_CreateCity_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateCityResponse" message="tns:IService_CreateCity_OutputMessage" />
@@ -706,6 +716,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteBooking">
       <soap12:operation soapAction="http://tempuri.org/IService/DeleteBooking" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBookings">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetAllBookings" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
