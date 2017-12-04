@@ -49,6 +49,7 @@ namespace Booking.DB
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
 
                 SqlDataReader rdr = cmd.ExecuteReader();
+                rdr.Read();
                 return new Bookings
                 {
                     Id = (int)rdr["Id"],
