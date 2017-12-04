@@ -34,7 +34,8 @@ namespace Booking.Client
         public void ShowPassager()
         {
             var c = myService.GetCity(9000);
-            listBoxPassengers.Items.Add(c.Zipcode + " " + c.CityName);
+            var n = myService.GetPassenger(1);
+            listBoxPassengers.Items.Add(n.FirstName+", " +n.LastName+ " " + c.Zipcode + " " + c.CityName);
         }
 
         public void ShowPlanesComboBox()
@@ -52,7 +53,7 @@ namespace Booking.Client
             listBoxPlanes.Items.Clear();
             foreach (var item in list)
             {
-                listBoxPlanes.Items.Add(item.NameDestination + " " + item.Plane.Type);
+                listBoxPlanes.Items.Add(item.NameDestination + " , " + item.Plane.Type);
             }
         }
 
@@ -149,5 +150,6 @@ namespace Booking.Client
         {
 
         }
+
     }
 }
