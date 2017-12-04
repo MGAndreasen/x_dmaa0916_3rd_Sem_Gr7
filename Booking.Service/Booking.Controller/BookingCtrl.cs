@@ -31,5 +31,10 @@ namespace Booking.Controller
         {
             DBB.Update(obj);
         }
+
+        public IEnumerable<Bookings> GetAllBookings()
+        {
+            return DBB.GetAllBookings();
+        }
     }
 }

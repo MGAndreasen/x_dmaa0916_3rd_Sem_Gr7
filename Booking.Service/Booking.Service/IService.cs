@@ -69,7 +69,8 @@ namespace Booking.Service
         void UpdateBooking(Bookings obj);
         [OperationContract]
         void DeleteBooking(int id);
-
+        [OperationContract]
+        IEnumerable<Bookings> GetAllBookings();
         #endregion 
 
         #region CityCtrl
