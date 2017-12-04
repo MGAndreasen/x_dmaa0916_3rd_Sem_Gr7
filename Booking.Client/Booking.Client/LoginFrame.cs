@@ -39,33 +39,27 @@ namespace Booking.Client
 
             ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
 
-
-            isLoggedin = authClient.Login(textBox1.Text.ToString().Trim(), textBox2.Text.ToString().Trim());
-
-            if (isLoggedin)
+            try
             {
-                MessageBox.Show("Uha uha da da!");
+                isLoggedin = authClient.Login(textBox1.Text.ToString().Trim(), textBox2.Text.ToString().Trim());
 
-                serviceClient.ClientCredentials.UserName.UserName = textBox1.Text.ToString().Trim();
-                serviceClient.ClientCredentials.UserName.Password = textBox2.Text.ToString().Trim();
+                if (isLoggedin)
+                {
+                    serviceClient.ClientCredentials.UserName.UserName = textBox1.Text.ToString().Trim();
+                    serviceClient.ClientCredentials.UserName.Password = textBox2.Text.ToString().Trim();
 
-                this.Hide();
-                MainFrame MF = new MainFrame();
-                MF.ShowDialog();
-                this.Close();
-
-                //MessageBox.Show(serviceClient.GetCity(9000).CityName.ToString());
+                    this.Hide();
+                    MainFrame MF = new MainFrame();
+                    MF.ShowDialog();
+                    this.Close();
+                }
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("Faaack IT!");
+
+                throw new Exception("Brugernavn eller adgangskode ikke korrekt!");
             }
-
-
             
-
-            
-
             //if (textBox1.Text == serviceClient.ClientCredentials.UserName.UserName && textBox2.Text == serviceClient.ClientCredentials.UserName.Password)
             //{
             //    this.Hide();
