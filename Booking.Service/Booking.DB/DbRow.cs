@@ -42,6 +42,7 @@ namespace Booking.DB
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 try
                 {
+                    con.Open();
                     SqlDataReader rdr = null;
                     SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Booking_Row WHERE Id = @id", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
@@ -81,11 +82,6 @@ namespace Booking.DB
                 }
                 scope.Complete();
             }
-        }
-
-        public void Update(int id)
-        {
-            throw new NotImplementedException();
         }
 
         public IEnumerable<Row> GetAll()
