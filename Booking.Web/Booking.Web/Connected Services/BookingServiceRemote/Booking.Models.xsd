@@ -72,6 +72,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Payment" nillable="true" type="tns:Payment" />
+  <xs:complexType name="ArrayOfBookings">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Bookings" nillable="true" type="tns:Bookings" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBookings" nillable="true" type="tns:ArrayOfBookings" />
   <xs:complexType name="ArrayOfDestination">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Destination" nillable="true" type="tns:Destination" />
