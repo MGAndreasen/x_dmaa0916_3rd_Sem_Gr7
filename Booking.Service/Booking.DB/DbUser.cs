@@ -36,7 +36,7 @@ namespace Booking.DB
         {
             //email = "admin@test.dk";
 
-            User u = null;
+            User u;
 
             if (email == "admin@test.dk")
             {
@@ -51,6 +51,7 @@ namespace Booking.DB
             else
             {
                 // Ingen bruger
+                u = null;
             }
 
             return u;

@@ -1,4 +1,5 @@
 ﻿using Booking.Controller;
+using Booking.Models;
 
 namespace Booking.Service
 {
@@ -6,10 +7,10 @@ namespace Booking.Service
     {
         private UserCtrl uCtrl = new UserCtrl();
 
-        public bool Login(string username, string password)
+        public User Login(string username, string password)
         {
-            var user = uCtrl.GetUser(username);
-            return user.Email == username && user.Password == password;
+            User user = uCtrl.GetUser(username);
+            return user;
         }
     }
 }

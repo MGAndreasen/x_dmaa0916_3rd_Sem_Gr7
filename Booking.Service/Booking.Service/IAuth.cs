@@ -1,4 +1,5 @@
 ﻿using System.ServiceModel;
+using Booking.Models;
 
 namespace Booking.Service
 {
@@ -6,6 +7,6 @@ namespace Booking.Service
     public interface IAuth
     {
         [OperationContract]
-        bool Login(string username, string password);
+        User Login(string username, string password);
     }
 }

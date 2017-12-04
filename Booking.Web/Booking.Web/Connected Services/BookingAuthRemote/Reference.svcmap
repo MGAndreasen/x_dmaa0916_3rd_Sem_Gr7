@@ -25,6 +25,7 @@
     <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="a8c4435e-418f-4ab2-af8d-b68fd113114c" SourceId="1" SourceUrl="https://127.0.0.1:6969/mex" />
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="808889f6-df84-4519-8f63-a26a8742ec7d" SourceId="1" SourceUrl="https://127.0.0.1:6969/mex" />
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="6f23006c-bc48-4fd1-a766-39a4e6183e09" SourceId="1" SourceUrl="https://127.0.0.1:6969/mex" />
+    <MetadataFile FileName="Booking.Models.xsd" MetadataType="Schema" ID="cb4a89cc-05fd-40b4-9571-94bf92b5d493" SourceId="1" SourceUrl="https://127.0.0.1:6969/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

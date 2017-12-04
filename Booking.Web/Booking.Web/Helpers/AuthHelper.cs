@@ -9,7 +9,9 @@ namespace Booking.Web.Helpers
     public class AuthHelper
     {
         private static string LoginSessionName = "LoggedInUser";
+
         private static LoginViewModel currentUser;
+
         public static LoginViewModel CurrentUser
         {
             get
@@ -22,15 +24,21 @@ namespace Booking.Web.Helpers
             }
         }
 
-
         public static bool IsLoggedIn()
         {
             return HttpContext.Current.Session[LoginSessionName] != null;
         }
+
+        public static bool IsAdmin()
+        {
+            return ((LoginViewModel)HttpContext.Current.Session[LoginSessionName]).UserType.ToString().ToLower() == "admin";
+        }
+
         public static void Login(LoginViewModel lvm)
         {
             HttpContext.Current.Session[LoginSessionName] = lvm;
         }
+
         public static void Logout()
         {
             HttpContext.Current.Session[LoginSessionName] = null;
