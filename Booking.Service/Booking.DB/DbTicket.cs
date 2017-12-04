@@ -40,12 +40,12 @@ namespace Booking.DB
             DbPassenger dbp = new DbPassenger();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
-                con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Booking_Booking WHERE Id=@Id", con);
-                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+             
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Booking_Booking WHERE Id=@Id", con);
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
 
-                SqlDataReader rdr = cmd.ExecuteReader();
-                rdr.Read();
+                    SqlDataReader rdr = cmd.ExecuteReader();
                 return new Ticket(rdr.GetInt32(0), dbp.Get(rdr.GetInt32(1)));
 
             }

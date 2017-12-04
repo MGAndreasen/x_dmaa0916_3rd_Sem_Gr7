@@ -71,7 +71,7 @@ namespace Booking.DB
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandText = "INSERT INTO dbo.Booking_City (ZipCode, Name) VALUES (@ZipCode, @Name)";
                     cmd.Parameters.Add("@ZipCode", SqlDbType.Int).Value = obj.Zipcode;
-                    cmd.Parameters.AddWithValue("@Name", SqlDbType.NVarChar).Value = obj.CityName;
+                    cmd.Parameters.AddWithValue("Name", SqlDbType.NVarChar).Value = obj.CityName;
 
                     cmd.ExecuteNonQuery();
                 }

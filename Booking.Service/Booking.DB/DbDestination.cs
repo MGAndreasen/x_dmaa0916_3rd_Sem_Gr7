@@ -45,7 +45,6 @@ namespace Booking.DB
                 SqlCommand cmd = new SqlCommand("SELECT s.Id, s.Plane_Id, s.NameDestination FROM dbo.Booking_Destination AS s WHERE Id = @id", con);
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                 SqlDataReader reader = cmd.ExecuteReader();
-                reader.Read();
                 return new Destination
                 {
                     Id = reader.GetInt32(0),

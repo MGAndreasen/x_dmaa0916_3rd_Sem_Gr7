@@ -36,6 +36,7 @@ namespace Booking.DB
         {
             DbSeatSchema dbs = new DbSeatSchema();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+ //               try
                 {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("SELECT s.Id, s.SeatSchema_Id, s.Type FROM dbo.Booking_Plane AS s WHERE Id = @id", con);

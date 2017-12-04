@@ -39,7 +39,6 @@ namespace Booking.DB
                 SqlCommand cmd = new SqlCommand("SELECT s.Id, s.Cpr, s.PhoneNo, s.City_Id, s.FirstName, s.LastName, s.Email, s.Address, s.Password, s.Comfirmed FROM dbo.Booking_Customer AS s WHERE Id = @id", con);
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                 SqlDataReader reader = cmd.ExecuteReader();
-                reader.Read();
                 return new Customer
                 {
                     Id = reader.GetInt32(0),
@@ -92,7 +91,6 @@ namespace Booking.DB
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
-                    con.Open();
                     SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Customer SET Cpr=@cpr, PhoneNo=@pho, City_Id=@city, FirstName=@fn, LastName=@ln, Email=@em, Address=@a, Password=@p, Confirmed=@con WHERE ID=@id", con);
                     cmd.Parameters.AddWithValue("id", obj.Id);
                     cmd.Parameters.AddWithValue("cpr", obj.CPR);
