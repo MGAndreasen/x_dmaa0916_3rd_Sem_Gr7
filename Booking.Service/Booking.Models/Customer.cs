@@ -7,9 +7,9 @@ namespace Booking.Models
     {
         //Constructors
 
-        public Customer()
-        {
-        }
+        //public Customer()
+        //{
+        //}
 
 
         //Properties

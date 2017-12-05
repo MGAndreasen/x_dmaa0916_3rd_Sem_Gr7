@@ -43,15 +43,15 @@ namespace Booking.DB
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT s.Id, s.Plane_Id, s.NameDestination FROM dbo.Booking_Destination AS s WHERE Id = @id", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Booking_Destination WHERE Id = @id", con);
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                 SqlDataReader reader = cmd.ExecuteReader();
                 reader.Read();
                 return new Destination
                 {
-                    Id = reader.GetInt32(0),
-                    Plane = dbp.Get(reader.GetInt32(1)), // <-------------------------
-                    NameDestination = reader.GetString(2)
+                    Id = (int)reader["Id"],
+                    Plane = dbp.Get((int)reader["Plane_Id"]), // <-------------------------
+                    NameDestination = (string)reader["NameDestination"]
                 };
             }
         }
