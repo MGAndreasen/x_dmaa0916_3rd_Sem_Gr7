@@ -72,7 +72,7 @@ namespace Booking.Client
                             this.Hide();
                             MainFrame MF = new MainFrame();
                             MF.ShowDialog();
-                            this.Close();
+                            //this.Close();
                         }
                         else
                         {
