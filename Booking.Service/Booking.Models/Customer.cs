@@ -33,8 +33,5 @@ namespace Booking.Models
         public string Password { get; set; }
         [DataMember]
         public bool Confirmed { get; set; }
-        [DataMember]
-        public Payment Payment { get; set; }
-
     }
 }

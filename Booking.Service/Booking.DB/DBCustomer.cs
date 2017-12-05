@@ -34,29 +34,25 @@ namespace Booking.DB
         public Customer Get(int id)
         {
             DbCity dbc = new DbCity();
-            DbPayment dbp = new DbPayment();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT Id, Cpr, PhoneNo, City_Id,Payment_Id, FirstName, LastName, Email, Address, Password, cofirmed as Comfirmed FROM dbo.Booking_Customer WHERE Id = @id", con);
+                SqlCommand cmd = new SqlCommand("SELECT Id, Cpr, PhoneNo, City_Id, FirstName, LastName, Email, Address, Password, cofirmed as Comfirmed FROM dbo.Booking_Customer WHERE Id = @id", con);
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                 SqlDataReader rdr = cmd.ExecuteReader();
                 rdr.Read();
                 return new Customer
                 {
-                   
                     Id = (int)rdr["Id"],
-                    CPR = (int)rdr["Payment_Id"],
-                    PhoneNumber = (int)rdr["Customer_Id"],
+                    CPR = (int)rdr["Cpr"],
+                    PhoneNumber = (int)rdr["PhoneNo"],
                     City = dbc.Get((int)rdr["City_Id"]),
                     FirstName = (string)rdr["FirstName"],
                     LastName = (string)rdr["LastName"],
                     Email = (string)rdr["Email"],
                     Address = (string)rdr["Address"],
                     Password = (string)rdr["Password"],
-                    Confirmed = (bool)rdr["Confirmed"],
-                    Payment = dbp.Get((int)rdr["Payment_Id"])
-                   
+                    Confirmed = (bool)rdr["Cofirmed"]
                 };
             }
         }
@@ -144,8 +140,6 @@ namespace Booking.DB
                             Address = (string)rdr["Address"],
                             Password = (string)rdr["Password"],
                             Confirmed = (bool)rdr["Cofirmed"],
-                            Payment = dbp.Get((int)rdr["Payment_Id"])
-
                         });
                     }
                 }
