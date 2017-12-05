@@ -28,6 +28,7 @@ namespace Booking.Client
             ShowPassager();
             ShowPlanesComboBox();
             ShowDestinations();
+            CreateDestination();
             
         }
 
@@ -53,8 +54,19 @@ namespace Booking.Client
             listBoxPlanes.Items.Clear();
             foreach (var item in list)
             {
-                listBoxPlanes.Items.Add(item.NameDestination + " , " + item.Plane.Type);
+                listBoxPlanes.Items.Add(item.NameDestination + "," + item.Plane.Type);
             }
+        }
+
+        public void CreateDestination()
+        {
+            Destination d = new Destination();
+            Plane p = new Plane();
+            CreateRoute_StartDestination.Text.ToString();
+            comboBoxDestination_ListOfPlanes.SelectedItem = p;
+
+            myService.CreateDestination(d);
+                
         }
 
         private void ComboBoxPassengers_SelectedIndexChanged(object sender, EventArgs e)
@@ -74,16 +86,6 @@ namespace Booking.Client
             //    comboBoxSeats_ListOfPlanes.Items.Add(item.ToString());
             //}
         }
-
-        private void DestinationCreate_Click(object sender, EventArgs e)
-        {
-            myService.CreateDestination(new Destination
-            {
-                NameDestination = CreateRoute_StartDestination.Text.ToString(),
-                Plane = (Booking.Client.BookingServiceRemote.Plane)comboBoxDestination_ListOfPlanes.SelectedItem
-                
-            });
-        }  
 
         private void RefreshDestinations_Click(object sender, EventArgs e)
         {

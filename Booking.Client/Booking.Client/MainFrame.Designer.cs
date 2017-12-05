@@ -157,7 +157,6 @@
             this.Button.TabIndex = 7;
             this.Button.Text = "Create";
             this.Button.UseVisualStyleBackColor = true;
-            this.Button.Click += new System.EventHandler(this.DestinationCreate_Click);
             // 
             // label3
             // 
