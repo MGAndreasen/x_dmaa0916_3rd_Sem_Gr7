@@ -37,15 +37,15 @@ namespace Booking.DB
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT Id, Cpr, PhoneNo, City_Id, FirstName, LastName, Email, Address, Password, cofirmed as Comfirmed FROM dbo.Booking_Customer WHERE Id = @id", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Booking_Customer WHERE Id = @id", con);
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                 SqlDataReader rdr = cmd.ExecuteReader();
                 rdr.Read();
-                return new Customer
+                Customer customer = new Customer
                 {
                     Id = (int)rdr["Id"],
-                    CPR = (int)rdr["Cpr"],
-                    PhoneNumber = (int)rdr["PhoneNo"],
+                    CPR = (long)rdr["Cpr"],
+                    PhoneNumber = (long)rdr["PhoneNo"],
                     City = dbc.Get((int)rdr["City_Id"]),
                     FirstName = (string)rdr["FirstName"],
                     LastName = (string)rdr["LastName"],
@@ -54,6 +54,7 @@ namespace Booking.DB
                     Password = (string)rdr["Password"],
                     Confirmed = (bool)rdr["Cofirmed"]
                 };
+                return customer;
             }
         }
 
