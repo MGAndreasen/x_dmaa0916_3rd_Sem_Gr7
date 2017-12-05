@@ -55,6 +55,10 @@ namespace Booking.Client
             }
         }
 
+      //  public void DeleteDestination()
+       // {
+        //    listBoxPlanes.SelectedItems
+       // }
         public void CreateDestination()
         {
 
@@ -97,6 +101,11 @@ namespace Booking.Client
         private void Button_Click(object sender, EventArgs e)
         {
             CreateDestination();
+        }
+
+        private void DeleteRoute_Button_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -76,6 +76,7 @@
             this.textBox_Bookings_StartDestination = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.listBoxListOfBookings = new System.Windows.Forms.ListBox();
+            this.DeleteRoute_Button = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabCreateRoute.SuspendLayout();
             this.tabPageSeats.SuspendLayout();
@@ -97,6 +98,7 @@
             // 
             // tabCreateRoute
             // 
+            this.tabCreateRoute.Controls.Add(this.DeleteRoute_Button);
             this.tabCreateRoute.Controls.Add(this.RefreshDestinations);
             this.tabCreateRoute.Controls.Add(this.listBoxPlanes);
             this.tabCreateRoute.Controls.Add(this.comboBoxDestination_ListOfPlanes);
@@ -115,7 +117,7 @@
             // 
             // RefreshDestinations
             // 
-            this.RefreshDestinations.Location = new System.Drawing.Point(462, 565);
+            this.RefreshDestinations.Location = new System.Drawing.Point(642, 565);
             this.RefreshDestinations.Name = "RefreshDestinations";
             this.RefreshDestinations.Size = new System.Drawing.Size(101, 56);
             this.RefreshDestinations.TabIndex = 12;
@@ -129,7 +131,7 @@
             this.listBoxPlanes.ItemHeight = 16;
             this.listBoxPlanes.Location = new System.Drawing.Point(598, 57);
             this.listBoxPlanes.Name = "listBoxPlanes";
-            this.listBoxPlanes.Size = new System.Drawing.Size(468, 564);
+            this.listBoxPlanes.Size = new System.Drawing.Size(468, 500);
             this.listBoxPlanes.TabIndex = 10;
             // 
             // comboBoxDestination_ListOfPlanes
@@ -557,6 +559,16 @@
             this.listBoxListOfBookings.Size = new System.Drawing.Size(345, 564);
             this.listBoxListOfBookings.TabIndex = 0;
             // 
+            // DeleteRoute_Button
+            // 
+            this.DeleteRoute_Button.Location = new System.Drawing.Point(902, 565);
+            this.DeleteRoute_Button.Name = "DeleteRoute_Button";
+            this.DeleteRoute_Button.Size = new System.Drawing.Size(99, 56);
+            this.DeleteRoute_Button.TabIndex = 13;
+            this.DeleteRoute_Button.Text = "Delete";
+            this.DeleteRoute_Button.UseVisualStyleBackColor = true;
+            this.DeleteRoute_Button.Click += new System.EventHandler(this.DeleteRoute_Button_Click);
+            // 
             // MainFrame
             // 
             this.ClientSize = new System.Drawing.Size(1080, 704);
@@ -624,5 +636,6 @@
         private System.Windows.Forms.TextBox textBox__Bookings_Passenger_CPR;
         private System.Windows.Forms.TextBox textBox__Bookings_Passenger_LastName;
         private System.Windows.Forms.TextBox textBox_Bookings_Passenger_FirstName;
+        private System.Windows.Forms.Button DeleteRoute_Button;
     }
 }
