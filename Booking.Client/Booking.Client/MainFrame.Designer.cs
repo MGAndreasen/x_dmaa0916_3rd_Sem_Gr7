@@ -157,6 +157,7 @@
             this.Button.TabIndex = 7;
             this.Button.Text = "Create";
             this.Button.UseVisualStyleBackColor = true;
+            this.Button.Click += new System.EventHandler(this.Button_Click);
             // 
             // label3
             // 
@@ -181,7 +182,8 @@
             this.CreateRoute_StartDestination.Location = new System.Drawing.Point(67, 80);
             this.CreateRoute_StartDestination.Name = "CreateRoute_StartDestination";
             this.CreateRoute_StartDestination.Size = new System.Drawing.Size(175, 22);
-            this.CreateRoute_StartDestination.TabIndex = 0;            // 
+            this.CreateRoute_StartDestination.TabIndex = 0;
+            // 
             // tabPageSeats
             // 
             this.tabPageSeats.Controls.Add(this.label7);
@@ -574,8 +576,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabCreateRoute;
         private System.Windows.Forms.TabPage tabPageSeats;

@@ -63,10 +63,10 @@ namespace Booking.DB
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
-                    con.Open();                                                                 //Plane_Id,                     //@Pi
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Destination (Id,  NameDestination) VALUES (@Id, @Name)", con);
-                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
-            //        cmd.Parameters.Add("@Pi", SqlDbType.Int).Value = obj.Plane; // <-------------------------
+                    con.Open();                                                            //Id     //Plane_Id,            //@Id         //@Pi
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Destination (NameDestination, Plane_Id) VALUES (@Name, @Pi)", con);
+                //    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                   cmd.Parameters.Add("@Pi", SqlDbType.Int).Value = obj.Plane.Id; // <-------------------------
                     cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = obj.NameDestination;
 
                     cmd.ExecuteNonQuery();

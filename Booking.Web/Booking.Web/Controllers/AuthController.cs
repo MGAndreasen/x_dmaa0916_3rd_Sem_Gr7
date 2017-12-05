@@ -11,7 +11,7 @@ namespace Booking.Web.Controllers
 {
     public class AuthController : Controller
     {
-  
+
         // GET: AuthController
         public ActionResult Index()
         {
@@ -26,7 +26,7 @@ namespace Booking.Web.Controllers
         [HttpPost]
         public ActionResult Login(LoginViewModel lvm)
         {
-             //canLogIn = false;
+            //canLogIn = false;
             BookingAuthRemote.User hmm;
 
             using (var authsvc = ServiceHelper.GetAuthServiceClient())
@@ -52,9 +52,9 @@ namespace Booking.Web.Controllers
                 {
                     lvm.UserType = "User";
                 }
-                
+
                 AuthHelper.Login(lvm);
-                return RedirectToAction("MembersOnly");
+                return RedirectToAction("Index", "Home");
             }
         }
 
@@ -62,7 +62,7 @@ namespace Booking.Web.Controllers
         {
 
             AuthHelper.Logout();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
 
 
         }

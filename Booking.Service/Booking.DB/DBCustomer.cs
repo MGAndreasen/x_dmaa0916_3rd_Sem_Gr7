@@ -148,5 +148,39 @@ namespace Booking.DB
             }
             return customers;
         }
+
+        public int CountOnline()
+        {
+            int num = 0;
+            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT count(*) as num FROM Booking_Customer WHERE DATEADD(SECOND,-30,LastActive) <= GETDATE()", con);
+                using (SqlDataReader rdr = cmd.ExecuteReader())
+                {
+                    rdr.Read();
+                    num = (int)rdr["num"];
+                }
+            }
+
+            return num;
+        }
+
+        public void UpdActivity(int id)
+        {
+            TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE Booking_Customer SET LastActive=getdate() WHERE ID=@id", con);
+                    cmd.Parameters.AddWithValue("ID", id);
+
+                    cmd.ExecuteNonQuery();
+                }
+                scope.Complete();
+            }
+        }
     }
 }
