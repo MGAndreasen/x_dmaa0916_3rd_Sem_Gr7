@@ -60,13 +60,12 @@ namespace Booking.Client
 
         public void CreateDestination()
         {
-            var p = (Plane)comboBoxDestination_ListOfPlanes.SelectedItem;
+            Destination d = new Destination();
+            Plane p = new Plane();
+            CreateRoute_StartDestination.Text.ToString();
+            comboBoxDestination_ListOfPlanes.SelectedItem = p;
 
-            Destination d = new Destination
-            {
-                NameDestination = CreateRoute_StartDestination.Text.ToString(),
-                Plane = myService.GetPlane(p.Id)
-            };
+            myService.CreateDestination(d);
                 
         }
 
