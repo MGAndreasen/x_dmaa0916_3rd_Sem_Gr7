@@ -10,7 +10,7 @@ using System.Security.Permissions;
 
 namespace Booking.Service
 {
-    //[ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall, ConcurrencyMode = ConcurrencyMode.Multiple)]
     public class Service : IService
     {
         // Nix pille
@@ -33,6 +33,7 @@ namespace Booking.Service
             uCtrl = new UserCtrl();
         }
 
+        #region Michael Gris
         [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         public string GetUserData(int value)
         {
@@ -100,6 +101,7 @@ namespace Booking.Service
         //{
         //    return "Du postede " + id;
         //}
+        #endregion
 
         #region Customer
         public void CreateCustomer(Customer obj)
@@ -109,12 +111,12 @@ namespace Booking.Service
 
         public Customer GetCustomer(int id)
         {
-           return customerCtrl.Get(id);
+            return customerCtrl.Get(id);
         }
 
         public void UpdateCustomer(Customer obj)
         {
-            customerCtrl.Update(obj); 
+            customerCtrl.Update(obj);
         }
 
         public void DeleteCustomer(int id)
@@ -125,6 +127,16 @@ namespace Booking.Service
         public IEnumerable<Customer> GetAllCustomers()
         {
             return customerCtrl.GetAllCustomers();
+        }
+
+        public int GetActivityCount()
+        {
+            return customerCtrl.GetActivityCount();
+        }
+
+        public void UpdActivity(int id)
+        {
+            customerCtrl.UpdActivity(id);
         }
 
         #endregion
@@ -153,7 +165,7 @@ namespace Booking.Service
         {
             return bookingCtrl.GetAllBookings();
         }
-            
+
         #endregion
 
         #region City
@@ -358,7 +370,7 @@ namespace Booking.Service
 
         public Ticket GetTicket(int id)
         {
-           return ticketCtrl.Get(id);
+            return ticketCtrl.Get(id);
         }
 
         public void UpdateTicket(Ticket obj)

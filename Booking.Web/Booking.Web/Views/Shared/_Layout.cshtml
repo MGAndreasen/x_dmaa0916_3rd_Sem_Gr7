@@ -1,11 +1,11 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" /> 
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Norwegian</title>
     @Styles.Render("~/Content/css")
-    
+
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -13,7 +13,10 @@
     <div class="lePage">
         @RenderBody()
     </div>
-    @Html.Partial("_Tilbud")
+    <br />
+    <div style="margin-left: 10px; margin-right: 10px;">
+        @Html.Partial("_Tilbud")
+    </div>
     @Html.Partial("_Footer")
 
     @Scripts.Render("~/bundles/jquery")

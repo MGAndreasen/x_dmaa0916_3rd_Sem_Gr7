@@ -35,5 +35,15 @@ namespace Booking.Controller
         {
             return DBC.GetAllCustomers();
         }
+
+        public int GetActivityCount()
+        {
+            return DBC.CountOnline();
+        }
+
+        public void UpdActivity(int id)
+        {
+            DBC.UpdActivity(id);
+        }
     }
 }

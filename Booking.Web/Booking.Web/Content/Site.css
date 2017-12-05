@@ -1,11 +1,11 @@
 ﻿* {
-	margin: 0 0 0 0;
-	padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
 }
 
 html, body {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 body {
@@ -13,7 +13,7 @@ body {
 }
 
 a {
-	color: #2b2929;
+    color: #2b2929;
 }
 
 .floatLeft {
@@ -29,85 +29,80 @@ a {
     width: 100%;
     height: 300px;
     background-image: url('/Content/poster.jpg');
-}
-
-.lePage {
-    margin-top: 5px;
+    background-size: cover;
 }
 
 #topMenu {
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 1001;
-	height: 54px;
-	width: 100%;
-	background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    height: 54px;
+    width: 100%;
+    background-color: #fff;
 }
 
-#topMenu ul {
-    margin-left: 15px;
-    margin-right: 15px;
-	list-style-type: none;
-}
+    #topMenu ul {
+        margin-left: 15px;
+        margin-right: 15px;
+        list-style-type: none;
+    }
 
-#topMenu li {
-	float: left;
-	height: 28px;
-	margin-left: 4px;
-	padding: 12px;
-	color: #fff;
-	font-family: Calibri;
-	font-size: 19px;
-	font-weight: lighter;
-	text-align: justify;
-	word-wrap: break-word;
-	border: 1px solid #333;
-	border-radius: 5px 5px 5px 5px;
-}
+    #topMenu li {
+        float: left;
+        height: 28px;
+        margin-left: 4px;
+        padding: 17px;
+        color: #fff;
+        font-family: Calibri;
+        font-size: 14px;
+        font-weight: lighter;
+        text-align: justify;
+        word-wrap: break-word;
+        //border: 1px solid #333;
+        border-radius: 5px 5px 5px 5px;
+    }
 
-#topMenu li a {
-	text-decoration: none;
-	color: #2b2929;
-}
+        #topMenu li a {
+            text-decoration: none;
+            color: #2b2929;
+        }
 
-#topMenu li a:hover {
-	text-decoration: none;
-	color: #2b2929;
-}
+            #topMenu li a:hover {
+                text-decoration: none;
+                color: red;
+            }
 
 footer p {
-	text-align: center;
-	margin: 0 auto;
+    text-align: center;
+    margin: 0 auto;
 }
 
 #MenuLogo {
-	background-color: #d81939;
-	height: 54px;
-	float: right;
+    background-color: #d81939;
+    height: 54px;
+    float: right;
 }
 
-#MenuLogo img {
-    height: 54px;
-}
+    #MenuLogo img {
+        height: 54px;
+    }
 
 /* Set padding to keep content from hitting the edges */
 .lePage {
     padding-top: 54px;
-	padding-left: 15px;
-	padding-right: 15px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
 .dl-horizontal dt {
-	white-space: normal;
+    white-space: normal;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
-	max-width: 280px;
+    max-width: 280px;
 }
