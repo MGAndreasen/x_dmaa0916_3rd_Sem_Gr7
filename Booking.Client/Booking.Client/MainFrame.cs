@@ -35,7 +35,7 @@ namespace Booking.Client
         {
             var c = myService.GetCity(9000);
             var n = myService.GetPassenger(1);
-            listBoxPassengers.Items.Add(n.FirstName+", " +n.LastName+ " " + c.Zipcode + " " + c.CityName);
+            listBoxPassengers.Items.Add(n.FirstName+"," +n.LastName+ "," + c.Zipcode + "," + c.CityName);
         }
 
         public void ShowPlanesComboBox()
@@ -57,46 +57,6 @@ namespace Booking.Client
             }
         }
 
-        private void MainFrame_Load(object sender, EventArgs e)
-        {
-                
-        }
-
-        private void MainFrame_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ComboBoxPassengers_SelectedIndexChanged(object sender, EventArgs e)
         {
             //List<Plane> list = myService.GetAllPlanes();
@@ -115,11 +75,6 @@ namespace Booking.Client
             //}
         }
 
-        public void TapSeat_ShowPassengersOnPlane()
-        {
-            
-        }
-
         private void DestinationCreate_Click(object sender, EventArgs e)
         {
             myService.CreateDestination(new Destination
@@ -135,21 +90,5 @@ namespace Booking.Client
             listBoxPlanes.Items.Clear();
             ShowDestinations();
         }
-
-        private void tabCreateRoute_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_Bookings_StartDestination_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ListBoxPlanes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

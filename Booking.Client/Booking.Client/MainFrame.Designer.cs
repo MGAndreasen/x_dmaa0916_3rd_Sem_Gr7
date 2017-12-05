@@ -112,7 +112,6 @@
             this.tabCreateRoute.TabIndex = 0;
             this.tabCreateRoute.Text = "Plane Destination";
             this.tabCreateRoute.UseVisualStyleBackColor = true;
-            this.tabCreateRoute.Click += new System.EventHandler(this.tabCreateRoute_Click);
             // 
             // RefreshDestinations
             // 
@@ -132,7 +131,6 @@
             this.listBoxPlanes.Name = "listBoxPlanes";
             this.listBoxPlanes.Size = new System.Drawing.Size(468, 564);
             this.listBoxPlanes.TabIndex = 10;
-            this.listBoxPlanes.SelectedIndexChanged += new System.EventHandler(this.ListBoxPlanes_SelectedIndexChanged);
             // 
             // comboBoxDestination_ListOfPlanes
             // 
@@ -178,15 +176,13 @@
             this.label1.Size = new System.Drawing.Size(117, 17);
             this.label1.TabIndex = 3;
             this.label1.Text = "Start Destination ";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // CreateRoute_StartDestination
             // 
             this.CreateRoute_StartDestination.Location = new System.Drawing.Point(67, 80);
             this.CreateRoute_StartDestination.Name = "CreateRoute_StartDestination";
             this.CreateRoute_StartDestination.Size = new System.Drawing.Size(175, 22);
-            this.CreateRoute_StartDestination.TabIndex = 0;
-            // 
+            this.CreateRoute_StartDestination.TabIndex = 0;            // 
             // tabPageSeats
             // 
             this.tabPageSeats.Controls.Add(this.label7);
@@ -204,7 +200,6 @@
             this.tabPageSeats.TabIndex = 1;
             this.tabPageSeats.Text = "Seats";
             this.tabPageSeats.UseVisualStyleBackColor = true;
-            this.tabPageSeats.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // label7
             // 
@@ -253,7 +248,6 @@
             this.label6.Size = new System.Drawing.Size(74, 17);
             this.label6.TabIndex = 4;
             this.label6.Text = "Availability";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // button1
             // 
@@ -543,7 +537,6 @@
             this.textBox_Bookings_StartDestination.ReadOnly = true;
             this.textBox_Bookings_StartDestination.Size = new System.Drawing.Size(179, 22);
             this.textBox_Bookings_StartDestination.TabIndex = 2;
-            this.textBox_Bookings_StartDestination.TextChanged += new System.EventHandler(this.textBox_Bookings_StartDestination_TextChanged);
             // 
             // label9
             // 
@@ -568,7 +561,6 @@
             this.ClientSize = new System.Drawing.Size(1080, 704);
             this.Controls.Add(this.tabControl1);
             this.Name = "MainFrame";
-            this.Load += new System.EventHandler(this.MainFrame_Load_1);
             this.tabControl1.ResumeLayout(false);
             this.tabCreateRoute.ResumeLayout(false);
             this.tabCreateRoute.PerformLayout();
