@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabCreateRoute = new System.Windows.Forms.TabPage();
+            this.DeleteRoute_Button = new System.Windows.Forms.Button();
             this.RefreshDestinations = new System.Windows.Forms.Button();
             this.listBoxPlanes = new System.Windows.Forms.ListBox();
             this.comboBoxDestination_ListOfPlanes = new System.Windows.Forms.ComboBox();
@@ -76,7 +77,6 @@
             this.textBox_Bookings_StartDestination = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.listBoxListOfBookings = new System.Windows.Forms.ListBox();
-            this.DeleteRoute_Button = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabCreateRoute.SuspendLayout();
             this.tabPageSeats.SuspendLayout();
@@ -114,6 +114,16 @@
             this.tabCreateRoute.TabIndex = 0;
             this.tabCreateRoute.Text = "Plane Destination";
             this.tabCreateRoute.UseVisualStyleBackColor = true;
+            // 
+            // DeleteRoute_Button
+            // 
+            this.DeleteRoute_Button.Location = new System.Drawing.Point(902, 565);
+            this.DeleteRoute_Button.Name = "DeleteRoute_Button";
+            this.DeleteRoute_Button.Size = new System.Drawing.Size(99, 56);
+            this.DeleteRoute_Button.TabIndex = 13;
+            this.DeleteRoute_Button.Text = "Delete";
+            this.DeleteRoute_Button.UseVisualStyleBackColor = true;
+            this.DeleteRoute_Button.Click += new System.EventHandler(this.DeleteRoute_Button_Click);
             // 
             // RefreshDestinations
             // 
@@ -558,16 +568,6 @@
             this.listBoxListOfBookings.Name = "listBoxListOfBookings";
             this.listBoxListOfBookings.Size = new System.Drawing.Size(345, 564);
             this.listBoxListOfBookings.TabIndex = 0;
-            // 
-            // DeleteRoute_Button
-            // 
-            this.DeleteRoute_Button.Location = new System.Drawing.Point(902, 565);
-            this.DeleteRoute_Button.Name = "DeleteRoute_Button";
-            this.DeleteRoute_Button.Size = new System.Drawing.Size(99, 56);
-            this.DeleteRoute_Button.TabIndex = 13;
-            this.DeleteRoute_Button.Text = "Delete";
-            this.DeleteRoute_Button.UseVisualStyleBackColor = true;
-            this.DeleteRoute_Button.Click += new System.EventHandler(this.DeleteRoute_Button_Click);
             // 
             // MainFrame
             // 
