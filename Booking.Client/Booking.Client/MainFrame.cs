@@ -40,11 +40,9 @@ namespace Booking.Client
 
         public void ShowPlanesComboBox()
         {
-            List<Plane> list = myService.GetAllPlanes();
-            foreach (var item in list)
-            {
-                comboBoxDestination_ListOfPlanes.Items.Add(item.Id);
-            }
+            comboBoxDestination_ListOfPlanes.DataSource = myService.GetAllPlanes();
+            comboBoxDestination_ListOfPlanes.ValueMember = "Id";
+            comboBoxDestination_ListOfPlanes.DisplayMember = "Type";
         }
 
         public void ShowDestinations()
@@ -60,7 +58,7 @@ namespace Booking.Client
         public void CreateDestination()
         {
 
-            var p = (Plane) comboBoxDestination_ListOfPlanes.SelectedItem;
+            var p = (Plane)comboBoxDestination_ListOfPlanes.SelectedItem;
             Destination d = new Destination
             {
                 NameDestination = CreateRoute_StartDestination.Text.ToString(),
@@ -68,7 +66,7 @@ namespace Booking.Client
             };
 
             myService.CreateDestination(d);
-
+            CreateRoute_StartDestination.Clear();
 
         }
 
