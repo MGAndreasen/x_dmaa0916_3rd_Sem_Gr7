@@ -86,23 +86,23 @@ namespace Booking.Client
 
         }
 
-        private void ComboBoxPassengers_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            List<Plane> list = myService.GetAllPlanes();
-            foreach (var item in list)
-            {
-                comboBoxPassengers_Planes.Items.Add(item.ToString());
-            }
-        }
+        //private void ComboBoxPassengers_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    List<Plane> list = myService.GetAllPlanes();
+        //    foreach (var item in list)
+        //    {
+        //        comboBoxPassengers_Planes.Items.Add(item.ToString());
+        //    }
+        //}
 
-        private void ComboBoxSeat_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            List<Plane> list = myService.GetAllPlanes();
-            foreach (var item in list)
-            {
-                comboBoxSeats_ListOfPlanes.Items.Add(item.ToString());
-            }
-        }
+        //private void ComboBoxSeat_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    List<Plane> list = myService.GetAllPlanes();
+        //    foreach (var item in list)
+        //    {
+        //        comboBoxSeats_ListOfPlanes.Items.Add(item.ToString());
+        //    }
+        //}
 
         private void RefreshDestinations_Click(object sender, EventArgs e)
         {

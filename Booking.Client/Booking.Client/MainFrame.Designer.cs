@@ -326,7 +326,6 @@
             this.comboBoxPassengers_Planes.Name = "comboBoxPassengers_Planes";
             this.comboBoxPassengers_Planes.Size = new System.Drawing.Size(186, 24);
             this.comboBoxPassengers_Planes.TabIndex = 0;
-            this.comboBoxPassengers_Planes.SelectedIndexChanged += new System.EventHandler(this.ComboBoxPassengers_SelectedIndexChanged);
             // 
             // tabPageBookings
             // 
