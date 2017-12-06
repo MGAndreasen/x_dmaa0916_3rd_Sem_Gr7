@@ -24,6 +24,11 @@ namespace Booking.DB
                 List<Role> userRoles = new List<Role> { new Models.Role { Id = 2, Name = "User" } };
                 u = new Models.User { Id = 2, Email = "user@test.dk", Password = "1234", Roles = userRoles };
             }
+            else if (id == 3)
+            {
+                List<Role> userRoles = new List<Role> { new Role { Id = 3, Name = "Guest" } };
+                u = new User { Id = 3, Email = "guest", Password = "guest", Roles = userRoles };
+            }
             else
             {
                 // Ingen bruger
@@ -48,12 +53,17 @@ namespace Booking.DB
                 List<Role> userRoles = new List<Role> { new Role { Id = 2, Name = "User" } };
                 u = new User { Id = 2, Email = "user@test.dk", Password = "1234", Roles = userRoles };
             }
+            else if (email == "guest")
+            {
+                List<Role> userRoles = new List<Role> { new Role { Id = 3, Name = "Guest" } };
+                u = new User { Id = 3, Email = "guest", Password = "guest", Roles = userRoles };
+            }
             else
             {
                 // Ingen bruger
                 u = null;
             }
-            Console.WriteLine("Login: " + (u  != null ? "someone logged in as:" + u.Email.ToString() : "someone tried to login as: " + email + " (but failed!)"));
+            //Console.WriteLine("Login: " + (u  != null ? "someone logged in as:" + u.Email.ToString() : "someone tried to login as: " + email + " (but failed!)"));
             return u;
         }
     }

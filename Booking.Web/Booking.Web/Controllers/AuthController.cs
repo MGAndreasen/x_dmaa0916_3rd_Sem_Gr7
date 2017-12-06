@@ -48,9 +48,13 @@ namespace Booking.Web.Controllers
                 {
                     lvm.UserType = "Admin";
                 }
-                else
+                else if (hmm.Roles.First().Name.ToString().ToLower() == "user")
                 {
                     lvm.UserType = "User";
+                }
+                else
+                {
+                    lvm.UserType = "Guest";
                 }
 
                 AuthHelper.Login(lvm);

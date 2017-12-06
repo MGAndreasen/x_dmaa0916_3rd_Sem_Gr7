@@ -26,7 +26,15 @@ namespace Booking.Web.Helpers
 
         public static bool IsLoggedIn()
         {
-            return HttpContext.Current.Session[LoginSessionName] != null;
+            if(HttpContext.Current.Session[LoginSessionName] != null)
+            {
+                if (((LoginViewModel)HttpContext.Current.Session[LoginSessionName]).Email != "guest")
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public static bool IsAdmin()

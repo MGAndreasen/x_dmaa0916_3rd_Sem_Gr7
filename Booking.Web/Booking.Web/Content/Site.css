@@ -12,8 +12,15 @@ body {
     background-color: #f1f1f1;
 }
 
-a {
-    color: #2b2929;
+.link {
+    color: #c41734;
+    cursor: pointer;
+    text-decoration: none;
+    border-bottom: 2px solid #d0adb5;
+}
+
+h1, h2, h3, h4 {
+    font-family: Calibri;
 }
 
 .floatLeft {
@@ -59,7 +66,6 @@ a {
         font-weight: lighter;
         text-align: justify;
         word-wrap: break-word;
-        //border: 1px solid #333;
         border-radius: 5px 5px 5px 5px;
     }
 
@@ -91,6 +97,7 @@ footer p {
 /* Set padding to keep content from hitting the edges */
 .lePage {
     padding-top: 54px;
+    margin: 0 auto;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 

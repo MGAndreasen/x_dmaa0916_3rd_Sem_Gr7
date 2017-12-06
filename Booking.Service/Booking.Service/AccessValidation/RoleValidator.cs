@@ -20,7 +20,7 @@ namespace Booking.Service.AccessValidation
 
             if (operationContext.EndpointDispatcher.ContractName == "IMetadataExchange")
             {
-                string[] userRolesFound = { "None" };
+                string[] userRolesFound = { "Guest" };
                 var principal = new GenericPrincipal(operationContext.ServiceSecurityContext.PrimaryIdentity, userRolesFound);
                 operationContext.ServiceSecurityContext.AuthorizationContext.Properties["Principal"] = principal;
                 return true;
@@ -40,6 +40,7 @@ namespace Booking.Service.AccessValidation
             }
             else
             {
+                Console.WriteLine("Service: User unknown!");
                 throw new FaultException("User not found");
             }
         }

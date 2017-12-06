@@ -1,16 +1,11 @@
 ﻿.Boxed {
-    width: 250px; 
-    height: 250px; 
-    border: 1px solid #ff0000; 
-    background-color: darkred; 
-
-}
-
-.Boxed1 {
     width: 250px;
     height: 250px;
-    border: 1px solid #ff0000;
-    background-color: darkred; 
+    border: 1px solid transparent;
+    background-color: #d81939;
+    margin: 1px;
+}
 
-    
+.Boxed h1,h2,h3 {
+    color: #fff;
 }

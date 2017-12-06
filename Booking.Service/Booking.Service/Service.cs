@@ -15,7 +15,6 @@ namespace Booking.Service
     {
         // Nix pille
         public UserCtrl uCtrl { get; set; }
-
         private CustomerCtrl customerCtrl = new CustomerCtrl();
         private BookingCtrl bookingCtrl = new BookingCtrl();
         private CityCtrl cityCtrl = new CityCtrl();
@@ -197,6 +196,9 @@ namespace Booking.Service
             destinationCtrl.Create(obj);
         }
 
+        //[PrincipalPermission(SecurityAction.Demand, Role = "Guest")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         public Destination GetDestination(int id)
         {
             return destinationCtrl.Get(id);

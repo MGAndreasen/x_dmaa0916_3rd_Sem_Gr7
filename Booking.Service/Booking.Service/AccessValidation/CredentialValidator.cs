@@ -14,19 +14,19 @@ namespace Booking.Service.AccessValidation
         private UserCtrl uCtrl = new UserCtrl();
         public override void Validate(string userName, string password)
         {
-            //if (OperationContext.Current.EndpointDispatcher.ContractName != "IMetadataExchange")
-            //{
-                var foundUser = uCtrl.GetUser(userName);
+            userName = userName.ToLower();
+            var foundUser = uCtrl.GetUser(userName);
 
-                if (foundUser != null && foundUser.Email == userName && foundUser.Password == password)
-                {
-                    //email pw are valid
-                }
-                else
-                {
-                    throw new FaultException<Exception>(new Exception("Invalid Login..."), "Invalid Credentials");
-                }
-            //}
+            if (foundUser != null && foundUser.Email == userName && foundUser.Password == password)
+            {
+                Console.WriteLine("Service: " + foundUser.Email + " connected...");
+                //email pw are valid
+            }
+            else
+            {
+                Console.WriteLine("Service: login failed for " + userName + " (wrong username or password)");
+                throw new FaultException<Exception>(new Exception("Invalid Login..."), "Invalid Credentials");
+            }
         }
     }
 }

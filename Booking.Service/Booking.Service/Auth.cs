@@ -1,4 +1,5 @@
 ﻿// Using statements
+using System;
 using Booking.Controller;
 using Booking.Models;
 using System.ServiceModel;
@@ -31,13 +32,17 @@ namespace Booking.Service
                     // Hvis match,
 
                     // Så log, og
-
+                    Console.WriteLine("AuthService: user " + user.Email + " just authed!");
 
                     //retuner User objected
                     return user;
                 }
+
+                Console.WriteLine("AuthService: password for " + user.Email + " not correct!");
+                return null;
             }
 
+            Console.WriteLine("AuthService: " + user.Email + " not found!");
             // Fall thrue, return null hvis det tidligere ikke lykkes.
             return null;
         }
