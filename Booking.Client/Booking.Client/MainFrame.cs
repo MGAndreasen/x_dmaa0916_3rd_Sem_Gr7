@@ -125,6 +125,9 @@ namespace Booking.Client
 
         public void DeleteDestination()
         {
+            //var d = (Destination)listBoxPlanes.SelectedItem;
+            //var Id = d.Id;
+            //myService.DeleteDestination(Id);
             listBoxPlanes.Items.Remove(listBoxPlanes.SelectedItem);
         }
         public void CreateDestination()
