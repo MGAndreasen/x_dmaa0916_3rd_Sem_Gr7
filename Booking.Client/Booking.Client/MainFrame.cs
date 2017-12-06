@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Net; 
+using System.Net;
 using System.ServiceModel.Security;
 
 namespace Booking.Client
@@ -29,14 +29,16 @@ namespace Booking.Client
             ShowPassager();
             ShowPlanesComboBox();
             ShowDestinations();
-            
+            ShowBookings();
+            FillInfoBooking();
+
         }
 
         public void ShowPassager()
         {
             var c = myService.GetCity(9000);
             var n = myService.GetPassenger(1);
-            listBoxPassengers.Items.Add(n.FirstName+"," +n.LastName+ "," + c.Zipcode + "," + c.CityName);
+            listBoxPassengers.Items.Add(n.FirstName + "," + n.LastName + "," + c.Zipcode + "," + c.CityName);
         }
 
         public void ShowPlanesComboBox()
@@ -57,9 +59,36 @@ namespace Booking.Client
             comboBoxPassengers_Planes.DisplayMember = "Type";
 
         }
+
+        public void ShowBookings()
+        {
+            listBoxListOfBookings.DataSource = myService.GetAllBookings();
+            listBoxListOfBookings.ValueMember = "Id";
+            listBoxListOfBookings.DisplayMember = "Customer_Id";
+        }
+
+        public void FillInfoBooking()
+        {
+            var b = (Bookings)listBoxListOfBookings.SelectedItem;
+            textBox_Bookings_StartDestination.Text = b.StartDestination.NameDestination.ToString();
+            textBox_Bookings_EndDestination.Text = b.EndDestination.NameDestination.ToString();
+            textBox_Bookings_Plane.Text = b.EndDestination.Plane.Id.ToString();
+            textBox__Bookings_Customer.Text = b.Customer.FirstName.ToString();
+
+            foreach (Passenger p in myService.GetAllPassengers())
+            {
+                if (p.Booking.Id == b.Id)
+                {
+                    comboBox__Bookings_Passengers.DataSource = myService.GetAllPassengers();
+                }
+            }
+            comboBox__Bookings_Passengers.ValueMember = "Id";
+            comboBox__Bookings_Passengers.DisplayMember = "FirstName";
+        }
+
         public void CreateRoute()
         {
-            
+
             DateTime date = calenderRoute.SelectionRange.Start;
             var d = (Destination)destBox.SelectedItem;
             routes.Add(Tuple.Create(d, date));
@@ -75,6 +104,7 @@ namespace Booking.Client
                 listBoxPlanes.Items.Add(item.NameDestination + "," + item.Plane.Type);
             }
         }
+
         public void ShowDestinationsRoute()
         {
             List<Destination> list = myService.GetAllDestinations();
@@ -89,13 +119,13 @@ namespace Booking.Client
             depBox.Items.Clear();
             foreach (Tuple<Destination, DateTime> tuple in routes)
             {
-                depBox.Items.Add("Destination, Date" + tuple.Item1.NameDestination  + tuple.Item2);
+                depBox.Items.Add("Destination, Date" + tuple.Item1.NameDestination + tuple.Item2);
             }
         }
 
-      public void DeleteDestination()
+        public void DeleteDestination()
         {
-            listBoxPlanes.Items.Remove(listBoxPlanes.SelectedItem); 
+            listBoxPlanes.Items.Remove(listBoxPlanes.SelectedItem);
         }
         public void CreateDestination()
         {
@@ -182,6 +212,16 @@ namespace Booking.Client
         private void depBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ShowRoute();
+        }
+
+        private void comboBox__Bookings_Passengers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var pa = (Passenger)comboBox__Bookings_Passengers.SelectedItem;
+
+            textBox_Bookings_Passenger_FirstName.Text = pa.FirstName.ToString();
+            textBox__Bookings_Passenger_LastName.Text = pa.LastName.ToString();
+            textBox__Bookings_Passenger_CPR.Text = pa.CPR.ToString();
+            textBox__Bookings_Passenger_PassportNo.Text = pa.PassportId.ToString();
         }
     }
 }

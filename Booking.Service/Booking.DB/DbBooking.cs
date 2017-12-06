@@ -59,7 +59,7 @@ namespace Booking.DB
                             Id = (int)rdr["Id"],
                             Payment = dbp.Get((int)rdr["Payment_Id"]),
                             Customer = dbc.Get((int)rdr["Customer_Id"]),
-                            StartDestination = dbd.Get((int)rdr["StartDestination"]),
+                            StartDestination = dbd.Get((int)rdr["StartDestinaton"]),
                             EndDestination = dbd.Get((int)rdr["EndDestination"]),
                             Date = (DateTime)rdr["Date"],
                             TotalPrice = (int)rdr["Price"]
