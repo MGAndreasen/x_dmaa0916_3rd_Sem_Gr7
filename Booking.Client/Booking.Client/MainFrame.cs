@@ -17,6 +17,7 @@ namespace Booking.Client
     public partial class MainFrame : Form
     {
         ServiceClient myService = new ServiceClient();
+        List<Tuple<Destination, DateTime>> routes = new List<Tuple<Destination, DateTime>>();
 
 
         public MainFrame()
@@ -56,6 +57,14 @@ namespace Booking.Client
             comboBoxPassengers_Planes.DisplayMember = "Type";
 
         }
+        public void CreateRoute()
+        {
+            
+            DateTime date = calenderRoute.SelectionRange.Start;
+            var d = (Destination)destBox.SelectedItem;
+            routes.Add(Tuple.Create(d, date));
+
+        }
 
         public void ShowDestinations()
         {
@@ -64,6 +73,23 @@ namespace Booking.Client
             foreach (var item in list)
             {
                 listBoxPlanes.Items.Add(item.NameDestination + "," + item.Plane.Type);
+            }
+        }
+        public void ShowDestinationsRoute()
+        {
+            List<Destination> list = myService.GetAllDestinations();
+            listBoxPlanes.Items.Clear();
+            foreach (var item in list)
+            {
+                destBox.Items.Add(item.NameDestination + "," + item.Plane.Type);
+            }
+        }
+        public void ShowRoute()
+        {
+            depBox.Items.Clear();
+            foreach (Tuple<Destination, DateTime> tuple in routes)
+            {
+                depBox.Items.Add("Destination, Date" + tuple.Item1.NameDestination  + tuple.Item2);
             }
         }
 
@@ -120,5 +146,42 @@ namespace Booking.Client
             DeleteDestination();
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ShowDestinationsRoute();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            CreateRoute();
+            depBox.Items.Clear();
+            ShowRoute();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            destBox.Items.Clear();
+            ShowDestinationsRoute();
+        }
+
+        private void listBoxPlanes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void depBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ShowRoute();
+        }
     }
 }
