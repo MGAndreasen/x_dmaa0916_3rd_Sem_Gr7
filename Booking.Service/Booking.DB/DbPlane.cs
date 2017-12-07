@@ -23,7 +23,7 @@ namespace Booking.DB
 
                     using (SqlCommand cmd = con.CreateCommand())
                     {
-                        cmd.CommandText = "DELETE FROM bdo.Booking_Plane WHERE Id=@id";
+                        cmd.CommandText = "DELETE FROM dbo.Booking_Plane WHERE Id=@id";
                         cmd.Parameters.AddWithValue("id", id);
                         cmd.ExecuteNonQuery();
                         scope.Complete();
