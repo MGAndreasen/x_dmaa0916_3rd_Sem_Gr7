@@ -231,7 +231,6 @@
 	BEGIN
 	CREATE TABLE [dbo].[Booking_Plane](
 		[Id] [int] IDENTITY(1,1) NOT NULL,
-		[SeatSchema_Id] [int] NOT NULL,
 		[Type] [nvarchar](50) NOT NULL,
 	 CONSTRAINT [PK_Booking_Plane] PRIMARY KEY CLUSTERED 
 	(
@@ -274,7 +273,8 @@
 	BEGIN
 	CREATE TABLE [dbo].[Booking_SeatSchema](
 		[Id] [int] IDENTITY(1,1) NOT NULL,
-		[Layout] [int] NOT NULL,
+		[Plain_id] [int] NOT NULL,
+		[Layout] [nvarchar](50) NOT NULL,
 		[Row] [int] NOT NULL,
 	 CONSTRAINT [PK_Booking_SeatSchema] PRIMARY KEY CLUSTERED 
 	(
@@ -406,15 +406,15 @@
 	GO
 	SET IDENTITY_INSERT [dbo].[Booking_Plane] ON
 	GO
-	INSERT [dbo].[Booking_Plane] ([Id], [SeatSchema_Id], [Type]) VALUES (1, 3, N'747 beast mode')
+	INSERT [dbo].[Booking_Plane] ([Id], [Type]) VALUES (1, N'747 beast mode')
 	GO
-	INSERT [dbo].[Booking_Plane] ([Id], [SeatSchema_Id], [Type]) VALUES (2, 2, N'Air Force One')
+	INSERT [dbo].[Booking_Plane] ([Id], [Type]) VALUES (2, N'Air Force One')
 	GO
-	INSERT [dbo].[Booking_Plane] ([Id], [SeatSchema_Id], [Type]) VALUES (3, 1, N'Boeing 777')
+	INSERT [dbo].[Booking_Plane] ([Id], [Type]) VALUES (3, N'Boeing 777')
 	GO
-	INSERT [dbo].[Booking_Plane] ([Id], [SeatSchema_Id], [Type]) VALUES (9, 1, N'Boeing 787')
+	INSERT [dbo].[Booking_Plane] ([Id], [Type]) VALUES (9, N'Boeing 787')
 	GO
-	INSERT [dbo].[Booking_Plane] ([Id], [SeatSchema_Id], [Type]) VALUES (10, 1, N'Boeing 767')
+	INSERT [dbo].[Booking_Plane] ([Id], [Type]) VALUES (10, N'Boeing 767')
 	GO
 	SET IDENTITY_INSERT [dbo].[Booking_Plane] OFF
 
@@ -462,11 +462,13 @@
 	GO
 	SET IDENTITY_INSERT [dbo].[Booking_SeatSchema] ON
 	GO
-	INSERT [dbo].[Booking_SeatSchema] ([Id], [Layout], [Row]) VALUES (1, 1, 3)
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plain_Id], [Layout], [Row]) VALUES (1, 1, 'ABC|DEF', 1)
 	GO
-	INSERT [dbo].[Booking_SeatSchema] ([Id], [Layout], [Row]) VALUES (2, 2, 10)
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plain_Id], [Layout], [Row]) VALUES (2, 1, 'ABC|DEF', 2)
 	GO
-	INSERT [dbo].[Booking_SeatSchema] ([Id], [Layout], [Row]) VALUES (3, 1, 5)
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plain_Id], [Layout], [Row]) VALUES (3, 1, 'AB|||CD', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plain_Id], [Layout], [Row]) VALUES (4, 1, 'A|||||B', 4)
 	GO
 	SET IDENTITY_INSERT [dbo].[Booking_SeatSchema] OFF
 
@@ -537,13 +539,6 @@
 	GO
 	IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Booking_Passenger_Booking_Seat]') AND parent_object_id = OBJECT_ID(N'[dbo].[Booking_Passenger]'))
 	ALTER TABLE [dbo].[Booking_Passenger] CHECK CONSTRAINT [FK_Booking_Passenger_Booking_Seat]
-	GO
-	IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Booking_Plane_Booking_SeatSchema]') AND parent_object_id = OBJECT_ID(N'[dbo].[Booking_Plane]'))
-	ALTER TABLE [dbo].[Booking_Plane]  WITH CHECK ADD  CONSTRAINT [FK_Booking_Plane_Booking_SeatSchema] FOREIGN KEY([SeatSchema_Id])
-	REFERENCES [dbo].[Booking_SeatSchema] ([Id])
-	GO
-	IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Booking_Plane_Booking_SeatSchema]') AND parent_object_id = OBJECT_ID(N'[dbo].[Booking_Plane]'))
-	ALTER TABLE [dbo].[Booking_Plane] CHECK CONSTRAINT [FK_Booking_Plane_Booking_SeatSchema]
 	GO
 	IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Booking_Seat_Booking_Row]') AND parent_object_id = OBJECT_ID(N'[dbo].[Booking_Seat]'))
 	ALTER TABLE [dbo].[Booking_Seat]  WITH CHECK ADD  CONSTRAINT [FK_Booking_Seat_Booking_Row] FOREIGN KEY([Row_Id])
