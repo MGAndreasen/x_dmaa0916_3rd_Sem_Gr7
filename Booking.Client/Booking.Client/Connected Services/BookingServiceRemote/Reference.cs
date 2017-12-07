@@ -1225,6 +1225,7 @@ namespace Booking.Client.BookingServiceRemote {
         System.Threading.Tasks.Task DeleteDestinationAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllDestinations", ReplyAction="http://tempuri.org/IService/GetAllDestinationsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(System.Security.SecurityException), Action="http://tempuri.org/IService/GetAllDestinationsSecurityExceptionFault", Name="SecurityException", Namespace="http://schemas.datacontract.org/2004/07/System.Security")]
         System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Destination> GetAllDestinations();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllDestinations", ReplyAction="http://tempuri.org/IService/GetAllDestinationsResponse")]

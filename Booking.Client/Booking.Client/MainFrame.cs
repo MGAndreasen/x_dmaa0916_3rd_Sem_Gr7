@@ -97,22 +97,10 @@ namespace Booking.Client
 
         public void ShowDestinations()
         {
-            List<Destination> list = myService.GetAllDestinations();
-            listBoxPlanes.Items.Clear();
-            foreach (var item in list)
-            {
-                listBoxPlanes.Items.Add(item.NameDestination + "," + item.Plane.Type);
-            }
-        }
+            listBoxPlanes.DataSource = myService.GetAllDestinations();
+            listBoxPlanes.ValueMember = "Id";
+            listBoxPlanes.DisplayMember = "NameDestination";
 
-        public void ShowDestinationsRoute()
-        {
-            List<Destination> list = myService.GetAllDestinations();
-            listBoxPlanes.Items.Clear();
-            foreach (var item in list)
-            {
-                destBox.Items.Add(item.NameDestination + "," + item.Plane.Type);
-            }
         }
         public void ShowRoute()
         {
@@ -125,10 +113,10 @@ namespace Booking.Client
 
         public void DeleteDestination()
         {
-            //var d = (Destination)listBoxPlanes.SelectedItem;
-            //var Id = d.Id;
-            //myService.DeleteDestination(Id);
-            listBoxPlanes.Items.Remove(listBoxPlanes.SelectedItem);
+            
+            var d = (Destination)listBoxPlanes.SelectedItem;
+
+            myService.DeleteDestination(d.Id);
         }
         public void CreateDestination()
         {
@@ -145,27 +133,9 @@ namespace Booking.Client
 
         }
 
-        //private void ComboBoxPassengers_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    List<Plane> list = myService.GetAllPlanes();
-        //    foreach (var item in list)
-        //    {
-        //        comboBoxPassengers_Planes.Items.Add(item.ToString());
-        //    }
-        //}
-
-        //private void ComboBoxSeat_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    List<Plane> list = myService.GetAllPlanes();
-        //    foreach (var item in list)
-        //    {
-        //        comboBoxSeats_ListOfPlanes.Items.Add(item.ToString());
-        //    }
-        //}
-
         private void RefreshDestinations_Click(object sender, EventArgs e)
         {
-            listBoxPlanes.Items.Clear();
+            //listBoxPlanes.Items.Clear();
             ShowDestinations();
         }
 
@@ -189,11 +159,6 @@ namespace Booking.Client
 
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ShowDestinationsRoute();
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             CreateRoute();
@@ -204,7 +169,6 @@ namespace Booking.Client
         private void button3_Click(object sender, EventArgs e)
         {
             destBox.Items.Clear();
-            ShowDestinationsRoute();
         }
 
         private void listBoxPlanes_SelectedIndexChanged(object sender, EventArgs e)

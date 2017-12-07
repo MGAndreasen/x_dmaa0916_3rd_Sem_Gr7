@@ -107,6 +107,8 @@
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/Booking.Models" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/System.Security" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/System" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService_Post_InputMessage">
@@ -234,6 +236,9 @@
   </wsdl:message>
   <wsdl:message name="IService_GetAllDestinations_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllDestinationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetAllDestinations_SecurityExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/System.Security" name="detail" element="q1:SecurityException" />
   </wsdl:message>
   <wsdl:message name="IService_CreatePassenger_InputMessage">
     <wsdl:part name="parameters" element="tns:CreatePassenger" />
@@ -499,6 +504,7 @@
     <wsdl:operation name="GetAllDestinations">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllDestinations" message="tns:IService_GetAllDestinations_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllDestinationsResponse" message="tns:IService_GetAllDestinations_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IService/GetAllDestinationsSecurityExceptionFault" name="SecurityExceptionFault" message="tns:IService_GetAllDestinations_SecurityExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreatePassenger">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/CreatePassenger" message="tns:IService_CreatePassenger_InputMessage" />
@@ -812,6 +818,9 @@
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="SecurityExceptionFault">
+        <soap12:fault use="literal" name="SecurityExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="CreatePassenger">
       <soap12:operation soapAction="http://tempuri.org/IService/CreatePassenger" style="document" />

@@ -42,7 +42,6 @@ namespace Booking.Client
                 {
                     // Brugernavn må ikke være blankt!
                     fejl += "Brugernavn";
-                    
                 }
 
                 if (textBox2.Text.ToString().Trim() == "")
