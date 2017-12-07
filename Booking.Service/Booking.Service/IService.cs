@@ -40,6 +40,19 @@ namespace Booking.Service
 
         #endregion
 
+        #region Departure
+        [OperationContract]
+        void CreateDeparture(Departure obj);
+
+        [OperationContract]
+        Departure GetDeparture(int id);
+
+        [OperationContract]
+        void UpdateDeparture(Departure obj);
+
+        [OperationContract]
+        void DeleteDeparture(int id);
+        #endregion
         #region CustomerCtrl
 
         [OperationContract]
