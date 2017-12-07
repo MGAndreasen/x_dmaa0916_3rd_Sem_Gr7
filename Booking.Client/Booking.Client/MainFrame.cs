@@ -88,10 +88,20 @@ namespace Booking.Client
 
         public void CreateRoute()
         {
-
             DateTime date = calenderRoute.SelectionRange.Start;
             var d = (Destination)destBox.SelectedItem;
-            routes.Add(Tuple.Create(d, date));
+            Departure de = new Departure();
+            {
+
+                d = de.EndDestination;
+                date = de.DepartureTime;
+                d.Plane = de.PlaneId;
+
+            }
+
+
+            myService.CreateDeparture(de);
+
 
         }
 
@@ -104,11 +114,9 @@ namespace Booking.Client
         }
         public void ShowRoute()
         {
-            depBox.Items.Clear();
-            foreach (Tuple<Destination, DateTime> tuple in routes)
-            {
-                depBox.Items.Add("Destination, Date" + tuple.Item1.NameDestination + tuple.Item2);
-            }
+            depBox.DataSource = myService.GetAllDepartures();
+            depBox.ValueMember = "Id";
+            depBox.DisplayMember = "EndDestination," + "DepartureTime";
         }
 
         public void DeleteDestination()
