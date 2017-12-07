@@ -29,6 +29,8 @@
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="cd395ac5-f50c-440e-817a-f3c08515c24e" SourceId="1" SourceUrl="https://127.0.0.1:6868/mex" />
     <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="abbd1d44-2a75-44da-b060-c8b1cf788f52" SourceId="1" SourceUrl="https://127.0.0.1:6868/mex" />
     <MetadataFile FileName="Booking.Models.xsd" MetadataType="Schema" ID="7e182ee9-6fc4-4542-9bd4-dfcd4a124225" SourceId="1" SourceUrl="https://127.0.0.1:6868/mex" />
+    <MetadataFile FileName="System.Security.xsd" MetadataType="Schema" ID="e15caa8b-3e36-4a30-b4c1-dc835893125c" SourceId="1" SourceUrl="https://127.0.0.1:6868/mex" />
+    <MetadataFile FileName="System.xsd" MetadataType="Schema" ID="6fae8532-b8f0-4919-a909-a28790b98be0" SourceId="1" SourceUrl="https://127.0.0.1:6868/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
