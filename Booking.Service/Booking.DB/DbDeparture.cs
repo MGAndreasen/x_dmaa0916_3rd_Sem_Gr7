@@ -66,16 +66,16 @@ namespace Booking.DB
                 SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Booking_Departure WHERE Id = @id", con);
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
 
-                SqlDataReader reader = cmd.ExecuteReader();
-                reader.Read();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                rdr.Read();
 
                 return new Departure
                 {
-                    Id = (int)reader["Id"],
-                    PlaneId = dbp.Get((int)reader["Plane_Id"]), 
-                    EndDestination = dbd.Get((int)reader["EndDestination"]),                   
-                    StartDestination = dbd.Get((int)reader["StartDestination"]),
-                    DepartureTime = (DateTime)reader["DepartureTime"]
+                    Id = (int)rdr["Id"],
+                    PlaneId = dbp.Get((int)rdr["Plane_Id"]), 
+                    EndDestination = dbd.Get((int)rdr["EndDestination"]),                   
+                    StartDestination = dbd.Get((int)rdr["StartDestination"]),
+                    DepartureTime = (DateTime)rdr["DepartureTime"]
                 };
             }
         }
@@ -100,5 +100,38 @@ namespace Booking.DB
                 scope.Complete();
             }
         }
+        public IEnumerable<Departure> GetAll()
+        {
+            DbPlane dbp = new DbPlane();
+            DbDestination dbd = new DbDestination();
+            List<Departure> departures = new List<Departure>();
+            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+            {
+                con.Open();
+
+                using (SqlCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM dbo.Booking_Departure";
+                    var rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        Departure  d = new Departure
+                        {
+                            Id = (int)rdr["Id"],
+                            PlaneId = dbp.Get((int)rdr["Plane_Id"]),
+                            EndDestination = dbd.Get((int)rdr["EndDestination"]),
+                            StartDestination = dbd.Get((int)rdr["StartDestination"]),
+                            DepartureTime = (DateTime)rdr["DepartureTime"]
+
+                        };
+                        departures.Add(d);
+                    }
+                }
+
+            }
+            return departures;
+        }
     }
+
 }
