@@ -3,37 +3,36 @@
 <div style="width: 770px; height: inherit;">
     <div class="">
         <p>Rejser!</p>
-        @{
-            var client = ServiceHelper.GetServiceClientWithCredentials();
-
-            try
-            {
-                var test = client.GetAllDestinations();
-
-                foreach (var s in test)
-                {
-                    <p>@s.NameDestination</p>
-                }
-            }
-            catch(Exception ex)
-            {
-
-            }
-        }
-
         <h1>Tilbuds Rejser</h1>
     </div>
-    <div class="Boxed floatLeft">
-        <h1> New York</h1>
-        <h3>Fra Aalborg</h3>
-        <h3>Fra/enkeltbillet</h3>
-    </div>
+    @{
+        if (ViewBag.proxyError == "")
+        {
+            try
+            {
+                //var client = ServiceHelper.GetServiceClientWithCredentials();
+                var client = ViewBag.proxy;
+                var dest = client.GetAllDestinations();
 
-    <div class="Boxed floatLeft">
-        <h1> New York</h1>
-        <h3>Fra Aalborg</h3>
-        <h3>Fra/enkeltbillet</h3>
-    </div>
+                foreach (var s in dest)
+                {
+                    <div class="Boxed floatLeft">
+                        <h1>@s.NameDestination</h1>
+                        <h3>Fra Aalborg</h3>
+                        <h3>Fra/enkeltbillet</h3>
+                    </div>
+                }
+            }
+            catch (Exception ex)
+            {
+                <p>Der er sket en fejl!</p>
+            }
+        }
+        else
+        {
+            <p>Kunne ikke forbinde til backenden!</p>
+        }
+    }
 
     @if (AuthHelper.IsLoggedIn())
     {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Booking.Web.Helpers;
 
 namespace Booking.Web.Controllers
 {
@@ -10,6 +11,16 @@ namespace Booking.Web.Controllers
     {
         public ActionResult Index()
         {
+            try
+            {
+                var client = ServiceHelper.GetServiceClientWithCredentials();
+                ViewBag.proxy = client;
+            }
+            catch (Exception ex)
+            {
+                ViewBag.proxyError = ex;
+            }
+
             return View();
         }
 

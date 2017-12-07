@@ -1,5 +1,7 @@
 ﻿using Booking.Web.BookingAuthRemote;
 using Booking.Web.BookingServiceRemote;
+using System.Web;
+using System.Web.Mvc;
 
 namespace Booking.Web.Helpers
 {
