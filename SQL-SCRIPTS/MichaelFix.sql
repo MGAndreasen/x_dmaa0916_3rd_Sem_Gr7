@@ -138,8 +138,7 @@
 		[Id] [int] IDENTITY(1,1) NOT NULL,
 		[Payment_Id] [int] NOT NULL,
 		[Customer_Id] [int] NOT NULL,
-		[StartDestinaton] [int] NOT NULL,
-		[EndDestination] [int] NOT NULL,
+		[Departure_Id] [int] NOT NULL,
 		[Date] [date] NOT NULL,
 		[Price] [int] NOT NULL,
 	 CONSTRAINT [PK_Booking_Booking] PRIMARY KEY CLUSTERED 
@@ -306,11 +305,15 @@
 	IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Booking_Departure]') AND type in (N'U'))
 	BEGIN
 	CREATE TABLE [dbo].[Booking_Departure](
-		[Id] [int] NULL,
+		[Id] [int] IDENTITY(1,1) NOT NULL,
 		[StartDestination] [int] NULL,
 		[EndDestination] [int] NULL,
 		[DepartureTime] [datetime] NULL,
-		[Plane_Id] [int] NULL
+		[Plane_Id] [int] NULL,
+	CONSTRAINT [PK_Booking_Departure] PRIMARY KEY CLUSTERED 
+	(
+		[Id] ASC
+	)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 	) ON [PRIMARY]
 	END
 	GO
@@ -321,11 +324,20 @@
 	GO
 	SET IDENTITY_INSERT [dbo].[Booking_Booking] ON 
 	GO
-	INSERT [dbo].[Booking_Booking] ([Id], [Payment_Id], [Customer_Id], [StartDestinaton], [EndDestination], [Date], [Price]) VALUES (12, 1, 3, 5, 4, CAST(N'2017-11-28' AS Date), 10000)
+	INSERT [dbo].[Booking_Booking] ([Id], [Payment_Id], [Customer_Id], [Departure_Id], [Date], [Price]) VALUES (12, 1, 3, 1, CAST(N'2017-11-28' AS Date), 10000)
 	GO
-
 	SET IDENTITY_INSERT [dbo].[Booking_Booking] OFF 
 	GO
+
+	GO
+	SET IDENTITY_INSERT [dbo].[Booking_Departure] ON 
+	GO
+	INSERT [dbo].[Booking_Departure] ([Id], [StartDestination], [EndDestination], [DepartureTime], [Plane_Id]) VALUES (1, 1, 2, CAST(N'2017-12-28' AS DateTime), 1)
+	GO
+	SET IDENTITY_INSERT [dbo].[Booking_Departure] OFF 
+	GO
+
+	
 	INSERT [dbo].[Booking_City] ([ZipCode], [Name]) VALUES (9000, N'Aalborg')
 	GO
 	INSERT [dbo].[Booking_City] ([ZipCode], [Name]) VALUES (9440, N'Gjøl')
@@ -509,20 +521,6 @@
 	GO
 	IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Booking_Booking_Booking_Customer]') AND parent_object_id = OBJECT_ID(N'[dbo].[Booking_Booking]'))
 	ALTER TABLE [dbo].[Booking_Booking] CHECK CONSTRAINT [FK_Booking_Booking_Booking_Customer]
-	GO
-	IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Booking_Booking_Booking_Destination]') AND parent_object_id = OBJECT_ID(N'[dbo].[Booking_Booking]'))
-	ALTER TABLE [dbo].[Booking_Booking]  WITH CHECK ADD  CONSTRAINT [FK_Booking_Booking_Booking_Destination] FOREIGN KEY([StartDestinaton])
-	REFERENCES [dbo].[Booking_Destination] ([Id])
-	GO
-	IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Booking_Booking_Booking_Destination]') AND parent_object_id = OBJECT_ID(N'[dbo].[Booking_Booking]'))
-	ALTER TABLE [dbo].[Booking_Booking] CHECK CONSTRAINT [FK_Booking_Booking_Booking_Destination]
-	GO
-	IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Booking_Booking_Booking_Destination1]') AND parent_object_id = OBJECT_ID(N'[dbo].[Booking_Booking]'))
-	ALTER TABLE [dbo].[Booking_Booking]  WITH CHECK ADD  CONSTRAINT [FK_Booking_Booking_Booking_Destination1] FOREIGN KEY([EndDestination])
-	REFERENCES [dbo].[Booking_Destination] ([Id])
-	GO
-	IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Booking_Booking_Booking_Destination1]') AND parent_object_id = OBJECT_ID(N'[dbo].[Booking_Booking]'))
-	ALTER TABLE [dbo].[Booking_Booking] CHECK CONSTRAINT [FK_Booking_Booking_Booking_Destination1]
 	GO
 	IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Booking_Booking_Booking_Payment]') AND parent_object_id = OBJECT_ID(N'[dbo].[Booking_Booking]'))
 	ALTER TABLE [dbo].[Booking_Booking]  WITH CHECK ADD  CONSTRAINT [FK_Booking_Booking_Booking_Payment] FOREIGN KEY([Payment_Id])
