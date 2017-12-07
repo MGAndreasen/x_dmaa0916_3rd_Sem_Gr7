@@ -43,6 +43,7 @@
     <Compile Include="BookingCtrl.cs" />
     <Compile Include="CityCtrl.cs" />
     <Compile Include="CustomerCtrl.cs" />
+    <Compile Include="DepartureCtrl.cs" />
     <Compile Include="DestinationCtrl.cs" />
     <Compile Include="ICRUD.cs" />
     <Compile Include="PassengerCtrl.cs" />

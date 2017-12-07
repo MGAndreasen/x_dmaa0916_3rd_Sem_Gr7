@@ -11,13 +11,15 @@ namespace Booking.Models
     public class Departure
     {
         [DataMember]
+        public int Id { get; set; }
+        [DataMember]
         public string StartDestination { get; set; }
         [DataMember]
         public string EndDestination { get; set; }
         [DataMember]
         public DateTime DepartureTime { get; set; }
         [DataMember]
-        public Plane PlaineId { get; set; }
+        public Plane PlaneId { get; set; }
 
         public Departure()
         {

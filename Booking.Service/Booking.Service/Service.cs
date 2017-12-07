@@ -27,11 +27,34 @@ namespace Booking.Service
         private SeatCtrl seatCtrl = new SeatCtrl();
         private SeatSchemaCtrl seatSchemaCtrl = new SeatSchemaCtrl();
         private TicketCtrl ticketCtrl = new TicketCtrl();
+        private DepartureCtrl departureCtrl = new DepartureCtrl();
 
         public Service()
         {
             uCtrl = new UserCtrl();
         }
+
+        #region Departure
+        public void CreateDeparture(Departure obj)
+        {
+            departureCtrl.Create(obj);
+        }
+
+        public Departure GetDeparture(int id)
+        {
+            return departureCtrl.Get(id);
+        }
+
+        public void UpdateDeparture(Departure obj)
+        {
+            departureCtrl.Update(obj);
+        }
+
+        public void DeleteDeparture(int id)
+        {
+            departureCtrl.Delete(id);
+        }
+        #endregion
 
         #region Michael Gris
         [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]

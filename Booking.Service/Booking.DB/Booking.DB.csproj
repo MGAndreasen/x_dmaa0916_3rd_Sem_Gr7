@@ -46,6 +46,7 @@
     <Compile Include="DbBooking.cs" />
     <Compile Include="DbCity.cs" />
     <Compile Include="DbCustomer.cs" />
+    <Compile Include="DbDeparture.cs" />
     <Compile Include="DbDestination.cs" />
     <Compile Include="DbPassenger.cs" />
     <Compile Include="DbPayment.cs" />
