@@ -1,5 +1,7 @@
 ﻿using Booking.Web.BookingAuthRemote;
 using Booking.Web.BookingServiceRemote;
+using System;
+using System.ServiceModel;
 using System.Web;
 using System.Web.Mvc;
 
