@@ -23,8 +23,8 @@ namespace Booking.DB
                 {
                     con.Open();
                     SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Departure (StartDestination, EndDestination, DepartureTime, Plane_Id) VALUES (@StartDestination, @EndDestination, @DepartureTime, @Plane_Id)", con);
-                    cmd.Parameters.Add("@StartDestination", SqlDbType.Int).Value = obj.StartDestination;
-                    cmd.Parameters.Add("@EndDestination", SqlDbType.Int).Value = obj.EndDestination;
+                    cmd.Parameters.Add("@StartDestination", SqlDbType.Int).Value = obj.StartDestination.Id;
+                    cmd.Parameters.Add("@EndDestination", SqlDbType.Int).Value = obj.EndDestination.Id;
                     cmd.Parameters.Add("@DepartureTime", SqlDbType.DateTime).Value = obj.DepartureTime;
                     cmd.Parameters.Add("@Plane_Id", SqlDbType.Int).Value = obj.StartDestination;
 
@@ -59,6 +59,7 @@ namespace Booking.DB
         public Departure Get(int id)
         {
             DbPlane dbp = new DbPlane();
+            DbDestination dbd = new DbDestination();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
                 con.Open();
@@ -72,9 +73,9 @@ namespace Booking.DB
                 {
                     Id = (int)reader["Id"],
                     PlaneId = dbp.Get((int)reader["Plane_Id"]), 
-                    EndDestination = (string)reader["EndDestination"],
-                    DepartureTime = (DateTime)reader["DepartureTime"],
-                    StartDestination = (string)reader["StartDestination"]
+                    EndDestination = dbd.Get((int)reader["EndDestination"]),                   
+                    StartDestination = dbd.Get((int)reader["StartDestination"]),
+                    DepartureTime = (DateTime)reader["DepartureTime"]
                 };
             }
         }
