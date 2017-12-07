@@ -118,6 +118,12 @@
 		DROP TABLE [dbo].[Booking_Booking]
 	END
 	GO
+	IF (OBJECT_ID('Booking_Departure') IS NOT NULL)
+	BEGIN
+		DROP TABLE [dbo].[Booking_Departure]
+	END
+	GO
+	
 
 	SET ANSI_NULLS ON
 	GO
@@ -273,7 +279,7 @@
 	BEGIN
 	CREATE TABLE [dbo].[Booking_SeatSchema](
 		[Id] [int] IDENTITY(1,1) NOT NULL,
-		[Plain_id] [int] NOT NULL,
+		[Plane_id] [int] NOT NULL,
 		[Layout] [nvarchar](50) NOT NULL,
 		[Row] [int] NOT NULL,
 	 CONSTRAINT [PK_Booking_SeatSchema] PRIMARY KEY CLUSTERED 
@@ -296,6 +302,19 @@
 	) ON [PRIMARY]
 	END
 	GO
+	
+	IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Booking_Departure]') AND type in (N'U'))
+	BEGIN
+	CREATE TABLE [dbo].[Booking_Departure](
+		[Id] [int] NULL,
+		[StartDestination] [int] NULL,
+		[EndDestination] [int] NULL,
+		[DepartureTime] [datetime] NULL,
+		[Plane_Id] [int] NULL
+	) ON [PRIMARY]
+	END
+	GO
+
 
 	/* Indsætter Demo Data */
 
@@ -462,13 +481,13 @@
 	GO
 	SET IDENTITY_INSERT [dbo].[Booking_SeatSchema] ON
 	GO
-	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plain_Id], [Layout], [Row]) VALUES (1, 1, 'ABC|DEF', 1)
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (1, 1, 'ABC|DEF', 1)
 	GO
-	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plain_Id], [Layout], [Row]) VALUES (2, 1, 'ABC|DEF', 2)
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (2, 1, 'ABC|DEF', 2)
 	GO
-	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plain_Id], [Layout], [Row]) VALUES (3, 1, 'AB|||CD', 3)
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (3, 1, 'AB|||CD', 3)
 	GO
-	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plain_Id], [Layout], [Row]) VALUES (4, 1, 'A|||||B', 4)
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (4, 1, 'A|||||B', 4)
 	GO
 	SET IDENTITY_INSERT [dbo].[Booking_SeatSchema] OFF
 
