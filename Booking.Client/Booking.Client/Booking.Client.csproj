@@ -112,6 +112,9 @@
     <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Customer.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Departure.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Destination.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

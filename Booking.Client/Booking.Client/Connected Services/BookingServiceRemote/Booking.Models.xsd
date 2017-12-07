@@ -1,5 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Booking.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Booking.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Departure">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DepartureTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EndDestination" nillable="true" type="tns:Destination" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="PlaneId" nillable="true" type="tns:Plane" />
+      <xs:element minOccurs="0" name="StartDestination" nillable="true" type="tns:Destination" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Departure" nillable="true" type="tns:Departure" />
+  <xs:complexType name="Destination">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="NameDestination" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Plane" nillable="true" type="tns:Plane" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Destination" nillable="true" type="tns:Destination" />
+  <xs:complexType name="Plane">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="SeatSchema" nillable="true" type="tns:SeatSchema" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Plane" nillable="true" type="tns:Plane" />
+  <xs:complexType name="SeatSchema">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Layout" type="xs:int" />
+      <xs:element minOccurs="0" name="Row" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatSchema" nillable="true" type="tns:SeatSchema" />
+  <xs:complexType name="ArrayOfDeparture">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Departure" nillable="true" type="tns:Departure" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDeparture" nillable="true" type="tns:ArrayOfDeparture" />
   <xs:complexType name="Customer">
     <xs:sequence>
       <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
@@ -40,30 +80,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Bookings" nillable="true" type="tns:Bookings" />
-  <xs:complexType name="Destination">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="NameDestination" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Plane" nillable="true" type="tns:Plane" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Destination" nillable="true" type="tns:Destination" />
-  <xs:complexType name="Plane">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="SeatSchema" nillable="true" type="tns:SeatSchema" />
-      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Plane" nillable="true" type="tns:Plane" />
-  <xs:complexType name="SeatSchema">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Layout" type="xs:int" />
-      <xs:element minOccurs="0" name="Row" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="SeatSchema" nillable="true" type="tns:SeatSchema" />
   <xs:complexType name="Payment">
     <xs:sequence>
       <xs:element minOccurs="0" name="Amount" type="xs:double" />
