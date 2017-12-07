@@ -12,7 +12,6 @@ namespace Booking.Service
     [ServiceContract]
     public interface IService
     {
-
         #region Michael's sjeit.
         //[OperationContract]
         //string GetData(int value);
@@ -96,7 +95,9 @@ namespace Booking.Service
         void UpdateDestination(Destination obj);
         [OperationContract]
         void DeleteDestination(int id);
+
         [OperationContract]
+        [FaultContract(typeof(System.Security.SecurityException))]
         IEnumerable<Destination> GetAllDestinations();
 
         #endregion 

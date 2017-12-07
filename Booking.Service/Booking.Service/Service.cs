@@ -7,6 +7,7 @@ using System.Text;
 using Booking.Models;
 using Booking.Controller;
 using System.Security.Permissions;
+using System.ServiceModel.Web;
 
 namespace Booking.Service
 {
@@ -214,9 +215,19 @@ namespace Booking.Service
             destinationCtrl.Delete(id);
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         public IEnumerable<Destination> GetAllDestinations()
         {
-            return destinationCtrl.GetAllDestinations();
+            try
+            {
+                return destinationCtrl.GetAllDestinations();
+            }
+            catch(FaultException<System.Security.SecurityException> ex)
+            {
+                Console.WriteLine("Service: PERMISSION ERROR: GetAllDestinations() for " + OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.Name);
+                throw new FaultException<Exception>(new Exception("PERMISSIONS"), "Invalid");
+            }
         }
 
         #endregion

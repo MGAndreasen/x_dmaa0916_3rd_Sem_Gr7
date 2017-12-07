@@ -1,48 +1,57 @@
 ﻿@using Booking.Web.Helpers
 
-    <div style="width: 770px; height: inherit;">
-        <div class=""><p>Rejser!</p>
-        @{ 
+<div style="width: 770px; height: inherit;">
+    <div class="">
+        <p>Rejser!</p>
+        @{
             var client = ServiceHelper.GetServiceClientWithCredentials();
-            var test = client.GetAllDestinations();
 
-            foreach (var s in test)
+            try
             {
-                <p>@s.NameDestination</p>
+                var test = client.GetAllDestinations();
+
+                foreach (var s in test)
+                {
+                    <p>@s.NameDestination</p>
+                }
             }
-         }
-        
+            catch(Exception ex)
+            {
+
+            }
+        }
+
         <h1>Tilbuds Rejser</h1>
-        </div>
-        <div class="Boxed floatLeft">                               
-            <h1> New York</h1>
-            <h3>Fra Aalborg</h3>
-            <h3>Fra/enkeltbillet</h3>
-        </div>
+    </div>
+    <div class="Boxed floatLeft">
+        <h1> New York</h1>
+        <h3>Fra Aalborg</h3>
+        <h3>Fra/enkeltbillet</h3>
+    </div>
 
-        <div class="Boxed floatLeft">
-            <h1> New York</h1>
-            <h3>Fra Aalborg</h3>
-            <h3>Fra/enkeltbillet</h3>
-        </div>
+    <div class="Boxed floatLeft">
+        <h1> New York</h1>
+        <h3>Fra Aalborg</h3>
+        <h3>Fra/enkeltbillet</h3>
+    </div>
 
-        @if (AuthHelper.IsLoggedIn())
+    @if (AuthHelper.IsLoggedIn())
+    {
+        <h1>Welcome to the secure area!</h1>
+
+        if (AuthHelper.IsAdmin())
         {
-            <h1>Welcome to the secure area!</h1>
-
-            if (AuthHelper.IsAdmin())
-            {
-                <p>Admin wee</p>
-            }
-            else
-            {
-                <p>Customer only</p>
-            }
+            <p>Admin wee</p>
         }
         else
         {
-    <p> You dont seem to be logged in, i cannot give you anything!! </p>
+            <p>Customer only</p>
         }
+    }
+    else
+    {
+        <p> You dont seem to be logged in, i cannot give you anything!! </p>
+    }
 </div>
 
 
