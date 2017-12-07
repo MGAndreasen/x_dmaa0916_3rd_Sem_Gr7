@@ -1,4 +1,5 @@
-﻿using Booking.Models;
+﻿using Booking.DB;
+using Booking.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,24 +10,31 @@ namespace Booking.Controller
 {
     public class DepartureCtrl : ICRUD<Departure>
     {
+        private DbDeparture DBP = new DbDeparture();
+
         public void Create(Departure obj)
         {
-            
+            DBP.Create(obj);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            DBP.Delete(id);
         }
 
         public Departure Get(int id)
         {
-            throw new NotImplementedException();
+            return DBP.Get(id);
         }
 
         public void Update(Departure obj)
         {
-            throw new NotImplementedException();
+            DBP.Update(obj);
         }
+
+        //public IEnumerable<Departure> GetAllDestinations()
+        //{
+        //    return DBP.GetAll();
+        //}
     }
 }
