@@ -13,9 +13,9 @@ namespace Booking.Models
         [DataMember]
         public int Id { get; set; }
         [DataMember]
-        public string StartDestination { get; set; }
+        public Destination StartDestination { get; set; }
         [DataMember]
-        public string EndDestination { get; set; }
+        public Destination EndDestination { get; set; }
         [DataMember]
         public DateTime DepartureTime { get; set; }
         [DataMember]
@@ -23,7 +23,7 @@ namespace Booking.Models
 
         public Departure()
         {
-            //Constructure
+            //Constructor xD
         }
     }
 }

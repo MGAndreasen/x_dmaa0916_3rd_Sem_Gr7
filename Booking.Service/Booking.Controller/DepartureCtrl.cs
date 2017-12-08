@@ -32,9 +32,9 @@ namespace Booking.Controller
             DBP.Update(obj);
         }
 
-        //public IEnumerable<Departure> GetAllDestinations()
-        //{
-        //    return DBP.GetAll();
-        //}
+        public IEnumerable<Departure> GetAllDepartures()
+        {
+           return DBP.GetAll();
+        }
     }
 }

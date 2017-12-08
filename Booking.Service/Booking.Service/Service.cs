@@ -54,6 +54,11 @@ namespace Booking.Service
         {
             departureCtrl.Delete(id);
         }
+        public IEnumerable<Departure> GetAllDepartures()
+        {
+            return departureCtrl.GetAllDepartures();
+        }
+           
         #endregion
 
         #region Michael Gris
