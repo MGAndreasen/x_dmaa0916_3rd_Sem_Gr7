@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Booking.Models
 {
@@ -14,10 +15,12 @@ namespace Booking.Models
         //Properties
         [DataMember]
         public int Id { get; set; }
+
         [DataMember]
         public string Type { get; set; }
+
         [DataMember]
-        public SeatSchema SeatSchema { get; set; }
+        public List<SeatSchema> SeatSchema { get; set; }
 
     }
 }

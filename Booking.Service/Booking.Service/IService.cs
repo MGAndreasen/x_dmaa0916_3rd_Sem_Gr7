@@ -41,6 +41,7 @@ namespace Booking.Service
         #endregion
 
         #region Departure
+
         [OperationContract]
         void CreateDeparture(Departure obj);
 
@@ -52,9 +53,12 @@ namespace Booking.Service
 
         [OperationContract]
         void DeleteDeparture(int id);
+
         [OperationContract]
         IEnumerable<Departure> GetAllDepartures();
+
         #endregion
+
         #region CustomerCtrl
 
         [OperationContract]

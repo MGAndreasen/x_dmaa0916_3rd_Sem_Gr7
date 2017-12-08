@@ -26,6 +26,11 @@ namespace Booking.Controller
             return dbss.Get(id);
         }
 
+        public List<SeatSchema> GetAll(int plane_id)
+        {
+            return dbss.GetAll(plane_id);
+        }
+
         public void Update(SeatSchema obj)
         {
             dbss.Update(obj);

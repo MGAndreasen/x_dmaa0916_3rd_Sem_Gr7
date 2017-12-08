@@ -12,12 +12,16 @@ namespace Booking.Models
     {
         [DataMember]
         public int Id { get; set; }
+
         [DataMember]
         public Destination StartDestination { get; set; }
+
         [DataMember]
         public Destination EndDestination { get; set; }
+
         [DataMember]
         public DateTime DepartureTime { get; set; }
+
         [DataMember]
         public Plane PlaneId { get; set; }
 

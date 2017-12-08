@@ -40,7 +40,7 @@ namespace Booking.DB
  //               try
                 {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT s.Id, s.SeatSchema_Id, s.Type FROM dbo.Booking_Plane AS s WHERE Id = @id", con);
+                SqlCommand cmd = new SqlCommand("SELECT s.Id, s.Type FROM dbo.Booking_Plane AS s WHERE Id = @id", con);
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                 var rdr = cmd.ExecuteReader();
 
@@ -51,7 +51,7 @@ namespace Booking.DB
                     return new Plane
                     {
                         Id = (int)rdr["Id"],
-                        SeatSchema = dbs.Get((int)rdr["SeatSchema_Id"]),
+                        SeatSchema = dbs.GetAll((int)rdr["Id"]),
                         Type = (string)rdr["Type"]
                     };
 
@@ -96,7 +96,7 @@ namespace Booking.DB
                         Plane p = new Plane
                         {
                             Id = (int)rdr["Id"],
-                            SeatSchema = dbs.Get((int)rdr["SeatSchema_Id"]),
+                            SeatSchema = dbs.GetAll((int)rdr["Id"]),
                             Type = (String)rdr["Type"],
                             
 
