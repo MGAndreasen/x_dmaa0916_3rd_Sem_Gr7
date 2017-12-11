@@ -21,15 +21,21 @@
   <xs:complexType name="Plane">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="SeatSchema" nillable="true" type="tns:SeatSchema" />
+      <xs:element minOccurs="0" name="SeatSchema" nillable="true" type="tns:ArrayOfSeatSchema" />
       <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Plane" nillable="true" type="tns:Plane" />
+  <xs:complexType name="ArrayOfSeatSchema">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SeatSchema" nillable="true" type="tns:SeatSchema" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSeatSchema" nillable="true" type="tns:ArrayOfSeatSchema" />
   <xs:complexType name="SeatSchema">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Layout" type="xs:int" />
+      <xs:element minOccurs="0" name="Layout" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Row" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
@@ -72,10 +78,9 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
       <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="EndDestination" nillable="true" type="tns:Destination" />
+      <xs:element minOccurs="0" name="Departure" nillable="true" type="tns:Departure" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="Payment" nillable="true" type="tns:Payment" />
-      <xs:element minOccurs="0" name="StartDestination" nillable="true" type="tns:Destination" />
       <xs:element minOccurs="0" name="TotalPrice" type="xs:int" />
     </xs:sequence>
   </xs:complexType>

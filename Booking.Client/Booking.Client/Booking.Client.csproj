@@ -133,9 +133,6 @@
     <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Seat.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.SeatSchema.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\BookingServiceRemote\Booking.Client.BookingServiceRemote.Ticket.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
