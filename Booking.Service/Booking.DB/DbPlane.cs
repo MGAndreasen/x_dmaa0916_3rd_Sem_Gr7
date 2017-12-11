@@ -24,13 +24,13 @@ namespace Booking.DB
                     using (SqlCommand cmd = con.CreateCommand())
                     {
                         cmd.CommandText = "DELETE FROM dbo.Booking_SeatSchema WHERE Plane_Id=@Plane_id";
-                        cmd.Parameters.AddWithValue("Plane_id", id);
+                        cmd.Parameters.Add("@Plane_id", SqlDbType.Int).Value = id;
                         cmd.ExecuteNonQuery();
                     }
                     using (SqlCommand cmd2 = con.CreateCommand())
                     {
-                        cmd2.CommandText = "DELETE FROM dbo.Booking_Plane WHERE Id=@id";
-                        cmd2.Parameters.AddWithValue("id", id);
+                        cmd2.CommandText = "DELETE FROM dbo.Booking_Plane WHERE Id=@Id";
+                        cmd2.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                         cmd2.ExecuteNonQuery();
                     }
 
