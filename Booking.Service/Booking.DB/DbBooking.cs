@@ -131,9 +131,9 @@ namespace Booking.DB
                     SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Id=@Id, Payment_Id=@PI, Customer_Id=@CI, Departure_Id=@D, Date=@Date, Price=@Price", con);
 
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
-                    cmd.Parameters.Add("@PI", SqlDbType.Int).Value = obj.Payment; // <-------------------------
-                    cmd.Parameters.Add("@CI", SqlDbType.Int).Value = obj.Customer; // <-------------------------
-                    cmd.Parameters.Add("@D", SqlDbType.Int).Value = obj.Departure; // <-------------------------
+                    cmd.Parameters.Add("@PI", SqlDbType.Int).Value = obj.Payment.Id; // <-------------------------
+                    cmd.Parameters.Add("@CI", SqlDbType.Int).Value = obj.Customer.Id; // <-------------------------
+                    cmd.Parameters.Add("@D", SqlDbType.Int).Value = obj.Departure.Id; // <-------------------------
                     cmd.Parameters.Add("@Date", SqlDbType.DateTime).Value = obj.Date;
                     cmd.Parameters.Add("@Price", SqlDbType.Int).Value = obj.Date;
 

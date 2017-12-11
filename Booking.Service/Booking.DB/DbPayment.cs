@@ -104,7 +104,23 @@ namespace Booking.DB
 
         public void Update(Payment obj)
         {
-            throw new NotImplementedException(); // <------------------------- // <------------------------- // <------------------------- // <-------------------------
+            TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Id=@Id, Amount=@Amount, Date=@Date", con);
+
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                    cmd.Parameters.Add("Amount", SqlDbType.Int).Value = obj.Amount;
+                    cmd.Parameters.Add("Date", SqlDbType.DateTime).Value = obj.Date;
+                    cmd.ExecuteNonQuery();
+
+                    cmd.ExecuteNonQuery();
+                    scope.Complete();
+                }
+            }
         }
     }
 }
