@@ -52,7 +52,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RowCtrl.cs" />
     <Compile Include="SeatCtrl.cs" />
-    <Compile Include="SeatSchemaCtrl.cs" />
     <Compile Include="TicketCtrl.cs" />
     <Compile Include="UserCtrl.cs" />
   </ItemGroup>

@@ -38,7 +38,7 @@ namespace Booking.DB
 
         public Row Get(int id)
         {
-            DbSeatSchema dbs = new DbSeatSchema();
+            //DbSeatSchema dbs = new DbSeatSchema();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 try
                 {
@@ -52,7 +52,7 @@ namespace Booking.DB
                         return new Row
                         {
                             Id = rdr.GetInt32(0),
-                            SeatNumber = dbs.Get(rdr.GetInt32(1)),
+                            //SeatNumber = dbs.Get(rdr.GetInt32(1)),
                             Price = rdr.GetInt32(2)
                         };
 
@@ -86,7 +86,7 @@ namespace Booking.DB
 
         public IEnumerable<Row> GetAll()
         {
-            DbSeatSchema dbs = new DbSeatSchema();
+            //DbSeatSchema dbs = new DbSeatSchema();
             List<Row> rows = new List<Row>();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
@@ -102,7 +102,7 @@ namespace Booking.DB
                         Row r = new Row
                         {
                             Id = (int)rdr["Id"],
-                            SeatNumber = dbs.Get((int)rdr["SeatNumber"]),
+                            //SeatNumber = dbs.Get((int)rdr["SeatNumber"]),
                             Price = (int)rdr["Price"],
                         };
                        rows.Add(r);

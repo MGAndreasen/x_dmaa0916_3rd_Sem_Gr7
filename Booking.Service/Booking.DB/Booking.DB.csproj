@@ -53,7 +53,6 @@
     <Compile Include="DbPlane.cs" />
     <Compile Include="DbRow.cs" />
     <Compile Include="DbSeat.cs" />
-    <Compile Include="DbSeatSchema.cs" />
     <Compile Include="DbTicket.cs" />
     <Compile Include="DbUser.cs" />
     <Compile Include="IDbCRUD.cs" />
