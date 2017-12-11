@@ -6,8 +6,8 @@
         <h1>Tilbuds Rejser</h1>
     </div>
     @{
-        if (ViewBag.proxyError == "")
-        {
+        //if (ViewBag.proxyError == "")
+        //{
             try
             {
                 //var client = ServiceHelper.GetServiceClientWithCredentials();
@@ -27,11 +27,11 @@
             {
                 <p>Der er sket en fejl!</p>
             }
-        }
-        else
-        {
-            <p>Kunne ikke forbinde til backenden!</p>
-        }
+        //}
+        //else
+       // {
+       //     <p>Kunne ikke forbinde til backenden!</p>
+       // }
     }
 
     @if (AuthHelper.IsLoggedIn())

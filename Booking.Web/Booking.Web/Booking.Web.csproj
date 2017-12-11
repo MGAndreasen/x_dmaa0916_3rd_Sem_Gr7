@@ -222,12 +222,6 @@
     <Content Include="Connected Services\BookingAuthRemote\Booking.Web.BookingAuthRemote.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Connected Services\BookingAuthRemote\configuration91.svcinfo" />
-    <None Include="Connected Services\BookingAuthRemote\configuration.svcinfo" />
-    <None Include="Connected Services\BookingAuthRemote\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <None Include="Connected Services\BookingAuthRemote\service.wsdl" />
     <None Include="Connected Services\BookingAuthRemote\service.xsd">
       <SubType>Designer</SubType>
@@ -235,12 +229,45 @@
     <None Include="Connected Services\BookingAuthRemote\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\BookingServiceRemote\Arrays.xsd">
-      <SubType>Designer</SubType>
+    <None Include="Connected Services\BookingAuthRemote\configuration91.svcinfo" />
+    <None Include="Connected Services\BookingAuthRemote\configuration.svcinfo" />
+    <None Include="Connected Services\BookingAuthRemote\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Connected Services\BookingServiceRemote\Booking.Models.xsd">
-      <SubType>Designer</SubType>
-    </None>
+    <Content Include="Connected Services\BookingServiceRemote\Booking.Web.BookingServiceRemote.Bookings.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BookingServiceRemote\Booking.Web.BookingServiceRemote.City.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BookingServiceRemote\Booking.Web.BookingServiceRemote.Customer.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BookingServiceRemote\Booking.Web.BookingServiceRemote.Departure.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BookingServiceRemote\Booking.Web.BookingServiceRemote.Destination.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BookingServiceRemote\Booking.Web.BookingServiceRemote.Passenger.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BookingServiceRemote\Booking.Web.BookingServiceRemote.Payment.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BookingServiceRemote\Booking.Web.BookingServiceRemote.Plane.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BookingServiceRemote\Booking.Web.BookingServiceRemote.Row.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BookingServiceRemote\Booking.Web.BookingServiceRemote.Seat.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\BookingServiceRemote\Booking.Web.BookingServiceRemote.Ticket.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\BookingServiceRemote\configuration91.svcinfo" />
     <None Include="Connected Services\BookingServiceRemote\configuration.svcinfo" />
     <None Include="Connected Services\BookingServiceRemote\Reference.svcmap">
@@ -261,13 +288,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Connected Services\BookingServiceRemote\service1.wsdl" />
-    <None Include="Connected Services\BookingServiceRemote\service4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\BookingServiceRemote\service41.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -276,6 +296,19 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Connected Services\BookingServiceRemote\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\Booking.Models.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\service.wsdl" />
+    <None Include="Connected Services\BookingServiceRemote\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\BookingServiceRemote\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\BookingServiceRemote\System.Security.xsd">
       <SubType>Designer</SubType>
     </None>
