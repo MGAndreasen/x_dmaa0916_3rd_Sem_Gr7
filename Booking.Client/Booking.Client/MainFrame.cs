@@ -100,11 +100,7 @@ namespace Booking.Client
              //   d.Plane = de.PlaneId;
 
             }
-
-
             myService.CreateDeparture(de);
-
-
         }
 
 
