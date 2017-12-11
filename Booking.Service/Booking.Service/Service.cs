@@ -63,10 +63,10 @@ namespace Booking.Service
 
         #region Michael Gris
         [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
-        public string GetUserData(int value)
+        public string GetUserData(string email)
         {
-            var found = uCtrl.GetUser(1);
-            return string.Format("Pssst, the data you requested back was: {0}, hi {1}, you are allowed to know!", value, OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.Name);
+            var found = uCtrl.GetUser(email);
+            return string.Format("Pssst, the data you requested back was: {0}, hi {1}, you are allowed to know!", email, OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.Name);
         }
 
         //public string GetData(int value)

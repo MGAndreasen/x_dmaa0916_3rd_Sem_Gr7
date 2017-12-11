@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace Booking.Models
 {
@@ -33,5 +34,9 @@ namespace Booking.Models
         public string Password { get; set; }
         [DataMember]
         public bool Confirmed { get; set; }
+        [DataMember]
+        public string Role { get; set; }
+        [DataMember]
+        public DateTime LastActive { get; set; }
     }
 }
