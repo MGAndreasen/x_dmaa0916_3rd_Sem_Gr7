@@ -124,7 +124,7 @@ namespace Booking.DB
 
                 using (SqlCommand cmd = con.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM Customer";
+                    cmd.CommandText = "SELECT * FROM dbo.Booking_Customer";
                     var rdr = cmd.ExecuteReader();
 
                     while (rdr.Read())
