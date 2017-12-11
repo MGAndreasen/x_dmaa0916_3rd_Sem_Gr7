@@ -153,6 +153,8 @@ namespace Booking.DB
 
         public void Update(Plane obj)
         {
+
+
             throw new NotImplementedException();
         }
     }
