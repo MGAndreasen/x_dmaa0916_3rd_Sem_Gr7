@@ -31,9 +31,7 @@ namespace Booking.Client
             ShowDestinations();
             ShowBookings();
             FillInfoBooking();
-
-            Plane_SeatSchema.ValueMember = "Id";
-            Plane_SeatSchema.DisplayMember = "Row";
+            ShowSeatSchema();
         }
 
         public void ShowPassager()
@@ -42,7 +40,12 @@ namespace Booking.Client
             var n = myService.GetPassenger(1);
             listBoxPassengers.Items.Add(n.FirstName + "," + n.LastName + "," + c.Zipcode + "," + c.CityName);
         }
-
+        public void ShowSeatSchema()
+        {
+            //MainFrame, Planetab
+            Plane_SeatSchema.ValueMember = "Id";
+            Plane_SeatSchema.DisplayMember = "Row";
+        }
         public void ShowPlanesComboBox()
         {
             //MainFrame, Destinaion
@@ -103,6 +106,16 @@ namespace Booking.Client
             myService.CreateDeparture(de);
         }
 
+        //public void CreateSeatSchema()
+        //{
+        //    var s = Plane_SeatSchema.Text.ToString();
+        //    var r = Int32.Parse(Plane_RowNumber.Text.ToString());
+        //    var rt = (Row) Plane_RowNumber.Text;
+
+        //    myService.CreateRow()
+            
+        //}
+
 
         public void ShowPlanes()
         {
@@ -124,9 +137,26 @@ namespace Booking.Client
             depBox.DisplayMember = "EndDestination," + "DepartureTime";
         }
 
-        public void DeleteDestination()
+
+        public void DeletePlane()
         {
-            
+            var p = (Plane)Plane_PlaneBox.SelectedItem;
+
+            myService.DeletePlane(p.Id);
+            ShowPlanes();
+        }
+
+        public void DeleteSeatSchema()
+        {
+            var s = (SeatSchema)Plane_SeatSchema.SelectedItem;
+            var p = (Plane)Plane_PlaneBox.SelectedItem;
+
+            p.SeatSchema.Remove(s);
+            Plane_SeatSchema.Items.Remove(s);
+            myService.UpdatePlane(p);
+        }
+        public void DeleteDestination()
+        {    
             var d = (Destination)listBoxPlanes.SelectedItem;
 
             myService.DeleteDestination(d.Id);
@@ -142,7 +172,6 @@ namespace Booking.Client
 
             myService.CreateDestination(d);
             CreateRoute_StartDestination.Clear();
-
         }
 
         private void RefreshDestinations_Click(object sender, EventArgs e)
@@ -208,7 +237,8 @@ namespace Booking.Client
             {
                 Plane p = new Plane { Type = Plane_PlaneType.Text.ToString() };
                 myService.CreatePlane(p);
-                ShowPlanes(); // REFRESH plain list
+                ShowPlanes();
+                ShowPlanesComboBox();
             }
             
         }
@@ -229,11 +259,6 @@ namespace Booking.Client
             
         }
 
-        private void Plane_RefreshSeatSchema_Click(object sender, EventArgs e)
-        {
-           
-        }
-
         private void Plane_SeatSchema_SelectedIndexChanged(object sender, EventArgs e)
         {
             Plane_SeatSchemaTextBox.Text = "";
@@ -243,6 +268,16 @@ namespace Booking.Client
                 Plane_SeatSchemaTextBox.Text = ((SeatSchema)Plane_SeatSchema.SelectedItem).Layout.ToString();
                
             }
+        }
+
+        private void Plane_DeletePlane_Click(object sender, EventArgs e)
+        {
+            DeletePlane();
+        }
+
+        private void Plane_DeleteSeatSchema_Click(object sender, EventArgs e)
+        {
+            DeleteSeatSchema();
         }
     }
 }
