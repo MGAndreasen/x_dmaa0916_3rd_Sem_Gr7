@@ -23,11 +23,18 @@ namespace Booking.DB
 
                     using (SqlCommand cmd = con.CreateCommand())
                     {
-                        cmd.CommandText = "DELETE FROM dbo.Booking_Plane WHERE Id=@id";
-                        cmd.Parameters.AddWithValue("id", id);
+                        cmd.CommandText = "DELETE FROM dbo.Booking_SeatSchema WHERE Plane_Id=@Plane_id";
+                        cmd.Parameters.AddWithValue("Plane_id", id);
                         cmd.ExecuteNonQuery();
-                        scope.Complete();
                     }
+                    using (SqlCommand cmd2 = con.CreateCommand())
+                    {
+                        cmd2.CommandText = "DELETE FROM dbo.Booking_Plane WHERE Id=@id";
+                        cmd2.Parameters.AddWithValue("id", id);
+                        cmd2.ExecuteNonQuery();
+                    }
+
+                    scope.Complete();
 
                 }
             }
@@ -36,29 +43,43 @@ namespace Booking.DB
         public Plane Get(int id)
         {
             DbSeatSchema dbs = new DbSeatSchema();
-            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
- //               try
-                {
-                con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT s.Id, s.Type FROM dbo.Booking_Plane AS s WHERE Id = @id", con);
-                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
-                var rdr = cmd.ExecuteReader();
+            Plane p = null;
 
-                while (rdr.HasRows)
+            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+            {
+                con.Open();
+
+                using (SqlCommand cmd = new SqlCommand("SELECT s.Id, s.Type FROM dbo.Booking_Plane AS s WHERE Id = @id", con))
                 {
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+
+                    var rdr = cmd.ExecuteReader();
+
                     rdr.Read();
 
-                    return new Plane
+                    p = new Plane
                     {
                         Id = (int)rdr["Id"],
-                        SeatSchema = dbs.GetAll((int)rdr["Id"]),
                         Type = (string)rdr["Type"]
                     };
+                }
 
+                using (SqlCommand cmd2 = new SqlCommand("SELECT * FROM dbo.Booking_SeatSchema WHERE Plane_Id=@Plane_id", con))
+                {
+                    cmd2.Parameters.Add("@Plane_Id", SqlDbType.Int).Value = id;
+
+                    var rdr2 = cmd2.ExecuteReader();
+
+                    while (rdr2.Read())
+                    {
+                        p.SeatSchema.Add(new SeatSchema { Id = (int)rdr2["Id"], Row = (int)rdr2["Row"], Layout = (string)rdr2["Layout"] });
+                    }
                 }
-                return null;
-                }
+
+            }
+            return p;
         }
+
 
         public void Create(Plane obj)
         {
@@ -68,11 +89,24 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Plane (@Id, @SeatSchema_Id, @Type)", con);
+
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Plane (@Id, @Type)", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
-                    cmd.Parameters.Add("@SeatSchema_Id", SqlDbType.Int).Value = obj.SeatSchema;
                     cmd.Parameters.Add("@Type", SqlDbType.NVarChar).Value = obj.Type;
                     cmd.ExecuteNonQuery();
+
+                    foreach (SeatSchema schema in obj.SeatSchema)
+                    {
+                        using (SqlCommand cmd2 = new SqlCommand("INSERT INTO dbo.Booking_SeatSchema (Id, Plane_id, Row, Layout) VALUES (@Id, @Plane_Id, @Row, @Layout)", con))
+                        {
+                            cmd2.Parameters.Add("@Id", SqlDbType.Int).Value = schema.Id;
+                            cmd2.Parameters.Add("@Plane_Id", SqlDbType.Int).Value = obj.Id;
+                            cmd2.Parameters.Add("@Row", SqlDbType.Int).Value = schema.Row;
+                            cmd2.Parameters.Add("@Layout", SqlDbType.NVarChar).Value = schema.Layout;
+                            cmd2.ExecuteNonQuery();
+                        }
+                    }
+
                 }
                 scope.Complete();
             }
@@ -96,12 +130,21 @@ namespace Booking.DB
                         Plane p = new Plane
                         {
                             Id = (int)rdr["Id"],
-                            SeatSchema = dbs.GetAll((int)rdr["Id"]),
-                            Type = (String)rdr["Type"],
-                            
-
+                            Type = (String)rdr["Type"]
                         };
-                       planes.Add(p);
+
+                        using (SqlCommand cmd2 = new SqlCommand("SELECT * FROM dbo.Booking_SeatSchema WHERE Plane_Id=@Plane_id", con))
+                        {
+                            cmd2.Parameters.Add("@Plane_Id", SqlDbType.Int).Value = p.Id;
+
+                            var rdr2 = cmd2.ExecuteReader();
+
+                            while (rdr2.Read())
+                            {
+                                p.SeatSchema.Add(new SeatSchema { Id = (int)rdr2["Id"], Row = (int)rdr2["Row"], Layout = (string)rdr2["Layout"] });
+                            }
+                        }
+                        planes.Add(p);
                     }
                 }
 
