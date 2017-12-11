@@ -26,7 +26,7 @@ namespace Booking.DB
                     cmd.Parameters.Add("@StartDestination", SqlDbType.Int).Value = obj.StartDestination.Id;
                     cmd.Parameters.Add("@EndDestination", SqlDbType.Int).Value = obj.EndDestination.Id;
                     cmd.Parameters.Add("@DepartureTime", SqlDbType.DateTime).Value = obj.DepartureTime;
-                    cmd.Parameters.Add("@Plane_Id", SqlDbType.Int).Value = obj.StartDestination;
+                    cmd.Parameters.Add("@Plane_Id", SqlDbType.Int).Value = obj.Plane.Id;
 
                     cmd.ExecuteNonQuery();
 
@@ -72,7 +72,7 @@ namespace Booking.DB
                 return new Departure
                 {
                     Id = (int)rdr["Id"],
-                    PlaneId = dbp.Get((int)rdr["Plane_Id"]), 
+                    Plane = dbp.Get((int)rdr["Plane_Id"]), 
                     EndDestination = dbd.Get((int)rdr["EndDestination"]),                   
                     StartDestination = dbd.Get((int)rdr["StartDestination"]),
                     DepartureTime = (DateTime)rdr["DepartureTime"]
@@ -93,7 +93,7 @@ namespace Booking.DB
                     cmd.Parameters.Add("@SD", SqlDbType.Int).Value = obj.StartDestination;
                     cmd.Parameters.Add("@ED", SqlDbType.Int).Value = obj.EndDestination;
                     cmd.Parameters.Add("@DT", SqlDbType.DateTime).Value = obj.DepartureTime;
-                    cmd.Parameters.Add("@PI", SqlDbType.Int).Value = obj.PlaneId.Id;
+                    cmd.Parameters.Add("@PI", SqlDbType.Int).Value = obj.Plane.Id;
 
                     cmd.ExecuteNonQuery();
                 }
@@ -119,7 +119,7 @@ namespace Booking.DB
                         Departure  d = new Departure
                         {
                             Id = (int)rdr["Id"],
-                            PlaneId = dbp.Get((int)rdr["Plane_Id"]),
+                            Plane = dbp.Get((int)rdr["Plane_Id"]),
                             EndDestination = dbd.Get((int)rdr["EndDestination"]),
                             StartDestination = dbd.Get((int)rdr["StartDestination"]),
                             DepartureTime = (DateTime)rdr["DepartureTime"]

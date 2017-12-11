@@ -23,7 +23,7 @@ namespace Booking.Models
         public DateTime DepartureTime { get; set; }
 
         [DataMember]
-        public Plane PlaneId { get; set; }
+        public Plane Plane { get; set; }
 
         public Departure()
         {

@@ -107,9 +107,9 @@ namespace Booking.DB
                     con.Open();
                     SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Booking (Id, Payment_Id, Customer_Id, Departure_Id, Date, Price) VALUES (@id, @Payment, @Customer, @Departure, @Date, @Price)", con);
                     cmd.Parameters.Add("@id", SqlDbType.Int).Value = obj.Id;
-                    cmd.Parameters.Add("@Payment", SqlDbType.Int).Value = obj.Id; // <-------------------------
-                    cmd.Parameters.Add("@Customer", SqlDbType.Int).Value = obj.Id; // <-------------------------
-                    cmd.Parameters.Add("@Departure", SqlDbType.Int).Value = obj.Departure; // <-------------------------
+                    cmd.Parameters.Add("@Payment", SqlDbType.Int).Value = obj.Payment.Id; // <-------------------------
+                    cmd.Parameters.Add("@Customer", SqlDbType.Int).Value = obj.Customer.Id; // <-------------------------
+                    cmd.Parameters.Add("@Departure", SqlDbType.Int).Value = obj.Departure.Id; // <-------------------------
                     cmd.Parameters.Add("@Date", SqlDbType.DateTime).Value = obj.Date;
                     cmd.Parameters.Add("@Price", SqlDbType.Int).Value = obj.TotalPrice;
 
