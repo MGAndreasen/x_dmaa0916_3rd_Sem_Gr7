@@ -147,12 +147,6 @@
   <wsdl:message name="IService_DeleteDeparture_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteDepartureResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_GetAllDepartures_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllDepartures" />
-  </wsdl:message>
-  <wsdl:message name="IService_GetAllDepartures_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllDeparturesResponse" />
-  </wsdl:message>
   <wsdl:message name="IService_CreateCustomer_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateCustomer" />
   </wsdl:message>
@@ -475,10 +469,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteDeparture" message="tns:IService_DeleteDeparture_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteDepartureResponse" message="tns:IService_DeleteDeparture_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllDepartures">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllDepartures" message="tns:IService_GetAllDepartures_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllDeparturesResponse" message="tns:IService_GetAllDepartures_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="CreateCustomer">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateCustomer" message="tns:IService_CreateCustomer_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateCustomerResponse" message="tns:IService_CreateCustomer_OutputMessage" />
@@ -727,15 +717,6 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteDeparture">
       <soap12:operation soapAction="http://tempuri.org/IService/DeleteDeparture" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllDepartures">
-      <soap12:operation soapAction="http://tempuri.org/IService/GetAllDepartures" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
