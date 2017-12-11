@@ -10,6 +10,7 @@ namespace Booking.Models
         //Ctors
         public Plane()
         {
+            SeatSchema = new List<Models.SeatSchema>();
         }
 
         //Properties

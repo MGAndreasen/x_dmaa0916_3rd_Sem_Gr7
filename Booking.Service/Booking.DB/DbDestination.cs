@@ -12,7 +12,7 @@ using Booking.DB.ScopeHelper;
 
 namespace Booking.DB
 {
-    public class DbDestination :IDbCRUD<Destination>
+    public class DbDestination : IDbCRUD<Destination>
     {
         private DataAccess data = DataAccess.Instance;
 
@@ -40,20 +40,27 @@ namespace Booking.DB
         public Destination Get(int id)
         {
             DbPlane dbp = new DbPlane();
+
+            Destination d = null;
+
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Booking_Destination WHERE Id = @id", con);
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                 SqlDataReader reader = cmd.ExecuteReader();
-                reader.Read();
-                return new Destination
+
+                while (reader.Read())
                 {
-                    Id = (int)reader["Id"],
-                    Plane = dbp.Get((int)reader["Plane_Id"]), // <-------------------------
-                    NameDestination = (string)reader["NameDestination"]
-                };
+                    d=  new Destination
+                    {
+                        Id = (int)reader["Id"],
+                        NameDestination = (string)reader["NameDestination"]
+                    };
+                }
             }
+
+            return d;
         }
 
         public void Create(Destination obj)
@@ -64,9 +71,8 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();                                                            //Id     //Plane_Id,            //@Id         //@Pi
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Destination (NameDestination, Plane_Id) VALUES (@Name, @Pi)", con);
-                //    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
-                   cmd.Parameters.Add("@Pi", SqlDbType.Int).Value = obj.Plane.Id; // <-------------------------
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Destination (Id, NameDestination) VALUES (@Id, @Name)", con);
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
                     cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = obj.NameDestination;
 
                     cmd.ExecuteNonQuery();
@@ -84,10 +90,9 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Destination SET Id=@Id, Plane_Id=@pi, NameDestination=@Name", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Destination SET Id=@Id, NameDestination=@Name", con);
 
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
-                    cmd.Parameters.Add("@pi", SqlDbType.Int).Value = obj.Plane.Id;
                     cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = obj.NameDestination;
 
 
@@ -116,7 +121,6 @@ namespace Booking.DB
                         Destination d = new Destination
                         {
                             Id = (int)rdr["Id"],
-                            Plane = dbp.Get((int)rdr["Plane_Id"]),
                             NameDestination = (String)rdr["NameDestination"],
 
                         };
