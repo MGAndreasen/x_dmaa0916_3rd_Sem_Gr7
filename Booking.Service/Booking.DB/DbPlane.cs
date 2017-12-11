@@ -153,9 +153,53 @@ namespace Booking.DB
 
         public void Update(Plane obj)
         {
+            List<int> NotToRemove = new List<int>();
+            string dontConcatinateSqlQuerys = "";
 
+            TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Type=@Type ", con);
 
-            throw new NotImplementedException();
+                    cmd.Parameters.Add("@Type", SqlDbType.Int).Value = obj.Type;
+
+                    foreach (SeatSchema schema in obj.SeatSchema)
+                    {
+                        using (SqlCommand cmd2 = new SqlCommand("UPDATE dbo.Booking_SeatSchema SET Row=@Row, Layout=@Layout Where Id=@Id)", con))
+                        {
+                            cmd2.Parameters.Add("@Id", SqlDbType.Int).Value = schema.Id;
+                            cmd2.Parameters.Add("@Plane_Id", SqlDbType.Int).Value = obj.Id;
+                            cmd2.Parameters.Add("@Row", SqlDbType.Int).Value = schema.Row;
+                            cmd2.Parameters.Add("@Layout", SqlDbType.NVarChar).Value = schema.Layout;
+                            cmd2.ExecuteNonQuery();
+                        }
+                        NotToRemove.Add(obj.Id);
+                    }
+
+                    
+                    foreach (int i in NotToRemove)
+                    {
+                        dontConcatinateSqlQuerys += i.ToString() + ", ";
+                    }
+
+                    dontConcatinateSqlQuerys.TrimEnd(',');
+                    
+
+                    using (SqlCommand cmd3 = new SqlCommand("Delete from dbo.Booking_SeatSchema Where Plane_Id=@Plane_Id AND Id not in (@dontremove))", con))
+                    {
+                        cmd3.Parameters.Add("@Plane_Id", SqlDbType.Int).Value = obj.Id;
+                        cmd3.Parameters.Add("@dontremove", SqlDbType.VarChar).Value = dontConcatinateSqlQuerys;
+                        cmd3.ExecuteNonQuery();
+                    }
+                    
+
+                    cmd.ExecuteNonQuery();
+                    scope.Complete();
+                }
+            }
         }
     }
 }

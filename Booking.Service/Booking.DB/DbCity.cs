@@ -90,8 +90,8 @@ namespace Booking.DB
                     con.Open();
                     SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_City SET ZipCode=@zipcode, Name=@name WHERE Zipcode=@zipcode", con);
 
-                    cmd.Parameters.AddWithValue("name", obj.CityName);
-                    cmd.Parameters.AddWithValue("zipcode", obj.Zipcode);
+                    cmd.Parameters.AddWithValue("@name", obj.CityName);
+                    cmd.Parameters.AddWithValue("@zipcode", obj.Zipcode);
 
                     cmd.ExecuteNonQuery();
                 }

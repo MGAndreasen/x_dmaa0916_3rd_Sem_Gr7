@@ -46,11 +46,11 @@ namespace Booking.DB
                 SqlDataReader rdr = cmd.ExecuteReader();
                 rdr.Read();
                 return new Seat
-                {
-                    Id = rdr.GetInt32(0),
-                    Row = dbRow.Get(rdr.GetInt32(1)),
-                    Number = rdr.GetInt32(2),
-                    Available = rdr.GetBoolean(3),
+                {                 
+                    Id = (int)rdr["Id"],
+                    Row = dbRow.Get((int)rdr["Row"]),
+                    Number = (int)rdr["Number"],
+                    Available = (bool)rdr["Available"]
                 };
                 }
         }
@@ -63,11 +63,11 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Seat (id, Row_Id, Number, Availability) VALUES (@id, @Number, @Availability)", con);
-                    cmd.Parameters.Add("id", SqlDbType.Int).Value = obj.Id;
-                    cmd.Parameters.Add("Row_Id", SqlDbType.Int).Value = obj.Row.Id;
-                    cmd.Parameters.Add("Number", SqlDbType.Int).Value = obj.Number;
-                    cmd.Parameters.Add("Availability", SqlDbType.Bit).Value = obj.Available;
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Seat (Id, Row_Id, Number, Availability) VALUES (@id, @Number, @Availability)", con);
+                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = obj.Id;
+                    cmd.Parameters.Add("@Row_Id", SqlDbType.Int).Value = obj.Row.Id;
+                    cmd.Parameters.Add("@Number", SqlDbType.Int).Value = obj.Number;
+                    cmd.Parameters.Add("@Availability", SqlDbType.Bit).Value = obj.Available;
 
                     cmd.ExecuteNonQuery();
  

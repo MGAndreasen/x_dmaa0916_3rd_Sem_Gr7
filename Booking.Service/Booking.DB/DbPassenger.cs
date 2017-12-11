@@ -38,6 +38,7 @@ namespace Booking.DB
 
         public Passenger Get(int id)
         {
+            Passenger p = null;
             DbBooking dbb = new DbBooking();
             DbSeat dbs = new DbSeat();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
@@ -52,24 +53,23 @@ namespace Booking.DB
                 {
                     reader.Read();
 
-                    return new Passenger
-                    {
-                        Id = reader.GetInt32(0),
-                        Booking = dbb.Get(reader.GetInt32(1)), // <-------------------------
-                        SeatNumber = dbs.Get(reader.GetInt32(2)), // <-------------------------
-                        FirstName = reader.GetString(3),
-                        LastName = reader.GetString(4),
-                        CPR = reader.GetInt64(5),
-                        PassportId = reader.GetInt64(6),
-                        Luggage = reader.GetBoolean(7),
+                    p = new Passenger
+                    {                       
+                        Id = (int)reader["Id"],
+                        Booking = dbb.Get((int)reader["Booking_Id"]),
+                        SeatNumber = dbs.Get((int)reader["SeatNumber"]),
+                        FirstName = (string)reader["FirstName"],
+                        LastName = (string)reader["LastName"],
+                        CPR = (int)reader["CPR"],
+                        PassportId = (int)reader["PassportId"],
+                        Luggage = (bool)reader["Luggage"]
                     };
-
+                    
                 }
-
-                return null;
+                
 
             }
-
+            return p;
         }
 
         public void Create(Passenger obj)
@@ -107,14 +107,14 @@ namespace Booking.DB
                     con.Open();
                     SqlCommand cmd = new SqlCommand("UPDATE Booking_Passenger SET Id = @Id, Booking_Id=@Bo, Seat_Id=@Seat, FirstName = @FirstName, LastName = @LastName, Cpr = @Cpr, PassportId = @PassportId, Luggage = @Luggage WHERE Id=@Id", con);
                     
-                    cmd.Parameters.AddWithValue("Id", obj.Id);
-                    cmd.Parameters.AddWithValue("Bo", obj.Booking.Id); // <-------------------------
-                    cmd.Parameters.AddWithValue("Seat", obj.SeatNumber.Id); // <-------------------------
-                    cmd.Parameters.AddWithValue("FirstName", obj.FirstName);
-                    cmd.Parameters.AddWithValue("LastName", obj.LastName);
-                    cmd.Parameters.AddWithValue("Cpr", obj.CPR);
-                    cmd.Parameters.AddWithValue("PassportId", obj.PassportId);
-                    cmd.Parameters.AddWithValue("Luggage", obj.Luggage);
+                    cmd.Parameters.AddWithValue("@Id", obj.Id);
+                    cmd.Parameters.AddWithValue("@Bo", obj.Booking.Id); // <-------------------------
+                    cmd.Parameters.AddWithValue("@Seat", obj.SeatNumber.Id); // <-------------------------
+                    cmd.Parameters.AddWithValue("@FirstName", obj.FirstName);
+                    cmd.Parameters.AddWithValue("@LastName", obj.LastName);
+                    cmd.Parameters.AddWithValue("@Cpr", obj.CPR);
+                    cmd.Parameters.AddWithValue("@PassportId", obj.PassportId);
+                    cmd.Parameters.AddWithValue("@Luggage", obj.Luggage);
 
 
                     cmd.ExecuteNonQuery();
