@@ -32,6 +32,8 @@ namespace Booking.Client
             ShowBookings();
             FillInfoBooking();
 
+            Plane_SeatSchema.ValueMember = "Id";
+            Plane_SeatSchema.DisplayMember = "Row";
         }
 
         public void ShowPassager()
@@ -199,19 +201,52 @@ namespace Booking.Client
             textBox__Bookings_Passenger_PassportNo.Text = pa.PassportId.ToString();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void Plane_RefreshPlaneButton_Click(object sender, EventArgs e)
         {
-
+            ShowPlanes();
         }
 
-        private void label21_Click(object sender, EventArgs e)
+        private void Plane_CreatePlane_Click(object sender, EventArgs e)
         {
-
+            if (Plane_PlaneType.Text.ToString().Trim().Length > 0)
+            {
+                Plane p = new Plane { Type = Plane_PlaneType.Text.ToString() };
+                myService.CreatePlane(p);
+                ShowPlanes(); // REFRESH plain list
+            }
+            
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void Plane_PlaneBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Plane_SeatSchema.Items.Clear();
 
+            if (Plane_PlaneBox.Items.Count > 0)
+            {
+                Plane p = (Plane)Plane_PlaneBox.SelectedItem;
+
+                foreach (SeatSchema s in p.SeatSchema)
+                {
+                    Plane_SeatSchema.Items.Add(s);
+                }
+            }
+            
+        }
+
+        private void Plane_RefreshSeatSchema_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void Plane_SeatSchema_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Plane_SeatSchemaTextBox.Text = "";
+
+            if (Plane_SeatSchema.Items.Count > 0)
+            {
+                Plane_SeatSchemaTextBox.Text = ((SeatSchema)Plane_SeatSchema.SelectedItem).Layout.ToString();
+               
+            }
         }
     }
 }

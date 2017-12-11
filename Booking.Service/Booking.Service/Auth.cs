@@ -20,7 +20,7 @@ namespace Booking.Service
         // Login methode (retunering af User obj)
         public User Login(string username, string password)
         {
-
+            // Tjaa....
             username = username.ToLower();
 
             // Forsøg at finde Useren med brugernavn

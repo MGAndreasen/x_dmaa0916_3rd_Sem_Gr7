@@ -90,22 +90,21 @@ namespace Booking.DB
                 {
                     con.Open();
 
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Plane (@Id, @Type)", con);
-                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Plane (Type) VALUES(@Type)", con);
                     cmd.Parameters.Add("@Type", SqlDbType.NVarChar).Value = obj.Type;
                     cmd.ExecuteNonQuery();
 
-                    foreach (SeatSchema schema in obj.SeatSchema)
-                    {
-                        using (SqlCommand cmd2 = new SqlCommand("INSERT INTO dbo.Booking_SeatSchema (Id, Plane_id, Row, Layout) VALUES (@Id, @Plane_Id, @Row, @Layout)", con))
-                        {
-                            cmd2.Parameters.Add("@Id", SqlDbType.Int).Value = schema.Id;
-                            cmd2.Parameters.Add("@Plane_Id", SqlDbType.Int).Value = obj.Id;
-                            cmd2.Parameters.Add("@Row", SqlDbType.Int).Value = schema.Row;
-                            cmd2.Parameters.Add("@Layout", SqlDbType.NVarChar).Value = schema.Layout;
-                            cmd2.ExecuteNonQuery();
-                        }
-                    }
+                    //foreach (SeatSchema schema in obj.SeatSchema)
+                    //{
+                    //    using (SqlCommand cmd2 = new SqlCommand("INSERT INTO dbo.Booking_SeatSchema (Id, Plane_id, Row, Layout) VALUES (@Id, @Plane_Id, @Row, @Layout)", con))
+                    //    {
+                    //        cmd2.Parameters.Add("@Id", SqlDbType.Int).Value = schema.Id;
+                    //        cmd2.Parameters.Add("@Plane_Id", SqlDbType.Int).Value = obj.Id;
+                    //        cmd2.Parameters.Add("@Row", SqlDbType.Int).Value = schema.Row;
+                    //        cmd2.Parameters.Add("@Layout", SqlDbType.NVarChar).Value = schema.Layout;
+                    //        cmd2.ExecuteNonQuery();
+                    //    }
+                    //}
 
                 }
                 scope.Complete();
