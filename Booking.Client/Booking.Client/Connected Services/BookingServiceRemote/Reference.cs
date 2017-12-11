@@ -137,9 +137,6 @@ namespace Booking.Client.BookingServiceRemote {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameDestinationField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Booking.Client.BookingServiceRemote.Plane PlaneField;
-        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -172,19 +169,6 @@ namespace Booking.Client.BookingServiceRemote {
                 if ((object.ReferenceEquals(this.NameDestinationField, value) != true)) {
                     this.NameDestinationField = value;
                     this.RaisePropertyChanged("NameDestination");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Booking.Client.BookingServiceRemote.Plane Plane {
-            get {
-                return this.PlaneField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PlaneField, value) != true)) {
-                    this.PlaneField = value;
-                    this.RaisePropertyChanged("Plane");
                 }
             }
         }

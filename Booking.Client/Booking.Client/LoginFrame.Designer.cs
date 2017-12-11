@@ -60,13 +60,16 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(298, 22);
             this.textBox1.TabIndex = 2;
+            this.textBox1.Text = "Admin@test.dk";
             // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(153, 333);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = 'X';
             this.textBox2.Size = new System.Drawing.Size(298, 22);
             this.textBox2.TabIndex = 3;
+            this.textBox2.Text = "1234";
             // 
             // button1
             // 

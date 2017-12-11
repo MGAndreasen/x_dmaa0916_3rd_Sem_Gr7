@@ -70,9 +70,9 @@ namespace Booking.Client
         public void FillInfoBooking()
         {
             var b = (Bookings)listBoxListOfBookings.SelectedItem;
-            textBox_Bookings_StartDestination.Text = b.StartDestination.NameDestination.ToString();
-            textBox_Bookings_EndDestination.Text = b.EndDestination.NameDestination.ToString();
-            textBox_Bookings_Plane.Text = b.EndDestination.Plane.Id.ToString();
+            //textBox_Bookings_StartDestination.Text = b.StartDestination.NameDestination.ToString();
+            //textBox_Bookings_EndDestination.Text = b.EndDestination.NameDestination.ToString();
+            //textBox_Bookings_Plane.Text = b.EndDestination.Plane.Id.ToString();
             textBox__Bookings_Customer.Text = b.Customer.FirstName.ToString();
 
             foreach (Passenger p in myService.GetAllPassengers())
@@ -95,7 +95,7 @@ namespace Booking.Client
 
                 d = de.EndDestination;
                 date = de.DepartureTime;
-                d.Plane = de.PlaneId;
+             //   d.Plane = de.PlaneId;
 
             }
 
@@ -139,7 +139,7 @@ namespace Booking.Client
             Destination d = new Destination
             {
                 NameDestination = CreateRoute_StartDestination.Text.ToString(),
-                Plane = myService.GetPlane(p.Id)
+                //Plane = myService.GetPlane(p.Id)
             };
 
             myService.CreateDestination(d);
@@ -211,7 +211,7 @@ namespace Booking.Client
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Plane_
+
         }
     }
 }

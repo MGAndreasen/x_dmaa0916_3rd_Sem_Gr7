@@ -14,7 +14,6 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="NameDestination" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Plane" nillable="true" type="tns:Plane" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Destination" nillable="true" type="tns:Destination" />
