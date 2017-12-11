@@ -96,16 +96,16 @@ namespace Booking.DB
                 {
                     con.Open();
                     SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Customer SET Cpr=@cpr, PhoneNo=@pho, City_Id=@city, FirstName=@fn, LastName=@ln, Email=@em, Address=@a, Password=@p, Confirmed=@con WHERE ID=@id", con);
-                    cmd.Parameters.AddWithValue("id", obj.Id);
-                    cmd.Parameters.AddWithValue("cpr", obj.CPR);
-                    cmd.Parameters.AddWithValue("pho", obj.PhoneNumber);
-                    cmd.Parameters.AddWithValue("city", obj.City);
-                    cmd.Parameters.AddWithValue("fn", obj.FirstName);
-                    cmd.Parameters.AddWithValue("ln", obj.LastName);
-                    cmd.Parameters.AddWithValue("em", obj.Email);
-                    cmd.Parameters.AddWithValue("a", obj.Address);
-                    cmd.Parameters.AddWithValue("p", obj.Password);
-                    cmd.Parameters.AddWithValue("con", obj.Confirmed);
+                    cmd.Parameters.AddWithValue("@id", obj.Id);
+                    cmd.Parameters.AddWithValue("@cpr", obj.CPR);
+                    cmd.Parameters.AddWithValue("@pho", obj.PhoneNumber);
+                    cmd.Parameters.AddWithValue("@city", obj.City);
+                    cmd.Parameters.AddWithValue("@fn", obj.FirstName);
+                    cmd.Parameters.AddWithValue("@ln", obj.LastName);
+                    cmd.Parameters.AddWithValue("@em", obj.Email);
+                    cmd.Parameters.AddWithValue("@a", obj.Address);
+                    cmd.Parameters.AddWithValue("@p", obj.Password);
+                    cmd.Parameters.AddWithValue("@con", obj.Confirmed);
 
                     cmd.ExecuteNonQuery();
                 }
