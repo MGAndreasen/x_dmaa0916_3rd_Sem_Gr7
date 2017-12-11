@@ -154,8 +154,33 @@ namespace Booking.DB
         public void Update(Plane obj)
         {
 
+            TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
+            {
+                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Type=@Type ", con);
 
-            throw new NotImplementedException();
+                    cmd.Parameters.Add("@Type", SqlDbType.Int).Value = obj.Type;
+
+                    foreach (SeatSchema schema in obj.SeatSchema)
+                    {
+                        using (SqlCommand cmd2 = new SqlCommand("UPDATE dbo.Booking_SeatSchema SET Id=@Id, Plane_Id=@Plane_Id, Row=@Row, Layout=@Layout)", con))
+                        {
+                            cmd2.Parameters.Add("@Id", SqlDbType.Int).Value = schema.Id;
+                            cmd2.Parameters.Add("@Plane_Id", SqlDbType.Int).Value = obj.Id;
+                            cmd2.Parameters.Add("@Row", SqlDbType.Int).Value = schema.Row;
+                            cmd2.Parameters.Add("@Layout", SqlDbType.NVarChar).Value = schema.Layout;
+                            cmd2.ExecuteNonQuery();
+                        }
+                    }
+
+
+                    cmd.ExecuteNonQuery();
+                    scope.Complete();
+                }
+            }
         }
     }
 }
