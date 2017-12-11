@@ -15,10 +15,10 @@ namespace Booking.Service
     {
         // Ny instance af UserCtrl()
         private UserCtrl uCtrl = new UserCtrl();
-        private CustomerCtrl cCtrl = new CustomerCtrl();
+        //private CustomerCtrl cCtrl = new CustomerCtrl();
 
         // Login methode (retunering af User obj)
-        public Customer Login(string email, string password)
+        public User Login(string email, string password)
         {
             // Tjaa....
             email = email.ToLower();

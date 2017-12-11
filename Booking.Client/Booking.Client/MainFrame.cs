@@ -18,14 +18,15 @@ namespace Booking.Client
     {
         ServiceClient myService = new ServiceClient();
         List<Tuple<Destination, DateTime>> routes = new List<Tuple<Destination, DateTime>>();
+        BookingAuthRemote.User currentUser = null;
 
-
-        public MainFrame()
+        public MainFrame(BookingAuthRemote.User curUser)
         {
             InitializeComponent();
+            currentUser = curUser;
             ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
-            myService.ClientCredentials.UserName.UserName = "admin@test.dk";
-            myService.ClientCredentials.UserName.Password = "1234";
+            myService.ClientCredentials.UserName.UserName = currentUser.Email;
+            myService.ClientCredentials.UserName.Password = currentUser.Password;
             ShowPassager();
             ShowPlanesComboBox();
             ShowDestinations();

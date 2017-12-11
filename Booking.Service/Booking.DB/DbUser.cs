@@ -41,42 +41,36 @@ namespace Booking.DB
         //    return u;
         //}
 
-        public Customer GetUser(string email)
+        public User GetUser(string email)
         {
-            Customer c = null;
-            DbCity dbc = new DbCity();
+            User u = null;
+            //DbCity dbc = new DbCity();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Booking_Customer WHERE Email = @Email", con);
                 cmd.Parameters.Add("@Email", SqlDbType.NVarChar).Value = email;
                 SqlDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
+
+                if (rdr.Read())
                 {
-                    c = new Customer
+                    u = new User
                     {
                         Id = (int)rdr["Id"],
-                        CPR = (long)rdr["Cpr"],
-                        PhoneNumber = (long)rdr["PhoneNo"],
-                        City = dbc.Get((int)rdr["City_Id"]),
-                        FirstName = (string)rdr["FirstName"],
-                        LastName = (string)rdr["LastName"],
                         Email = (string)rdr["Email"],
-                        Address = (string)rdr["Address"],
                         Password = (string)rdr["Password"],
-                        Confirmed = (bool)rdr["Cofirmed"],
-                        Role = (string)rdr["Roles"],
-                        LastActive = (DateTime)rdr["LastActive"]
+                        Roles = new List<Role> { new Role { Name = (string)rdr["Roles"] } }
                     };
                 }
             }
 
-            if (email == "guest")
+            if (u == null && email == "guest")
             {
-               c = new Customer { Email = "guest", Password = "guest", Role = "Guest" };
+                List<Role> userRoles = new List<Role> { new Role { Name = "Guest" } };
+                u = new User { Id = 3, Email = "guest", Password = "guest", Roles = userRoles };
             }
 
-            return c;
+            return u;
 
             //else if (email == "guest")
             //{

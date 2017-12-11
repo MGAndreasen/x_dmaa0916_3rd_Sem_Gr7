@@ -87,7 +87,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Connected Services\BookingAuthRemote\Booking.Client.BookingAuthRemote.Customer1.datasource">
+    <None Include="Connected Services\BookingAuthRemote\Booking.Client.BookingAuthRemote.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\BookingAuthRemote\Booking.Models.xsd">

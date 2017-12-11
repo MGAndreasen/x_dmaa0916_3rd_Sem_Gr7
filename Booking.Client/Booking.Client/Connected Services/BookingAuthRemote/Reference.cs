@@ -15,48 +15,24 @@ namespace Booking.Client.BookingAuthRemote {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Customer", Namespace="http://schemas.datacontract.org/2004/07/Booking.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/Booking.Models")]
     [System.SerializableAttribute()]
-    public partial class Customer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AddressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long CPRField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Booking.Client.BookingAuthRemote.City CityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool ConfirmedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime LastActiveField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PasswordField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long PhoneNumberField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RoleField;
+        private Booking.Client.BookingAuthRemote.Role[] RolesField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -69,58 +45,6 @@ namespace Booking.Client.BookingAuthRemote {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Address {
-            get {
-                return this.AddressField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AddressField, value) != true)) {
-                    this.AddressField = value;
-                    this.RaisePropertyChanged("Address");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public long CPR {
-            get {
-                return this.CPRField;
-            }
-            set {
-                if ((this.CPRField.Equals(value) != true)) {
-                    this.CPRField = value;
-                    this.RaisePropertyChanged("CPR");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Booking.Client.BookingAuthRemote.City City {
-            get {
-                return this.CityField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CityField, value) != true)) {
-                    this.CityField = value;
-                    this.RaisePropertyChanged("City");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Confirmed {
-            get {
-                return this.ConfirmedField;
-            }
-            set {
-                if ((this.ConfirmedField.Equals(value) != true)) {
-                    this.ConfirmedField = value;
-                    this.RaisePropertyChanged("Confirmed");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Email {
             get {
                 return this.EmailField;
@@ -129,19 +53,6 @@ namespace Booking.Client.BookingAuthRemote {
                 if ((object.ReferenceEquals(this.EmailField, value) != true)) {
                     this.EmailField = value;
                     this.RaisePropertyChanged("Email");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FirstName {
-            get {
-                return this.FirstNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
-                    this.FirstNameField = value;
-                    this.RaisePropertyChanged("FirstName");
                 }
             }
         }
@@ -160,32 +71,6 @@ namespace Booking.Client.BookingAuthRemote {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime LastActive {
-            get {
-                return this.LastActiveField;
-            }
-            set {
-                if ((this.LastActiveField.Equals(value) != true)) {
-                    this.LastActiveField = value;
-                    this.RaisePropertyChanged("LastActive");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LastName {
-            get {
-                return this.LastNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
-                    this.LastNameField = value;
-                    this.RaisePropertyChanged("LastName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Password {
             get {
                 return this.PasswordField;
@@ -199,27 +84,14 @@ namespace Booking.Client.BookingAuthRemote {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public long PhoneNumber {
+        public Booking.Client.BookingAuthRemote.Role[] Roles {
             get {
-                return this.PhoneNumberField;
+                return this.RolesField;
             }
             set {
-                if ((this.PhoneNumberField.Equals(value) != true)) {
-                    this.PhoneNumberField = value;
-                    this.RaisePropertyChanged("PhoneNumber");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Role {
-            get {
-                return this.RoleField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RoleField, value) != true)) {
-                    this.RoleField = value;
-                    this.RaisePropertyChanged("Role");
+                if ((object.ReferenceEquals(this.RolesField, value) != true)) {
+                    this.RolesField = value;
+                    this.RaisePropertyChanged("Roles");
                 }
             }
         }
@@ -236,18 +108,21 @@ namespace Booking.Client.BookingAuthRemote {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="City", Namespace="http://schemas.datacontract.org/2004/07/Booking.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Role", Namespace="http://schemas.datacontract.org/2004/07/Booking.Models")]
     [System.SerializableAttribute()]
-    public partial class City : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Role : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CityNameField;
+        private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ZipcodeField;
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Booking.Client.BookingAuthRemote.User[] UserField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -260,27 +135,40 @@ namespace Booking.Client.BookingAuthRemote {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CityName {
+        public int Id {
             get {
-                return this.CityNameField;
+                return this.IdField;
             }
             set {
-                if ((object.ReferenceEquals(this.CityNameField, value) != true)) {
-                    this.CityNameField = value;
-                    this.RaisePropertyChanged("CityName");
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Zipcode {
+        public string Name {
             get {
-                return this.ZipcodeField;
+                return this.NameField;
             }
             set {
-                if ((this.ZipcodeField.Equals(value) != true)) {
-                    this.ZipcodeField = value;
-                    this.RaisePropertyChanged("Zipcode");
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Booking.Client.BookingAuthRemote.User[] User {
+            get {
+                return this.UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserField, value) != true)) {
+                    this.UserField = value;
+                    this.RaisePropertyChanged("User");
                 }
             }
         }
@@ -300,10 +188,10 @@ namespace Booking.Client.BookingAuthRemote {
     public interface IAuth {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuth/Login", ReplyAction="http://tempuri.org/IAuth/LoginResponse")]
-        Booking.Client.BookingAuthRemote.Customer Login(string username, string password);
+        Booking.Client.BookingAuthRemote.User Login(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuth/Login", ReplyAction="http://tempuri.org/IAuth/LoginResponse")]
-        System.Threading.Tasks.Task<Booking.Client.BookingAuthRemote.Customer> LoginAsync(string username, string password);
+        System.Threading.Tasks.Task<Booking.Client.BookingAuthRemote.User> LoginAsync(string username, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -333,11 +221,11 @@ namespace Booking.Client.BookingAuthRemote {
                 base(binding, remoteAddress) {
         }
         
-        public Booking.Client.BookingAuthRemote.Customer Login(string username, string password) {
+        public Booking.Client.BookingAuthRemote.User Login(string username, string password) {
             return base.Channel.Login(username, password);
         }
         
-        public System.Threading.Tasks.Task<Booking.Client.BookingAuthRemote.Customer> LoginAsync(string username, string password) {
+        public System.Threading.Tasks.Task<Booking.Client.BookingAuthRemote.User> LoginAsync(string username, string password) {
             return base.Channel.LoginAsync(username, password);
         }
     }

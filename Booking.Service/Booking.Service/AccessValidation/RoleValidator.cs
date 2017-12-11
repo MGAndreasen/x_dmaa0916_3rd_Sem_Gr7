@@ -27,7 +27,7 @@ namespace Booking.Service.AccessValidation
             }
             else if (userFound != null)
             {
-                string[] userRolesFound = userFound.Role.Select(x => x.ToString()).ToArray();
+                string[] userRolesFound = userFound.Roles.Select(x => x.ToString()).ToArray();
 
                 //Assign roles to the Principal property for runtime to match with PrincipalPermissionAttributes decorated on the service operation.
                 var principal = new GenericPrincipal(operationContext.ServiceSecurityContext.PrimaryIdentity, userRolesFound);

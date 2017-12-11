@@ -32,7 +32,7 @@ namespace Booking.Client.BookingServiceRemote {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Booking.Client.BookingServiceRemote.Plane PlaneIdField;
+        private Booking.Client.BookingServiceRemote.Plane PlaneField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Booking.Client.BookingServiceRemote.Destination StartDestinationField;
@@ -87,14 +87,14 @@ namespace Booking.Client.BookingServiceRemote {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Booking.Client.BookingServiceRemote.Plane PlaneId {
+        public Booking.Client.BookingServiceRemote.Plane Plane {
             get {
-                return this.PlaneIdField;
+                return this.PlaneField;
             }
             set {
-                if ((object.ReferenceEquals(this.PlaneIdField, value) != true)) {
-                    this.PlaneIdField = value;
-                    this.RaisePropertyChanged("PlaneId");
+                if ((object.ReferenceEquals(this.PlaneField, value) != true)) {
+                    this.PlaneField = value;
+                    this.RaisePropertyChanged("Plane");
                 }
             }
         }

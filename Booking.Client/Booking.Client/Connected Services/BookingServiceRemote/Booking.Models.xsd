@@ -5,7 +5,7 @@
       <xs:element minOccurs="0" name="DepartureTime" type="xs:dateTime" />
       <xs:element minOccurs="0" name="EndDestination" nillable="true" type="tns:Destination" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="PlaneId" nillable="true" type="tns:Plane" />
+      <xs:element minOccurs="0" name="Plane" nillable="true" type="tns:Plane" />
       <xs:element minOccurs="0" name="StartDestination" nillable="true" type="tns:Destination" />
     </xs:sequence>
   </xs:complexType>

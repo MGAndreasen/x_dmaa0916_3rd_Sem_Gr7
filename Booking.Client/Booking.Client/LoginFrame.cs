@@ -69,7 +69,7 @@ namespace Booking.Client
                             serviceClient.ClientCredentials.UserName.Password = isLoggedin.Password.ToString();
 
                             this.Hide();
-                            MainFrame MF = new MainFrame();
+                            MainFrame MF = new MainFrame(isLoggedin);
                             MF.ShowDialog();
                             //this.Close();
                         }

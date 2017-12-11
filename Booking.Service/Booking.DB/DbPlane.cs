@@ -155,7 +155,7 @@ namespace Booking.DB
         {
             List<int> NotToRemove = new List<int>();
             string dontConcatinateSqlQuerys = "";
-            int schemasHavindIDS = 0;
+            //int schemasHavindIDS = 0;
 
             TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))

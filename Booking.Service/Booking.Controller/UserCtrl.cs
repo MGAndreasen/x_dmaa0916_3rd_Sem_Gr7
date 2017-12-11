@@ -16,7 +16,7 @@ namespace Booking.Controller
         {
             dbUser = new DbUser();
         }
-        public Customer GetUser(string email)
+        public User GetUser(string email)
         {
             return dbUser.GetUser(email);
         }

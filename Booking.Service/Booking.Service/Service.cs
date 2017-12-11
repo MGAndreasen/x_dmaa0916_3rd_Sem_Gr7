@@ -225,9 +225,9 @@ namespace Booking.Service
             destinationCtrl.Create(obj);
         }
 
-        [PrincipalPermission(SecurityAction.Demand, Role = "Guest")]
-        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
-        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        //[PrincipalPermission(SecurityAction.Demand, Role = "Guest")]
+        //[PrincipalPermission(SecurityAction.Demand, Role = "User")]
+        //[PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         public Destination GetDestination(int id)
         {
             return destinationCtrl.Get(id);
@@ -243,9 +243,9 @@ namespace Booking.Service
             destinationCtrl.Delete(id);
         }
 
-        [PrincipalPermission(SecurityAction.Demand, Role = "Guest")]
-        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
-        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+        //[PrincipalPermission(SecurityAction.Demand, Role = "Guest")]
+        //[PrincipalPermission(SecurityAction.Demand, Role = "User")]
+        //[PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         public IEnumerable<Destination> GetAllDestinations()
         {
             try
