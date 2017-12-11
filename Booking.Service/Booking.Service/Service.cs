@@ -25,7 +25,7 @@ namespace Booking.Service
         private PlaneCtrl planeCtrl = new PlaneCtrl();
         private RowCtrl rowCtrl = new RowCtrl();
         private SeatCtrl seatCtrl = new SeatCtrl();
-        private SeatSchemaCtrl seatSchemaCtrl = new SeatSchemaCtrl();
+        //private SeatSchemaCtrl seatSchemaCtrl = new SeatSchemaCtrl();
         private TicketCtrl ticketCtrl = new TicketCtrl();
         private DepartureCtrl departureCtrl = new DepartureCtrl();
 
@@ -382,27 +382,27 @@ namespace Booking.Service
         }
         #endregion
 
-        #region SeatSchema
-        public void CreateSeatSchema(SeatSchema obj)
-        {
-            seatSchemaCtrl.Create(obj);
-        }
+        //#region SeatSchema
+        //public void CreateSeatSchema(SeatSchema obj)
+        //{
+        //    seatSchemaCtrl.Create(obj);
+        //}
 
-        public SeatSchema GetSetSchema(int id)
-        {
-            return seatSchemaCtrl.Get(id);
-        }
+        //public SeatSchema GetSetSchema(int id)
+        //{
+        //    return seatSchemaCtrl.Get(id);
+        //}
 
-        public void UpdateSeatSchema(SeatSchema obj)
-        {
-            seatSchemaCtrl.Update(obj);
-        }
+        //public void UpdateSeatSchema(SeatSchema obj)
+        //{
+        //    seatSchemaCtrl.Update(obj);
+        //}
 
-        public void DeleteSeatSchema(int id)
-        {
-            seatSchemaCtrl.Delete(id);
-        }
-        #endregion
+        //public void DeleteSeatSchema(int id)
+        //{
+        //    seatSchemaCtrl.Delete(id);
+        //}
+        //#endregion
 
         #region Ticket
         public void CreateTicket(Ticket obj)

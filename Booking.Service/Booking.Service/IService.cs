@@ -190,18 +190,18 @@ namespace Booking.Service
 
         #endregion 
 
-        #region SeatSchemaCtrl
+        //#region SeatSchemaCtrl
 
-        [OperationContract]
-        void CreateSeatSchema(SeatSchema obj);
-        [OperationContract]
-        SeatSchema GetSetSchema(int id);
-        [OperationContract]
-        void UpdateSeatSchema(SeatSchema obj);
-        [OperationContract]
-        void DeleteSeatSchema(int id);
+        //[OperationContract]
+        //void CreateSeatSchema(SeatSchema obj);
+        //[OperationContract]
+        //SeatSchema GetSetSchema(int id);
+        //[OperationContract]
+        //void UpdateSeatSchema(SeatSchema obj);
+        //[OperationContract]
+        //void DeleteSeatSchema(int id);
 
-        #endregion 
+        //#endregion 
 
         #region TicketCtrl
 

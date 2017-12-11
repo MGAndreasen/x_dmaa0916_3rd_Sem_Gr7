@@ -42,7 +42,7 @@ namespace Booking.DB
 
         public Plane Get(int id)
         {
-            DbSeatSchema dbs = new DbSeatSchema();
+            //DbSeatSchema dbs = new DbSeatSchema();
             Plane p = null;
 
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
@@ -114,7 +114,7 @@ namespace Booking.DB
 
         public IEnumerable<Plane> GetAll()
         {
-            DbSeatSchema dbs = new DbSeatSchema();
+            //DbSeatSchema dbs = new DbSeatSchema();
             List<Plane> planes = new List<Plane>();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
