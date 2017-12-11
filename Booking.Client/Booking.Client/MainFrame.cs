@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.ServiceModel.Security;
+using System.Text.RegularExpressions;
 
 namespace Booking.Client
 {
@@ -23,6 +24,7 @@ namespace Booking.Client
         public MainFrame(BookingAuthRemote.User curUser)
         {
             InitializeComponent();
+            Plane_RowNumber.ContextMenu = new ContextMenu();
             currentUser = curUser;
             ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
             myService.ClientCredentials.UserName.UserName = currentUser.Email;
@@ -101,7 +103,7 @@ namespace Booking.Client
 
                 d = de.EndDestination;
                 date = de.DepartureTime;
-             //   d.Plane = de.PlaneId;
+                //   d.Plane = de.PlaneId;
 
             }
             myService.CreateDeparture(de);
@@ -111,7 +113,7 @@ namespace Booking.Client
         {
             var layout = Plane_SeatSchema.Text.ToString();
             var rownum = Int32.Parse(Plane_RowNumber.Text.ToString());
- 
+
             Plane plane = (Plane)Plane_PlaneBox.SelectedItem;
 
             SeatSchema schema = new SeatSchema { Layout = layout, Row = rownum };
@@ -148,21 +150,47 @@ namespace Booking.Client
 
         public void DeletePlane()
         {
-            myService.DeletePlane(((Plane)Plane_PlaneBox.SelectedItem).Id);
+            Plane p = null;
+
+            try
+            {
+                p = (Plane)Plane_PlaneBox.SelectedItem;
+
+                if (p != null)
+                {
+                    myService.DeletePlane(p.Id);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
             ShowPlanes();
         }
 
         public void DeleteSeatSchema()
         {
-            var s = (SeatSchema)Plane_SeatSchema.SelectedItem;
-            var p = (Plane)Plane_PlaneBox.SelectedItem;
+            SeatSchema s = null;
+            Plane p = null;
+            try
+            {
+                s = (SeatSchema)Plane_SeatSchema.SelectedItem;
+                p = (Plane)Plane_PlaneBox.SelectedItem;
+            }
+            catch (Exception) { }
 
-            p.SeatSchema.Remove(s);
-            myService.UpdatePlane(p);
-            Plane_SeatSchema.Items.Remove(s);
+            if (s != null && p != null)
+            {
+                p.SeatSchema.Remove(s);
+
+                myService.UpdatePlane(p);
+            }
+
+            ShowPlanes();
         }
         public void DeleteDestination()
-        {    
+        {
             var d = (Destination)listBoxPlanes.SelectedItem;
 
             myService.DeleteDestination(d.Id);
@@ -246,51 +274,89 @@ namespace Booking.Client
                 ShowPlanes();
                 ShowPlanesComboBox();
             }
-            
+
         }
 
         private void Plane_PlaneBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Plane_SeatSchema.Items.Clear();
+            Plane_PlaneBox.Enabled = false;
+            Plane_SeatSchema.Enabled = false;
+
+            Plane p = null;
 
             if (Plane_PlaneBox.Items.Count > 0)
             {
-                Plane p = (Plane)Plane_PlaneBox.SelectedItem;
 
-                foreach (SeatSchema s in p.SeatSchema)
+                try
                 {
-                    Plane_SeatSchema.Items.Add(s);
+                    p = (Plane)Plane_PlaneBox.SelectedItem;
                 }
+                catch (Exception) { }
 
-                txtPlaneUpdate.Text = p.Type.ToString();
+                if (p != null)
+                {
+                    Plane_SeatSchema.Items.Clear();
+
+                    foreach (SeatSchema s in p.SeatSchema)
+                    {
+                        Plane_SeatSchema.Items.Add(s);
+                    }
+
+                    txtPlaneUpdate.Text = p.Type.ToString();
+                }
             }
+
+            Plane_SeatSchema.Enabled = true;
+            Plane_PlaneBox.Enabled = true;
         }
 
         private void Plane_SeatSchema_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Plane_PlaneBox.Enabled = false;
+            Plane_SeatSchema.Enabled = false;
+
             Plane_SeatSchemaTextBox.Text = "";
 
             if (Plane_SeatSchema.Items.Count > 0)
             {
-                Plane_SeatSchemaTextBox.Text = ((SeatSchema)Plane_SeatSchema.SelectedItem).Layout.ToString();
-               
+                try
+                {
+                    Plane_SeatSchemaTextBox.Text = ((SeatSchema)Plane_SeatSchema.SelectedItem).Layout.ToString();
+                }
+                catch (Exception)
+                { }
+
             }
+
+            Plane_SeatSchema.Enabled = true;
+            Plane_PlaneBox.Enabled = true;
         }
 
         private void Plane_DeletePlane_Click(object sender, EventArgs e)
         {
+            Plane_PlaneBox.Enabled = false;
+            Plane_SeatSchema.Enabled = false;
             DeletePlane();
+            Plane_SeatSchema.Enabled = true;
+            Plane_PlaneBox.Enabled = true;
         }
 
         private void Plane_DeleteSeatSchema_Click(object sender, EventArgs e)
         {
+            Plane_SeatSchema.Enabled = false;
             DeleteSeatSchema();
-
+            Plane_SeatSchema.Enabled = true;
         }
 
         private void Plane_CreateSeatSchema_Click(object sender, EventArgs e)
         {
+            if(Plane_SeatSchemaTextBox.Text == "")
+            {
 
+            }
+
+            //Plane_SeatSchemaTextBox.text
+            //Plane_RowNumber.text
         }
 
         private void Plane_RefreshSeatSchema_Click(object sender, EventArgs e)
@@ -300,13 +366,68 @@ namespace Booking.Client
 
         private void bntPlane_Update_Click(object sender, EventArgs e)
         {
+            Plane p = null;
 
-            if (txtPlaneUpdate.Text != "")
+            if (txtPlaneUpdate.Text != "" && Plane_PlaneBox.Items.Count > 0)
             {
-                var p = ((Plane)Plane_PlaneBox.SelectedItem);
-                p.Type = txtPlaneUpdate.Text.ToString();
-                myService.UpdatePlane(p);
+                try
+                {
+                    p = ((Plane)Plane_PlaneBox.SelectedItem);
+
+                    if (p != null)
+                    {
+                        p.Type = txtPlaneUpdate.Text.ToString();
+                        myService.UpdatePlane(p);
+                    }
+
+                }
+                catch (Exception)
+                { }
+
             }
+            else
+            {
+                txtPlaneUpdate.Text = "";
+            }
+        }
+
+        private void Plane_SeatSchemaTextBox_TextChanged(object sender, EventArgs e)
+        {
+           // if()
+        }
+        
+        private void Plane_RowNumber_TextChanged(object sender, EventArgs e)
+        {
+            string old = Plane_RowNumber.Text;
+            TextBox textBox = sender as TextBox;
+
+            Regex regex = new Regex(@"[^0-9\b]");
+            MatchCollection matches = regex.Matches(textBox.Text);
+
+            if (matches.Count == 0)
+            {
+                Plane_RowNumber.Text = textBox.Text;
+            }
+            else
+            {
+                textBox.Text = old;
+            }
+        }
+
+        private void Plane_RowNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            //Check for a naughty character in the KeyDown event.
+            if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[^0-9\b]"))
+            {
+                // Stop the character from being entered into the control since it is illegal.
+                e.Handled = true;
+            }
+}
+
+        private void Plane_RowNumber_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            
         }
     }
 }

@@ -342,11 +342,11 @@
 
 	SET IDENTITY_INSERT [dbo].[Booking_Customer] ON 
 	GO
-	INSERT [dbo].[Booking_Customer] ([Id], [City_Id], [Cpr], [PhoneNo], [FirstName], [LastName], [Email], [Address], [Password], [Cofirmed], [Roles], [LastActive]) VALUES (1, 9000, 808881233, 42732521, N'Admin', N'istrator', N'admin@test.dk', N'Kongevej 5', N'1234', 1, NULL, NULL)
+	INSERT [dbo].[Booking_Customer] ([Id], [City_Id], [Cpr], [PhoneNo], [FirstName], [LastName], [Email], [Address], [Password], [Cofirmed], [Roles], [LastActive]) VALUES (1, 9000, 808881233, 42732521, N'Admin', N'istrator', N'admin@test.dk', N'Kongevej 5', N'1234', 1, 'Admin', NULL)
 	GO
-	INSERT [dbo].[Booking_Customer] ([Id], [City_Id], [Cpr], [PhoneNo], [FirstName], [LastName], [Email], [Address], [Password], [Cofirmed], [Roles], [LastActive]) VALUES (2, 9440, 1234567, 42732522, N'User', N'Customer', N'user@test.dk', N'AllahuAkbar 911', N'1234', 1, NULL, NULL)
+	INSERT [dbo].[Booking_Customer] ([Id], [City_Id], [Cpr], [PhoneNo], [FirstName], [LastName], [Email], [Address], [Password], [Cofirmed], [Roles], [LastActive]) VALUES (2, 9440, 1234567, 42732522, N'User', N'Customer', N'user@test.dk', N'AllahuAkbar 911', N'1234', 1, 'User', NULL)
 	GO
-	INSERT [dbo].[Booking_Customer] ([Id], [City_Id], [Cpr], [PhoneNo], [FirstName], [LastName], [Email], [Address], [Password], [Cofirmed], [Roles], [LastActive]) VALUES (3, 9670, 31231231, 42732523, N'guest', N'account', N'guest', N'SmokeAllDay 420', N'Guest', 1, NULL, NULL)
+	INSERT [dbo].[Booking_Customer] ([Id], [City_Id], [Cpr], [PhoneNo], [FirstName], [LastName], [Email], [Address], [Password], [Cofirmed], [Roles], [LastActive]) VALUES (3, 9670, 31231231, 42732523, N'guest', N'account', N'guest', N'SmokeAllDay 420', N'Guest', 1, 'Guest', NULL)
 	GO
 	SET IDENTITY_INSERT [dbo].[Booking_Customer] OFF
 

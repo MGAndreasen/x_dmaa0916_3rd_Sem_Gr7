@@ -55,13 +55,15 @@ namespace Booking.DB
 
                     var rdr = cmd.ExecuteReader();
 
-                    rdr.Read();
-
-                    p = new Plane
+                    if (rdr.Read())
                     {
-                        Id = (int)rdr["Id"],
-                        Type = (string)rdr["Type"]
-                    };
+
+                        p = new Plane
+                        {
+                            Id = (int)rdr["Id"],
+                            Type = (string)rdr["Type"]
+                        };
+                    }
                 }
 
                 using (SqlCommand cmd2 = new SqlCommand("SELECT * FROM dbo.Booking_SeatSchema WHERE Plane_Id=@Plane_id", con))
