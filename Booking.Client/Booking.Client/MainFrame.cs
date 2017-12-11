@@ -105,6 +105,13 @@ namespace Booking.Client
 
         }
 
+
+        public void ShowPlanes()
+        {
+            Plane_PlaneBox.DataSource = myService.GetAllPlanes();
+            Plane_PlaneBox.ValueMember = "Id";
+            Plane_PlaneBox.DisplayMember = "Type";
+        }
         public void ShowDestinations()
         {
             listBoxPlanes.DataSource = myService.GetAllDestinations();
@@ -128,7 +135,6 @@ namespace Booking.Client
         }
         public void CreateDestination()
         {
-
             var p = (Plane)comboBoxDestination_ListOfPlanes.SelectedItem;
             Destination d = new Destination
             {
@@ -178,12 +184,6 @@ namespace Booking.Client
         {
             destBox.Items.Clear();
         }
-
-        private void listBoxPlanes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void depBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ShowRoute();
@@ -197,6 +197,21 @@ namespace Booking.Client
             textBox__Bookings_Passenger_LastName.Text = pa.LastName.ToString();
             textBox__Bookings_Passenger_CPR.Text = pa.CPR.ToString();
             textBox__Bookings_Passenger_PassportNo.Text = pa.PassportId.ToString();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label21_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Plane_
         }
     }
 }
