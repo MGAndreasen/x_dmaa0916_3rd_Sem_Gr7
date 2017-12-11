@@ -397,7 +397,7 @@ namespace Booking.Client
             string old = Plane_SeatSchemaTextBox.Text;
             TextBox textBox = sender as TextBox;
 
-            Regex regex = new Regex(@"[^0-9\b]");
+            Regex regex = new Regex(@"[^A-Ia-i|\b]");
             MatchCollection matches = regex.Matches(textBox.Text);
 
             if (matches.Count == 0)
@@ -438,7 +438,7 @@ namespace Booking.Client
 
         private void Plane_SeatSchemaTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[^0-9\b]"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[^A-Ia-i|\b]"))
             {
                 e.Handled = true;
             }
