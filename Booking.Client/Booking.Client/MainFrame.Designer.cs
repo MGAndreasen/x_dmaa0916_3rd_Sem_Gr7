@@ -861,7 +861,6 @@
             this.Plane_RowNumber.TabIndex = 16;
             this.Plane_RowNumber.TextChanged += new System.EventHandler(this.Plane_RowNumber_TextChanged);
             this.Plane_RowNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Plane_RowNumber_KeyPress);
-            this.Plane_RowNumber.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Plane_RowNumber_PreviewKeyDown);
             // 
             // Plane_SeatSchema
             // 
@@ -890,6 +889,7 @@
             this.Plane_SeatSchemaTextBox.Size = new System.Drawing.Size(100, 22);
             this.Plane_SeatSchemaTextBox.TabIndex = 12;
             this.Plane_SeatSchemaTextBox.TextChanged += new System.EventHandler(this.Plane_SeatSchemaTextBox_TextChanged);
+            this.Plane_SeatSchemaTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Plane_SeatSchemaTextBox_KeyPress);
             // 
             // label24
             // 

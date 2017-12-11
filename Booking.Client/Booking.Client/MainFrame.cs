@@ -25,6 +25,7 @@ namespace Booking.Client
         {
             InitializeComponent();
             Plane_RowNumber.ContextMenu = new ContextMenu();
+            Plane_SeatSchemaTextBox.ContextMenu = new ContextMenu();
             currentUser = curUser;
             ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
             myService.ClientCredentials.UserName.UserName = currentUser.Email;
@@ -350,7 +351,7 @@ namespace Booking.Client
 
         private void Plane_CreateSeatSchema_Click(object sender, EventArgs e)
         {
-            if(Plane_SeatSchemaTextBox.Text == "")
+            if (Plane_SeatSchemaTextBox.Text == "")
             {
 
             }
@@ -393,9 +394,22 @@ namespace Booking.Client
 
         private void Plane_SeatSchemaTextBox_TextChanged(object sender, EventArgs e)
         {
-           // if()
+            string old = Plane_SeatSchemaTextBox.Text;
+            TextBox textBox = sender as TextBox;
+
+            Regex regex = new Regex(@"[^0-9\b]");
+            MatchCollection matches = regex.Matches(textBox.Text);
+
+            if (matches.Count == 0)
+            {
+                Plane_SeatSchemaTextBox.Text = textBox.Text;
+            }
+            else
+            {
+                textBox.Text = old;
+            }
         }
-        
+
         private void Plane_RowNumber_TextChanged(object sender, EventArgs e)
         {
             string old = Plane_RowNumber.Text;
@@ -416,18 +430,18 @@ namespace Booking.Client
 
         private void Plane_RowNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-
-            //Check for a naughty character in the KeyDown event.
             if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[^0-9\b]"))
             {
-                // Stop the character from being entered into the control since it is illegal.
                 e.Handled = true;
             }
-}
+        }
 
-        private void Plane_RowNumber_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        private void Plane_SeatSchemaTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+            if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[^0-9\b]"))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
