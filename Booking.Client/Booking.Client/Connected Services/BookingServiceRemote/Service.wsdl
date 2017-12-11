@@ -147,6 +147,12 @@
   <wsdl:message name="IService_DeleteDeparture_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteDepartureResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_GetAllDepartures_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDepartures" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetAllDepartures_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDeparturesResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_CreateCustomer_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateCustomer" />
   </wsdl:message>
@@ -396,30 +402,6 @@
   <wsdl:message name="IService_DeleteSeat_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteSeatResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_CreateSeatSchema_InputMessage">
-    <wsdl:part name="parameters" element="tns:CreateSeatSchema" />
-  </wsdl:message>
-  <wsdl:message name="IService_CreateSeatSchema_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CreateSeatSchemaResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService_GetSetSchema_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetSetSchema" />
-  </wsdl:message>
-  <wsdl:message name="IService_GetSetSchema_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetSetSchemaResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService_UpdateSeatSchema_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateSeatSchema" />
-  </wsdl:message>
-  <wsdl:message name="IService_UpdateSeatSchema_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateSeatSchemaResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService_DeleteSeatSchema_InputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteSeatSchema" />
-  </wsdl:message>
-  <wsdl:message name="IService_DeleteSeatSchema_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteSeatSchemaResponse" />
-  </wsdl:message>
   <wsdl:message name="IService_CreateTicket_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateTicket" />
   </wsdl:message>
@@ -468,6 +450,10 @@
     <wsdl:operation name="DeleteDeparture">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteDeparture" message="tns:IService_DeleteDeparture_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteDepartureResponse" message="tns:IService_DeleteDeparture_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDepartures">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllDepartures" message="tns:IService_GetAllDepartures_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllDeparturesResponse" message="tns:IService_GetAllDepartures_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateCustomer">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateCustomer" message="tns:IService_CreateCustomer_InputMessage" />
@@ -634,22 +620,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteSeat" message="tns:IService_DeleteSeat_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteSeatResponse" message="tns:IService_DeleteSeat_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="CreateSeatSchema">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateSeatSchema" message="tns:IService_CreateSeatSchema_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateSeatSchemaResponse" message="tns:IService_CreateSeatSchema_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSetSchema">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetSetSchema" message="tns:IService_GetSetSchema_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetSetSchemaResponse" message="tns:IService_GetSetSchema_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdateSeatSchema">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateSeatSchema" message="tns:IService_UpdateSeatSchema_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateSeatSchemaResponse" message="tns:IService_UpdateSeatSchema_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="DeleteSeatSchema">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteSeatSchema" message="tns:IService_DeleteSeatSchema_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteSeatSchemaResponse" message="tns:IService_DeleteSeatSchema_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="CreateTicket">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateTicket" message="tns:IService_CreateTicket_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateTicketResponse" message="tns:IService_CreateTicket_OutputMessage" />
@@ -717,6 +687,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteDeparture">
       <soap12:operation soapAction="http://tempuri.org/IService/DeleteDeparture" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDepartures">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetAllDepartures" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1089,42 +1068,6 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteSeat">
       <soap12:operation soapAction="http://tempuri.org/IService/DeleteSeat" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateSeatSchema">
-      <soap12:operation soapAction="http://tempuri.org/IService/CreateSeatSchema" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSetSchema">
-      <soap12:operation soapAction="http://tempuri.org/IService/GetSetSchema" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateSeatSchema">
-      <soap12:operation soapAction="http://tempuri.org/IService/UpdateSeatSchema" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeleteSeatSchema">
-      <soap12:operation soapAction="http://tempuri.org/IService/DeleteSeatSchema" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

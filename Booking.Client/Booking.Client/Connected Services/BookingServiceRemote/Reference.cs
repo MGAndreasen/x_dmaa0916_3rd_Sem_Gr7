@@ -26,7 +26,7 @@ namespace Booking.Client.BookingServiceRemote {
         private System.DateTime DepartureTimeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EndDestinationField;
+        private Booking.Client.BookingServiceRemote.Destination EndDestinationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
@@ -35,7 +35,7 @@ namespace Booking.Client.BookingServiceRemote {
         private Booking.Client.BookingServiceRemote.Plane PlaneIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StartDestinationField;
+        private Booking.Client.BookingServiceRemote.Destination StartDestinationField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -61,7 +61,7 @@ namespace Booking.Client.BookingServiceRemote {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string EndDestination {
+        public Booking.Client.BookingServiceRemote.Destination EndDestination {
             get {
                 return this.EndDestinationField;
             }
@@ -100,7 +100,7 @@ namespace Booking.Client.BookingServiceRemote {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StartDestination {
+        public Booking.Client.BookingServiceRemote.Destination StartDestination {
             get {
                 return this.StartDestinationField;
             }
@@ -108,6 +108,83 @@ namespace Booking.Client.BookingServiceRemote {
                 if ((object.ReferenceEquals(this.StartDestinationField, value) != true)) {
                     this.StartDestinationField = value;
                     this.RaisePropertyChanged("StartDestination");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Destination", Namespace="http://schemas.datacontract.org/2004/07/Booking.Models")]
+    [System.SerializableAttribute()]
+    public partial class Destination : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameDestinationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Booking.Client.BookingServiceRemote.Plane PlaneField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NameDestination {
+            get {
+                return this.NameDestinationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameDestinationField, value) != true)) {
+                    this.NameDestinationField = value;
+                    this.RaisePropertyChanged("NameDestination");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Booking.Client.BookingServiceRemote.Plane Plane {
+            get {
+                return this.PlaneField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PlaneField, value) != true)) {
+                    this.PlaneField = value;
+                    this.RaisePropertyChanged("Plane");
                 }
             }
         }
@@ -135,7 +212,7 @@ namespace Booking.Client.BookingServiceRemote {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Booking.Client.BookingServiceRemote.SeatSchema SeatSchemaField;
+        private System.Collections.Generic.List<Booking.Client.BookingServiceRemote.SeatSchema> SeatSchemaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TypeField;
@@ -164,7 +241,7 @@ namespace Booking.Client.BookingServiceRemote {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Booking.Client.BookingServiceRemote.SeatSchema SeatSchema {
+        public System.Collections.Generic.List<Booking.Client.BookingServiceRemote.SeatSchema> SeatSchema {
             get {
                 return this.SeatSchemaField;
             }
@@ -212,7 +289,7 @@ namespace Booking.Client.BookingServiceRemote {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int LayoutField;
+        private string LayoutField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int RowField;
@@ -241,12 +318,12 @@ namespace Booking.Client.BookingServiceRemote {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Layout {
+        public string Layout {
             get {
                 return this.LayoutField;
             }
             set {
-                if ((this.LayoutField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.LayoutField, value) != true)) {
                     this.LayoutField = value;
                     this.RaisePropertyChanged("Layout");
                 }
@@ -542,16 +619,13 @@ namespace Booking.Client.BookingServiceRemote {
         private System.DateTime DateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Booking.Client.BookingServiceRemote.Destination EndDestinationField;
+        private Booking.Client.BookingServiceRemote.Departure DepartureField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Booking.Client.BookingServiceRemote.Payment PaymentField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Booking.Client.BookingServiceRemote.Destination StartDestinationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int TotalPriceField;
@@ -593,14 +667,14 @@ namespace Booking.Client.BookingServiceRemote {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Booking.Client.BookingServiceRemote.Destination EndDestination {
+        public Booking.Client.BookingServiceRemote.Departure Departure {
             get {
-                return this.EndDestinationField;
+                return this.DepartureField;
             }
             set {
-                if ((object.ReferenceEquals(this.EndDestinationField, value) != true)) {
-                    this.EndDestinationField = value;
-                    this.RaisePropertyChanged("EndDestination");
+                if ((object.ReferenceEquals(this.DepartureField, value) != true)) {
+                    this.DepartureField = value;
+                    this.RaisePropertyChanged("Departure");
                 }
             }
         }
@@ -632,19 +706,6 @@ namespace Booking.Client.BookingServiceRemote {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Booking.Client.BookingServiceRemote.Destination StartDestination {
-            get {
-                return this.StartDestinationField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StartDestinationField, value) != true)) {
-                    this.StartDestinationField = value;
-                    this.RaisePropertyChanged("StartDestination");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public int TotalPrice {
             get {
                 return this.TotalPriceField;
@@ -653,83 +714,6 @@ namespace Booking.Client.BookingServiceRemote {
                 if ((this.TotalPriceField.Equals(value) != true)) {
                     this.TotalPriceField = value;
                     this.RaisePropertyChanged("TotalPrice");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Destination", Namespace="http://schemas.datacontract.org/2004/07/Booking.Models")]
-    [System.SerializableAttribute()]
-    public partial class Destination : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameDestinationField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Booking.Client.BookingServiceRemote.Plane PlaneField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string NameDestination {
-            get {
-                return this.NameDestinationField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameDestinationField, value) != true)) {
-                    this.NameDestinationField = value;
-                    this.RaisePropertyChanged("NameDestination");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Booking.Client.BookingServiceRemote.Plane Plane {
-            get {
-                return this.PlaneField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PlaneField, value) != true)) {
-                    this.PlaneField = value;
-                    this.RaisePropertyChanged("Plane");
                 }
             }
         }
@@ -1249,6 +1233,12 @@ namespace Booking.Client.BookingServiceRemote {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteDeparture", ReplyAction="http://tempuri.org/IService/DeleteDepartureResponse")]
         System.Threading.Tasks.Task DeleteDepartureAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllDepartures", ReplyAction="http://tempuri.org/IService/GetAllDeparturesResponse")]
+        System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Departure> GetAllDepartures();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllDepartures", ReplyAction="http://tempuri.org/IService/GetAllDeparturesResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Departure>> GetAllDeparturesAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateCustomer", ReplyAction="http://tempuri.org/IService/CreateCustomerResponse")]
         void CreateCustomer(Booking.Client.BookingServiceRemote.Customer obj);
         
@@ -1496,30 +1486,6 @@ namespace Booking.Client.BookingServiceRemote {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteSeat", ReplyAction="http://tempuri.org/IService/DeleteSeatResponse")]
         System.Threading.Tasks.Task DeleteSeatAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateSeatSchema", ReplyAction="http://tempuri.org/IService/CreateSeatSchemaResponse")]
-        void CreateSeatSchema(Booking.Client.BookingServiceRemote.SeatSchema obj);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateSeatSchema", ReplyAction="http://tempuri.org/IService/CreateSeatSchemaResponse")]
-        System.Threading.Tasks.Task CreateSeatSchemaAsync(Booking.Client.BookingServiceRemote.SeatSchema obj);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetSetSchema", ReplyAction="http://tempuri.org/IService/GetSetSchemaResponse")]
-        Booking.Client.BookingServiceRemote.SeatSchema GetSetSchema(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetSetSchema", ReplyAction="http://tempuri.org/IService/GetSetSchemaResponse")]
-        System.Threading.Tasks.Task<Booking.Client.BookingServiceRemote.SeatSchema> GetSetSchemaAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateSeatSchema", ReplyAction="http://tempuri.org/IService/UpdateSeatSchemaResponse")]
-        void UpdateSeatSchema(Booking.Client.BookingServiceRemote.SeatSchema obj);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateSeatSchema", ReplyAction="http://tempuri.org/IService/UpdateSeatSchemaResponse")]
-        System.Threading.Tasks.Task UpdateSeatSchemaAsync(Booking.Client.BookingServiceRemote.SeatSchema obj);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteSeatSchema", ReplyAction="http://tempuri.org/IService/DeleteSeatSchemaResponse")]
-        void DeleteSeatSchema(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteSeatSchema", ReplyAction="http://tempuri.org/IService/DeleteSeatSchemaResponse")]
-        System.Threading.Tasks.Task DeleteSeatSchemaAsync(int id);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateTicket", ReplyAction="http://tempuri.org/IService/CreateTicketResponse")]
         void CreateTicket(Booking.Client.BookingServiceRemote.Ticket obj);
         
@@ -1618,6 +1584,14 @@ namespace Booking.Client.BookingServiceRemote {
         
         public System.Threading.Tasks.Task DeleteDepartureAsync(int id) {
             return base.Channel.DeleteDepartureAsync(id);
+        }
+        
+        public System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Departure> GetAllDepartures() {
+            return base.Channel.GetAllDepartures();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Departure>> GetAllDeparturesAsync() {
+            return base.Channel.GetAllDeparturesAsync();
         }
         
         public void CreateCustomer(Booking.Client.BookingServiceRemote.Customer obj) {
@@ -1946,38 +1920,6 @@ namespace Booking.Client.BookingServiceRemote {
         
         public System.Threading.Tasks.Task DeleteSeatAsync(int id) {
             return base.Channel.DeleteSeatAsync(id);
-        }
-        
-        public void CreateSeatSchema(Booking.Client.BookingServiceRemote.SeatSchema obj) {
-            base.Channel.CreateSeatSchema(obj);
-        }
-        
-        public System.Threading.Tasks.Task CreateSeatSchemaAsync(Booking.Client.BookingServiceRemote.SeatSchema obj) {
-            return base.Channel.CreateSeatSchemaAsync(obj);
-        }
-        
-        public Booking.Client.BookingServiceRemote.SeatSchema GetSetSchema(int id) {
-            return base.Channel.GetSetSchema(id);
-        }
-        
-        public System.Threading.Tasks.Task<Booking.Client.BookingServiceRemote.SeatSchema> GetSetSchemaAsync(int id) {
-            return base.Channel.GetSetSchemaAsync(id);
-        }
-        
-        public void UpdateSeatSchema(Booking.Client.BookingServiceRemote.SeatSchema obj) {
-            base.Channel.UpdateSeatSchema(obj);
-        }
-        
-        public System.Threading.Tasks.Task UpdateSeatSchemaAsync(Booking.Client.BookingServiceRemote.SeatSchema obj) {
-            return base.Channel.UpdateSeatSchemaAsync(obj);
-        }
-        
-        public void DeleteSeatSchema(int id) {
-            base.Channel.DeleteSeatSchema(id);
-        }
-        
-        public System.Threading.Tasks.Task DeleteSeatSchemaAsync(int id) {
-            return base.Channel.DeleteSeatSchemaAsync(id);
         }
         
         public void CreateTicket(Booking.Client.BookingServiceRemote.Ticket obj) {
