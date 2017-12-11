@@ -834,6 +834,7 @@
             this.Plane_CreateSeatSchema.TabIndex = 5;
             this.Plane_CreateSeatSchema.Text = "Create";
             this.Plane_CreateSeatSchema.UseVisualStyleBackColor = true;
+            this.Plane_CreateSeatSchema.Click += new System.EventHandler(this.Plane_CreateSeatSchema_Click);
             // 
             // Plane_SeatSchemaTextBox
             // 

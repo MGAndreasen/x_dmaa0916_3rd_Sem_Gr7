@@ -106,15 +106,21 @@ namespace Booking.Client
             myService.CreateDeparture(de);
         }
 
-        //public void CreateSeatSchema()
-        //{
-        //    var s = Plane_SeatSchema.Text.ToString();
-        //    var r = Int32.Parse(Plane_RowNumber.Text.ToString());
-        //    var rt = (Row) Plane_RowNumber.Text;
+        public void CreateSeatSchema()
+        {
+            var layout = Plane_SeatSchema.Text.ToString();
+            var rownum = Int32.Parse(Plane_RowNumber.Text.ToString());
+ 
+            Plane plane = (Plane)Plane_PlaneBox.SelectedItem;
 
-        //    myService.CreateRow()
-            
-        //}
+            SeatSchema schema = new SeatSchema { Layout = layout, Row = rownum };
+
+            plane.SeatSchema.Add(schema);
+
+            myService.UpdatePlane(plane);
+
+            ShowPlanes();
+        }
 
 
         public void ShowPlanes()
@@ -278,6 +284,11 @@ namespace Booking.Client
         private void Plane_DeleteSeatSchema_Click(object sender, EventArgs e)
         {
             DeleteSeatSchema();
+        }
+
+        private void Plane_CreateSeatSchema_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

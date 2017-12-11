@@ -168,15 +168,23 @@ namespace Booking.DB
 
                     foreach (SeatSchema schema in obj.SeatSchema)
                     {
-                        using (SqlCommand cmd2 = new SqlCommand("UPDATE dbo.Booking_SeatSchema SET Row=@Row, Layout=@Layout Where Id=@Id)", con))
+                        if (schema.Id > 0)
                         {
-                            cmd2.Parameters.Add("@Id", SqlDbType.Int).Value = schema.Id;
-                            cmd2.Parameters.Add("@Plane_Id", SqlDbType.Int).Value = obj.Id;
-                            cmd2.Parameters.Add("@Row", SqlDbType.Int).Value = schema.Row;
-                            cmd2.Parameters.Add("@Layout", SqlDbType.NVarChar).Value = schema.Layout;
-                            cmd2.ExecuteNonQuery();
+                            using (SqlCommand cmd2 = new SqlCommand("UPDATE dbo.Booking_SeatSchema SET Row=@Row, Layout=@Layout Where Id=@Id)", con))
+                            {
+                                cmd2.Parameters.Add("@Id", SqlDbType.Int).Value = schema.Id;
+                                cmd2.Parameters.Add("@Plane_Id", SqlDbType.Int).Value = obj.Id;
+                                cmd2.Parameters.Add("@Row", SqlDbType.Int).Value = schema.Row;
+                                cmd2.Parameters.Add("@Layout", SqlDbType.NVarChar).Value = schema.Layout;
+                                cmd2.ExecuteNonQuery();
+                            }
+                            NotToRemove.Add(obj.Id);
                         }
-                        NotToRemove.Add(obj.Id);
+                        else
+                        {
+                            // Create SeatSchemaer
+
+                        }
                     }
 
                     
