@@ -7,6 +7,6 @@ namespace Booking.Service
     public interface IAuth
     {
         [OperationContract]
-        User Login(string username, string password);
+        Customer Login(string username, string password);
     }
 }

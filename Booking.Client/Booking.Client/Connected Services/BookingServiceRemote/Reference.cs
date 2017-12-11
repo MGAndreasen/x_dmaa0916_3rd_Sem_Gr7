@@ -368,6 +368,9 @@ namespace Booking.Client.BookingServiceRemote {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime LastActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LastNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -375,6 +378,9 @@ namespace Booking.Client.BookingServiceRemote {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private long PhoneNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoleField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -478,6 +484,19 @@ namespace Booking.Client.BookingServiceRemote {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime LastActive {
+            get {
+                return this.LastActiveField;
+            }
+            set {
+                if ((this.LastActiveField.Equals(value) != true)) {
+                    this.LastActiveField = value;
+                    this.RaisePropertyChanged("LastActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string LastName {
             get {
                 return this.LastNameField;
@@ -512,6 +531,19 @@ namespace Booking.Client.BookingServiceRemote {
                 if ((this.PhoneNumberField.Equals(value) != true)) {
                     this.PhoneNumberField = value;
                     this.RaisePropertyChanged("PhoneNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Role {
+            get {
+                return this.RoleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoleField, value) != true)) {
+                    this.RoleField = value;
+                    this.RaisePropertyChanged("Role");
                 }
             }
         }
