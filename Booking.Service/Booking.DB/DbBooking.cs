@@ -40,7 +40,7 @@ namespace Booking.DB
         {
             DbPayment dbp = new DbPayment();
             DbCustomer dbc = new DbCustomer();
-            DbDestination dbd = new DbDestination();
+            DbDeparture dbd = new DbDeparture();
             List<Bookings> bookings = new List<Bookings>();
             DbCity dbCity = new DbCity();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
@@ -59,8 +59,7 @@ namespace Booking.DB
                             Id = (int)rdr["Id"],
                             Payment = dbp.Get((int)rdr["Payment_Id"]),
                             Customer = dbc.Get((int)rdr["Customer_Id"]),
-                            StartDestination = dbd.Get((int)rdr["StartDestinaton"]),
-                            EndDestination = dbd.Get((int)rdr["EndDestination"]),
+                            Departure = dbd.Get((int)rdr["Departure_Id"]),
                             Date = (DateTime)rdr["Date"],
                             TotalPrice = (int)rdr["Price"]
 
@@ -76,7 +75,7 @@ namespace Booking.DB
         {
             DbPayment dbp = new DbPayment();
             DbCustomer dbc = new DbCustomer();
-            DbDestination dbd = new DbDestination();
+            DbDeparture dbd = new DbDeparture();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
                 con.Open();
@@ -90,8 +89,7 @@ namespace Booking.DB
                     Id = (int)rdr["Id"],
                     Payment = dbp.Get((int)rdr["Payment_Id"]),
                     Customer = dbc.Get((int)rdr["Customer_Id"]),
-                    StartDestination = dbd.Get((int)rdr["StartDestinaton"]),
-                    EndDestination = dbd.Get((int)rdr["EndDestination"]),
+                    Departure = dbd.Get((int)rdr["Departure_Id"]),
                     Date = (DateTime)rdr["Date"],
                     TotalPrice = (int)rdr["Price"]
                 };
@@ -107,12 +105,11 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Booking (Id, Payment_Id, Customer_Id, StartDestination, EndDestination, Date, Price) VALUES (@id, @Payment, @Customer, @StartDestination, @EndDestination, @Date, @Price)", con);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Booking (Id, Payment_Id, Customer_Id, Departure_Id, Date, Price) VALUES (@id, @Payment, @Customer, @Departure, @Date, @Price)", con);
                     cmd.Parameters.Add("@id", SqlDbType.Int).Value = obj.Id;
                     cmd.Parameters.Add("@Payment", SqlDbType.Int).Value = obj.Id; // <-------------------------
                     cmd.Parameters.Add("@Customer", SqlDbType.Int).Value = obj.Id; // <-------------------------
-                    cmd.Parameters.Add("@StartDestination", SqlDbType.Int).Value = obj.StartDestination; // <-------------------------
-                    cmd.Parameters.Add("@EndDestination", SqlDbType.Int).Value = obj.EndDestination; // <-------------------------
+                    cmd.Parameters.Add("@Departure", SqlDbType.Int).Value = obj.Departure; // <-------------------------
                     cmd.Parameters.Add("@Date", SqlDbType.DateTime).Value = obj.Date;
                     cmd.Parameters.Add("@Price", SqlDbType.Int).Value = obj.TotalPrice;
 
@@ -131,13 +128,12 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Id=@Id, Payment_Id=@PI, Customer_Id=@CI, StartDestination=@SD, EndDestination=@ED, Date=@Date, Price=@Price", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Id=@Id, Payment_Id=@PI, Customer_Id=@CI, Departure_Id=@D, Date=@Date, Price=@Price", con);
 
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
-                    cmd.Parameters.Add("@PI", SqlDbType.Int).Value = obj.Payment.Id; // <-------------------------
-                    cmd.Parameters.Add("@CI", SqlDbType.Int).Value = obj.Customer.Id; // <-------------------------
-                    cmd.Parameters.Add("@SD", SqlDbType.Int).Value = obj.StartDestination.Id; // <-------------------------
-                    cmd.Parameters.Add("@ED", SqlDbType.Int).Value = obj.EndDestination.Id; // <-------------------------
+                    cmd.Parameters.Add("@PI", SqlDbType.Int).Value = obj.Payment; // <-------------------------
+                    cmd.Parameters.Add("@CI", SqlDbType.Int).Value = obj.Customer; // <-------------------------
+                    cmd.Parameters.Add("@D", SqlDbType.Int).Value = obj.Departure; // <-------------------------
                     cmd.Parameters.Add("@Date", SqlDbType.DateTime).Value = obj.Date;
                     cmd.Parameters.Add("@Price", SqlDbType.Int).Value = obj.Date;
 

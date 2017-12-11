@@ -252,7 +252,7 @@ namespace Booking.Service
             {
                 return destinationCtrl.GetAllDestinations();
             }
-            catch(FaultException<System.Security.SecurityException> ex)
+            catch(FaultException<System.Security.SecurityException>)
             {
                 Console.WriteLine("Service: PERMISSION ERROR: GetAllDestinations() for " + OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.Name);
                 throw new FaultException<Exception>(new Exception("PERMISSIONS"), "Invalid");

@@ -24,7 +24,7 @@ namespace Booking.Models
         public Customer Customer { get; set; }
 
         [DataMember]
-        public Departure departure { get; set; }
+        public Departure Departure { get; set; }
 
         [DataMember]
         public DateTime Date { get; set; }
