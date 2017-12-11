@@ -155,6 +155,7 @@ namespace Booking.DB
         {
             List<int> NotToRemove = new List<int>();
             string dontConcatinateSqlQuerys = "";
+            int schemasHavindIDS = 0;
 
             TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
@@ -162,25 +163,41 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Type=@Type ", con);
 
-                    cmd.Parameters.Add("@Type", SqlDbType.Int).Value = obj.Type;
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Plane SET Type=@Type WHERE Id=@Id ", con);
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                    cmd.Parameters.Add("@Type", SqlDbType.NVarChar).Value = obj.Type;
+                    cmd.ExecuteNonQuery();
+
+
 
                     foreach (SeatSchema schema in obj.SeatSchema)
                     {
                         if (schema.Id > 0)
                         {
-                            dontConcatinateSqlQuerys += schema.Id.ToString() + ", ";
+                            dontConcatinateSqlQuerys += schema.Id.ToString() + ",";
                         }
                     }
 
-                    dontConcatinateSqlQuerys.TrimEnd(',');
+                    if (dontConcatinateSqlQuerys.EndsWith(","))
+                    {
+                        dontConcatinateSqlQuerys = dontConcatinateSqlQuerys.TrimEnd(',');
+                    }
 
+                    string delQuery = "";
+                    if (obj.SeatSchema.Count > 0)
+                    {
 
-                    using (SqlCommand cmd3 = new SqlCommand("Delete from dbo.Booking_SeatSchema Where Plane_Id=@Plane_Id AND Id not in (@dontremove))", con))
+                        delQuery = "Delete from dbo.Booking_SeatSchema Where Plane_Id=@Plane_Id AND Id not in (" + dontConcatinateSqlQuerys + ")";
+                    }
+                    else
+                    {
+                        delQuery = "Delete from dbo.Booking_SeatSchema Where Plane_Id=@Plane_Id";
+                    }
+
+                    using (SqlCommand cmd3 = new SqlCommand(delQuery, con))
                     {
                         cmd3.Parameters.Add("@Plane_Id", SqlDbType.Int).Value = obj.Id;
-                        cmd3.Parameters.Add("@dontremove", SqlDbType.VarChar).Value = dontConcatinateSqlQuerys;
                         cmd3.ExecuteNonQuery();
                     }
 
@@ -188,7 +205,7 @@ namespace Booking.DB
                     {
                         if (schema.Id > 0)
                         {
-                            using (SqlCommand cmd2 = new SqlCommand("UPDATE dbo.Booking_SeatSchema SET Row=@Row, Layout=@Layout Where Id=@Id)", con))
+                            using (SqlCommand cmd2 = new SqlCommand("UPDATE dbo.Booking_SeatSchema SET Row=@Row, Layout=@Layout Where Id=@Id", con))
                             {
                                 cmd2.Parameters.Add("@Id", SqlDbType.Int).Value = schema.Id;
                                 cmd2.Parameters.Add("@Plane_Id", SqlDbType.Int).Value = obj.Id;
@@ -203,9 +220,11 @@ namespace Booking.DB
 
                         }
                     }
-                    
 
-                    cmd.ExecuteNonQuery();
+
+
+
+
                     scope.Complete();
                 }
             }

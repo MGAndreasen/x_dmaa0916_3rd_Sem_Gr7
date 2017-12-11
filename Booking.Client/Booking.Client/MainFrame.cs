@@ -125,6 +125,7 @@ namespace Booking.Client
 
         public void ShowPlanes()
         {
+            Plane_SeatSchema.Items.Clear();
             Plane_PlaneBox.DataSource = myService.GetAllPlanes();
             Plane_PlaneBox.ValueMember = "Id";
             Plane_PlaneBox.DisplayMember = "Type";
@@ -146,9 +147,7 @@ namespace Booking.Client
 
         public void DeletePlane()
         {
-            var p = (Plane)Plane_PlaneBox.SelectedItem;
-
-            myService.DeletePlane(p.Id);
+            myService.DeletePlane(((Plane)Plane_PlaneBox.SelectedItem).Id);
             ShowPlanes();
         }
 
@@ -158,8 +157,8 @@ namespace Booking.Client
             var p = (Plane)Plane_PlaneBox.SelectedItem;
 
             p.SeatSchema.Remove(s);
-            Plane_SeatSchema.Items.Remove(s);
             myService.UpdatePlane(p);
+            Plane_SeatSchema.Items.Remove(s);
         }
         public void DeleteDestination()
         {    
@@ -261,8 +260,9 @@ namespace Booking.Client
                 {
                     Plane_SeatSchema.Items.Add(s);
                 }
+
+                txtPlaneUpdate.Text = p.Type.ToString();
             }
-            
         }
 
         private void Plane_SeatSchema_SelectedIndexChanged(object sender, EventArgs e)
@@ -284,11 +284,28 @@ namespace Booking.Client
         private void Plane_DeleteSeatSchema_Click(object sender, EventArgs e)
         {
             DeleteSeatSchema();
+
         }
 
         private void Plane_CreateSeatSchema_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Plane_RefreshSeatSchema_Click(object sender, EventArgs e)
+        {
+            ShowPlanes();
+        }
+
+        private void bntPlane_Update_Click(object sender, EventArgs e)
+        {
+
+            if (txtPlaneUpdate.Text != "")
+            {
+                var p = ((Plane)Plane_PlaneBox.SelectedItem);
+                p.Type = txtPlaneUpdate.Text.ToString();
+                myService.UpdatePlane(p);
+            }
         }
     }
 }

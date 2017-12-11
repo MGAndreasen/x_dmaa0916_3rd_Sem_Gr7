@@ -105,6 +105,10 @@
             this.Plane_RefreshSeatSchema = new System.Windows.Forms.Button();
             this.Plane_DeleteSeatSchema = new System.Windows.Forms.Button();
             this.destinationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.bntPlane_Update = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtPlaneUpdate = new System.Windows.Forms.TextBox();
             this.PlaneTab.SuspendLayout();
             this.tabCreateRoute.SuspendLayout();
             this.tabPageSeats.SuspendLayout();
@@ -115,6 +119,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.destinationBindingSource)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // PlaneTab
@@ -704,6 +709,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.Plane_PlaneBox);
             this.groupBox2.Controls.Add(this.Plane_RefreshPlaneButton);
@@ -720,18 +726,18 @@
             this.groupBox3.Controls.Add(this.Plane_CreatePlane);
             this.groupBox3.Controls.Add(this.label23);
             this.groupBox3.Controls.Add(this.Plane_PlaneType);
-            this.groupBox3.Location = new System.Drawing.Point(6, 351);
+            this.groupBox3.Location = new System.Drawing.Point(6, 303);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(200, 78);
+            this.groupBox3.Size = new System.Drawing.Size(118, 98);
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "New";
             // 
             // Plane_CreatePlane
             // 
-            this.Plane_CreatePlane.Location = new System.Drawing.Point(6, 48);
+            this.Plane_CreatePlane.Location = new System.Drawing.Point(6, 64);
             this.Plane_CreatePlane.Name = "Plane_CreatePlane";
-            this.Plane_CreatePlane.Size = new System.Drawing.Size(188, 22);
+            this.Plane_CreatePlane.Size = new System.Drawing.Size(100, 28);
             this.Plane_CreatePlane.TabIndex = 6;
             this.Plane_CreatePlane.Text = "Create";
             this.Plane_CreatePlane.UseVisualStyleBackColor = true;
@@ -748,7 +754,7 @@
             // 
             // Plane_PlaneType
             // 
-            this.Plane_PlaneType.Location = new System.Drawing.Point(94, 18);
+            this.Plane_PlaneType.Location = new System.Drawing.Point(6, 36);
             this.Plane_PlaneType.Name = "Plane_PlaneType";
             this.Plane_PlaneType.Size = new System.Drawing.Size(100, 22);
             this.Plane_PlaneType.TabIndex = 9;
@@ -759,7 +765,7 @@
             this.Plane_PlaneBox.ItemHeight = 16;
             this.Plane_PlaneBox.Location = new System.Drawing.Point(6, 21);
             this.Plane_PlaneBox.Name = "Plane_PlaneBox";
-            this.Plane_PlaneBox.Size = new System.Drawing.Size(200, 324);
+            this.Plane_PlaneBox.Size = new System.Drawing.Size(200, 276);
             this.Plane_PlaneBox.TabIndex = 2;
             this.Plane_PlaneBox.SelectedIndexChanged += new System.EventHandler(this.Plane_PlaneBox_SelectedIndexChanged);
             // 
@@ -860,6 +866,7 @@
             this.Plane_RefreshSeatSchema.TabIndex = 15;
             this.Plane_RefreshSeatSchema.Text = "Refresh Seat Schema";
             this.Plane_RefreshSeatSchema.UseVisualStyleBackColor = true;
+            this.Plane_RefreshSeatSchema.Click += new System.EventHandler(this.Plane_RefreshSeatSchema_Click);
             // 
             // Plane_DeleteSeatSchema
             // 
@@ -874,6 +881,44 @@
             // destinationBindingSource
             // 
             this.destinationBindingSource.DataSource = typeof(Booking.Client.BookingServiceRemote.Destination);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.bntPlane_Update);
+            this.groupBox4.Controls.Add(this.label22);
+            this.groupBox4.Controls.Add(this.txtPlaneUpdate);
+            this.groupBox4.Location = new System.Drawing.Point(140, 303);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(118, 98);
+            this.groupBox4.TabIndex = 21;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Edit";
+            // 
+            // bntPlane_Update
+            // 
+            this.bntPlane_Update.Location = new System.Drawing.Point(6, 64);
+            this.bntPlane_Update.Name = "bntPlane_Update";
+            this.bntPlane_Update.Size = new System.Drawing.Size(100, 28);
+            this.bntPlane_Update.TabIndex = 6;
+            this.bntPlane_Update.Text = "Update";
+            this.bntPlane_Update.UseVisualStyleBackColor = true;
+            this.bntPlane_Update.Click += new System.EventHandler(this.bntPlane_Update_Click);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(6, 18);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(88, 17);
+            this.label22.TabIndex = 10;
+            this.label22.Text = "Plane Type: ";
+            // 
+            // txtPlaneUpdate
+            // 
+            this.txtPlaneUpdate.Location = new System.Drawing.Point(6, 36);
+            this.txtPlaneUpdate.Name = "txtPlaneUpdate";
+            this.txtPlaneUpdate.Size = new System.Drawing.Size(100, 22);
+            this.txtPlaneUpdate.TabIndex = 9;
             // 
             // MainFrame
             // 
@@ -896,6 +941,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.destinationBindingSource)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -977,5 +1024,9 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox Plane_RowNumber;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button bntPlane_Update;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox txtPlaneUpdate;
     }
 }

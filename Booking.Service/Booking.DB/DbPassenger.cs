@@ -12,7 +12,6 @@ using System.Transactions;
 namespace Booking.DB
 {
     public class DbPassenger : IDbCRUD<Passenger>
-
     {
         private DataAccess data = DataAccess.Instance;
 
@@ -45,8 +44,8 @@ namespace Booking.DB
             {
                 con.Open();
                 SqlCommand cmd = con.CreateCommand();
-                cmd.CommandText= "SELECT * FROM dbo.Booking_Passenger WHERE Id = @id";
-                cmd.Parameters.AddWithValue("Id", id);
+                cmd.CommandText= "SELECT * FROM dbo.Booking_Passenger WHERE Id = @Id";
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.HasRows)
@@ -57,11 +56,11 @@ namespace Booking.DB
                     {                       
                         Id = (int)reader["Id"],
                         Booking = dbb.Get((int)reader["Booking_Id"]),
-                        SeatNumber = dbs.Get((int)reader["SeatNumber"]),
+                        SeatNumber = dbs.Get((int)reader["Seat_Id"]),
                         FirstName = (string)reader["FirstName"],
                         LastName = (string)reader["LastName"],
-                        CPR = (int)reader["CPR"],
-                        PassportId = (int)reader["PassportId"],
+                        CPR = (long)reader["CPR"],
+                        PassportId = (long)reader["PassportId"],
                         Luggage = (bool)reader["Luggage"]
                     };
                     

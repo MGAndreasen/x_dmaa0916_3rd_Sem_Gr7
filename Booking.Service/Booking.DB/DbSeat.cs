@@ -36,6 +36,8 @@ namespace Booking.DB
 
         public Seat Get(int id)
         {
+            Seat s = null;
+
             DbRow dbRow = new DbRow();
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
@@ -45,14 +47,15 @@ namespace Booking.DB
 
                 SqlDataReader rdr = cmd.ExecuteReader();
                 rdr.Read();
-                return new Seat
+                s = new Seat
                 {                 
                     Id = (int)rdr["Id"],
-                    Row = dbRow.Get((int)rdr["Row"]),
+                    Row = dbRow.Get((int)rdr["Row_Id"]),
                     Number = (int)rdr["Number"],
-                    Available = (bool)rdr["Available"]
+                    Available = (bool)rdr["Availability"]
                 };
                 }
+            return s;
         }
 
         public void Create(Seat obj)
