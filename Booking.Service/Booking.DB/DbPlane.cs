@@ -42,7 +42,6 @@ namespace Booking.DB
 
         public Plane Get(int id)
         {
-            //DbSeatSchema dbs = new DbSeatSchema();
             Plane p = null;
 
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
@@ -157,7 +156,6 @@ namespace Booking.DB
         {
             List<int> NotToRemove = new List<int>();
             string dontConcatinateSqlQuerys = "";
-            //int schemasHavindIDS = 0;
 
             TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
@@ -210,7 +208,7 @@ namespace Booking.DB
                             using (SqlCommand cmd2 = new SqlCommand("UPDATE dbo.Booking_SeatSchema SET Row=@Row, Layout=@Layout Where Id=@Id", con))
                             {
                                 cmd2.Parameters.Add("@Id", SqlDbType.Int).Value = schema.Id;
-                                cmd2.Parameters.Add("@Plane_Id", SqlDbType.Int).Value = obj.Id;
+                                //cmd2.Parameters.Add("@Plane_Id", SqlDbType.Int).Value = obj.Id;
                                 cmd2.Parameters.Add("@Row", SqlDbType.Int).Value = schema.Row;
                                 cmd2.Parameters.Add("@Layout", SqlDbType.NVarChar).Value = schema.Layout;
                                 cmd2.ExecuteNonQuery();
@@ -219,8 +217,14 @@ namespace Booking.DB
                         else
                         {
                             // Create SeatSchemaer
-
-                        }
+                            using (SqlCommand cmd4 = new SqlCommand("INSERT INTO dbo.Booking_SeatSchema (Row, Layout, Plane_Id) VALUES (@Row, @Layout, @Id)", con))
+                            {
+                                cmd4.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                                //cmd2.Parameters.Add("@Plane_Id", SqlDbType.Int).Value = obj.Id;
+                                cmd4.Parameters.Add("@Row", SqlDbType.Int).Value = schema.Row;
+                                cmd4.Parameters.Add("@Layout", SqlDbType.NVarChar).Value = schema.Layout;
+                                cmd4.ExecuteNonQuery();
+                            }
                     }
 
 
