@@ -1,17 +1,9 @@
 ﻿using Booking.Client.BookingServiceRemote;
-using Booking.Client.BookingAuthRemote;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Net;
-using System.ServiceModel.Security;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace Booking.Client
 {
@@ -40,9 +32,9 @@ namespace Booking.Client
 
         public void ShowPassager()
         {
-            var c = myService.GetCity(9000);
-            var n = myService.GetPassenger(1);
-            listBoxPassengers.Items.Add(n.FirstName + "," + n.LastName + "," + c.Zipcode + "," + c.CityName);
+            //var c = myService.GetCity(9000);
+            //var n = myService.GetPassenger(1);
+            //listBoxPassengers.Items.Add(n.FirstName + "," + n.LastName + "," + c.Zipcode + "," + c.CityName);
         }
         public void ShowSeatSchema()
         {
@@ -351,13 +343,13 @@ namespace Booking.Client
 
         private void Plane_CreateSeatSchema_Click(object sender, EventArgs e)
         {
-            if (Plane_SeatSchemaTextBox.Text == "")
+            if (Plane_SeatSchemaTextBox.Text.ToString().Trim().Length > 0 && Plane_RowNumber.Text.ToString().Trim().Length > 0)
             {
-
+                var p = (Plane)Plane_PlaneBox.SelectedItem;
+                SeatSchema ss = new SeatSchema { Layout = Plane_SeatSchemaTextBox.Text, Row = Convert.ToInt32(Plane_RowNumber.Text) };
+                p.SeatSchema.Add(ss);
+                myService.UpdatePlane(p);
             }
-
-            //Plane_SeatSchemaTextBox.text
-            //Plane_RowNumber.text
         }
 
         private void Plane_RefreshSeatSchema_Click(object sender, EventArgs e)

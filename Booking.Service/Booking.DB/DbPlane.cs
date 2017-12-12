@@ -42,19 +42,19 @@ namespace Booking.DB
 
         public Plane Get(int id)
         {
-            Plane p = null;
+            Plane p = new Plane();
 
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
                 con.Open();
 
-                using (SqlCommand cmd = new SqlCommand("SELECT s.Id, s.Type FROM dbo.Booking_Plane AS s WHERE Id = @id", con))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Booking_Plane WHERE Id = @id", con))
                 {
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
 
                     var rdr = cmd.ExecuteReader();
 
-                    if (rdr.Read())
+                    while (rdr.Read())
                     {
 
                         p = new Plane
@@ -174,7 +174,7 @@ namespace Booking.DB
 
                     foreach (SeatSchema schema in obj.SeatSchema)
                     {
-                        if (schema.Id > 0)
+                        if (schema.Id >= 0)
                         {
                             dontConcatinateSqlQuerys += schema.Id.ToString() + ",";
                         }

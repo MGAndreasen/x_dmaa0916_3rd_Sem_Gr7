@@ -70,9 +70,8 @@ namespace Booking.DB
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
-                    con.Open();                                                            //Id     //Plane_Id,            //@Id         //@Pi
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Destination (Id, NameDestination) VALUES (@Id, @Name)", con);
-                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                    con.Open();                                                            
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Destination (NameDestination) VALUES (@Name)", con);
                     cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = obj.NameDestination;
 
                     cmd.ExecuteNonQuery();
@@ -90,8 +89,7 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Destination SET Id=@Id, NameDestination=@Name", con);
-
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Destination SET NameDestination=@Name WHERE Id=@Id", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
                     cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = obj.NameDestination;
 
