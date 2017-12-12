@@ -153,6 +153,12 @@
   <wsdl:message name="IService_GetAllDepartures_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllDeparturesResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_GetAllTilbud_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTilbud" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetAllTilbud_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTilbudResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_CreateCustomer_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateCustomer" />
   </wsdl:message>
@@ -455,6 +461,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllDepartures" message="tns:IService_GetAllDepartures_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllDeparturesResponse" message="tns:IService_GetAllDepartures_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllTilbud">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllTilbud" message="tns:IService_GetAllTilbud_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllTilbudResponse" message="tns:IService_GetAllTilbud_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CreateCustomer">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateCustomer" message="tns:IService_CreateCustomer_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateCustomerResponse" message="tns:IService_CreateCustomer_OutputMessage" />
@@ -696,6 +706,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllDepartures">
       <soap12:operation soapAction="http://tempuri.org/IService/GetAllDepartures" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTilbud">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetAllTilbud" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

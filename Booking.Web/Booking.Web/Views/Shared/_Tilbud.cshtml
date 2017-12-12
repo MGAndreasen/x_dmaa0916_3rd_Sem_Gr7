@@ -9,7 +9,7 @@
         try
         {
             Booking.Web.BookingServiceRemote.ServiceClient client = ViewBag.proxy;
-            var dept = client.GetAllDepartures();
+            var dept = client.GetAllTilbud();
 
             foreach(var d in dept)
             {

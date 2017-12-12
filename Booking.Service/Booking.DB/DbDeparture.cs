@@ -112,7 +112,7 @@ namespace Booking.DB
 
                 using (SqlCommand cmd = con.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM dbo.Booking_Departure ORDER BY ASC";
+                    cmd.CommandText = "SELECT * FROM dbo.Booking_Departure ORDER BY DepartureTime ASC";
                     var rdr = cmd.ExecuteReader();
 
                     while (rdr.Read())
