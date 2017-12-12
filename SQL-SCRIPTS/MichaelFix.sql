@@ -337,8 +337,27 @@
 	INSERT [dbo].[Booking_City] ([ZipCode], [Name]) VALUES (9440, N'Gjøl')
 	GO
 	INSERT [dbo].[Booking_City] ([ZipCode], [Name]) VALUES (9670, N'Løgstør')
-	GO
-
+	GO 
+	INSERT [dbo].[Booking_City] ([ZipCode], [Name]) VALUES (9260, N'Gistrup')
+	GO 
+	INSERT [dbo].[Booking_City] ([ZipCode], [Name]) VALUES (7700, N'Thisted')
+	GO 
+	INSERT [dbo].[Booking_City] ([ZipCode], [Name]) VALUES (9240, N'Nibe')
+	GO 
+	INSERT [dbo].[Booking_City] ([ZipCode], [Name]) VALUES (9293, N'Kongerslev')
+	GO 
+	INSERT [dbo].[Booking_City] ([ZipCode], [Name]) VALUES (9400, N'Nørresundby')
+	GO 
+	INSERT [dbo].[Booking_City] ([ZipCode], [Name]) VALUES (9990, N'Skagen')
+	GO 
+	INSERT [dbo].[Booking_City] ([ZipCode], [Name]) VALUES (9700, N'Brønderslev')
+	GO 
+	INSERT [dbo].[Booking_City] ([ZipCode], [Name]) VALUES (9500, N'Hobro')
+	GO 
+	INSERT [dbo].[Booking_City] ([ZipCode], [Name]) VALUES (9800, N'Hjørring')
+	GO 
+	INSERT [dbo].[Booking_City] ([ZipCode], [Name]) VALUES (9940, N'Læsø')
+	GO 
 
 	SET IDENTITY_INSERT [dbo].[Booking_Customer] ON 
 	GO
@@ -363,6 +382,52 @@
 	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (5, N'Aalborg')
 	GO
 	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (7, N'Gjøl')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (8, N'Tel'Aviv')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (9, N'Barcelona')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (10, N'Stockholm')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (11, N'Oslo')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (12, N'Berlin')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (13, N'Amsterdam')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (14, N'Melbourne')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (15, N'Cape Town')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (16, N'Libanon')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (17, N'Bangkok')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (18, N'Tokyo')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (19, N'Shanghai')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (20, N'Beijing')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (21, N'Madrid')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (22, N'Rom')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (23, N'Firenze')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (24, N'København')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (25, N'Helsinki')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (26, N'Nuuk')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (27, N'Seoul')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (28, N'Kampala')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (29, N'Detroit')
+	GO
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (30, N'Dubai')
 	GO
 	SET IDENTITY_INSERT [dbo].[Booking_Destination] OFF
 
@@ -391,15 +456,11 @@
 	GO
 	SET IDENTITY_INSERT [dbo].[Booking_Plane] ON
 	GO
-	INSERT [dbo].[Booking_Plane] ([Id], [Type]) VALUES (1, N'747 beast mode')
-	GO
-	INSERT [dbo].[Booking_Plane] ([Id], [Type]) VALUES (2, N'Air Force One')
-	GO
-	INSERT [dbo].[Booking_Plane] ([Id], [Type]) VALUES (3, N'Boeing 777')
+	INSERT [dbo].[Booking_Plane] ([Id], [Type]) VALUES (1, N'Boeing 737-800')
 	GO
 	INSERT [dbo].[Booking_Plane] ([Id], [Type]) VALUES (9, N'Boeing 787')
 	GO
-	INSERT [dbo].[Booking_Plane] ([Id], [Type]) VALUES (10, N'Boeing 767')
+	INSERT [dbo].[Booking_Plane] ([Id], [Type]) VALUES (10, N'Boeing 737-8')
 	GO
 	SET IDENTITY_INSERT [dbo].[Booking_Plane] OFF
 
@@ -447,11 +508,173 @@
 	GO
 	SET IDENTITY_INSERT [dbo].[Booking_SeatSchema] ON
 	GO
-	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (1, 1, 'ABC|DEF', 1)
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (1, 1, 'AB||CD||EF', 1)
 	GO
-	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (2, 1, 'ABC|DEF', 2)
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (2, 1, 'AB||CD||EF', 1)
 	GO
-	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (3, 1, 'AB|||CD', 3)
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (3, 1, 'AB||CD||EF', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (4, 1, 'AB||CD||EF', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (5, 1, 'AB||CD||EF', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (6, 1, 'AB||CD||EF', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (7, 1, 'AB||CD||EF', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (8, 1, 'AB||CD||EF', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (9, 1, 'ABC|DEF|GHI', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (10, 1, 'ABC|DEF|GHI', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (11, 1, 'ABC|DEF|GHI', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (12, 1, 'ABC|DEF|GHI', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (13, 1, 'ABC|DEF|GHI', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (14, 1, 'ABC|DEF|GHI', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (15, 1, 'ABC|DEF|GHI', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (16, 1, 'ABC|DEF|GHI', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (17, 1, 'ABC|DEF|GHI', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (18, 1, 'ABC|DEF|GHI', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (19, 1, 'ABC|DEF|GHI', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (20, 1, 'ABC|DEF|GHI', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (21, 1, 'ABC|DEF|GHI', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (22, 1, 'ABC|DEF|GHI', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (23, 1, 'ABC|DEF|GHI', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (24, 1, 'ABC|DEF|GHI', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (25, 1, 'ABC|DEF|GHI', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (26, 1, 'ABC|DEF|GHI', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (27, 1, 'ABC|DEF|GHI', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (28, 1, 'ABC|DEF|GHI', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (29, 1, 'ABC|DEF|GHI', 1)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (30, 9, 'AB|||CD', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (31, 9, 'AB|||CD', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (32, 9, 'AB|||CD', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (33, 9, 'AB|||CD', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (34, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (35, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (36, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (37, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (38, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (39, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (40, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (41, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (42, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (43, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (44, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (45, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (46, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (47, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (48, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (49, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (50, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (51, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (52, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (53, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (54, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (55, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (56, 9, 'ABC||DEF', 2)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (57, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (58, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (59, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (60, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (61, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (62, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (63, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (64, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (65, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (66, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (67, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (68, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (69, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (70, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (71, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (72, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (73, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (74, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (75, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (76, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (77, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (78, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (79, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (80, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (81, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (82, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (83, 10, 'ABC||DEF', 3)
+	GO
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (84, 10, 'ABC||DEF', 3)
 	GO
 	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (4, 1, 'A|||||B', 4)
 	GO
