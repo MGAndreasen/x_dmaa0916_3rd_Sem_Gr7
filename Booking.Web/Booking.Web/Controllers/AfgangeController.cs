@@ -1,16 +1,19 @@
-﻿using System;
+﻿using Booking.Web.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Booking.Web.Helpers;
 
 namespace Booking.Web.Controllers
 {
-    public class HomeController : Controller
+    public class AfgangeController : Controller
     {
+        // GET: Afgange
         public ActionResult Index()
         {
+            ViewBag.Message = "Book a flight";
+
             try
             {
                 var client = ServiceHelper.GetServiceClientWithCredentials();
@@ -19,25 +22,19 @@ namespace Booking.Web.Controllers
             }
             catch (Exception ex)
             {
-                ViewBag.proxyError = ex.ToString() ;
+                ViewBag.proxyError = ex.ToString();
             }
 
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
 
+        [HttpPost]
+        public ActionResult SearchResult()
+        {
             return View();
+
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-      
     }
 }
