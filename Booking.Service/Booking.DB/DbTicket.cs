@@ -61,8 +61,7 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Booking (Id, Passenger_Id) VALUES (@Id, @Passenger_Id)", con);
-                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Booking (Passenger_Id) VALUES (@Passenger_Id)", con);
                     cmd.Parameters.Add("@Passenger_Id", SqlDbType.Int).Value = obj.Passenger;
 
                     cmd.ExecuteNonQuery();

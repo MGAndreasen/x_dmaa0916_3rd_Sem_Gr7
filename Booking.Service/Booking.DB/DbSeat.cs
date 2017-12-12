@@ -66,8 +66,7 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Seat (Id, Row_Id, Number, Availability) VALUES (@id, @Number, @Availability)", con);
-                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = obj.Id;
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Seat (Row_Id, Number, Availability) VALUES (@Number, @Availability)", con);
                     cmd.Parameters.Add("@Row_Id", SqlDbType.Int).Value = obj.Row.Id;
                     cmd.Parameters.Add("@Number", SqlDbType.Int).Value = obj.Number;
                     cmd.Parameters.Add("@Availability", SqlDbType.Bit).Value = obj.Available;
@@ -86,7 +85,7 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Id=@Id, Row_Id=@Row Number=@Number, Availability=@Availability", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Row_Id=@Row Number=@Number, Availability=@Availability WHERE Id=@id", con);
 
                     cmd.Parameters.Add("@id", SqlDbType.Int).Value = obj.Id;
                     cmd.Parameters.Add("@Row", SqlDbType.Int).Value = obj.Row.Id;
