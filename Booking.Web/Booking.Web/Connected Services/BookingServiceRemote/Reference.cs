@@ -1255,6 +1255,12 @@ namespace Booking.Web.BookingServiceRemote {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllDepartures", ReplyAction="http://tempuri.org/IService/GetAllDeparturesResponse")]
         System.Threading.Tasks.Task<Booking.Web.BookingServiceRemote.Departure[]> GetAllDeparturesAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllTilbud", ReplyAction="http://tempuri.org/IService/GetAllTilbudResponse")]
+        Booking.Web.BookingServiceRemote.Departure[] GetAllTilbud();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllTilbud", ReplyAction="http://tempuri.org/IService/GetAllTilbudResponse")]
+        System.Threading.Tasks.Task<Booking.Web.BookingServiceRemote.Departure[]> GetAllTilbudAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateCustomer", ReplyAction="http://tempuri.org/IService/CreateCustomerResponse")]
         void CreateCustomer(Booking.Web.BookingServiceRemote.Customer obj);
         
@@ -1608,6 +1614,14 @@ namespace Booking.Web.BookingServiceRemote {
         
         public System.Threading.Tasks.Task<Booking.Web.BookingServiceRemote.Departure[]> GetAllDeparturesAsync() {
             return base.Channel.GetAllDeparturesAsync();
+        }
+        
+        public Booking.Web.BookingServiceRemote.Departure[] GetAllTilbud() {
+            return base.Channel.GetAllTilbud();
+        }
+        
+        public System.Threading.Tasks.Task<Booking.Web.BookingServiceRemote.Departure[]> GetAllTilbudAsync() {
+            return base.Channel.GetAllTilbudAsync();
         }
         
         public void CreateCustomer(Booking.Web.BookingServiceRemote.Customer obj) {

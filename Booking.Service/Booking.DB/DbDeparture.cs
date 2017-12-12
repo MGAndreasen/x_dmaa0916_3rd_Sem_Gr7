@@ -100,6 +100,7 @@ namespace Booking.DB
                 scope.Complete();
             }
         }
+
         public IEnumerable<Departure> GetAll()
         {
             DbPlane dbp = new DbPlane();
@@ -111,7 +112,7 @@ namespace Booking.DB
 
                 using (SqlCommand cmd = con.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM dbo.Booking_Departure";
+                    cmd.CommandText = "SELECT * FROM dbo.Booking_Departure ORDER BY DepartureTime ASC";
                     var rdr = cmd.ExecuteReader();
 
                     while (rdr.Read())
