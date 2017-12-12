@@ -109,6 +109,13 @@
             this.Plane_RefreshSeatSchema = new System.Windows.Forms.Button();
             this.Plane_DeleteSeatSchema = new System.Windows.Forms.Button();
             this.destinationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.Plane_UpdateSeatSchemaTextBox = new System.Windows.Forms.TextBox();
+            this.Plane_UpdateRowNumber = new System.Windows.Forms.TextBox();
+            this.Plane_UpdateSeatSchema = new System.Windows.Forms.Button();
             this.PlaneTab.SuspendLayout();
             this.tabCreateRoute.SuspendLayout();
             this.tabPageSeats.SuspendLayout();
@@ -120,6 +127,8 @@
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.destinationBindingSource)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // PlaneTab
@@ -149,10 +158,10 @@
             this.tabCreateRoute.Controls.Add(this.label3);
             this.tabCreateRoute.Controls.Add(this.label1);
             this.tabCreateRoute.Controls.Add(this.CreateRoute_StartDestination);
-            this.tabCreateRoute.Location = new System.Drawing.Point(4, 25);
+            this.tabCreateRoute.Location = new System.Drawing.Point(4, 29);
             this.tabCreateRoute.Name = "tabCreateRoute";
             this.tabCreateRoute.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCreateRoute.Size = new System.Drawing.Size(1078, 678);
+            this.tabCreateRoute.Size = new System.Drawing.Size(1078, 674);
             this.tabCreateRoute.TabIndex = 0;
             this.tabCreateRoute.Text = "Plane Destination";
             this.tabCreateRoute.UseVisualStyleBackColor = true;
@@ -162,7 +171,7 @@
             this.textBox1.Location = new System.Drawing.Point(67, 150);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(175, 22);
+            this.textBox1.Size = new System.Drawing.Size(175, 26);
             this.textBox1.TabIndex = 15;
             // 
             // label2
@@ -170,7 +179,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(64, 129);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 17);
+            this.label2.Size = new System.Drawing.Size(129, 20);
             this.label2.TabIndex = 14;
             this.label2.Text = "Start Destination";
             // 
@@ -197,7 +206,7 @@
             // listBoxPlanes
             // 
             this.listBoxPlanes.FormattingEnabled = true;
-            this.listBoxPlanes.ItemHeight = 16;
+            this.listBoxPlanes.ItemHeight = 20;
             this.listBoxPlanes.Location = new System.Drawing.Point(598, 57);
             this.listBoxPlanes.Name = "listBoxPlanes";
             this.listBoxPlanes.Size = new System.Drawing.Size(468, 484);
@@ -208,7 +217,7 @@
             this.comboBoxDestination_ListOfPlanes.FormattingEnabled = true;
             this.comboBoxDestination_ListOfPlanes.Location = new System.Drawing.Point(67, 350);
             this.comboBoxDestination_ListOfPlanes.Name = "comboBoxDestination_ListOfPlanes";
-            this.comboBoxDestination_ListOfPlanes.Size = new System.Drawing.Size(175, 24);
+            this.comboBoxDestination_ListOfPlanes.Size = new System.Drawing.Size(175, 28);
             this.comboBoxDestination_ListOfPlanes.TabIndex = 9;
             // 
             // label4
@@ -216,7 +225,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(752, 14);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(165, 17);
+            this.label4.Size = new System.Drawing.Size(184, 20);
             this.label4.TabIndex = 8;
             this.label4.Text = "List Of All Plane Routes: ";
             // 
@@ -235,7 +244,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(64, 330);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 17);
+            this.label3.Size = new System.Drawing.Size(113, 20);
             this.label3.TabIndex = 5;
             this.label3.Text = "Select A Plane";
             // 
@@ -244,7 +253,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(64, 232);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 17);
+            this.label1.Size = new System.Drawing.Size(123, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "End Destination";
             // 
@@ -252,7 +261,7 @@
             // 
             this.CreateRoute_StartDestination.Location = new System.Drawing.Point(67, 252);
             this.CreateRoute_StartDestination.Name = "CreateRoute_StartDestination";
-            this.CreateRoute_StartDestination.Size = new System.Drawing.Size(175, 22);
+            this.CreateRoute_StartDestination.Size = new System.Drawing.Size(175, 26);
             this.CreateRoute_StartDestination.TabIndex = 0;
             // 
             // tabPageSeats
@@ -271,10 +280,10 @@
             this.tabPageSeats.Controls.Add(this.button1);
             this.tabPageSeats.Controls.Add(this.label5);
             this.tabPageSeats.Controls.Add(this.comboBoxSeats_ListOfPlanes);
-            this.tabPageSeats.Location = new System.Drawing.Point(4, 25);
+            this.tabPageSeats.Location = new System.Drawing.Point(4, 29);
             this.tabPageSeats.Name = "tabPageSeats";
             this.tabPageSeats.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSeats.Size = new System.Drawing.Size(1078, 678);
+            this.tabPageSeats.Size = new System.Drawing.Size(1078, 674);
             this.tabPageSeats.TabIndex = 1;
             this.tabPageSeats.Text = "Seats";
             this.tabPageSeats.UseVisualStyleBackColor = true;
@@ -283,17 +292,17 @@
             // 
             this.Departur.Location = new System.Drawing.Point(853, 63);
             this.Departur.Name = "Departur";
-            this.Departur.Size = new System.Drawing.Size(100, 22);
+            this.Departur.Size = new System.Drawing.Size(100, 26);
             this.Departur.TabIndex = 15;
             this.Departur.Text = "Departures";
             // 
             // depBox
             // 
             this.depBox.FormattingEnabled = true;
-            this.depBox.ItemHeight = 16;
+            this.depBox.ItemHeight = 20;
             this.depBox.Location = new System.Drawing.Point(776, 112);
             this.depBox.Name = "depBox";
-            this.depBox.Size = new System.Drawing.Size(265, 180);
+            this.depBox.Size = new System.Drawing.Size(265, 164);
             this.depBox.TabIndex = 14;
             this.depBox.SelectedIndexChanged += new System.EventHandler(this.depBox_SelectedIndexChanged);
             // 
@@ -322,10 +331,10 @@
             // destBox
             // 
             this.destBox.FormattingEnabled = true;
-            this.destBox.ItemHeight = 16;
+            this.destBox.ItemHeight = 20;
             this.destBox.Location = new System.Drawing.Point(479, 242);
             this.destBox.Name = "destBox";
-            this.destBox.Size = new System.Drawing.Size(249, 260);
+            this.destBox.Size = new System.Drawing.Size(249, 244);
             this.destBox.TabIndex = 11;
             // 
             // calenderRoute
@@ -345,7 +354,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(165, 201);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(19, 17);
+            this.label7.Size = new System.Drawing.Size(21, 20);
             this.label7.TabIndex = 8;
             this.label7.Text = "id";
             // 
@@ -354,7 +363,7 @@
             this.textBox4.Location = new System.Drawing.Point(128, 240);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(100, 22);
+            this.textBox4.Size = new System.Drawing.Size(100, 26);
             this.textBox4.TabIndex = 7;
             // 
             // radioButton2
@@ -362,7 +371,7 @@
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(25, 281);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(77, 21);
+            this.radioButton2.Size = new System.Drawing.Size(89, 24);
             this.radioButton2.TabIndex = 6;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Booked";
@@ -373,7 +382,7 @@
             this.radioButton1.AutoSize = true;
             this.radioButton1.Location = new System.Drawing.Point(25, 242);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(86, 21);
+            this.radioButton1.Size = new System.Drawing.Size(97, 24);
             this.radioButton1.TabIndex = 5;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Available";
@@ -384,7 +393,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(33, 201);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 17);
+            this.label6.Size = new System.Drawing.Size(81, 20);
             this.label6.TabIndex = 4;
             this.label6.Text = "Availability";
             // 
@@ -402,7 +411,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(21, 39);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 17);
+            this.label5.Size = new System.Drawing.Size(110, 20);
             this.label5.TabIndex = 1;
             this.label5.Text = "Select a plane";
             // 
@@ -411,7 +420,7 @@
             this.comboBoxSeats_ListOfPlanes.FormattingEnabled = true;
             this.comboBoxSeats_ListOfPlanes.Location = new System.Drawing.Point(25, 62);
             this.comboBoxSeats_ListOfPlanes.Name = "comboBoxSeats_ListOfPlanes";
-            this.comboBoxSeats_ListOfPlanes.Size = new System.Drawing.Size(248, 24);
+            this.comboBoxSeats_ListOfPlanes.Size = new System.Drawing.Size(248, 28);
             this.comboBoxSeats_ListOfPlanes.TabIndex = 0;
             // 
             // tabPagePassengers
@@ -419,10 +428,10 @@
             this.tabPagePassengers.Controls.Add(this.listBoxPassengers);
             this.tabPagePassengers.Controls.Add(this.label8);
             this.tabPagePassengers.Controls.Add(this.comboBoxPassengers_Planes);
-            this.tabPagePassengers.Location = new System.Drawing.Point(4, 25);
+            this.tabPagePassengers.Location = new System.Drawing.Point(4, 29);
             this.tabPagePassengers.Name = "tabPagePassengers";
             this.tabPagePassengers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePassengers.Size = new System.Drawing.Size(1078, 678);
+            this.tabPagePassengers.Size = new System.Drawing.Size(1078, 674);
             this.tabPagePassengers.TabIndex = 2;
             this.tabPagePassengers.Text = "Passengers";
             this.tabPagePassengers.UseVisualStyleBackColor = true;
@@ -430,10 +439,10 @@
             // listBoxPassengers
             // 
             this.listBoxPassengers.FormattingEnabled = true;
-            this.listBoxPassengers.ItemHeight = 16;
+            this.listBoxPassengers.ItemHeight = 20;
             this.listBoxPassengers.Location = new System.Drawing.Point(31, 116);
             this.listBoxPassengers.Name = "listBoxPassengers";
-            this.listBoxPassengers.Size = new System.Drawing.Size(324, 500);
+            this.listBoxPassengers.Size = new System.Drawing.Size(324, 484);
             this.listBoxPassengers.TabIndex = 2;
             // 
             // label8
@@ -441,7 +450,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(27, 36);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(98, 17);
+            this.label8.Size = new System.Drawing.Size(110, 20);
             this.label8.TabIndex = 1;
             this.label8.Text = "Select a plane";
             // 
@@ -450,7 +459,7 @@
             this.comboBoxPassengers_Planes.FormattingEnabled = true;
             this.comboBoxPassengers_Planes.Location = new System.Drawing.Point(31, 59);
             this.comboBoxPassengers_Planes.Name = "comboBoxPassengers_Planes";
-            this.comboBoxPassengers_Planes.Size = new System.Drawing.Size(186, 24);
+            this.comboBoxPassengers_Planes.Size = new System.Drawing.Size(186, 28);
             this.comboBoxPassengers_Planes.TabIndex = 0;
             // 
             // tabPageBookings
@@ -479,10 +488,10 @@
             this.tabPageBookings.Controls.Add(this.textBox_Bookings_StartDestination);
             this.tabPageBookings.Controls.Add(this.label9);
             this.tabPageBookings.Controls.Add(this.listBoxListOfBookings);
-            this.tabPageBookings.Location = new System.Drawing.Point(4, 25);
+            this.tabPageBookings.Location = new System.Drawing.Point(4, 29);
             this.tabPageBookings.Name = "tabPageBookings";
             this.tabPageBookings.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageBookings.Size = new System.Drawing.Size(1078, 678);
+            this.tabPageBookings.Size = new System.Drawing.Size(1078, 674);
             this.tabPageBookings.TabIndex = 3;
             this.tabPageBookings.Text = "Bookings";
             this.tabPageBookings.UseVisualStyleBackColor = true;
@@ -492,7 +501,7 @@
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(589, 556);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(116, 17);
+            this.label20.Size = new System.Drawing.Size(130, 20);
             this.label20.TabIndex = 23;
             this.label20.Text = "Passport number";
             // 
@@ -501,7 +510,7 @@
             this.textBox__Bookings_Passenger_PassportNo.Location = new System.Drawing.Point(721, 553);
             this.textBox__Bookings_Passenger_PassportNo.Name = "textBox__Bookings_Passenger_PassportNo";
             this.textBox__Bookings_Passenger_PassportNo.ReadOnly = true;
-            this.textBox__Bookings_Passenger_PassportNo.Size = new System.Drawing.Size(179, 22);
+            this.textBox__Bookings_Passenger_PassportNo.Size = new System.Drawing.Size(179, 26);
             this.textBox__Bookings_Passenger_PassportNo.TabIndex = 22;
             // 
             // label19
@@ -509,7 +518,7 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(589, 513);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(36, 17);
+            this.label19.Size = new System.Drawing.Size(42, 20);
             this.label19.TabIndex = 21;
             this.label19.Text = "CPR";
             // 
@@ -518,7 +527,7 @@
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(589, 471);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(74, 17);
+            this.label18.Size = new System.Drawing.Size(84, 20);
             this.label18.TabIndex = 20;
             this.label18.Text = "Last name";
             // 
@@ -527,7 +536,7 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(589, 430);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(74, 17);
+            this.label17.Size = new System.Drawing.Size(84, 20);
             this.label17.TabIndex = 19;
             this.label17.Text = "First name";
             // 
@@ -536,7 +545,7 @@
             this.textBox__Bookings_Passenger_CPR.Location = new System.Drawing.Point(721, 510);
             this.textBox__Bookings_Passenger_CPR.Name = "textBox__Bookings_Passenger_CPR";
             this.textBox__Bookings_Passenger_CPR.ReadOnly = true;
-            this.textBox__Bookings_Passenger_CPR.Size = new System.Drawing.Size(179, 22);
+            this.textBox__Bookings_Passenger_CPR.Size = new System.Drawing.Size(179, 26);
             this.textBox__Bookings_Passenger_CPR.TabIndex = 18;
             // 
             // textBox__Bookings_Passenger_LastName
@@ -544,7 +553,7 @@
             this.textBox__Bookings_Passenger_LastName.Location = new System.Drawing.Point(721, 468);
             this.textBox__Bookings_Passenger_LastName.Name = "textBox__Bookings_Passenger_LastName";
             this.textBox__Bookings_Passenger_LastName.ReadOnly = true;
-            this.textBox__Bookings_Passenger_LastName.Size = new System.Drawing.Size(179, 22);
+            this.textBox__Bookings_Passenger_LastName.Size = new System.Drawing.Size(179, 26);
             this.textBox__Bookings_Passenger_LastName.TabIndex = 17;
             // 
             // textBox_Bookings_Passenger_FirstName
@@ -552,7 +561,7 @@
             this.textBox_Bookings_Passenger_FirstName.Location = new System.Drawing.Point(721, 427);
             this.textBox_Bookings_Passenger_FirstName.Name = "textBox_Bookings_Passenger_FirstName";
             this.textBox_Bookings_Passenger_FirstName.ReadOnly = true;
-            this.textBox_Bookings_Passenger_FirstName.Size = new System.Drawing.Size(179, 22);
+            this.textBox_Bookings_Passenger_FirstName.Size = new System.Drawing.Size(179, 26);
             this.textBox_Bookings_Passenger_FirstName.TabIndex = 16;
             // 
             // label_Bookings_Passenger
@@ -561,7 +570,7 @@
             this.label_Bookings_Passenger.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Bookings_Passenger.Location = new System.Drawing.Point(717, 377);
             this.label_Bookings_Passenger.Name = "label_Bookings_Passenger";
-            this.label_Bookings_Passenger.Size = new System.Drawing.Size(143, 17);
+            this.label_Bookings_Passenger.Size = new System.Drawing.Size(159, 20);
             this.label_Bookings_Passenger.TabIndex = 15;
             this.label_Bookings_Passenger.Text = "Chosen passenger";
             // 
@@ -570,7 +579,7 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(589, 377);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(84, 17);
+            this.label16.Size = new System.Drawing.Size(93, 20);
             this.label16.TabIndex = 14;
             this.label16.Text = "Passenger: ";
             // 
@@ -579,7 +588,7 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(589, 291);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(83, 17);
+            this.label15.Size = new System.Drawing.Size(93, 20);
             this.label15.TabIndex = 13;
             this.label15.Text = "Passengers";
             // 
@@ -588,7 +597,7 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(589, 250);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(68, 17);
+            this.label14.Size = new System.Drawing.Size(78, 20);
             this.label14.TabIndex = 12;
             this.label14.Text = "Customer";
             // 
@@ -597,7 +606,7 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(589, 208);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(38, 17);
+            this.label13.Size = new System.Drawing.Size(44, 20);
             this.label13.TabIndex = 11;
             this.label13.Text = "Date";
             // 
@@ -606,7 +615,7 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(589, 165);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(44, 17);
+            this.label12.Size = new System.Drawing.Size(49, 20);
             this.label12.TabIndex = 10;
             this.label12.Text = "Plane";
             // 
@@ -615,7 +624,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(589, 123);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(106, 17);
+            this.label11.Size = new System.Drawing.Size(120, 20);
             this.label11.TabIndex = 9;
             this.label11.Text = "End destination";
             // 
@@ -624,7 +633,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(589, 82);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(111, 17);
+            this.label10.Size = new System.Drawing.Size(126, 20);
             this.label10.TabIndex = 8;
             this.label10.Text = "Start destination";
             // 
@@ -633,7 +642,7 @@
             this.comboBox__Bookings_Passengers.FormattingEnabled = true;
             this.comboBox__Bookings_Passengers.Location = new System.Drawing.Point(721, 288);
             this.comboBox__Bookings_Passengers.Name = "comboBox__Bookings_Passengers";
-            this.comboBox__Bookings_Passengers.Size = new System.Drawing.Size(179, 24);
+            this.comboBox__Bookings_Passengers.Size = new System.Drawing.Size(179, 28);
             this.comboBox__Bookings_Passengers.TabIndex = 7;
             this.comboBox__Bookings_Passengers.SelectedIndexChanged += new System.EventHandler(this.comboBox__Bookings_Passengers_SelectedIndexChanged);
             // 
@@ -642,7 +651,7 @@
             this.textBox__Bookings_Customer.Location = new System.Drawing.Point(721, 247);
             this.textBox__Bookings_Customer.Name = "textBox__Bookings_Customer";
             this.textBox__Bookings_Customer.ReadOnly = true;
-            this.textBox__Bookings_Customer.Size = new System.Drawing.Size(179, 22);
+            this.textBox__Bookings_Customer.Size = new System.Drawing.Size(179, 26);
             this.textBox__Bookings_Customer.TabIndex = 6;
             // 
             // textBox_Bookings_Date
@@ -650,7 +659,7 @@
             this.textBox_Bookings_Date.Location = new System.Drawing.Point(721, 205);
             this.textBox_Bookings_Date.Name = "textBox_Bookings_Date";
             this.textBox_Bookings_Date.ReadOnly = true;
-            this.textBox_Bookings_Date.Size = new System.Drawing.Size(179, 22);
+            this.textBox_Bookings_Date.Size = new System.Drawing.Size(179, 26);
             this.textBox_Bookings_Date.TabIndex = 5;
             // 
             // textBox_Bookings_Plane
@@ -658,7 +667,7 @@
             this.textBox_Bookings_Plane.Location = new System.Drawing.Point(721, 162);
             this.textBox_Bookings_Plane.Name = "textBox_Bookings_Plane";
             this.textBox_Bookings_Plane.ReadOnly = true;
-            this.textBox_Bookings_Plane.Size = new System.Drawing.Size(179, 22);
+            this.textBox_Bookings_Plane.Size = new System.Drawing.Size(179, 26);
             this.textBox_Bookings_Plane.TabIndex = 4;
             // 
             // textBox_Bookings_EndDestination
@@ -666,7 +675,7 @@
             this.textBox_Bookings_EndDestination.Location = new System.Drawing.Point(721, 120);
             this.textBox_Bookings_EndDestination.Name = "textBox_Bookings_EndDestination";
             this.textBox_Bookings_EndDestination.ReadOnly = true;
-            this.textBox_Bookings_EndDestination.Size = new System.Drawing.Size(179, 22);
+            this.textBox_Bookings_EndDestination.Size = new System.Drawing.Size(179, 26);
             this.textBox_Bookings_EndDestination.TabIndex = 3;
             // 
             // textBox_Bookings_StartDestination
@@ -674,7 +683,7 @@
             this.textBox_Bookings_StartDestination.Location = new System.Drawing.Point(721, 79);
             this.textBox_Bookings_StartDestination.Name = "textBox_Bookings_StartDestination";
             this.textBox_Bookings_StartDestination.ReadOnly = true;
-            this.textBox_Bookings_StartDestination.Size = new System.Drawing.Size(179, 22);
+            this.textBox_Bookings_StartDestination.Size = new System.Drawing.Size(179, 26);
             this.textBox_Bookings_StartDestination.TabIndex = 2;
             // 
             // label9
@@ -682,27 +691,27 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(109, 56);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(107, 17);
+            this.label9.Size = new System.Drawing.Size(120, 20);
             this.label9.TabIndex = 1;
             this.label9.Text = "List of bookings";
             // 
             // listBoxListOfBookings
             // 
             this.listBoxListOfBookings.FormattingEnabled = true;
-            this.listBoxListOfBookings.ItemHeight = 16;
+            this.listBoxListOfBookings.ItemHeight = 20;
             this.listBoxListOfBookings.Location = new System.Drawing.Point(10, 79);
             this.listBoxListOfBookings.Name = "listBoxListOfBookings";
-            this.listBoxListOfBookings.Size = new System.Drawing.Size(345, 532);
+            this.listBoxListOfBookings.Size = new System.Drawing.Size(345, 524);
             this.listBoxListOfBookings.TabIndex = 0;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1078, 678);
+            this.tabPage1.Size = new System.Drawing.Size(1078, 674);
             this.tabPage1.TabIndex = 4;
             this.tabPage1.Text = "Plane";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -748,7 +757,7 @@
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(6, 18);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(88, 17);
+            this.label22.Size = new System.Drawing.Size(95, 20);
             this.label22.TabIndex = 10;
             this.label22.Text = "Plane Type: ";
             // 
@@ -756,7 +765,7 @@
             // 
             this.txtPlaneUpdate.Location = new System.Drawing.Point(6, 36);
             this.txtPlaneUpdate.Name = "txtPlaneUpdate";
-            this.txtPlaneUpdate.Size = new System.Drawing.Size(100, 22);
+            this.txtPlaneUpdate.Size = new System.Drawing.Size(100, 26);
             this.txtPlaneUpdate.TabIndex = 9;
             // 
             // groupBox3
@@ -786,7 +795,7 @@
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(6, 18);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(88, 17);
+            this.label23.Size = new System.Drawing.Size(95, 20);
             this.label23.TabIndex = 10;
             this.label23.Text = "Plane Type: ";
             // 
@@ -794,16 +803,16 @@
             // 
             this.Plane_PlaneType.Location = new System.Drawing.Point(6, 36);
             this.Plane_PlaneType.Name = "Plane_PlaneType";
-            this.Plane_PlaneType.Size = new System.Drawing.Size(100, 22);
+            this.Plane_PlaneType.Size = new System.Drawing.Size(100, 26);
             this.Plane_PlaneType.TabIndex = 9;
             // 
             // Plane_PlaneBox
             // 
             this.Plane_PlaneBox.FormattingEnabled = true;
-            this.Plane_PlaneBox.ItemHeight = 16;
+            this.Plane_PlaneBox.ItemHeight = 20;
             this.Plane_PlaneBox.Location = new System.Drawing.Point(6, 21);
             this.Plane_PlaneBox.Name = "Plane_PlaneBox";
-            this.Plane_PlaneBox.Size = new System.Drawing.Size(200, 276);
+            this.Plane_PlaneBox.Size = new System.Drawing.Size(200, 264);
             this.Plane_PlaneBox.TabIndex = 2;
             this.Plane_PlaneBox.SelectedIndexChanged += new System.EventHandler(this.Plane_PlaneBox_SelectedIndexChanged);
             // 
@@ -829,12 +838,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label21);
-            this.groupBox1.Controls.Add(this.Plane_RowNumber);
+            this.groupBox1.Controls.Add(this.groupBox6);
+            this.groupBox1.Controls.Add(this.groupBox5);
             this.groupBox1.Controls.Add(this.Plane_SeatSchema);
-            this.groupBox1.Controls.Add(this.Plane_CreateSeatSchema);
-            this.groupBox1.Controls.Add(this.Plane_SeatSchemaTextBox);
-            this.groupBox1.Controls.Add(this.label24);
             this.groupBox1.Controls.Add(this.Plane_RefreshSeatSchema);
             this.groupBox1.Controls.Add(this.Plane_DeleteSeatSchema);
             this.groupBox1.Location = new System.Drawing.Point(483, 20);
@@ -847,17 +853,17 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(19, 372);
+            this.label21.Location = new System.Drawing.Point(6, 57);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(89, 17);
+            this.label21.Size = new System.Drawing.Size(101, 20);
             this.label21.TabIndex = 17;
             this.label21.Text = "Row Number";
             // 
             // Plane_RowNumber
             // 
-            this.Plane_RowNumber.Location = new System.Drawing.Point(155, 369);
+            this.Plane_RowNumber.Location = new System.Drawing.Point(118, 54);
             this.Plane_RowNumber.Name = "Plane_RowNumber";
-            this.Plane_RowNumber.Size = new System.Drawing.Size(100, 22);
+            this.Plane_RowNumber.Size = new System.Drawing.Size(100, 26);
             this.Plane_RowNumber.TabIndex = 16;
             this.Plane_RowNumber.TextChanged += new System.EventHandler(this.Plane_RowNumber_TextChanged);
             this.Plane_RowNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Plane_RowNumber_KeyPress);
@@ -865,18 +871,18 @@
             // Plane_SeatSchema
             // 
             this.Plane_SeatSchema.FormattingEnabled = true;
-            this.Plane_SeatSchema.ItemHeight = 16;
+            this.Plane_SeatSchema.ItemHeight = 20;
             this.Plane_SeatSchema.Location = new System.Drawing.Point(9, 21);
             this.Plane_SeatSchema.Name = "Plane_SeatSchema";
-            this.Plane_SeatSchema.Size = new System.Drawing.Size(246, 308);
+            this.Plane_SeatSchema.Size = new System.Drawing.Size(230, 304);
             this.Plane_SeatSchema.TabIndex = 3;
             this.Plane_SeatSchema.SelectedIndexChanged += new System.EventHandler(this.Plane_SeatSchema_SelectedIndexChanged);
             // 
             // Plane_CreateSeatSchema
             // 
-            this.Plane_CreateSeatSchema.Location = new System.Drawing.Point(261, 21);
+            this.Plane_CreateSeatSchema.Location = new System.Drawing.Point(80, 97);
             this.Plane_CreateSeatSchema.Name = "Plane_CreateSeatSchema";
-            this.Plane_CreateSeatSchema.Size = new System.Drawing.Size(75, 60);
+            this.Plane_CreateSeatSchema.Size = new System.Drawing.Size(75, 35);
             this.Plane_CreateSeatSchema.TabIndex = 5;
             this.Plane_CreateSeatSchema.Text = "Create";
             this.Plane_CreateSeatSchema.UseVisualStyleBackColor = true;
@@ -884,9 +890,9 @@
             // 
             // Plane_SeatSchemaTextBox
             // 
-            this.Plane_SeatSchemaTextBox.Location = new System.Drawing.Point(155, 335);
+            this.Plane_SeatSchemaTextBox.Location = new System.Drawing.Point(118, 22);
             this.Plane_SeatSchemaTextBox.Name = "Plane_SeatSchemaTextBox";
-            this.Plane_SeatSchemaTextBox.Size = new System.Drawing.Size(100, 22);
+            this.Plane_SeatSchemaTextBox.Size = new System.Drawing.Size(100, 26);
             this.Plane_SeatSchemaTextBox.TabIndex = 12;
             this.Plane_SeatSchemaTextBox.TextChanged += new System.EventHandler(this.Plane_SeatSchemaTextBox_TextChanged);
             this.Plane_SeatSchemaTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Plane_SeatSchemaTextBox_KeyPress);
@@ -894,15 +900,15 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(16, 340);
+            this.label24.Location = new System.Drawing.Point(6, 25);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(92, 17);
+            this.label24.Size = new System.Drawing.Size(106, 20);
             this.label24.TabIndex = 13;
             this.label24.Text = "Seat Schema";
             // 
             // Plane_RefreshSeatSchema
             // 
-            this.Plane_RefreshSeatSchema.Location = new System.Drawing.Point(261, 87);
+            this.Plane_RefreshSeatSchema.Location = new System.Drawing.Point(261, 21);
             this.Plane_RefreshSeatSchema.Name = "Plane_RefreshSeatSchema";
             this.Plane_RefreshSeatSchema.Size = new System.Drawing.Size(75, 64);
             this.Plane_RefreshSeatSchema.TabIndex = 15;
@@ -912,7 +918,7 @@
             // 
             // Plane_DeleteSeatSchema
             // 
-            this.Plane_DeleteSeatSchema.Location = new System.Drawing.Point(261, 157);
+            this.Plane_DeleteSeatSchema.Location = new System.Drawing.Point(261, 91);
             this.Plane_DeleteSeatSchema.Name = "Plane_DeleteSeatSchema";
             this.Plane_DeleteSeatSchema.Size = new System.Drawing.Size(75, 60);
             this.Plane_DeleteSeatSchema.TabIndex = 7;
@@ -923,6 +929,76 @@
             // destinationBindingSource
             // 
             this.destinationBindingSource.DataSource = typeof(Booking.Client.BookingServiceRemote.Destination);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.Plane_SeatSchemaTextBox);
+            this.groupBox5.Controls.Add(this.label21);
+            this.groupBox5.Controls.Add(this.Plane_CreateSeatSchema);
+            this.groupBox5.Controls.Add(this.Plane_RowNumber);
+            this.groupBox5.Controls.Add(this.label24);
+            this.groupBox5.Location = new System.Drawing.Point(9, 339);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(230, 154);
+            this.groupBox5.TabIndex = 11;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "New";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.Plane_UpdateSeatSchema);
+            this.groupBox6.Controls.Add(this.Plane_UpdateRowNumber);
+            this.groupBox6.Controls.Add(this.Plane_UpdateSeatSchemaTextBox);
+            this.groupBox6.Controls.Add(this.label26);
+            this.groupBox6.Controls.Add(this.label25);
+            this.groupBox6.Location = new System.Drawing.Point(261, 339);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(230, 154);
+            this.groupBox6.TabIndex = 16;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Edit";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(6, 25);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(106, 20);
+            this.label25.TabIndex = 18;
+            this.label25.Text = "Seat Schema";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(6, 57);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(101, 20);
+            this.label26.TabIndex = 19;
+            this.label26.Text = "Row Number";
+            // 
+            // Plane_UpdateSeatSchemaTextBox
+            // 
+            this.Plane_UpdateSeatSchemaTextBox.Location = new System.Drawing.Point(118, 22);
+            this.Plane_UpdateSeatSchemaTextBox.Name = "Plane_UpdateSeatSchemaTextBox";
+            this.Plane_UpdateSeatSchemaTextBox.Size = new System.Drawing.Size(100, 26);
+            this.Plane_UpdateSeatSchemaTextBox.TabIndex = 18;
+            // 
+            // Plane_UpdateRowNumber
+            // 
+            this.Plane_UpdateRowNumber.Location = new System.Drawing.Point(118, 54);
+            this.Plane_UpdateRowNumber.Name = "Plane_UpdateRowNumber";
+            this.Plane_UpdateRowNumber.Size = new System.Drawing.Size(100, 26);
+            this.Plane_UpdateRowNumber.TabIndex = 20;
+            // 
+            // Plane_UpdateSeatSchema
+            // 
+            this.Plane_UpdateSeatSchema.Location = new System.Drawing.Point(81, 97);
+            this.Plane_UpdateSeatSchema.Name = "Plane_UpdateSeatSchema";
+            this.Plane_UpdateSeatSchema.Size = new System.Drawing.Size(75, 35);
+            this.Plane_UpdateSeatSchema.TabIndex = 18;
+            this.Plane_UpdateSeatSchema.Text = "Update";
+            this.Plane_UpdateSeatSchema.UseVisualStyleBackColor = true;
+            this.Plane_UpdateSeatSchema.Click += new System.EventHandler(this.Plane_UpdateSeatSchema_Click);
             // 
             // MainFrame
             // 
@@ -945,8 +1021,11 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.destinationBindingSource)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1032,5 +1111,12 @@
         private System.Windows.Forms.Button bntPlane_Update;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox txtPlaneUpdate;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button Plane_UpdateSeatSchema;
+        private System.Windows.Forms.TextBox Plane_UpdateRowNumber;
+        private System.Windows.Forms.TextBox Plane_UpdateSeatSchemaTextBox;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.GroupBox groupBox5;
     }
 }

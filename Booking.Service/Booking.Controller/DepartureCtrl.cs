@@ -11,6 +11,7 @@ namespace Booking.Controller
     public class DepartureCtrl : ICRUD<Departure>
     {
         private DbDeparture DBP = new DbDeparture();
+        private DestinationCtrl dCtrl = new DestinationCtrl();
 
         public void Create(Departure obj)
         {
@@ -35,6 +36,38 @@ namespace Booking.Controller
         public IEnumerable<Departure> GetAllDepartures()
         {
            return DBP.GetAll();
+        }
+
+        public IEnumerable<Departure> GetAllTilbud()
+        {
+            var allDept = DBP.GetAll();
+            var allDest = dCtrl.GetAllDestinations();
+            bool added;
+
+            List<Departure> toReturn = new List<Departure>();
+
+            foreach(var dest in allDest)
+            {
+                added = false;
+
+                foreach (var dept in allDept)
+                {
+                    if (added)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        if (dept.EndDestination.Id == dest.Id)
+                        {
+                            toReturn.Add(dept);
+                            added = true;
+                        }
+                    }
+                }
+            }
+
+            return toReturn;
         }
     }
 }

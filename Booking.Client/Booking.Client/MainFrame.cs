@@ -18,11 +18,12 @@ namespace Booking.Client
             InitializeComponent();
             Plane_RowNumber.ContextMenu = new ContextMenu();
             Plane_SeatSchemaTextBox.ContextMenu = new ContextMenu();
+            Plane_UpdateSeatSchemaTextBox.ContextMenu = new ContextMenu();
+            Plane_UpdateRowNumber.ContextMenu = new ContextMenu();
             currentUser = curUser;
             ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
             myService.ClientCredentials.UserName.UserName = currentUser.Email;
             myService.ClientCredentials.UserName.Password = currentUser.Password;
-            ShowPassager();
             ShowPlanesComboBox();
             ShowDestinations();
             ShowBookings();
@@ -30,12 +31,6 @@ namespace Booking.Client
             ShowSeatSchema();
         }
 
-        public void ShowPassager()
-        {
-            //var c = myService.GetCity(9000);
-            //var n = myService.GetPassenger(1);
-            //listBoxPassengers.Items.Add(n.FirstName + "," + n.LastName + "," + c.Zipcode + "," + c.CityName);
-        }
         public void ShowSeatSchema()
         {
             //MainFrame, Planetab
@@ -71,9 +66,6 @@ namespace Booking.Client
         public void FillInfoBooking()
         {
             var b = (Bookings)listBoxListOfBookings.SelectedItem;
-            //textBox_Bookings_StartDestination.Text = b.StartDestination.NameDestination.ToString();
-            //textBox_Bookings_EndDestination.Text = b.EndDestination.NameDestination.ToString();
-            //textBox_Bookings_Plane.Text = b.EndDestination.Plane.Id.ToString();
             textBox__Bookings_Customer.Text = b.Customer.FirstName.ToString();
 
             foreach (Passenger p in myService.GetAllPassengers())
@@ -96,7 +88,6 @@ namespace Booking.Client
 
                 d = de.EndDestination;
                 date = de.DepartureTime;
-                //   d.Plane = de.PlaneId;
 
             }
             myService.CreateDeparture(de);
@@ -126,6 +117,22 @@ namespace Booking.Client
             Plane_PlaneBox.ValueMember = "Id";
             Plane_PlaneBox.DisplayMember = "Type";
         }
+
+        public void ShowSeatSchemas()
+        {
+            Plane_SeatSchema.Items.Clear();
+            try
+            {
+                var p = (Plane)Plane_PlaneBox.SelectedItem;
+                foreach (var s in p.SeatSchema)
+                {
+                    Plane_SeatSchema.Items.Add(s);
+                }
+            }
+            catch (Exception)
+            { }
+        }
+
         public void ShowDestinations()
         {
             listBoxPlanes.DataSource = myService.GetAllDestinations();
@@ -180,7 +187,7 @@ namespace Booking.Client
                 myService.UpdatePlane(p);
             }
 
-            ShowPlanes();
+            ShowSeatSchemas();
         }
         public void DeleteDestination()
         {
@@ -194,7 +201,6 @@ namespace Booking.Client
             Destination d = new Destination
             {
                 NameDestination = CreateRoute_StartDestination.Text.ToString(),
-                //Plane = myService.GetPlane(p.Id)
             };
 
             myService.CreateDestination(d);
@@ -203,7 +209,6 @@ namespace Booking.Client
 
         private void RefreshDestinations_Click(object sender, EventArgs e)
         {
-            //listBoxPlanes.Items.Clear();
             ShowDestinations();
         }
 
@@ -308,13 +313,15 @@ namespace Booking.Client
             Plane_PlaneBox.Enabled = false;
             Plane_SeatSchema.Enabled = false;
 
-            Plane_SeatSchemaTextBox.Text = "";
+            Plane_UpdateSeatSchemaTextBox.Text = "";
+            Plane_UpdateRowNumber.Text = "";
 
             if (Plane_SeatSchema.Items.Count > 0)
             {
                 try
                 {
-                    Plane_SeatSchemaTextBox.Text = ((SeatSchema)Plane_SeatSchema.SelectedItem).Layout.ToString();
+                    Plane_UpdateRowNumber.Text = ((SeatSchema)Plane_SeatSchema.SelectedItem).Row.ToString();
+                    Plane_UpdateSeatSchemaTextBox.Text = ((SeatSchema)Plane_SeatSchema.SelectedItem).Layout.ToString();
                 }
                 catch (Exception)
                 { }
@@ -345,16 +352,41 @@ namespace Booking.Client
         {
             if (Plane_SeatSchemaTextBox.Text.ToString().Trim().Length > 0 && Plane_RowNumber.Text.ToString().Trim().Length > 0)
             {
-                var p = (Plane)Plane_PlaneBox.SelectedItem;
-                SeatSchema ss = new SeatSchema { Layout = Plane_SeatSchemaTextBox.Text, Row = Convert.ToInt32(Plane_RowNumber.Text) };
-                p.SeatSchema.Add(ss);
-                myService.UpdatePlane(p);
+                bool exists = false;
+
+                try
+                {
+                    int rowToAdd = Convert.ToInt32(Plane_RowNumber.Text);
+
+                    Plane p = (Plane)Plane_PlaneBox.SelectedItem;
+
+                    foreach(SeatSchema s in p.SeatSchema)
+                    {
+                        if(s.Row == rowToAdd)
+                        {
+                            exists = true;
+                        }
+                    }
+
+                    if (!exists)
+                    {
+                        SeatSchema ss = new SeatSchema { Layout = Plane_SeatSchemaTextBox.Text, Row = Convert.ToInt32(Plane_RowNumber.Text) };
+
+                        p.SeatSchema.Add(ss);
+                        myService.UpdatePlane(p);
+                    }
+                }
+                catch (Exception)
+                { } 
             }
+
+            Plane_SeatSchemaTextBox.Text = "";
+            Plane_RowNumber.Text = "";
         }
 
         private void Plane_RefreshSeatSchema_Click(object sender, EventArgs e)
         {
-            ShowPlanes();
+            ShowSeatSchemas();
         }
 
         private void bntPlane_Update_Click(object sender, EventArgs e)
@@ -434,6 +466,51 @@ namespace Booking.Client
             {
                 e.Handled = true;
             }
+        }
+
+        private void Plane_UpdateSeatSchema_Click(object sender, EventArgs e)
+        {
+            if (Plane_UpdateSeatSchemaTextBox.Text.ToString().Trim().Length > 0 && Plane_UpdateRowNumber.Text.ToString().Trim().Length > 0)
+            {
+                bool exists = false;
+
+                try
+                {
+                    int rowToAdd = Convert.ToInt32(Plane_UpdateRowNumber.Text);
+
+                    Plane p = (Plane)Plane_PlaneBox.SelectedItem;
+
+                    foreach (SeatSchema s in p.SeatSchema)
+                    {
+                        if (s.Row == rowToAdd)
+                        {
+                            exists = true;
+                        }
+                    }
+
+                    if (!exists)
+                    {
+                        var ss = (SeatSchema)Plane_SeatSchema.SelectedItem;
+                        if (ss != null)
+                        {
+                            ss.Layout = Plane_UpdateSeatSchemaTextBox.Text.ToString();
+                            ss.Row = Convert.ToInt32(Plane_UpdateRowNumber.Text);
+                            p.SeatSchema.Add(ss);
+                            myService.UpdatePlane(p);
+                        }
+                    }
+                }
+                catch (Exception)
+                { }
+            }
+
+            else
+            {
+                Plane_UpdateRowNumber.Text = "";
+                Plane_UpdateSeatSchemaTextBox.Text = "";
+            }
+
+            ShowSeatSchemas();
         }
     }
 }
