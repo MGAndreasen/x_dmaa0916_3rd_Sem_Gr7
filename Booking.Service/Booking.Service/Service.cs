@@ -58,7 +58,12 @@ namespace Booking.Service
         {
             return departureCtrl.GetAllDepartures();
         }
-           
+
+        public IEnumerable<Departure> GetAllTilbud()
+        {
+            return departureCtrl.GetAllTilbud();
+        }
+
         #endregion
 
         #region Michael Gris

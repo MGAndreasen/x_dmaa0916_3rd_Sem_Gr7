@@ -8,14 +8,14 @@
     @{
         try
         {
-            var client = ViewBag.proxy;
-            var dest = client.GetAllDestinations();
+            Booking.Web.BookingServiceRemote.ServiceClient client = ViewBag.proxy;
+            var dept = client.GetAllDepartures();
 
-            foreach (var s in dest)
+            foreach(var d in dept)
             {
                 <div class="Boxed floatLeft">
-                    <h1>@s.NameDestination</h1>
-                    <h3>Fra Aalborg</h3>
+                    <h1>@d.EndDestination.NameDestination</h1>
+                    <h3>Fra @d.StartDestination.NameDestination</h3>
                     <h3>Fra/enkeltbillet</h3>
                 </div>
             }
@@ -24,7 +24,7 @@
         {
             <p>Der er sket en fejl!</p>
         }
-       
+
     }
 </div>
 
