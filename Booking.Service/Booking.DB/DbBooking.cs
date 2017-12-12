@@ -105,8 +105,7 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Booking (Id, Payment_Id, Customer_Id, Departure_Id, Date, Price) VALUES (@id, @Payment, @Customer, @Departure, @Date, @Price)", con);
-                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = obj.Id;
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Booking (Payment_Id, Customer_Id, Departure_Id, Date, Price) VALUES (@Payment, @Customer, @Departure, @Date, @Price)", con);
                     cmd.Parameters.Add("@Payment", SqlDbType.Int).Value = obj.Payment.Id; // <-------------------------
                     cmd.Parameters.Add("@Customer", SqlDbType.Int).Value = obj.Customer.Id; // <-------------------------
                     cmd.Parameters.Add("@Departure", SqlDbType.Int).Value = obj.Departure.Id; // <-------------------------
@@ -128,7 +127,7 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Id=@Id, Payment_Id=@PI, Customer_Id=@CI, Departure_Id=@D, Date=@Date, Price=@Price", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Payment_Id=@PI, Customer_Id=@CI, Departure_Id=@D, Date=@Date, Price=@Price WHERE Id=@Id", con);
 
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
                     cmd.Parameters.Add("@PI", SqlDbType.Int).Value = obj.Payment.Id; // <-------------------------

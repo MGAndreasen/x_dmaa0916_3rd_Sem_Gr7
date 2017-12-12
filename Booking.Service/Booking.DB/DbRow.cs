@@ -73,8 +73,7 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Booking (Id, SeatNumber, Price) VALUES (@Id, @SeatNumber, @Price)", con);
-                    cmd.Parameters.Add("Id", SqlDbType.Int).Value = obj.Id;
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Booking (SeatNumber, Price) VALUES (@SeatNumber, @Price)", con);
                     cmd.Parameters.Add("SeatNumber", SqlDbType.Int).Value = obj.SeatNumber;
                     cmd.Parameters.Add("Price", SqlDbType.Float).Value = obj.Price;
                     cmd.ExecuteNonQuery();

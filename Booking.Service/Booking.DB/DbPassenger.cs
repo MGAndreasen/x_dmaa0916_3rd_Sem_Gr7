@@ -79,8 +79,7 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Passenger (Id, Booking_Id, Seat_Id, FirstName, LastName, Cpr, PassportId, Luggage) Values (@Id, @Bo, @Seat, @FirstName, @LastName, @Cpr, @PassportId, @Luggage)", con);
-                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Passenger (Booking_Id, Seat_Id, FirstName, LastName, Cpr, PassportId, Luggage) Values (@Bo, @Seat, @FirstName, @LastName, @Cpr, @PassportId, @Luggage)", con);
                     cmd.Parameters.Add("@Bo", SqlDbType.Int).Value = obj.Booking.Id; // <-------------------------
                     cmd.Parameters.Add("@Seat", SqlDbType.Int).Value = obj.SeatNumber.Id; // <-------------------------
                     cmd.Parameters.Add("@FirstName", SqlDbType.NVarChar).Value = obj.FirstName;
@@ -104,7 +103,7 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE Booking_Passenger SET Id = @Id, Booking_Id=@Bo, Seat_Id=@Seat, FirstName = @FirstName, LastName = @LastName, Cpr = @Cpr, PassportId = @PassportId, Luggage = @Luggage WHERE Id=@Id", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE Booking_Passenger SET Booking_Id=@Bo, Seat_Id=@Seat, FirstName = @FirstName, LastName = @LastName, Cpr = @Cpr, PassportId = @PassportId, Luggage = @Luggage WHERE Id=@Id", con);
                     
                     cmd.Parameters.AddWithValue("@Id", obj.Id);
                     cmd.Parameters.AddWithValue("@Bo", obj.Booking.Id); // <-------------------------

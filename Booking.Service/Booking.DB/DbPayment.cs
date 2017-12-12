@@ -43,8 +43,7 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Payment (id, Amount, Date) VALUES (@id, @Amount, @Date)", con);
-                    cmd.Parameters.Add("id", SqlDbType.Int).Value = obj.Id;
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Payment (Amount, Date) VALUES (@Amount, @Date)", con);
                     cmd.Parameters.Add("Amount", SqlDbType.Int).Value = obj.Amount;
                     cmd.Parameters.Add("Date", SqlDbType.DateTime).Value = obj.Date;
                     cmd.ExecuteNonQuery();
@@ -110,7 +109,7 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Id=@Id, Amount=@Amount, Date=@Date", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Amount=@Amount, Date=@Date WHERE Id=@Id", con);
 
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
                     cmd.Parameters.Add("Amount", SqlDbType.Int).Value = obj.Amount;

@@ -88,8 +88,8 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Departure SET StartDestination=@SD, EndDestination=@ED, DepartureTime=@DT, Plane_Id=@PI", con);
-
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Departure SET StartDestination=@SD, EndDestination=@ED, DepartureTime=@DT, Plane_Id=@PI WHERE Id=@Id", con);
+                    cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
                     cmd.Parameters.Add("@SD", SqlDbType.Int).Value = obj.StartDestination;
                     cmd.Parameters.Add("@ED", SqlDbType.Int).Value = obj.EndDestination;
                     cmd.Parameters.Add("@DT", SqlDbType.DateTime).Value = obj.DepartureTime;

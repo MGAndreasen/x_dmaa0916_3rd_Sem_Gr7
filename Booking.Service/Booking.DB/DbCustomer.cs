@@ -67,8 +67,7 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Customer (Id, Cpr, PhoneNo, City_Id, FirstName, LastName, Email, Address, Password, Cofirmed) VALUES (@Id, @Cpr, @PhoneNo, @City, @FirstName, @LastName, @Email. @Address, @Password, @Cofirmed)", con);
-                    cmd.Parameters.Add("Id", SqlDbType.Int).Value = obj.Id;
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Customer (Cpr, PhoneNo, City_Id, FirstName, LastName, Email, Address, Password, Cofirmed) VALUES (@Cpr, @PhoneNo, @City, @FirstName, @LastName, @Email. @Address, @Password, @Cofirmed)", con);
                     cmd.Parameters.Add("Cpr", SqlDbType.BigInt).Value = obj.CPR;
                     cmd.Parameters.Add("PhoneNo", SqlDbType.BigInt).Value = obj.PhoneNumber;
                     cmd.Parameters.Add("City", SqlDbType.Int).Value = obj.City;
