@@ -508,16 +508,24 @@ namespace Booking.Client
             ShowSeatSchemas();
         }
 
-        private void Departure_RefreshDepartureBtn_Click(object sender, EventArgs e)
+
+        public void ShowDeparture()
         {
+            Departure_ListDespartures.Items.Clear();
             try
             {
                 Departure_ListDespartures.DataSource = myService.GetAllDepartures();
                 Departure_ListDespartures.ValueMember = "Id";
                 Departure_ListDespartures.DisplayMember = "EndDestination";
             }
-            catch (Exception)
-            { }
+            catch(Exception ex)
+            {
+                ex.ToString();
+            }
+        }
+        private void Departure_RefreshDepartureBtn_Click(object sender, EventArgs e)
+        {
+            ShowDeparture();
         }
     }
 }
