@@ -1,6 +1,6 @@
 ﻿@using Booking.Web.Helpers;
 @{
-    ViewBag.Title = "Afgange";
+    ViewBag.Title = "Index";
 }
 
 
@@ -34,7 +34,7 @@
 
         }
     </select>
-         <input type="Submit" value="Search">
+    <input type="button" value="Search" onclick="window.location.href='<%= Url.Action(" ", "AfgangeController" ) %>';" />
 
 </form>
 
