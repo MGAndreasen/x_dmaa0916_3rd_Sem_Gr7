@@ -42,21 +42,20 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.CreateRoute_StartDestination = new System.Windows.Forms.TextBox();
-            this.tabPageSeats = new System.Windows.Forms.TabPage();
-            this.Departur = new System.Windows.Forms.TextBox();
-            this.depBox = new System.Windows.Forms.ListBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.destBox = new System.Windows.Forms.ListBox();
-            this.calenderRoute = new System.Windows.Forms.MonthCalendar();
+            this.tabPageDeparture = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.Departure_DeleteDepartureBtn = new System.Windows.Forms.Button();
+            this.Departure_RefreshDepartureBtn = new System.Windows.Forms.Button();
+            this.Departure_ListDespartures = new System.Windows.Forms.ListBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.calenderRoute = new System.Windows.Forms.MonthCalendar();
+            this.Departure_RefreshDestinationsBtn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBoxSeats_ListOfPlanes = new System.Windows.Forms.ComboBox();
+            this.Departure_ListDestinations = new System.Windows.Forms.ListBox();
+            this.comboBoxDepartures_ListOfPlanes = new System.Windows.Forms.ComboBox();
+            this.Departure_CreateDepartureBtn = new System.Windows.Forms.Button();
             this.tabPagePassengers = new System.Windows.Forms.TabPage();
             this.listBoxPassengers = new System.Windows.Forms.ListBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -100,25 +99,28 @@
             this.Plane_RefreshPlaneButton = new System.Windows.Forms.Button();
             this.Plane_DeletePlane = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.Plane_RowNumber = new System.Windows.Forms.TextBox();
-            this.Plane_SeatSchema = new System.Windows.Forms.ListBox();
-            this.Plane_CreateSeatSchema = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.Plane_UpdateSeatSchema = new System.Windows.Forms.Button();
+            this.Plane_UpdateRowNumber = new System.Windows.Forms.TextBox();
+            this.Plane_UpdateSeatSchemaTextBox = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.Plane_SeatSchemaTextBox = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.Plane_CreateSeatSchema = new System.Windows.Forms.Button();
+            this.Plane_RowNumber = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
+            this.Plane_SeatSchema = new System.Windows.Forms.ListBox();
             this.Plane_RefreshSeatSchema = new System.Windows.Forms.Button();
             this.Plane_DeleteSeatSchema = new System.Windows.Forms.Button();
             this.destinationBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.Plane_UpdateSeatSchemaTextBox = new System.Windows.Forms.TextBox();
-            this.Plane_UpdateRowNumber = new System.Windows.Forms.TextBox();
-            this.Plane_UpdateSeatSchema = new System.Windows.Forms.Button();
+            this.testBox = new System.Windows.Forms.TextBox();
             this.PlaneTab.SuspendLayout();
             this.tabCreateRoute.SuspendLayout();
-            this.tabPageSeats.SuspendLayout();
+            this.tabPageDeparture.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.tabPagePassengers.SuspendLayout();
             this.tabPageBookings.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -126,15 +128,15 @@
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.destinationBindingSource)).BeginInit();
-            this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.destinationBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // PlaneTab
             // 
             this.PlaneTab.Controls.Add(this.tabCreateRoute);
-            this.PlaneTab.Controls.Add(this.tabPageSeats);
+            this.PlaneTab.Controls.Add(this.tabPageDeparture);
             this.PlaneTab.Controls.Add(this.tabPagePassengers);
             this.PlaneTab.Controls.Add(this.tabPageBookings);
             this.PlaneTab.Controls.Add(this.tabPage1);
@@ -264,84 +266,100 @@
             this.CreateRoute_StartDestination.Size = new System.Drawing.Size(175, 26);
             this.CreateRoute_StartDestination.TabIndex = 0;
             // 
-            // tabPageSeats
+            // tabPageDeparture
             // 
-            this.tabPageSeats.Controls.Add(this.Departur);
-            this.tabPageSeats.Controls.Add(this.depBox);
-            this.tabPageSeats.Controls.Add(this.button3);
-            this.tabPageSeats.Controls.Add(this.button2);
-            this.tabPageSeats.Controls.Add(this.destBox);
-            this.tabPageSeats.Controls.Add(this.calenderRoute);
-            this.tabPageSeats.Controls.Add(this.label7);
-            this.tabPageSeats.Controls.Add(this.textBox4);
-            this.tabPageSeats.Controls.Add(this.radioButton2);
-            this.tabPageSeats.Controls.Add(this.radioButton1);
-            this.tabPageSeats.Controls.Add(this.label6);
-            this.tabPageSeats.Controls.Add(this.button1);
-            this.tabPageSeats.Controls.Add(this.label5);
-            this.tabPageSeats.Controls.Add(this.comboBoxSeats_ListOfPlanes);
-            this.tabPageSeats.Location = new System.Drawing.Point(4, 29);
-            this.tabPageSeats.Name = "tabPageSeats";
-            this.tabPageSeats.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSeats.Size = new System.Drawing.Size(1078, 674);
-            this.tabPageSeats.TabIndex = 1;
-            this.tabPageSeats.Text = "Seats";
-            this.tabPageSeats.UseVisualStyleBackColor = true;
+            this.tabPageDeparture.Controls.Add(this.groupBox7);
+            this.tabPageDeparture.Controls.Add(this.groupBox8);
+            this.tabPageDeparture.Location = new System.Drawing.Point(4, 29);
+            this.tabPageDeparture.Name = "tabPageDeparture";
+            this.tabPageDeparture.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageDeparture.Size = new System.Drawing.Size(1078, 674);
+            this.tabPageDeparture.TabIndex = 1;
+            this.tabPageDeparture.Text = "Departure";
+            this.tabPageDeparture.UseVisualStyleBackColor = true;
             // 
-            // Departur
+            // groupBox7
             // 
-            this.Departur.Location = new System.Drawing.Point(853, 63);
-            this.Departur.Name = "Departur";
-            this.Departur.Size = new System.Drawing.Size(100, 26);
-            this.Departur.TabIndex = 15;
-            this.Departur.Text = "Departures";
+            this.groupBox7.Controls.Add(this.Departure_DeleteDepartureBtn);
+            this.groupBox7.Controls.Add(this.Departure_RefreshDepartureBtn);
+            this.groupBox7.Controls.Add(this.Departure_ListDespartures);
+            this.groupBox7.Location = new System.Drawing.Point(604, 39);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(447, 617);
+            this.groupBox7.TabIndex = 15;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Departures";
             // 
-            // depBox
+            // Departure_DeleteDepartureBtn
             // 
-            this.depBox.FormattingEnabled = true;
-            this.depBox.ItemHeight = 20;
-            this.depBox.Location = new System.Drawing.Point(776, 112);
-            this.depBox.Name = "depBox";
-            this.depBox.Size = new System.Drawing.Size(265, 164);
-            this.depBox.TabIndex = 14;
-            this.depBox.SelectedIndexChanged += new System.EventHandler(this.depBox_SelectedIndexChanged);
+            this.Departure_DeleteDepartureBtn.Location = new System.Drawing.Point(21, 125);
+            this.Departure_DeleteDepartureBtn.Name = "Departure_DeleteDepartureBtn";
+            this.Departure_DeleteDepartureBtn.Size = new System.Drawing.Size(133, 49);
+            this.Departure_DeleteDepartureBtn.TabIndex = 17;
+            this.Departure_DeleteDepartureBtn.Text = "Delete departure";
+            this.Departure_DeleteDepartureBtn.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // Departure_RefreshDepartureBtn
             // 
-            this.button3.Location = new System.Drawing.Point(618, 517);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(83, 42);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "Refresh";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.Departure_RefreshDepartureBtn.Location = new System.Drawing.Point(21, 54);
+            this.Departure_RefreshDepartureBtn.Name = "Departure_RefreshDepartureBtn";
+            this.Departure_RefreshDepartureBtn.Size = new System.Drawing.Size(133, 49);
+            this.Departure_RefreshDepartureBtn.TabIndex = 16;
+            this.Departure_RefreshDepartureBtn.Text = "Refresh departures";
+            this.Departure_RefreshDepartureBtn.UseVisualStyleBackColor = true;
+            this.Departure_RefreshDepartureBtn.Click += new System.EventHandler(this.Departure_RefreshDepartureBtn_Click);
             // 
-            // button2
+            // Departure_ListDespartures
             // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button2.Location = new System.Drawing.Point(479, 517);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 42);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Create departure";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.Departure_ListDespartures.FormattingEnabled = true;
+            this.Departure_ListDespartures.ItemHeight = 20;
+            this.Departure_ListDespartures.Location = new System.Drawing.Point(176, 54);
+            this.Departure_ListDespartures.Name = "Departure_ListDespartures";
+            this.Departure_ListDespartures.Size = new System.Drawing.Size(265, 544);
+            this.Departure_ListDespartures.TabIndex = 14;
+            this.Departure_ListDespartures.SelectedIndexChanged += new System.EventHandler(this.depBox_SelectedIndexChanged);
             // 
-            // destBox
+            // groupBox8
             // 
-            this.destBox.FormattingEnabled = true;
-            this.destBox.ItemHeight = 20;
-            this.destBox.Location = new System.Drawing.Point(479, 242);
-            this.destBox.Name = "destBox";
-            this.destBox.Size = new System.Drawing.Size(249, 244);
-            this.destBox.TabIndex = 11;
+            this.groupBox8.Controls.Add(this.testBox);
+            this.groupBox8.Controls.Add(this.label7);
+            this.groupBox8.Controls.Add(this.label6);
+            this.groupBox8.Controls.Add(this.calenderRoute);
+            this.groupBox8.Controls.Add(this.Departure_RefreshDestinationsBtn);
+            this.groupBox8.Controls.Add(this.label5);
+            this.groupBox8.Controls.Add(this.Departure_ListDestinations);
+            this.groupBox8.Controls.Add(this.comboBoxDepartures_ListOfPlanes);
+            this.groupBox8.Controls.Add(this.Departure_CreateDepartureBtn);
+            this.groupBox8.Location = new System.Drawing.Point(25, 39);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(533, 617);
+            this.groupBox8.TabIndex = 16;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Create Departure";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(256, 31);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(103, 20);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Select a date";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(11, 31);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(136, 20);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Select destination";
             // 
             // calenderRoute
             // 
             this.calenderRoute.AnnuallyBoldedDates = new System.DateTime[] {
         new System.DateTime(2017, 12, 24, 0, 0, 0, 0)};
-            this.calenderRoute.Location = new System.Drawing.Point(476, 39);
+            this.calenderRoute.Location = new System.Drawing.Point(260, 54);
             this.calenderRoute.MaxDate = new System.DateTime(3000, 1, 1, 0, 0, 0, 0);
             this.calenderRoute.MaxSelectionCount = 1;
             this.calenderRoute.MinDate = new System.DateTime(2017, 12, 5, 0, 0, 0, 0);
@@ -349,79 +367,53 @@
             this.calenderRoute.ShowWeekNumbers = true;
             this.calenderRoute.TabIndex = 10;
             // 
-            // label7
+            // Departure_RefreshDestinationsBtn
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(165, 201);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(21, 20);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "id";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(128, 240);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(100, 26);
-            this.textBox4.TabIndex = 7;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(25, 281);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(89, 24);
-            this.radioButton2.TabIndex = 6;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Booked";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(25, 242);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(97, 24);
-            this.radioButton1.TabIndex = 5;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Available";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(33, 201);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(81, 20);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Availability";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(64, 325);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 30);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Create seat ";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Departure_RefreshDestinationsBtn.Location = new System.Drawing.Point(241, 547);
+            this.Departure_RefreshDestinationsBtn.Name = "Departure_RefreshDestinationsBtn";
+            this.Departure_RefreshDestinationsBtn.Size = new System.Drawing.Size(118, 51);
+            this.Departure_RefreshDestinationsBtn.TabIndex = 13;
+            this.Departure_RefreshDestinationsBtn.Text = "Refresh destinations";
+            this.Departure_RefreshDestinationsBtn.UseVisualStyleBackColor = true;
+            this.Departure_RefreshDestinationsBtn.Click += new System.EventHandler(this.button3_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 39);
+            this.label5.Location = new System.Drawing.Point(256, 353);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(110, 20);
             this.label5.TabIndex = 1;
             this.label5.Text = "Select a plane";
             // 
-            // comboBoxSeats_ListOfPlanes
+            // Departure_ListDestinations
             // 
-            this.comboBoxSeats_ListOfPlanes.FormattingEnabled = true;
-            this.comboBoxSeats_ListOfPlanes.Location = new System.Drawing.Point(25, 62);
-            this.comboBoxSeats_ListOfPlanes.Name = "comboBoxSeats_ListOfPlanes";
-            this.comboBoxSeats_ListOfPlanes.Size = new System.Drawing.Size(248, 28);
-            this.comboBoxSeats_ListOfPlanes.TabIndex = 0;
+            this.Departure_ListDestinations.FormattingEnabled = true;
+            this.Departure_ListDestinations.ItemHeight = 20;
+            this.Departure_ListDestinations.Location = new System.Drawing.Point(15, 54);
+            this.Departure_ListDestinations.Name = "Departure_ListDestinations";
+            this.Departure_ListDestinations.Size = new System.Drawing.Size(220, 544);
+            this.Departure_ListDestinations.TabIndex = 11;
+            // 
+            // comboBoxDepartures_ListOfPlanes
+            // 
+            this.comboBoxDepartures_ListOfPlanes.FormattingEnabled = true;
+            this.comboBoxDepartures_ListOfPlanes.Location = new System.Drawing.Point(260, 376);
+            this.comboBoxDepartures_ListOfPlanes.Name = "comboBoxDepartures_ListOfPlanes";
+            this.comboBoxDepartures_ListOfPlanes.Size = new System.Drawing.Size(257, 28);
+            this.comboBoxDepartures_ListOfPlanes.TabIndex = 0;
+            // 
+            // Departure_CreateDepartureBtn
+            // 
+            this.Departure_CreateDepartureBtn.BackColor = System.Drawing.Color.Transparent;
+            this.Departure_CreateDepartureBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Departure_CreateDepartureBtn.Location = new System.Drawing.Point(414, 547);
+            this.Departure_CreateDepartureBtn.Name = "Departure_CreateDepartureBtn";
+            this.Departure_CreateDepartureBtn.Size = new System.Drawing.Size(103, 51);
+            this.Departure_CreateDepartureBtn.TabIndex = 12;
+            this.Departure_CreateDepartureBtn.Text = "Create departure";
+            this.Departure_CreateDepartureBtn.UseVisualStyleBackColor = false;
+            this.Departure_CreateDepartureBtn.Click += new System.EventHandler(this.CreateDeparture_Click);
             // 
             // tabPagePassengers
             // 
@@ -850,6 +842,85 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Row Schemas";
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.Plane_UpdateSeatSchema);
+            this.groupBox6.Controls.Add(this.Plane_UpdateRowNumber);
+            this.groupBox6.Controls.Add(this.Plane_UpdateSeatSchemaTextBox);
+            this.groupBox6.Controls.Add(this.label26);
+            this.groupBox6.Controls.Add(this.label25);
+            this.groupBox6.Location = new System.Drawing.Point(261, 339);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(230, 154);
+            this.groupBox6.TabIndex = 16;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Edit";
+            // 
+            // Plane_UpdateSeatSchema
+            // 
+            this.Plane_UpdateSeatSchema.Location = new System.Drawing.Point(81, 97);
+            this.Plane_UpdateSeatSchema.Name = "Plane_UpdateSeatSchema";
+            this.Plane_UpdateSeatSchema.Size = new System.Drawing.Size(75, 35);
+            this.Plane_UpdateSeatSchema.TabIndex = 18;
+            this.Plane_UpdateSeatSchema.Text = "Update";
+            this.Plane_UpdateSeatSchema.UseVisualStyleBackColor = true;
+            this.Plane_UpdateSeatSchema.Click += new System.EventHandler(this.Plane_UpdateSeatSchema_Click);
+            // 
+            // Plane_UpdateRowNumber
+            // 
+            this.Plane_UpdateRowNumber.Location = new System.Drawing.Point(118, 54);
+            this.Plane_UpdateRowNumber.Name = "Plane_UpdateRowNumber";
+            this.Plane_UpdateRowNumber.Size = new System.Drawing.Size(100, 26);
+            this.Plane_UpdateRowNumber.TabIndex = 20;
+            // 
+            // Plane_UpdateSeatSchemaTextBox
+            // 
+            this.Plane_UpdateSeatSchemaTextBox.Location = new System.Drawing.Point(118, 22);
+            this.Plane_UpdateSeatSchemaTextBox.Name = "Plane_UpdateSeatSchemaTextBox";
+            this.Plane_UpdateSeatSchemaTextBox.Size = new System.Drawing.Size(100, 26);
+            this.Plane_UpdateSeatSchemaTextBox.TabIndex = 18;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(6, 57);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(101, 20);
+            this.label26.TabIndex = 19;
+            this.label26.Text = "Row Number";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(6, 25);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(106, 20);
+            this.label25.TabIndex = 18;
+            this.label25.Text = "Seat Schema";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.Plane_SeatSchemaTextBox);
+            this.groupBox5.Controls.Add(this.label21);
+            this.groupBox5.Controls.Add(this.Plane_CreateSeatSchema);
+            this.groupBox5.Controls.Add(this.Plane_RowNumber);
+            this.groupBox5.Controls.Add(this.label24);
+            this.groupBox5.Location = new System.Drawing.Point(9, 339);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(230, 154);
+            this.groupBox5.TabIndex = 11;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "New";
+            // 
+            // Plane_SeatSchemaTextBox
+            // 
+            this.Plane_SeatSchemaTextBox.Location = new System.Drawing.Point(118, 22);
+            this.Plane_SeatSchemaTextBox.Name = "Plane_SeatSchemaTextBox";
+            this.Plane_SeatSchemaTextBox.Size = new System.Drawing.Size(100, 26);
+            this.Plane_SeatSchemaTextBox.TabIndex = 12;
+            this.Plane_SeatSchemaTextBox.TextChanged += new System.EventHandler(this.Plane_SeatSchemaTextBox_TextChanged);
+            this.Plane_SeatSchemaTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Plane_SeatSchemaTextBox_KeyPress);
+            // 
             // label21
             // 
             this.label21.AutoSize = true;
@@ -858,25 +929,6 @@
             this.label21.Size = new System.Drawing.Size(101, 20);
             this.label21.TabIndex = 17;
             this.label21.Text = "Row Number";
-            // 
-            // Plane_RowNumber
-            // 
-            this.Plane_RowNumber.Location = new System.Drawing.Point(118, 54);
-            this.Plane_RowNumber.Name = "Plane_RowNumber";
-            this.Plane_RowNumber.Size = new System.Drawing.Size(100, 26);
-            this.Plane_RowNumber.TabIndex = 16;
-            this.Plane_RowNumber.TextChanged += new System.EventHandler(this.Plane_RowNumber_TextChanged);
-            this.Plane_RowNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Plane_RowNumber_KeyPress);
-            // 
-            // Plane_SeatSchema
-            // 
-            this.Plane_SeatSchema.FormattingEnabled = true;
-            this.Plane_SeatSchema.ItemHeight = 20;
-            this.Plane_SeatSchema.Location = new System.Drawing.Point(9, 21);
-            this.Plane_SeatSchema.Name = "Plane_SeatSchema";
-            this.Plane_SeatSchema.Size = new System.Drawing.Size(230, 304);
-            this.Plane_SeatSchema.TabIndex = 3;
-            this.Plane_SeatSchema.SelectedIndexChanged += new System.EventHandler(this.Plane_SeatSchema_SelectedIndexChanged);
             // 
             // Plane_CreateSeatSchema
             // 
@@ -888,14 +940,14 @@
             this.Plane_CreateSeatSchema.UseVisualStyleBackColor = true;
             this.Plane_CreateSeatSchema.Click += new System.EventHandler(this.Plane_CreateSeatSchema_Click);
             // 
-            // Plane_SeatSchemaTextBox
+            // Plane_RowNumber
             // 
-            this.Plane_SeatSchemaTextBox.Location = new System.Drawing.Point(118, 22);
-            this.Plane_SeatSchemaTextBox.Name = "Plane_SeatSchemaTextBox";
-            this.Plane_SeatSchemaTextBox.Size = new System.Drawing.Size(100, 26);
-            this.Plane_SeatSchemaTextBox.TabIndex = 12;
-            this.Plane_SeatSchemaTextBox.TextChanged += new System.EventHandler(this.Plane_SeatSchemaTextBox_TextChanged);
-            this.Plane_SeatSchemaTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Plane_SeatSchemaTextBox_KeyPress);
+            this.Plane_RowNumber.Location = new System.Drawing.Point(118, 54);
+            this.Plane_RowNumber.Name = "Plane_RowNumber";
+            this.Plane_RowNumber.Size = new System.Drawing.Size(100, 26);
+            this.Plane_RowNumber.TabIndex = 16;
+            this.Plane_RowNumber.TextChanged += new System.EventHandler(this.Plane_RowNumber_TextChanged);
+            this.Plane_RowNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Plane_RowNumber_KeyPress);
             // 
             // label24
             // 
@@ -905,6 +957,16 @@
             this.label24.Size = new System.Drawing.Size(106, 20);
             this.label24.TabIndex = 13;
             this.label24.Text = "Seat Schema";
+            // 
+            // Plane_SeatSchema
+            // 
+            this.Plane_SeatSchema.FormattingEnabled = true;
+            this.Plane_SeatSchema.ItemHeight = 20;
+            this.Plane_SeatSchema.Location = new System.Drawing.Point(9, 21);
+            this.Plane_SeatSchema.Name = "Plane_SeatSchema";
+            this.Plane_SeatSchema.Size = new System.Drawing.Size(230, 304);
+            this.Plane_SeatSchema.TabIndex = 3;
+            this.Plane_SeatSchema.SelectedIndexChanged += new System.EventHandler(this.Plane_SeatSchema_SelectedIndexChanged);
             // 
             // Plane_RefreshSeatSchema
             // 
@@ -930,75 +992,12 @@
             // 
             this.destinationBindingSource.DataSource = typeof(Booking.Client.BookingServiceRemote.Destination);
             // 
-            // groupBox5
+            // testBox
             // 
-            this.groupBox5.Controls.Add(this.Plane_SeatSchemaTextBox);
-            this.groupBox5.Controls.Add(this.label21);
-            this.groupBox5.Controls.Add(this.Plane_CreateSeatSchema);
-            this.groupBox5.Controls.Add(this.Plane_RowNumber);
-            this.groupBox5.Controls.Add(this.label24);
-            this.groupBox5.Location = new System.Drawing.Point(9, 339);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(230, 154);
-            this.groupBox5.TabIndex = 11;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "New";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.Plane_UpdateSeatSchema);
-            this.groupBox6.Controls.Add(this.Plane_UpdateRowNumber);
-            this.groupBox6.Controls.Add(this.Plane_UpdateSeatSchemaTextBox);
-            this.groupBox6.Controls.Add(this.label26);
-            this.groupBox6.Controls.Add(this.label25);
-            this.groupBox6.Location = new System.Drawing.Point(261, 339);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(230, 154);
-            this.groupBox6.TabIndex = 16;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Edit";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(6, 25);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(106, 20);
-            this.label25.TabIndex = 18;
-            this.label25.Text = "Seat Schema";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(6, 57);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(101, 20);
-            this.label26.TabIndex = 19;
-            this.label26.Text = "Row Number";
-            // 
-            // Plane_UpdateSeatSchemaTextBox
-            // 
-            this.Plane_UpdateSeatSchemaTextBox.Location = new System.Drawing.Point(118, 22);
-            this.Plane_UpdateSeatSchemaTextBox.Name = "Plane_UpdateSeatSchemaTextBox";
-            this.Plane_UpdateSeatSchemaTextBox.Size = new System.Drawing.Size(100, 26);
-            this.Plane_UpdateSeatSchemaTextBox.TabIndex = 18;
-            // 
-            // Plane_UpdateRowNumber
-            // 
-            this.Plane_UpdateRowNumber.Location = new System.Drawing.Point(118, 54);
-            this.Plane_UpdateRowNumber.Name = "Plane_UpdateRowNumber";
-            this.Plane_UpdateRowNumber.Size = new System.Drawing.Size(100, 26);
-            this.Plane_UpdateRowNumber.TabIndex = 20;
-            // 
-            // Plane_UpdateSeatSchema
-            // 
-            this.Plane_UpdateSeatSchema.Location = new System.Drawing.Point(81, 97);
-            this.Plane_UpdateSeatSchema.Name = "Plane_UpdateSeatSchema";
-            this.Plane_UpdateSeatSchema.Size = new System.Drawing.Size(75, 35);
-            this.Plane_UpdateSeatSchema.TabIndex = 18;
-            this.Plane_UpdateSeatSchema.Text = "Update";
-            this.Plane_UpdateSeatSchema.UseVisualStyleBackColor = true;
-            this.Plane_UpdateSeatSchema.Click += new System.EventHandler(this.Plane_UpdateSeatSchema_Click);
+            this.testBox.Location = new System.Drawing.Point(259, 433);
+            this.testBox.Name = "testBox";
+            this.testBox.Size = new System.Drawing.Size(100, 26);
+            this.testBox.TabIndex = 16;
             // 
             // MainFrame
             // 
@@ -1008,8 +1007,10 @@
             this.PlaneTab.ResumeLayout(false);
             this.tabCreateRoute.ResumeLayout(false);
             this.tabCreateRoute.PerformLayout();
-            this.tabPageSeats.ResumeLayout(false);
-            this.tabPageSeats.PerformLayout();
+            this.tabPageDeparture.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.tabPagePassengers.ResumeLayout(false);
             this.tabPagePassengers.PerformLayout();
             this.tabPageBookings.ResumeLayout(false);
@@ -1021,11 +1022,11 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.destinationBindingSource)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.destinationBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1033,21 +1034,15 @@
         #endregion
         private System.Windows.Forms.TabControl PlaneTab;
         private System.Windows.Forms.TabPage tabCreateRoute;
-        private System.Windows.Forms.TabPage tabPageSeats;
+        private System.Windows.Forms.TabPage tabPageDeparture;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox CreateRoute_StartDestination;
         private System.Windows.Forms.ComboBox comboBoxDestination_ListOfPlanes;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button Button;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBoxSeats_ListOfPlanes;
+        private System.Windows.Forms.ComboBox comboBoxDepartures_ListOfPlanes;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.ListBox listBoxPlanes;
         private System.Windows.Forms.TabPage tabPagePassengers;
         private System.Windows.Forms.ListBox listBoxPassengers;
@@ -1081,12 +1076,11 @@
         private System.Windows.Forms.TextBox textBox_Bookings_Passenger_FirstName;
         private System.Windows.Forms.Button DeleteRoute_Button;
         private System.Windows.Forms.MonthCalendar calenderRoute;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ListBox destBox;
+        private System.Windows.Forms.Button Departure_CreateDepartureBtn;
+        private System.Windows.Forms.ListBox Departure_ListDestinations;
         private System.Windows.Forms.BindingSource destinationBindingSource;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox Departur;
-        private System.Windows.Forms.ListBox depBox;
+        private System.Windows.Forms.Button Departure_RefreshDestinationsBtn;
+        private System.Windows.Forms.ListBox Departure_ListDespartures;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabPage tabPage1;
@@ -1118,5 +1112,12 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Button Departure_RefreshDepartureBtn;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button Departure_DeleteDepartureBtn;
+        private System.Windows.Forms.TextBox testBox;
     }
 }

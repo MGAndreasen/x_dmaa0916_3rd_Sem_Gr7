@@ -52,6 +52,8 @@ namespace Booking.DB
                         scope.Complete();
                     }
 
+                    // Husk at slette Seats også!
+
                 }
             }
         }
@@ -77,6 +79,8 @@ namespace Booking.DB
                     StartDestination = dbd.Get((int)rdr["StartDestination"]),
                     DepartureTime = (DateTime)rdr["DepartureTime"]
                 };
+
+                // husk at tilføje seats til listen
             }
         }
 
@@ -126,6 +130,7 @@ namespace Booking.DB
                             DepartureTime = (DateTime)rdr["DepartureTime"]
 
                         };
+                        // husk seats
                         departures.Add(d);
                     }
                 }

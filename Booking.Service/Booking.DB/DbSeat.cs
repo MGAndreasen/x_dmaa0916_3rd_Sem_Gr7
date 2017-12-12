@@ -10,7 +10,7 @@ using System.Transactions;
 
 namespace Booking.DB
 {
-    public class DbSeat : IDbCRUD<Seat>
+    public class DbSeat
     {
         private DataAccess data = DataAccess.Instance;
 
@@ -38,7 +38,6 @@ namespace Booking.DB
         {
             Seat s = null;
 
-            DbRow dbRow = new DbRow();
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                 con.Open();
@@ -50,7 +49,7 @@ namespace Booking.DB
                 s = new Seat
                 {                 
                     Id = (int)rdr["Id"],
-                    Row = dbRow.Get((int)rdr["Row_Id"]),
+                    Row = (int)rdr["Row_Id"],
                     Number = (int)rdr["Number"],
                     Available = (bool)rdr["Availability"]
                 };
@@ -58,7 +57,7 @@ namespace Booking.DB
             return s;
         }
 
-        public void Create(Seat obj)
+        public void Create(Seat obj, int planeId)
         {
             TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
@@ -66,9 +65,10 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Seat (Row_Id, Number, Availability) VALUES (@Number, @Availability)", con);
-                    cmd.Parameters.Add("@Row_Id", SqlDbType.Int).Value = obj.Row.Id;
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Seat (Row, Number, PlaneId, Availability) VALUES (@Row, @Number, @PlaneID, @Availability)", con);
+                    cmd.Parameters.Add("@Row", SqlDbType.Int).Value = obj.Id;
                     cmd.Parameters.Add("@Number", SqlDbType.Int).Value = obj.Number;
+                    cmd.Parameters.Add("@PlaneId", SqlDbType.Int).Value = planeId;
                     cmd.Parameters.Add("@Availability", SqlDbType.Bit).Value = obj.Available;
 
                     cmd.ExecuteNonQuery();
@@ -77,7 +77,7 @@ namespace Booking.DB
                 scope.Complete();
             }
         }
-        public void Update(Seat obj)
+        public void Update(Seat obj, int planeId)
         {
             TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
@@ -85,11 +85,12 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Row_Id=@Row Number=@Number, Availability=@Availability WHERE Id=@id", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Row=@Row, Number=@Number, PlaneId=@PlaneId, Availability=@Availability WHERE Id=@id", con);
 
                     cmd.Parameters.Add("@id", SqlDbType.Int).Value = obj.Id;
-                    cmd.Parameters.Add("@Row", SqlDbType.Int).Value = obj.Row.Id;
+                    cmd.Parameters.Add("@Row", SqlDbType.Int).Value = obj.Row;
                     cmd.Parameters.Add("@Number", SqlDbType.Int).Value = obj.Number;
+                    cmd.Parameters.Add("@PlaneId", SqlDbType.Int).Value = planeId;
                     cmd.Parameters.Add("@Availability", SqlDbType.Bit).Value = obj.Available;
 
                     cmd.ExecuteNonQuery();       

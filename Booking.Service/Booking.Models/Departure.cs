@@ -25,8 +25,12 @@ namespace Booking.Models
         [DataMember]
         public Plane Plane { get; set; }
 
+        [DataMember]
+        public List<Seat> Seats { get; set; }
+
         public Departure()
         {
+            Seats = new List<Seat>();
             //Constructor xD
         }
     }

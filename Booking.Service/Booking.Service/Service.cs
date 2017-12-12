@@ -23,7 +23,6 @@ namespace Booking.Service
         private PassengerCtrl passengerCtrl = new PassengerCtrl();
         private PaymentCtrl paymentCtrl = new PaymentCtrl();
         private PlaneCtrl planeCtrl = new PlaneCtrl();
-        private RowCtrl rowCtrl = new RowCtrl();
         private SeatCtrl seatCtrl = new SeatCtrl();
         //private SeatSchemaCtrl seatSchemaCtrl = new SeatSchemaCtrl();
         private TicketCtrl ticketCtrl = new TicketCtrl();
@@ -343,32 +342,10 @@ namespace Booking.Service
         }
         #endregion
 
-        #region Row
-        public void CreateRow(Row obj)
-        {
-            rowCtrl.Create(obj);
-        }
-
-        public Row GetRow(int id)
-        {
-            return rowCtrl.Get(id);
-        }
-
-        public void UpdateRow(Row obj)
-        {
-            rowCtrl.Update(obj);
-        }
-
-        public void DeleteRow(int id)
-        {
-            rowCtrl.Delete(id);
-        }
-        #endregion
-
         #region Seat
-        public void CreateSeat(Seat obj)
+        public void CreateSeat(Seat obj, int planeId)
         {
-            seatCtrl.Create(obj);
+            seatCtrl.Create(obj, planeId);
         }
 
         public Seat GetSeat(int id)
@@ -376,9 +353,9 @@ namespace Booking.Service
             return seatCtrl.Get(id);
         }
 
-        public void UpdateSeat(Seat obj)
+        public void UpdateSeat(Seat obj, int planeId)
         {
-            seatCtrl.Update(obj);
+            seatCtrl.Update(obj, planeId);
         }
 
         public void DeleteSeat(int id)

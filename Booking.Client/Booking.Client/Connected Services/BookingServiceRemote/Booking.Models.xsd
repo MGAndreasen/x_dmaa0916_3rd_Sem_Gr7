@@ -6,6 +6,7 @@
       <xs:element minOccurs="0" name="EndDestination" nillable="true" type="tns:Destination" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="Plane" nillable="true" type="tns:Plane" />
+      <xs:element minOccurs="0" name="Seats" nillable="true" type="tns:ArrayOfSeat" />
       <xs:element minOccurs="0" name="StartDestination" nillable="true" type="tns:Destination" />
     </xs:sequence>
   </xs:complexType>
@@ -39,6 +40,21 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SeatSchema" nillable="true" type="tns:SeatSchema" />
+  <xs:complexType name="ArrayOfSeat">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Seat" nillable="true" type="tns:Seat" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSeat" nillable="true" type="tns:ArrayOfSeat" />
+  <xs:complexType name="Seat">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Available" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Number" type="xs:int" />
+      <xs:element minOccurs="0" name="Row" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Seat" nillable="true" type="tns:Seat" />
   <xs:complexType name="ArrayOfDeparture">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Departure" nillable="true" type="tns:Departure" />
@@ -119,23 +135,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Passenger" nillable="true" type="tns:Passenger" />
-  <xs:complexType name="Seat">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Available" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Number" type="xs:int" />
-      <xs:element minOccurs="0" name="Row" nillable="true" type="tns:Row" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Seat" nillable="true" type="tns:Seat" />
-  <xs:complexType name="Row">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Price" type="xs:double" />
-      <xs:element minOccurs="0" name="SeatNumber" nillable="true" type="tns:SeatSchema" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Row" nillable="true" type="tns:Row" />
   <xs:complexType name="ArrayOfPassenger">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Passenger" nillable="true" type="tns:Passenger" />
