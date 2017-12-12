@@ -6,32 +6,26 @@
         <h1>Tilbuds Rejser</h1>
     </div>
     @{
-        //if (ViewBag.proxyError == "")
-        //{
-            try
-            {
-                //var client = ServiceHelper.GetServiceClientWithCredentials();
-                var client = ViewBag.proxy;
-                var dest = client.GetAllDestinations();
+        try
+        {
+            //var client = ServiceHelper.GetServiceClientWithCredentials();
+            var client = ViewBag.proxy;
+            var dest = client.GetAllDestinations();
 
-                foreach (var s in dest)
-                {
-                    <div class="Boxed floatLeft">
-                        <h1>@s.NameDestination</h1>
-                        <h3>Fra Aalborg</h3>
-                        <h3>Fra/enkeltbillet</h3>
-                    </div>
-                }
-            }
-            catch (Exception ex)
+            foreach (var s in dest)
             {
-                <p>Der er sket en fejl!</p>
+                <div class="Boxed floatLeft">
+                    <h1>@s.NameDestination</h1>
+                    <h3>Fra Aalborg</h3>
+                    <h3>Fra/enkeltbillet</h3>
+                </div>
             }
-        //}
-        //else
-       // {
-       //     <p>Kunne ikke forbinde til backenden!</p>
-       // }
+        }
+        catch (Exception)
+        {
+            <p>Der er sket en fejl!</p>
+        }
+       
     }
 
     @if (AuthHelper.IsLoggedIn())

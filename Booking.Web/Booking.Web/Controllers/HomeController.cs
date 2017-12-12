@@ -15,10 +15,11 @@ namespace Booking.Web.Controllers
             {
                 var client = ServiceHelper.GetServiceClientWithCredentials();
                 ViewBag.proxy = client;
+                ViewBag.proxyError = "";
             }
             catch (Exception ex)
             {
-                ViewBag.proxyError = ex;
+                ViewBag.proxyError = ex.ToString() ;
             }
 
             return View();
