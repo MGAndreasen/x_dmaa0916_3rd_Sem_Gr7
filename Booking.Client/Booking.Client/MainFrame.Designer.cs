@@ -48,6 +48,7 @@
             this.Departure_RefreshDepartureBtn = new System.Windows.Forms.Button();
             this.Departure_ListDespartures = new System.Windows.Forms.ListBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.testBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.calenderRoute = new System.Windows.Forms.MonthCalendar();
@@ -115,7 +116,6 @@
             this.Plane_RefreshSeatSchema = new System.Windows.Forms.Button();
             this.Plane_DeleteSeatSchema = new System.Windows.Forms.Button();
             this.destinationBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.testBox = new System.Windows.Forms.TextBox();
             this.PlaneTab.SuspendLayout();
             this.tabCreateRoute.SuspendLayout();
             this.tabPageDeparture.SuspendLayout();
@@ -298,6 +298,7 @@
             this.Departure_DeleteDepartureBtn.TabIndex = 17;
             this.Departure_DeleteDepartureBtn.Text = "Delete departure";
             this.Departure_DeleteDepartureBtn.UseVisualStyleBackColor = true;
+            this.Departure_DeleteDepartureBtn.Click += new System.EventHandler(this.Departure_DeleteDepartureBtn_Click);
             // 
             // Departure_RefreshDepartureBtn
             // 
@@ -336,6 +337,13 @@
             this.groupBox8.TabIndex = 16;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Create Departure";
+            // 
+            // testBox
+            // 
+            this.testBox.Location = new System.Drawing.Point(259, 433);
+            this.testBox.Name = "testBox";
+            this.testBox.Size = new System.Drawing.Size(100, 26);
+            this.testBox.TabIndex = 16;
             // 
             // label7
             // 
@@ -991,13 +999,6 @@
             // destinationBindingSource
             // 
             this.destinationBindingSource.DataSource = typeof(Booking.Client.BookingServiceRemote.Destination);
-            // 
-            // testBox
-            // 
-            this.testBox.Location = new System.Drawing.Point(259, 433);
-            this.testBox.Name = "testBox";
-            this.testBox.Size = new System.Drawing.Size(100, 26);
-            this.testBox.TabIndex = 16;
             // 
             // MainFrame
             // 

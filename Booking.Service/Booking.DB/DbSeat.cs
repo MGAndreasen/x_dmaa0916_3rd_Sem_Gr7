@@ -38,22 +38,25 @@ namespace Booking.DB
         {
             Seat s = null;
 
-                using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
-                {
+            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+            {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Booking_Seat WHERE Id=@Id", con);
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
 
                 SqlDataReader rdr = cmd.ExecuteReader();
-                rdr.Read();
-                s = new Seat
-                {                 
-                    Id = (int)rdr["Id"],
-                    Row = (int)rdr["Row_Id"],
-                    Number = (int)rdr["Number"],
-                    Available = (bool)rdr["Availability"]
-                };
+                if (rdr.Read())
+                {
+                    s = new Seat
+                    {
+                        Id = (int)rdr["Id"],
+                        Row = (int)rdr["Row_Id"],
+                        Number = (int)rdr["Number"],
+                        Available = (bool)rdr["Availability"]
+                    };
                 }
+
+            }
             return s;
         }
 
@@ -72,7 +75,7 @@ namespace Booking.DB
                     cmd.Parameters.Add("@Availability", SqlDbType.Bit).Value = obj.Available;
 
                     cmd.ExecuteNonQuery();
- 
+
                 }
                 scope.Complete();
             }
@@ -93,8 +96,8 @@ namespace Booking.DB
                     cmd.Parameters.Add("@PlaneId", SqlDbType.Int).Value = planeId;
                     cmd.Parameters.Add("@Availability", SqlDbType.Bit).Value = obj.Available;
 
-                    cmd.ExecuteNonQuery();       
-                } 
+                    cmd.ExecuteNonQuery();
+                }
                 scope.Complete();
             }
         }
