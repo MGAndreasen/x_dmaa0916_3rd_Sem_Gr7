@@ -8,12 +8,12 @@ using Booking.DB;
 
 namespace Booking.Controller
 {
-    public class SeatCtrl : ICRUD<Seat>
+    public class SeatCtrl
     {
         private static DbSeat dbs = new DbSeat();
-        public void Create(Seat obj)
+        public void Create(Seat obj, int plainID)
         {
-            dbs.Create(obj);
+            dbs.Create(obj, plainID);
         }
 
         public void Delete(int id)
@@ -26,9 +26,9 @@ namespace Booking.Controller
             return dbs.Get(id);
         }
 
-        public void Update(Seat obj)
+        public void Update(Seat obj, int planeId)
         {
-            dbs.Update(obj);
+            dbs.Update(obj, planeId);
         }
     }
 }

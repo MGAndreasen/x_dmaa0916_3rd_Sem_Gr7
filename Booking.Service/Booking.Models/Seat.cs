@@ -20,9 +20,9 @@ namespace Booking.Models
         public int Number { get; set; }
 
         [DataMember]
-        public bool Available { get; set; }
+        public int Row { get; set; }
 
         [DataMember]
-        public Row Row { get; set; }
+        public bool Available { get; set; }
     }
 }

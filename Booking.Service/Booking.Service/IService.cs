@@ -167,27 +167,14 @@ namespace Booking.Service
 
         #endregion 
 
-        #region RowCtrl
-
-        [OperationContract]
-        void CreateRow(Row obj);
-        [OperationContract]
-        Row GetRow(int id);
-        [OperationContract]
-        void UpdateRow(Row obj);
-        [OperationContract]
-        void DeleteRow(int id);
-
-        #endregion 
-
         #region SeatCtrl
 
         [OperationContract]
-        void CreateSeat(Seat obj);
+        void CreateSeat(Seat obj, int planeId);
         [OperationContract]
         Seat GetSeat(int id);
         [OperationContract]
-        void UpdateSeat(Seat obj);
+        void UpdateSeat(Seat obj, int planeId);
         [OperationContract]
         void DeleteSeat(int id);
 

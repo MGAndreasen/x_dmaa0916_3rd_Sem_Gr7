@@ -51,7 +51,6 @@
     <Compile Include="DbPassenger.cs" />
     <Compile Include="DbPayment.cs" />
     <Compile Include="DbPlane.cs" />
-    <Compile Include="DbRow.cs" />
     <Compile Include="DbSeat.cs" />
     <Compile Include="DbTicket.cs" />
     <Compile Include="DbUser.cs" />
