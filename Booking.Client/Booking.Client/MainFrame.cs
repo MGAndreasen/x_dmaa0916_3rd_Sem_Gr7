@@ -516,7 +516,7 @@ namespace Booking.Client
             {
                 Departure_ListDespartures.DataSource = myService.GetAllDepartures();
                 Departure_ListDespartures.ValueMember = "Id";
-                Departure_ListDespartures.DisplayMember = "EndDestination";
+                Departure_ListDespartures.DisplayMember = "Id";
             }
             catch(Exception ex)
             {
@@ -526,6 +526,21 @@ namespace Booking.Client
         private void Departure_RefreshDepartureBtn_Click(object sender, EventArgs e)
         {
             ShowDeparture();
+        }
+
+        private void Departure_DeleteDepartureBtn_Click(object sender, EventArgs e)
+        {
+            Departure d = null;
+            try
+            {
+                d = (Departure)Departure_ListDespartures.SelectedItem;
+            }
+            catch (Exception) { }
+
+            if (d != null)
+            {
+                myService.DeleteDeparture(d.Id);
+            }
         }
     }
 }
