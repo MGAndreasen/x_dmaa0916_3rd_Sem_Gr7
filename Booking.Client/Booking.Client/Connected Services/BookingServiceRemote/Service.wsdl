@@ -360,30 +360,6 @@
   <wsdl:message name="IService_GetAllPlanes_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllPlanesResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_CreateRow_InputMessage">
-    <wsdl:part name="parameters" element="tns:CreateRow" />
-  </wsdl:message>
-  <wsdl:message name="IService_CreateRow_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CreateRowResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService_GetRow_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetRow" />
-  </wsdl:message>
-  <wsdl:message name="IService_GetRow_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetRowResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService_UpdateRow_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateRow" />
-  </wsdl:message>
-  <wsdl:message name="IService_UpdateRow_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateRowResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService_DeleteRow_InputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteRow" />
-  </wsdl:message>
-  <wsdl:message name="IService_DeleteRow_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteRowResponse" />
-  </wsdl:message>
   <wsdl:message name="IService_CreateSeat_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateSeat" />
   </wsdl:message>
@@ -597,22 +573,6 @@
     <wsdl:operation name="GetAllPlanes">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllPlanes" message="tns:IService_GetAllPlanes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllPlanesResponse" message="tns:IService_GetAllPlanes_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="CreateRow">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateRow" message="tns:IService_CreateRow_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateRowResponse" message="tns:IService_CreateRow_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetRow">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetRow" message="tns:IService_GetRow_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetRowResponse" message="tns:IService_GetRow_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdateRow">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateRow" message="tns:IService_UpdateRow_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateRowResponse" message="tns:IService_UpdateRow_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="DeleteRow">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteRow" message="tns:IService_DeleteRow_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteRowResponse" message="tns:IService_DeleteRow_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateSeat">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateSeat" message="tns:IService_CreateSeat_InputMessage" />
@@ -1015,42 +975,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllPlanes">
       <soap12:operation soapAction="http://tempuri.org/IService/GetAllPlanes" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CreateRow">
-      <soap12:operation soapAction="http://tempuri.org/IService/CreateRow" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetRow">
-      <soap12:operation soapAction="http://tempuri.org/IService/GetRow" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateRow">
-      <soap12:operation soapAction="http://tempuri.org/IService/UpdateRow" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeleteRow">
-      <soap12:operation soapAction="http://tempuri.org/IService/DeleteRow" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

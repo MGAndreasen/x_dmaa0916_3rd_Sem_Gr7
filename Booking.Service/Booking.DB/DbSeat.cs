@@ -49,7 +49,7 @@ namespace Booking.DB
                 s = new Seat
                 {                 
                     Id = (int)rdr["Id"],
-                    Row = (int)rdr["Row"],
+                    Row = (int)rdr["Row_Id"],
                     Number = (int)rdr["Number"],
                     Available = (bool)rdr["Availability"]
                 };

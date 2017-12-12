@@ -39,15 +39,20 @@ namespace Booking.Client
         }
         public void ShowPlanesComboBox()
         {
-            //MainFrame, Destinaion
+            //MainFrame, Planes, 'Plane Destination'
             comboBoxDestination_ListOfPlanes.DataSource = myService.GetAllPlanes();
             comboBoxDestination_ListOfPlanes.ValueMember = "Id";
             comboBoxDestination_ListOfPlanes.DisplayMember = "Type";
 
+            //MainFrame, Destination, 'Departures'
+            Departure_ListDestinations.DataSource = myService.GetAllDestinations();
+            Departure_ListDestinations.ValueMember = "Id";
+            Departure_ListDestinations.DisplayMember = "NameDestination";
+
             //Mainframe, Seats
-            comboBoxSeats_ListOfPlanes.DataSource = myService.GetAllPlanes();
-            comboBoxSeats_ListOfPlanes.ValueMember = "Id";
-            comboBoxSeats_ListOfPlanes.DisplayMember = "Type";
+            comboBoxDepartures_ListOfPlanes.DataSource = myService.GetAllPlanes();
+            comboBoxDepartures_ListOfPlanes.ValueMember = "Id";
+            comboBoxDepartures_ListOfPlanes.DisplayMember = "Type";
 
             //Mainframe, Passenger
             comboBoxPassengers_Planes.DataSource = myService.GetAllPlanes();
@@ -77,20 +82,6 @@ namespace Booking.Client
             }
             comboBox__Bookings_Passengers.ValueMember = "Id";
             comboBox__Bookings_Passengers.DisplayMember = "FirstName";
-        }
-
-        public void CreateRoute()
-        {
-            DateTime date = calenderRoute.SelectionRange.Start;
-            var d = (Destination)destBox.SelectedItem;
-            Departure de = new Departure();
-            {
-
-                d = de.EndDestination;
-                date = de.DepartureTime;
-
-            }
-            myService.CreateDeparture(de);
         }
 
         public void CreateSeatSchema()
@@ -142,9 +133,9 @@ namespace Booking.Client
         }
         public void ShowRoute()
         {
-            depBox.DataSource = myService.GetAllDepartures();
-            depBox.ValueMember = "Id";
-            depBox.DisplayMember = "EndDestination," + "DepartureTime";
+            Departure_ListDespartures.DataSource = myService.GetAllDepartures();
+            Departure_ListDespartures.ValueMember = "Id";
+            Departure_ListDespartures.DisplayMember = "EndDestination," + "DepartureTime";
         }
 
 
@@ -222,26 +213,30 @@ namespace Booking.Client
             DeleteDestination();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void CreateDeparture_Click(object sender, EventArgs e)
         {
+            if (Departure_ListDestinations.SelectedItem != null && calenderRoute.SelectionStart != null && comboBoxDepartures_ListOfPlanes.SelectedItem != null)
+            {
+                try
+                {
+                    var d = new Departure
+                    {
+                        StartDestination = myService.GetDestination(5),
+                        EndDestination = (Destination)Departure_ListDestinations.SelectedItem,
+                        DepartureTime = calenderRoute.SelectionStart,
+                        Plane = (Plane)comboBoxDepartures_ListOfPlanes.SelectedItem
+                    };
 
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            CreateRoute();
-            depBox.Items.Clear();
-            ShowRoute();
+                    myService.CreateDeparture(d);
+                }
+                catch (Exception)
+                { }
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            destBox.Items.Clear();
+            Departure_ListDestinations.Items.Clear();
         }
         private void depBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -360,9 +355,9 @@ namespace Booking.Client
 
                     Plane p = (Plane)Plane_PlaneBox.SelectedItem;
 
-                    foreach(SeatSchema s in p.SeatSchema)
+                    foreach (SeatSchema s in p.SeatSchema)
                     {
-                        if(s.Row == rowToAdd)
+                        if (s.Row == rowToAdd)
                         {
                             exists = true;
                         }
@@ -377,7 +372,7 @@ namespace Booking.Client
                     }
                 }
                 catch (Exception)
-                { } 
+                { }
             }
 
             Plane_SeatSchemaTextBox.Text = "";
@@ -511,6 +506,18 @@ namespace Booking.Client
             }
 
             ShowSeatSchemas();
+        }
+
+        private void Departure_RefreshDepartureBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Departure_ListDespartures.DataSource = myService.GetAllDepartures();
+                Departure_ListDespartures.ValueMember = "Id";
+                Departure_ListDespartures.DisplayMember = "EndDestination";
+            }
+            catch (Exception)
+            { }
         }
     }
 }
