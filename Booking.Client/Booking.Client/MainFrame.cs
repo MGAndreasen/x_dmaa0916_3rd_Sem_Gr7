@@ -345,10 +345,34 @@ namespace Booking.Client
         {
             if (Plane_SeatSchemaTextBox.Text.ToString().Trim().Length > 0 && Plane_RowNumber.Text.ToString().Trim().Length > 0)
             {
-                var p = (Plane)Plane_PlaneBox.SelectedItem;
-                SeatSchema ss = new SeatSchema { Layout = Plane_SeatSchemaTextBox.Text, Row = Convert.ToInt32(Plane_RowNumber.Text) };
-                p.SeatSchema.Add(ss);
-                myService.UpdatePlane(p);
+                bool exists = false;
+
+                try
+                {
+                    int rowToAdd = Convert.ToInt32(Plane_RowNumber.Text);
+
+                    Plane p = (Plane)Plane_PlaneBox.SelectedItem;
+
+                    foreach(SeatSchema s in p.SeatSchema)
+                    {
+                        if(s.Row == rowToAdd)
+                        {
+                            exists = true;
+                        }
+                    }
+
+                    if (!exists)
+                    {
+                        SeatSchema ss = new SeatSchema { Layout = Plane_SeatSchemaTextBox.Text, Row = Convert.ToInt32(Plane_RowNumber.Text) };
+
+                        p.SeatSchema.Add(ss);
+                        myService.UpdatePlane(p);
+                    }
+                }
+                catch (Exception)
+                { }
+
+                
             }
         }
 
