@@ -7,6 +7,8 @@
   <h2>@ViewBag.Title.</h2>
 
 @{
+
+    <p>End Destinations:</p>
     try
     {
         var client = ViewBag.proxy;
@@ -14,7 +16,7 @@
 
         foreach (var s in dest)
         {
-          @s.NameDestination 
+          @s.NameDestination
         }
     }
     catch (Exception)
