@@ -8,7 +8,6 @@
     @{
         try
         {
-            //var client = ServiceHelper.GetServiceClientWithCredentials();
             var client = ViewBag.proxy;
             var dest = client.GetAllDestinations();
 
@@ -26,24 +25,6 @@
             <p>Der er sket en fejl!</p>
         }
        
-    }
-
-    @if (AuthHelper.IsLoggedIn())
-    {
-        <h1>Welcome to the secure area!</h1>
-
-        if (AuthHelper.IsAdmin())
-        {
-            <p>Admin wee</p>
-        }
-        else
-        {
-            <p>Customer only</p>
-        }
-    }
-    else
-    {
-        <p> You dont seem to be logged in, i cannot give you anything!! </p>
     }
 </div>
 

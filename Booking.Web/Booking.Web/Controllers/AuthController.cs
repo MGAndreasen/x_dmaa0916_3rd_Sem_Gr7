@@ -72,6 +72,16 @@ namespace Booking.Web.Controllers
         }
         public ActionResult MembersOnly()
         {
+            try
+            {
+                ViewBag.proxy = (BookingServiceRemote.ServiceClient)ServiceHelper.GetServiceClientWithCredentials();
+                ViewBag.proxyError = "";
+            }
+            catch (Exception ex)
+            {
+                ViewBag.proxyError = ex.ToString();
+            }
+
             return View();
         }
     }
