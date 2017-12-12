@@ -1,0 +1,44 @@
+﻿@using Booking.Web.Helpers;
+@{
+    ViewBag.Title = "Afgange";
+}
+
+
+<h5 color="black"> @ViewBag.Title</h5>
+
+<form>
+    Start Destination:<br />
+    <input type="text" name="Start Destination" value="Aalborg" readonly><br>
+    End Destination <br />
+
+    <select>
+        @{
+            try
+            {
+                var client = ViewBag.proxy;
+                var dest = client.GetAllDestinations();
+
+                foreach (var d in dest)
+                {
+
+                    <option value="Destination">@d.NameDestination</option>
+
+                }
+            }
+
+
+            catch (Exception)
+            {
+                <p>Ej for søren, den er gal igen</p>
+            }
+
+        }
+    </select>
+         <input type="Submit" value="Search">
+
+</form>
+
+
+
+
+

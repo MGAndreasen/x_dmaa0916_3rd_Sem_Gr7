@@ -1255,6 +1255,12 @@ namespace Booking.Client.BookingServiceRemote {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllDepartures", ReplyAction="http://tempuri.org/IService/GetAllDeparturesResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Departure>> GetAllDeparturesAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllTilbud", ReplyAction="http://tempuri.org/IService/GetAllTilbudResponse")]
+        System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Departure> GetAllTilbud();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllTilbud", ReplyAction="http://tempuri.org/IService/GetAllTilbudResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Departure>> GetAllTilbudAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateCustomer", ReplyAction="http://tempuri.org/IService/CreateCustomerResponse")]
         void CreateCustomer(Booking.Client.BookingServiceRemote.Customer obj);
         
@@ -1608,6 +1614,14 @@ namespace Booking.Client.BookingServiceRemote {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Departure>> GetAllDeparturesAsync() {
             return base.Channel.GetAllDeparturesAsync();
+        }
+        
+        public System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Departure> GetAllTilbud() {
+            return base.Channel.GetAllTilbud();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Departure>> GetAllTilbudAsync() {
+            return base.Channel.GetAllTilbudAsync();
         }
         
         public void CreateCustomer(Booking.Client.BookingServiceRemote.Customer obj) {
