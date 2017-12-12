@@ -157,6 +157,7 @@ namespace Booking.DB
             List<int> NotToRemove = new List<int>();
             string dontConcatinateSqlQuerys = "";
 
+
             TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
             {
@@ -225,11 +226,8 @@ namespace Booking.DB
                                 cmd4.Parameters.Add("@Layout", SqlDbType.NVarChar).Value = schema.Layout;
                                 cmd4.ExecuteNonQuery();
                             }
+                        }
                     }
-
-
-
-
 
                     scope.Complete();
                 }
