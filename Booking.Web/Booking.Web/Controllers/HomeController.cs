@@ -42,6 +42,17 @@ namespace Booking.Web.Controllers
         {
             ViewBag.Message = "Book a flight";
 
+            try
+            {
+                var client = ServiceHelper.GetServiceClientWithCredentials();
+                ViewBag.proxy = client;
+                ViewBag.proxyError = "";
+            }
+            catch (Exception ex)
+            {
+                ViewBag.proxyError = ex.ToString();
+            }
+
             return View();
         }
     }
