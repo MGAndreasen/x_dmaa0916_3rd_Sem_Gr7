@@ -383,7 +383,7 @@
 	GO
 	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (7, N'Gjøl')
 	GO
-	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (8, N'Tel'Aviv')
+	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (8, N'Tel-Aviv')
 	GO
 	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (9, N'Barcelona')
 	GO
@@ -676,7 +676,7 @@
 	GO
 	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (84, 10, 'ABC||DEF', 3)
 	GO
-	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (4, 1, 'A|||||B', 4)
+	INSERT [dbo].[Booking_SeatSchema] ([Id], [Plane_Id], [Layout], [Row]) VALUES (85, 1, 'A|||||B', 4)
 	GO
 	SET IDENTITY_INSERT [dbo].[Booking_SeatSchema] OFF
 
