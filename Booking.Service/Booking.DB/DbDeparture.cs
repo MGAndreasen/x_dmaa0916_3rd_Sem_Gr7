@@ -30,8 +30,11 @@ namespace Booking.DB
 
                     cmd.ExecuteNonQuery();
 
+
                 }
                 scope.Complete();
+
+
             }
         }
 
@@ -74,8 +77,8 @@ namespace Booking.DB
                 return new Departure
                 {
                     Id = (int)rdr["Id"],
-                    Plane = dbp.Get((int)rdr["Plane_Id"]), 
-                    EndDestination = dbd.Get((int)rdr["EndDestination"]),                   
+                    Plane = dbp.Get((int)rdr["Plane_Id"]),
+                    EndDestination = dbd.Get((int)rdr["EndDestination"]),
                     StartDestination = dbd.Get((int)rdr["StartDestination"]),
                     DepartureTime = (DateTime)rdr["DepartureTime"]
                 };
@@ -121,7 +124,7 @@ namespace Booking.DB
 
                     while (rdr.Read())
                     {
-                        Departure  d = new Departure
+                        Departure d = new Departure
                         {
                             Id = (int)rdr["Id"],
                             Plane = dbp.Get((int)rdr["Plane_Id"]),

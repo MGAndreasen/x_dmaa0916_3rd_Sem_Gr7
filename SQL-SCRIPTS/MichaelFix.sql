@@ -239,26 +239,13 @@
 	END
 	GO
 
-	IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Booking_Row]') AND type in (N'U'))
-	BEGIN
-	CREATE TABLE [dbo].[Booking_Row](
-		[Id] [int] IDENTITY(1,1) NOT NULL,
-		[SeatNumber] [int] NOT NULL,
-		[Price] [int] NOT NULL,
-	 CONSTRAINT [PK_Booking_Row] PRIMARY KEY CLUSTERED 
-	(
-		[Id] ASC
-	)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-	) ON [PRIMARY]
-	END
-	GO
-
 	IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Booking_Seat]') AND type in (N'U'))
 	BEGIN
 	CREATE TABLE [dbo].[Booking_Seat](
 		[Id] [int] IDENTITY(1,1) NOT NULL,
-		[Row_Id] [int] NOT NULL,
+		[Row] [int] NOT NULL,
 		[Number] [int] NOT NULL,
+		[Plane_Id] [int] NOT NULL,
 		[Availability] [bit] NOT NULL,
 	 CONSTRAINT [PK_Booking_Seat] PRIMARY KEY CLUSTERED 
 	(
@@ -456,42 +443,9 @@
 	SET IDENTITY_INSERT [dbo].[Booking_Plane] OFF
 
 	GO
-	SET IDENTITY_INSERT [dbo].[Booking_Row] ON
-	GO
-	INSERT [dbo].[Booking_Row] ([Id], [SeatNumber], [Price]) VALUES (1, 3, 400)
-	GO
-	INSERT [dbo].[Booking_Row] ([Id], [SeatNumber], [Price]) VALUES (2, 10, 400)
-	GO
-	INSERT [dbo].[Booking_Row] ([Id], [SeatNumber], [Price]) VALUES (3, 5, 500)
-	GO
-	SET IDENTITY_INSERT [dbo].[Booking_Row] OFF
-
-	GO
 	SET IDENTITY_INSERT [dbo].[Booking_Seat] ON
 	GO
-	INSERT [dbo].[Booking_Seat] ([Id], [Row_Id], [Number], [Availability]) VALUES (4, 1, 1, 1)
-	GO
-	INSERT [dbo].[Booking_Seat] ([Id], [Row_Id], [Number], [Availability]) VALUES (5, 1, 2, 1)
-	GO
-	INSERT [dbo].[Booking_Seat] ([Id], [Row_Id], [Number], [Availability]) VALUES (6, 1, 3, 1)
-	GO
-	INSERT [dbo].[Booking_Seat] ([Id], [Row_Id], [Number], [Availability]) VALUES (7, 1, 4, 1)
-	GO
-	INSERT [dbo].[Booking_Seat] ([Id], [Row_Id], [Number], [Availability]) VALUES (8, 1, 5, 1)
-	GO
-	INSERT [dbo].[Booking_Seat] ([Id], [Row_Id], [Number], [Availability]) VALUES (9, 1, 6, 1)
-	GO
-	INSERT [dbo].[Booking_Seat] ([Id], [Row_Id], [Number], [Availability]) VALUES (10, 2, 1, 1)
-	GO
-	INSERT [dbo].[Booking_Seat] ([Id], [Row_Id], [Number], [Availability]) VALUES (11, 2, 2, 1)
-	GO
-	INSERT [dbo].[Booking_Seat] ([Id], [Row_Id], [Number], [Availability]) VALUES (12, 2, 3, 1)
-	GO
-	INSERT [dbo].[Booking_Seat] ([Id], [Row_Id], [Number], [Availability]) VALUES (13, 2, 4, 1)
-	GO
-	INSERT [dbo].[Booking_Seat] ([Id], [Row_Id], [Number], [Availability]) VALUES (14, 2, 5, 1)
-	GO
-	INSERT [dbo].[Booking_Seat] ([Id], [Row_Id], [Number], [Availability]) VALUES (15, 2, 6, 1)
+	--INSERT [dbo].[Booking_Seat] ([Id], [Row], [Plane_Id], [Number], [Availability]) VALUES (1, 1, 1, 1, 1)
 	GO
 	SET IDENTITY_INSERT [dbo].[Booking_Seat] OFF
 
@@ -822,13 +776,6 @@
 	-- GO
 	-- IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Booking_Passenger_Booking_Seat]') AND parent_object_id = OBJECT_ID(N'[dbo].[Booking_Passenger]'))
 	-- ALTER TABLE [dbo].[Booking_Passenger] CHECK CONSTRAINT [FK_Booking_Passenger_Booking_Seat]
-	-- GO
-	-- IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Booking_Seat_Booking_Row]') AND parent_object_id = OBJECT_ID(N'[dbo].[Booking_Seat]'))
-	-- ALTER TABLE [dbo].[Booking_Seat]  WITH CHECK ADD  CONSTRAINT [FK_Booking_Seat_Booking_Row] FOREIGN KEY([Row_Id])
-	-- REFERENCES [dbo].[Booking_Row] ([Id])
-	-- GO
-	-- IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Booking_Seat_Booking_Row]') AND parent_object_id = OBJECT_ID(N'[dbo].[Booking_Seat]'))
-	-- ALTER TABLE [dbo].[Booking_Seat] CHECK CONSTRAINT [FK_Booking_Seat_Booking_Row]
 	-- GO
 	-- IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Booking_Ticket_Booking_Passenger]') AND parent_object_id = OBJECT_ID(N'[dbo].[Booking_Ticket]'))
 	-- ALTER TABLE [dbo].[Booking_Ticket]  WITH CHECK ADD  CONSTRAINT [FK_Booking_Ticket_Booking_Passenger] FOREIGN KEY([Passenger_Id])
