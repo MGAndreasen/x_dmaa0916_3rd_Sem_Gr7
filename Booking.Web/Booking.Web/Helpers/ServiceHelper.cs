@@ -11,8 +11,8 @@ namespace Booking.Web.Helpers
     {
         public static ServiceClient GetServiceClientWithCredentials()
         {
-            string username = "guest";
-            string password = "guest";
+            string username = "Guest";
+            string password = "Guest";
 
             if (AuthHelper.IsLoggedIn())
             {
