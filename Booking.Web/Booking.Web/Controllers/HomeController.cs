@@ -38,7 +38,7 @@ namespace Booking.Web.Controllers
 
             return View();
         }
-        public ActionResult Plane()
+        public ActionResult Afgang()
         {
             ViewBag.Message = "Book a flight";
 
