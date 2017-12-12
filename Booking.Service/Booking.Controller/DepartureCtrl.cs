@@ -40,7 +40,7 @@ namespace Booking.Controller
 
         public IEnumerable<Departure> GetAllTilbud()
         {
-            var allDept = DBP.GetAll();
+            var allDept = GetAllDepartures();
             var allDest = dCtrl.GetAllDestinations();
             bool added;
 

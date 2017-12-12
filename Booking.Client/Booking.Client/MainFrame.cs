@@ -511,17 +511,18 @@ namespace Booking.Client
 
         public void ShowDeparture()
         {
-            Departure_ListDespartures.Items.Clear();
-            try
-            {
-                Departure_ListDespartures.DataSource = myService.GetAllDepartures();
-                Departure_ListDespartures.ValueMember = "Id";
-                Departure_ListDespartures.DisplayMember = "Id";
-            }
-            catch(Exception ex)
-            {
-                ex.ToString();
-            }
+            // Departure_ListDespartures.Items.Clear();
+            var fdsdftgr = myService.GetAllDepartures();
+
+                foreach (var d in fdsdftgr)
+                {
+                    Departure_ListDespartures.Items.Add(d);
+
+                }
+                //Departure_ListDespartures.DataSource = fdsdftgr;
+                //Departure_ListDespartures.ValueMember = "Id";
+                //Departure_ListDespartures.DisplayMember = "Id";
+
         }
         private void Departure_RefreshDepartureBtn_Click(object sender, EventArgs e)
         {

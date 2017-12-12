@@ -112,7 +112,12 @@ namespace Booking.DB
         {
             DbPlane dbp = new DbPlane();
             DbDestination dbd = new DbDestination();
+
             List<Departure> departures = new List<Departure>();
+
+            Departure d = null;
+            
+
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
                 con.Open();
@@ -124,7 +129,7 @@ namespace Booking.DB
 
                     while (rdr.Read())
                     {
-                        Departure d = new Departure
+                        d = new Departure
                         {
                             Id = (int)rdr["Id"],
                             Plane = dbp.Get((int)rdr["Plane_Id"]),
