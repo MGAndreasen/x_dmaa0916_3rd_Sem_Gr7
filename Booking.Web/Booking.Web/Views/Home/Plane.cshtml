@@ -1,25 +1,28 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Plane";
 }
 
 
   <h2>@ViewBag.Title.</h2>
 
+@{
+    try
+    {
+        var client = ViewBag.proxy;
+        var dest = client.GetAllDestinations();
 
-  <p>Book Fly:</p>
+        foreach (var s in dest)
+        {
+          @s.NameDestination 
+        }
+    }
+    catch (Exception)
+    {
+        <p>Der er sket en fejl!</p>
+    }
 
-
-
-
-<div>
-    <ul>
-
-        <li><a href="Serviceren virker ikke endnu "></a></li>
-        <li><a href="911"></a></li>
-        <li><a href="420"></a></li>
-
-    </ul>
-</div>
+}
 
 
 
