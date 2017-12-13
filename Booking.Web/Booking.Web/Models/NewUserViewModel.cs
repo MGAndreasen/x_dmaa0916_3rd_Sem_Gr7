@@ -14,6 +14,17 @@ namespace Booking.Web.Models
         public string LastName { get; set; }
         public long PhoneNumber { get; set; }
         public string Address { get; set; }
-        public ZipCodesViewModel ZipCode { get; set; }
+        public int ZipCode { get; set; }
+
+
+        public IEnumerable<ZipCodesViewModel> ZipCodes = new List<ZipCodesViewModel> {
+    new ZipCodesViewModel {
+        ZipCode = 9000,
+        CityName = "Aalborg"
+    },
+    new ZipCodesViewModel {
+        ZipCode = 9800,
+        CityName = "Hjoerring"
+    } };
     }
 }

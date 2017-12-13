@@ -39,10 +39,20 @@
   <wsdl:message name="IAuth_Login_OutputMessage">
     <wsdl:part name="parameters" element="tns:LoginResponse" />
   </wsdl:message>
+  <wsdl:message name="IAuth_CreateLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateLogin" />
+  </wsdl:message>
+  <wsdl:message name="IAuth_CreateLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateLoginResponse" />
+  </wsdl:message>
   <wsdl:portType name="IAuth">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuth/Login" message="tns:IAuth_Login_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAuth/LoginResponse" message="tns:IAuth_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuth/CreateLogin" message="tns:IAuth_CreateLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuth/CreateLoginResponse" message="tns:IAuth_CreateLogin_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IAuth" type="tns:IAuth">
@@ -50,6 +60,15 @@
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="Login">
       <soap12:operation soapAction="http://tempuri.org/IAuth/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateLogin">
+      <soap12:operation soapAction="http://tempuri.org/IAuth/CreateLogin" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

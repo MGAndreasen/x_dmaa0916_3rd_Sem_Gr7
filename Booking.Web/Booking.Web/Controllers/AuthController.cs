@@ -11,22 +11,9 @@ namespace Booking.Web.Controllers
 {
     public class AuthController : Controller
     {
-
-        public static IEnumerable<ZipCodesViewModel> ZipCodes = new List<ZipCodesViewModel> {
-    new ZipCodesViewModel {
-        ZipCode = 9000,
-        CityName = "Aalborg"
-    },
-    new ZipCodesViewModel {
-        ZipCode = 9800,
-        CityName = "Hjoerring"
-    }
-};
         // GET: AuthController
         public ActionResult Index()
         {
-            ViewBag.ZipCodes = ZipCodes;
-
             try
             {
                 ViewBag.proxy = (BookingServiceRemote.ServiceClient)ServiceHelper.GetServiceClientWithCredentials();
@@ -37,27 +24,89 @@ namespace Booking.Web.Controllers
                 ViewBag.proxyError = ex.ToString();
             }
 
-            return View();
+            return View(new NewUserViewModel());
         }
 
         [HttpPost]
         public ActionResult Index(NewUserViewModel NewUser)
         {
-            ViewBag.ZipCodes = ZipCodes;
+            bool lykkes = false;
 
             ViewBag.Test = NewUser.FirstName;
+            AuthClient ac = null;
+
+            BookingServiceRemote.ServiceClient client = null;
 
             try
             {
-                ViewBag.proxy = (BookingServiceRemote.ServiceClient)ServiceHelper.GetServiceClientWithCredentials();
-                ViewBag.proxyError = "";
+                client = ServiceHelper.GetServiceClientWithCredentials();
+                ac = ServiceHelper.GetAuthServiceClient();
             }
             catch (Exception ex)
             {
                 ViewBag.proxyError = ex.ToString();
             }
 
-            return View();
+            if(client != null || ac != null)
+            {
+                LoginViewModel lvm = new LoginViewModel();
+
+                ViewBag.proxy = client;
+
+                NewUser.Email = NewUser.Email.ToString().Trim().ToLower();
+                NewUser.Password = NewUser.Password.Trim();
+                NewUser.FirstName = NewUser.FirstName.Trim();
+                NewUser.LastName = NewUser.LastName.Trim();
+                NewUser.Address = NewUser.Address.Trim();
+                NewUser.Password2 = NewUser.Password2.Trim();
+
+                if (NewUser.Email.Length >= 6 && NewUser.Password.Length >= 4 && NewUser.FirstName.Length >= 2 && NewUser.LastName.Length >= 2 && NewUser.Address.Length >= 4 && NewUser.ZipCode > 999 && NewUser.PhoneNumber > 0 && NewUser.Password == NewUser.Password2)
+                {
+                    lykkes = ac.CreateLogin(NewUser.Email, NewUser.Password, NewUser.FirstName, NewUser.LastName, NewUser.Address, NewUser.ZipCode, NewUser.PhoneNumber);
+
+                    BookingAuthRemote.User hmm;
+                    if (lykkes)
+                    {
+                        lvm.Email = NewUser.Email;
+                        lvm.Password = NewUser.Password;
+
+                        hmm = ac.Login(lvm.Email, lvm.Password);
+
+                        lvm.Email = hmm.Email;
+                        lvm.Password = hmm.Password;
+
+                        if (hmm.Roles.First().Name.ToString().ToLower() == "admin")
+                        {
+                            lvm.UserType = "Admin";
+                        }
+                        else if (hmm.Roles.First().Name.ToString().ToLower() == "user")
+                        {
+                            lvm.UserType = "User";
+                        }
+                        else
+                        {
+                            lvm.UserType = "Guest";
+                        }
+
+                        AuthHelper.Login(lvm);
+                    }
+                }
+
+                if (lykkes)
+                {
+                    return RedirectToAction("MembersOnly", "Auth");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            else
+            {
+                return View();
+            }
+
+            
         }
 
         public ActionResult Login()

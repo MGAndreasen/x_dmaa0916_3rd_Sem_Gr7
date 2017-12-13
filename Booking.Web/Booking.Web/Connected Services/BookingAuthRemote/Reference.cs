@@ -192,6 +192,12 @@ namespace Booking.Web.BookingAuthRemote {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuth/Login", ReplyAction="http://tempuri.org/IAuth/LoginResponse")]
         System.Threading.Tasks.Task<Booking.Web.BookingAuthRemote.User> LoginAsync(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuth/CreateLogin", ReplyAction="http://tempuri.org/IAuth/CreateLoginResponse")]
+        bool CreateLogin(string email, string password, string firstname, string lastname, string address, int zipcode, long phonenumber);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuth/CreateLogin", ReplyAction="http://tempuri.org/IAuth/CreateLoginResponse")]
+        System.Threading.Tasks.Task<bool> CreateLoginAsync(string email, string password, string firstname, string lastname, string address, int zipcode, long phonenumber);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -227,6 +233,14 @@ namespace Booking.Web.BookingAuthRemote {
         
         public System.Threading.Tasks.Task<Booking.Web.BookingAuthRemote.User> LoginAsync(string username, string password) {
             return base.Channel.LoginAsync(username, password);
+        }
+        
+        public bool CreateLogin(string email, string password, string firstname, string lastname, string address, int zipcode, long phonenumber) {
+            return base.Channel.CreateLogin(email, password, firstname, lastname, address, zipcode, phonenumber);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateLoginAsync(string email, string password, string firstname, string lastname, string address, int zipcode, long phonenumber) {
+            return base.Channel.CreateLoginAsync(email, password, firstname, lastname, address, zipcode, phonenumber);
         }
     }
 }

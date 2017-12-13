@@ -11,7 +11,7 @@ using Booking.DB.ScopeHelper;
 
 namespace Booking.DB
 {
-    public class DbCustomer : IDbCRUD<Customer>
+    public class DbCustomer
     {
         private DataAccess data = DataAccess.Instance;
 
@@ -34,6 +34,8 @@ namespace Booking.DB
         public Customer Get(int id)
         {
             DbCity dbc = new DbCity();
+            Customer customer;
+
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
                 con.Open();
@@ -41,7 +43,7 @@ namespace Booking.DB
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
                 SqlDataReader rdr = cmd.ExecuteReader();
                 rdr.Read();
-                Customer customer = new Customer
+                customer = new Customer
                 {
                     Id = (int)rdr["Id"],
                     CPR = (long)rdr["Cpr"],
@@ -54,12 +56,15 @@ namespace Booking.DB
                     Password = (string)rdr["Password"],
                     Confirmed = (bool)rdr["Cofirmed"]
                 };
-                return customer;
+                
             }
+            return customer;
         }
 
-        public void Create(Customer obj)
+        public bool Create(Customer obj)
         {
+            bool lykkes = false;
+            int idd = 0;
 
             TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
@@ -78,11 +83,17 @@ namespace Booking.DB
                     cmd.Parameters.Add("Password", SqlDbType.NVarChar).Value = obj.Password;
                     cmd.Parameters.Add("Cofirmed", SqlDbType.Bit).Value = obj.Confirmed;
 
-                    cmd.ExecuteNonQuery();
+                    idd = cmd.ExecuteNonQuery();
                 }
                 scope.Complete();
             }
 
+            if(idd > 0)
+            {
+                lykkes = true;
+            }
+
+            return lykkes;
         }
 
 

@@ -16,6 +16,49 @@ namespace Booking.Service
         // Ny instance af UserCtrl()
         private UserCtrl uCtrl = new UserCtrl();
         //private CustomerCtrl cCtrl = new CustomerCtrl();
+        private CityCtrl cityCtrl = new CityCtrl();
+
+
+        public bool CreateLogin(string email, string password, string firstname, string lastname, string address, int zipcode, long phonenumber)
+        {
+            bool lykkes = false;
+
+            email = email.ToString().Trim().ToLower();
+            password = password.Trim();
+            firstname = firstname.Trim();
+            lastname = lastname.Trim();
+            address = address.Trim();
+
+            if (email.Length >= 6 && password.Length >= 4 && firstname.Length >= 2 && lastname.Length >= 2 && address.Length >= 4 && zipcode > 999 && phonenumber > 0)
+            {
+                if (email.Contains("@") && email.Contains("."))
+                {
+                    User exists = uCtrl.GetUser(email);
+
+                    if (exists == null)
+                    {
+                        Customer c = new Customer();
+                        c.Email = email;
+                        c.Password = password;
+                        c.FirstName = firstname;
+                        c.LastName = lastname;
+                        c.Address = address;
+                        c.City = cityCtrl.Get(zipcode);
+                        c.Role = "User";
+                        c.CPR = 0000000000;
+                        c.Confirmed = false;
+
+                        if(uCtrl.CreateUser(c))
+                        {
+                            lykkes = true;
+                        }
+                    }
+                }
+            }
+            return lykkes;
+        }
+
+        //private CustomerCtrl cCtrl = new CustomerCtrl();
 
         // Login methode (retunering af User obj)
         public User Login(string email, string password)

@@ -247,9 +247,6 @@
     <Content Include="Connected Services\BookingServiceRemote\Booking.Web.BookingServiceRemote.Plane.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\BookingServiceRemote\Booking.Web.BookingServiceRemote.Row.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Connected Services\BookingServiceRemote\Booking.Web.BookingServiceRemote.Seat.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>

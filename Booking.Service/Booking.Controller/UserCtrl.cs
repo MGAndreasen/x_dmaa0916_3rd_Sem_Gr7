@@ -11,14 +11,21 @@ namespace Booking.Controller
     public class UserCtrl
     {
         private DbUser dbUser;
+        private CustomerCtrl cCtrl;
 
         public UserCtrl()
         {
             dbUser = new DbUser();
         }
+
         public User GetUser(string email)
         {
             return dbUser.GetUser(email);
+        }
+
+        public bool CreateUser(Customer c)
+        {
+            return cCtrl.Create(c);
         }
     }
 }

@@ -28,7 +28,9 @@
         @Html.TextBoxFor(x => x.Address, new { @class = "form-control" })
 
         @Html.Label("ZipCode:");
-        @Html.DropDownListFor(x => x.ZipCode, new SelectList(ViewBag.ZipCodes, "ZipCode", "CityName"))
+        
+
+        @Html.DropDownListFor(x => x.ZipCode, new SelectList(Model.ZipCodes, "ZipCode", "CityName"))
 
         @Html.Label("Phone Number:");
         @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control" })

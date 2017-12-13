@@ -8,12 +8,13 @@ using Booking.DB;
 
 namespace Booking.Controller
 {
-    public class CustomerCtrl : ICRUD<Customer>
+    public class CustomerCtrl
     {
         private DbCustomer DBC = new DbCustomer();
-        public void Create(Customer obj)
+
+        public bool Create(Customer obj)
         {
-            DBC.Create(obj);
+            return DBC.Create(obj);
         }
 
         public void Delete(int id)

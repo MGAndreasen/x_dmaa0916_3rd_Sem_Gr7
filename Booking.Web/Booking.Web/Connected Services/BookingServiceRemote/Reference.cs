@@ -35,6 +35,9 @@ namespace Booking.Web.BookingServiceRemote {
         private Booking.Web.BookingServiceRemote.Plane PlaneField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Booking.Web.BookingServiceRemote.Seat[] SeatsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Booking.Web.BookingServiceRemote.Destination StartDestinationField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -95,6 +98,19 @@ namespace Booking.Web.BookingServiceRemote {
                 if ((object.ReferenceEquals(this.PlaneField, value) != true)) {
                     this.PlaneField = value;
                     this.RaisePropertyChanged("Plane");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Booking.Web.BookingServiceRemote.Seat[] Seats {
+            get {
+                return this.SeatsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SeatsField, value) != true)) {
+                    this.SeatsField = value;
+                    this.RaisePropertyChanged("Seats");
                 }
             }
         }
@@ -246,6 +262,99 @@ namespace Booking.Web.BookingServiceRemote {
                 if ((object.ReferenceEquals(this.TypeField, value) != true)) {
                     this.TypeField = value;
                     this.RaisePropertyChanged("Type");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Seat", Namespace="http://schemas.datacontract.org/2004/07/Booking.Models")]
+    [System.SerializableAttribute()]
+    public partial class Seat : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool AvailableField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RowField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Available {
+            get {
+                return this.AvailableField;
+            }
+            set {
+                if ((this.AvailableField.Equals(value) != true)) {
+                    this.AvailableField = value;
+                    this.RaisePropertyChanged("Available");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Number {
+            get {
+                return this.NumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NumberField, value) != true)) {
+                    this.NumberField = value;
+                    this.RaisePropertyChanged("Number");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Row {
+            get {
+                return this.RowField;
+            }
+            set {
+                if ((this.RowField.Equals(value) != true)) {
+                    this.RowField = value;
+                    this.RaisePropertyChanged("Row");
                 }
             }
         }
@@ -980,176 +1089,6 @@ namespace Booking.Web.BookingServiceRemote {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Seat", Namespace="http://schemas.datacontract.org/2004/07/Booking.Models")]
-    [System.SerializableAttribute()]
-    public partial class Seat : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool AvailableField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int NumberField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Booking.Web.BookingServiceRemote.Row RowField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Available {
-            get {
-                return this.AvailableField;
-            }
-            set {
-                if ((this.AvailableField.Equals(value) != true)) {
-                    this.AvailableField = value;
-                    this.RaisePropertyChanged("Available");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Number {
-            get {
-                return this.NumberField;
-            }
-            set {
-                if ((this.NumberField.Equals(value) != true)) {
-                    this.NumberField = value;
-                    this.RaisePropertyChanged("Number");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Booking.Web.BookingServiceRemote.Row Row {
-            get {
-                return this.RowField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RowField, value) != true)) {
-                    this.RowField = value;
-                    this.RaisePropertyChanged("Row");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Row", Namespace="http://schemas.datacontract.org/2004/07/Booking.Models")]
-    [System.SerializableAttribute()]
-    public partial class Row : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double PriceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Booking.Web.BookingServiceRemote.SeatSchema SeatNumberField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Price {
-            get {
-                return this.PriceField;
-            }
-            set {
-                if ((this.PriceField.Equals(value) != true)) {
-                    this.PriceField = value;
-                    this.RaisePropertyChanged("Price");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Booking.Web.BookingServiceRemote.SeatSchema SeatNumber {
-            get {
-                return this.SeatNumberField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SeatNumberField, value) != true)) {
-                    this.SeatNumberField = value;
-                    this.RaisePropertyChanged("SeatNumber");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Ticket", Namespace="http://schemas.datacontract.org/2004/07/Booking.Models")]
     [System.SerializableAttribute()]
     public partial class Ticket : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1460,35 +1399,11 @@ namespace Booking.Web.BookingServiceRemote {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllPlanes", ReplyAction="http://tempuri.org/IService/GetAllPlanesResponse")]
         System.Threading.Tasks.Task<Booking.Web.BookingServiceRemote.Plane[]> GetAllPlanesAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateRow", ReplyAction="http://tempuri.org/IService/CreateRowResponse")]
-        void CreateRow(Booking.Web.BookingServiceRemote.Row obj);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateRow", ReplyAction="http://tempuri.org/IService/CreateRowResponse")]
-        System.Threading.Tasks.Task CreateRowAsync(Booking.Web.BookingServiceRemote.Row obj);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetRow", ReplyAction="http://tempuri.org/IService/GetRowResponse")]
-        Booking.Web.BookingServiceRemote.Row GetRow(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetRow", ReplyAction="http://tempuri.org/IService/GetRowResponse")]
-        System.Threading.Tasks.Task<Booking.Web.BookingServiceRemote.Row> GetRowAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateRow", ReplyAction="http://tempuri.org/IService/UpdateRowResponse")]
-        void UpdateRow(Booking.Web.BookingServiceRemote.Row obj);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateRow", ReplyAction="http://tempuri.org/IService/UpdateRowResponse")]
-        System.Threading.Tasks.Task UpdateRowAsync(Booking.Web.BookingServiceRemote.Row obj);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteRow", ReplyAction="http://tempuri.org/IService/DeleteRowResponse")]
-        void DeleteRow(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteRow", ReplyAction="http://tempuri.org/IService/DeleteRowResponse")]
-        System.Threading.Tasks.Task DeleteRowAsync(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateSeat", ReplyAction="http://tempuri.org/IService/CreateSeatResponse")]
+        void CreateSeat(Booking.Web.BookingServiceRemote.Seat obj, int planeId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateSeat", ReplyAction="http://tempuri.org/IService/CreateSeatResponse")]
-        void CreateSeat(Booking.Web.BookingServiceRemote.Seat obj);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateSeat", ReplyAction="http://tempuri.org/IService/CreateSeatResponse")]
-        System.Threading.Tasks.Task CreateSeatAsync(Booking.Web.BookingServiceRemote.Seat obj);
+        System.Threading.Tasks.Task CreateSeatAsync(Booking.Web.BookingServiceRemote.Seat obj, int planeId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetSeat", ReplyAction="http://tempuri.org/IService/GetSeatResponse")]
         Booking.Web.BookingServiceRemote.Seat GetSeat(int id);
@@ -1497,10 +1412,10 @@ namespace Booking.Web.BookingServiceRemote {
         System.Threading.Tasks.Task<Booking.Web.BookingServiceRemote.Seat> GetSeatAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateSeat", ReplyAction="http://tempuri.org/IService/UpdateSeatResponse")]
-        void UpdateSeat(Booking.Web.BookingServiceRemote.Seat obj);
+        void UpdateSeat(Booking.Web.BookingServiceRemote.Seat obj, int planeId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateSeat", ReplyAction="http://tempuri.org/IService/UpdateSeatResponse")]
-        System.Threading.Tasks.Task UpdateSeatAsync(Booking.Web.BookingServiceRemote.Seat obj);
+        System.Threading.Tasks.Task UpdateSeatAsync(Booking.Web.BookingServiceRemote.Seat obj, int planeId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteSeat", ReplyAction="http://tempuri.org/IService/DeleteSeatResponse")]
         void DeleteSeat(int id);
@@ -1888,44 +1803,12 @@ namespace Booking.Web.BookingServiceRemote {
             return base.Channel.GetAllPlanesAsync();
         }
         
-        public void CreateRow(Booking.Web.BookingServiceRemote.Row obj) {
-            base.Channel.CreateRow(obj);
+        public void CreateSeat(Booking.Web.BookingServiceRemote.Seat obj, int planeId) {
+            base.Channel.CreateSeat(obj, planeId);
         }
         
-        public System.Threading.Tasks.Task CreateRowAsync(Booking.Web.BookingServiceRemote.Row obj) {
-            return base.Channel.CreateRowAsync(obj);
-        }
-        
-        public Booking.Web.BookingServiceRemote.Row GetRow(int id) {
-            return base.Channel.GetRow(id);
-        }
-        
-        public System.Threading.Tasks.Task<Booking.Web.BookingServiceRemote.Row> GetRowAsync(int id) {
-            return base.Channel.GetRowAsync(id);
-        }
-        
-        public void UpdateRow(Booking.Web.BookingServiceRemote.Row obj) {
-            base.Channel.UpdateRow(obj);
-        }
-        
-        public System.Threading.Tasks.Task UpdateRowAsync(Booking.Web.BookingServiceRemote.Row obj) {
-            return base.Channel.UpdateRowAsync(obj);
-        }
-        
-        public void DeleteRow(int id) {
-            base.Channel.DeleteRow(id);
-        }
-        
-        public System.Threading.Tasks.Task DeleteRowAsync(int id) {
-            return base.Channel.DeleteRowAsync(id);
-        }
-        
-        public void CreateSeat(Booking.Web.BookingServiceRemote.Seat obj) {
-            base.Channel.CreateSeat(obj);
-        }
-        
-        public System.Threading.Tasks.Task CreateSeatAsync(Booking.Web.BookingServiceRemote.Seat obj) {
-            return base.Channel.CreateSeatAsync(obj);
+        public System.Threading.Tasks.Task CreateSeatAsync(Booking.Web.BookingServiceRemote.Seat obj, int planeId) {
+            return base.Channel.CreateSeatAsync(obj, planeId);
         }
         
         public Booking.Web.BookingServiceRemote.Seat GetSeat(int id) {
@@ -1936,12 +1819,12 @@ namespace Booking.Web.BookingServiceRemote {
             return base.Channel.GetSeatAsync(id);
         }
         
-        public void UpdateSeat(Booking.Web.BookingServiceRemote.Seat obj) {
-            base.Channel.UpdateSeat(obj);
+        public void UpdateSeat(Booking.Web.BookingServiceRemote.Seat obj, int planeId) {
+            base.Channel.UpdateSeat(obj, planeId);
         }
         
-        public System.Threading.Tasks.Task UpdateSeatAsync(Booking.Web.BookingServiceRemote.Seat obj) {
-            return base.Channel.UpdateSeatAsync(obj);
+        public System.Threading.Tasks.Task UpdateSeatAsync(Booking.Web.BookingServiceRemote.Seat obj, int planeId) {
+            return base.Channel.UpdateSeatAsync(obj, planeId);
         }
         
         public void DeleteSeat(int id) {

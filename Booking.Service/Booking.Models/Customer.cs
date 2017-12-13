@@ -31,7 +31,7 @@ namespace Booking.Models
         [DataMember]
         public string Address { get; set; }
         [DataMember]
-        public string Password { get; set; }
+        public string Password { get; set; }   // Fjernes
         [DataMember]
         public bool Confirmed { get; set; }
         [DataMember]
