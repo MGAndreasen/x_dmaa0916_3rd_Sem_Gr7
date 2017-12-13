@@ -29,22 +29,21 @@ namespace Booking.Web.Controllers
         }
 
 
-        //[HttpPost]
+       // [HttpGet]
         public ActionResult SearchResult()
         {
             try
             {
                 var client = ServiceHelper.GetServiceClientWithCredentials();
                 ViewBag.Proxy = client;
-                ViewBag.pe = "";
+                ViewBag.Error = "";
+
             }
             catch(Exception ex)
             {
-                ViewBag.pe = ex.ToString();
+                ViewBag.Error = ex.ToString();
             }
-
             return View();
-
         }
 
     }

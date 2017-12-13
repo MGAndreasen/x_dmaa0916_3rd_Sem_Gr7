@@ -3,5 +3,67 @@
     ViewBag.Title = "SearchResult";
 }
 
-<h2>SearchResult</h2>
+<h1>SearchResult</h1>
+
+
+
+
+@{
+    try
+    {
+        var client = ViewBag.proxy;
+        var depart = client.GetAllDepartures();
+
+        foreach(var d in depart)
+        {
+            <p>@d.Id </p>
+        }
+
+
+
+    }
+
+    catch(Exception)
+    {
+           <p>NAH NIGGA NAH</p>
+    }
+    
+}
+
+
+
+
+
+
+
+
+@*@{
+    try
+    {
+        var client = ViewBag.proxy;
+        var EndDestination = "";
+
+
+
+        if (IsPost)
+        {
+
+            EndDestination = Request.Form["EndDestination"];
+
+
+
+            client.GetDeparture(EndDestination);
+
+        }
+    }
+
+    catch(Exception)
+    {
+       <p>NAH NIGGA NAH</p>
+    }
+}*@
+
+
+
+}
 

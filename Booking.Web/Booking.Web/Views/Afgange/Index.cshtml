@@ -6,7 +6,6 @@
 
 <h5 color="black"> @ViewBag.Title</h5>
 
-<form>
     Start Destination:<br />
     <input type="text" name="Start Destination" value="Aalborg" readonly><br>
     End Destination <br />
@@ -20,9 +19,7 @@
 
                 foreach (var d in dest)
                 {
-
-                    <option value="Destination">@d.NameDestination</option>
-
+                    <option value="@Request.Form["EndDestinaon"]">@d.NameDestination</option>
                 }
             }
 
@@ -34,9 +31,13 @@
 
         }
     </select>
-    <input type="button" value="Search" onclick="window.location.href='<%= Url.Action(" ", "AfgangeController" ) %>';" />
 
+
+<form method="get" action="/Afgange/SearchResult">
+    <button type="submit">Search</button>
 </form>
+
+
 
 
 
