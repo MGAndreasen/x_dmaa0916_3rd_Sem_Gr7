@@ -53,7 +53,6 @@
             this.PlaneTab.Size = new System.Drawing.Size(1086, 707);
             this.PlaneTab.TabIndex = 0;
             this.PlaneTab.Tag = "Route";
-            this.PlaneTab.SelectedIndexChanged += new System.EventHandler(this.PlaneTab_SelectedIndexChanged);
             // 
             // tabCreateRoute
             // 

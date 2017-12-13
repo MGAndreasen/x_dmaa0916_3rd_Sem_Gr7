@@ -72,11 +72,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControls\BookingsControl.cs">
+    <Compile Include="UserControls\PassengersControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\BookingsControl.Designer.cs">
-      <DependentUpon>BookingsControl.cs</DependentUpon>
+    <Compile Include="UserControls\PassengersControl.Designer.cs">
+      <DependentUpon>PassengersControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\DepartureControl.cs">
       <SubType>UserControl</SubType>
@@ -90,11 +90,11 @@
     <Compile Include="UserControls\DestinationControl.Designer.cs">
       <DependentUpon>DestinationControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\PassengersControl.cs">
+    <Compile Include="UserControls\BookingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\PassengersControl.Designer.cs">
-      <DependentUpon>PassengersControl.cs</DependentUpon>
+    <Compile Include="UserControls\BookingControl.Designer.cs">
+      <DependentUpon>BookingControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\PlaneControl.cs">
       <SubType>UserControl</SubType>
@@ -117,8 +117,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControls\BookingsControl.resx">
-      <DependentUpon>BookingsControl.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\PassengersControl.resx">
+      <DependentUpon>PassengersControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\DepartureControl.resx">
       <DependentUpon>DepartureControl.cs</DependentUpon>
@@ -126,8 +126,8 @@
     <EmbeddedResource Include="UserControls\DestinationControl.resx">
       <DependentUpon>DestinationControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\PassengersControl.resx">
-      <DependentUpon>PassengersControl.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\BookingControl.resx">
+      <DependentUpon>BookingControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\PlaneControl.resx">
       <DependentUpon>PlaneControl.cs</DependentUpon>
