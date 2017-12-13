@@ -31,8 +31,6 @@ namespace Booking.Client.UserControls
 
         private void button1_Click(object sender, EventArgs e)
         {
-            listBoxDepartures.Items.Clear();
-
             listBoxDepartures.DataSource = myService.GetAllDepartures();
             listBoxDepartures.ValueMember = "Id";
             listBoxDepartures.DisplayMember = "Id";
@@ -40,8 +38,6 @@ namespace Booking.Client.UserControls
 
         private void button2_Click(object sender, EventArgs e)
         {
-            listBoxCustomers.Items.Clear();
-
             listBoxCustomers.DataSource = myService.GetAllCustomers();
             listBoxCustomers.ValueMember = "Id";
             listBoxCustomers.DisplayMember = "FirstName";
@@ -49,8 +45,6 @@ namespace Booking.Client.UserControls
 
         private void button4_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
-
             listBox1.DataSource = myService.GetAllBookings();
             listBox1.ValueMember = "Id";
             listBox1.DisplayMember = "Id";

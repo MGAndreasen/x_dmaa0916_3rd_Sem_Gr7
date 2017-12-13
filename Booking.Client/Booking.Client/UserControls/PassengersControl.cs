@@ -55,7 +55,6 @@ namespace Booking.Client.UserControls
 
         private void button1_Click(object sender, EventArgs e)
         {
-            listBoxListOfBookings.Items.Clear();
             listBoxListOfBookings.DataSource = myService.GetAllBookings();
             listBoxListOfBookings.ValueMember = "Id";
             listBoxListOfBookings.DisplayMember = "Customer_Id";

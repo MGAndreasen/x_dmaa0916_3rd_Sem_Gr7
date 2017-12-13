@@ -31,8 +31,6 @@ namespace Booking.Client.UserControls
             Plane_UpdateSeatSchemaTextBox.ContextMenu = new ContextMenu();
             Plane_UpdateRowNumber.ContextMenu = new ContextMenu();
 
-            //ShowSeatSchema();
-
         }
 
         private void Plane_PlaneBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -50,24 +48,22 @@ namespace Booking.Client.UserControls
 
                 if (p != null)
                 {
-                    Plane_SeatSchema.Items.Clear();
-
-                    foreach (SeatSchema s in p.SeatSchema)
-                    {
-                        Plane_SeatSchema.Items.Add(s);
-                    }
-
+                    ShowSeatSchemas();
                     txtPlaneUpdate.Text = p.Type.ToString();
                 }
             }
         }
 
-        private void Plane_RefreshPlaneButton_Click(object sender, EventArgs e)
+        public void ShowPlanes()
         {
-            Plane_SeatSchema.Items.Clear();
             Plane_PlaneBox.DataSource = myService.GetAllPlanes();
             Plane_PlaneBox.ValueMember = "Id";
             Plane_PlaneBox.DisplayMember = "Type";
+        }
+
+        private void Plane_RefreshPlaneButton_Click(object sender, EventArgs e)
+        {
+            ShowPlanes();
         }
 
         private void Plane_DeletePlane_Click(object sender, EventArgs e)
@@ -85,6 +81,7 @@ namespace Booking.Client.UserControls
             }
             catch (Exception)
             { }
+            ShowPlanes();
         }
 
         private void Plane_CreatePlane_Click(object sender, EventArgs e)
@@ -94,6 +91,8 @@ namespace Booking.Client.UserControls
                 Plane p = new Plane { Type = Plane_PlaneType.Text.ToString() };
                 myService.CreatePlane(p);
             }
+            Plane_PlaneType.Text = "";
+            ShowPlanes();
         }
 
         private void bntPlane_Update_Click(object sender, EventArgs e)
@@ -121,6 +120,8 @@ namespace Booking.Client.UserControls
             {
                 txtPlaneUpdate.Text = "";
             }
+            txtPlaneUpdate.Text = "";
+            ShowPlanes();
         }
 
         private void Plane_SeatSchema_SelectedIndexChanged(object sender, EventArgs e)
@@ -141,22 +142,14 @@ namespace Booking.Client.UserControls
             }
         }
 
-        public void ShowSeatSchema()
-        {
-            Plane_SeatSchema.ValueMember = "Id";
-            Plane_SeatSchema.DisplayMember = "Row";
-        }
-
         public void ShowSeatSchemas()
         {
-            Plane_SeatSchema.Items.Clear();
             try
             {
                 var p = (Plane)Plane_PlaneBox.SelectedItem;
-                foreach (var s in p.SeatSchema)
-                {
-                    Plane_SeatSchema.Items.Add(s);
-                }
+                Plane_SeatSchema.DataSource = myService.GetPlane(p.Id).SeatSchema;
+                Plane_SeatSchema.ValueMember = "Id";
+                Plane_SeatSchema.DisplayMember = "Row";
             }
             catch (Exception)
             { }
@@ -169,21 +162,18 @@ namespace Booking.Client.UserControls
 
         private void Plane_DeleteSeatSchema_Click(object sender, EventArgs e)
         {
-            SeatSchema s = null;
-            Plane p = null;
             try
             {
-                s = (SeatSchema)Plane_SeatSchema.SelectedItem;
-                p = (Plane)Plane_PlaneBox.SelectedItem;
-            }
-            catch (Exception) { }
+                var s = (SeatSchema)Plane_SeatSchema.SelectedItem;
+                var p = (Plane)Plane_PlaneBox.SelectedItem;
 
-            if (s != null && p != null)
-            {
-                p.SeatSchema.Remove(s);
-
+                if (s != null && p != null)
+                {
+                    p.SeatSchema.RemoveAll(x => x.Id == s.Id); //Remove(s) virker åbenbart ikke....
+                }
                 myService.UpdatePlane(p);
             }
+            catch (Exception) { }
 
             ShowSeatSchemas();
         }
@@ -218,8 +208,10 @@ namespace Booking.Client.UserControls
                 }
                 catch (Exception)
                 { }
-                ShowSeatSchemas();
             }
+            Plane_RowNumber.Text = "";
+            Plane_SeatSchemaTextBox.Text = "";
+            ShowSeatSchemas();
         }
 
         private void Plane_UpdateSeatSchema_Click(object sender, EventArgs e)
@@ -256,8 +248,10 @@ namespace Booking.Client.UserControls
                 }
                 catch (Exception)
                 { }
-                ShowSeatSchemas();
             }
+            Plane_UpdateRowNumber.Text = "";
+            Plane_UpdateSeatSchemaTextBox.Text = "";
+            ShowSeatSchemas();
         }
 
         private void Plane_RowNumber_TextChanged(object sender, EventArgs e)
@@ -312,5 +306,56 @@ namespace Booking.Client.UserControls
             }
         }
 
+        private void Plane_UpdateSeatSchemaTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string old = Plane_UpdateSeatSchemaTextBox.Text;
+            TextBox textBox = sender as TextBox;
+
+            Regex regex = new Regex(@"[^A-Ia-i|\b]");
+            MatchCollection matches = regex.Matches(textBox.Text);
+
+            if (matches.Count == 0)
+            {
+                Plane_UpdateSeatSchemaTextBox.Text = textBox.Text;
+            }
+            else
+            {
+                textBox.Text = old;
+            }
+        }
+
+        private void Plane_UpdateRowNumber_TextChanged(object sender, EventArgs e)
+        {
+            string old = Plane_UpdateRowNumber.Text;
+            TextBox textBox = sender as TextBox;
+
+            Regex regex = new Regex(@"[^0-9\b]");
+            MatchCollection matches = regex.Matches(textBox.Text);
+
+            if (matches.Count == 0)
+            {
+                Plane_UpdateRowNumber.Text = textBox.Text;
+            }
+            else
+            {
+                textBox.Text = old;
+            }
+        }
+
+        private void Plane_UpdateRowNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[^0-9\b]"))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Plane_UpdateSeatSchemaTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), @"[^A-Ia-i|\b]"))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

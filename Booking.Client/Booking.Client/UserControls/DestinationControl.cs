@@ -55,7 +55,6 @@ namespace Booking.Client.UserControls
 
         public void ShowPlanesComboBox()
         {
-            //MainFrame, Planes, 'Plane Destination'
             comboBoxDestination_ListOfPlanes.DataSource = myService.GetAllPlanes();
             comboBoxDestination_ListOfPlanes.ValueMember = "Id";
             comboBoxDestination_ListOfPlanes.DisplayMember = "Type";
