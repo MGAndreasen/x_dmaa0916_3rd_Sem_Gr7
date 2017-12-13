@@ -12,7 +12,8 @@ namespace Booking.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            routes.IgnoreRoute("Public/{*staticfile}", new { staticfile = @".*\.(ico|css|js|gif|jpg|woff|eot|svg|eot|ttf|otf)(/.*)?" });
+            
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

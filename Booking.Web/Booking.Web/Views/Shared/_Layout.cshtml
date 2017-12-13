@@ -4,9 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Norwegian</title>
-    @Styles.Render("~/Content/css")
-
-    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" type="text/css" href="~/Public/Site.css">
+    <link rel="stylesheet" type="text/css" href="~/Public/tilbud.css">
 </head>
 <body>
     @Html.Partial("_Menu")
@@ -15,12 +14,16 @@
     </div>
     <br />
     <div style="margin-left: 10px; margin-right: 10px;">
-        @Html.Partial("_Tilbud")
+        @{ 
+            //Html.Partial("_Tilbud")
+        }
+
     </div>
     @Html.Partial("_Footer")
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

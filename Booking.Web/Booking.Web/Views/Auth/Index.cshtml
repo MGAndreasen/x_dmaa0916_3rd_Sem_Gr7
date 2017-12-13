@@ -3,23 +3,39 @@
 @{
     ViewBag.Title = "New User";
 }
-
+<div id="Page_NewUser">
     <h2>Login</h2>
     <h4>@ViewBag.StatusMessage</h4>
 
     @using (Html.BeginForm("Index", "Auth", FormMethod.Post))
     {
+        @Html.Label("Email:");
         @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+
+        @Html.Label("Password:");
         @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+
+        @Html.Label("Password (confirm):");
         @Html.PasswordFor(x => x.Password2, new { @class = "form-control" })
+
+        @Html.Label("Firstname:");
         @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+
+        @Html.Label("Lastname:");
         @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+
+        @Html.Label("Address:");
         @Html.TextBoxFor(x => x.Address, new { @class = "form-control" })
+
+        @Html.Label("ZipCode:");
         @Html.DropDownListFor(x => x.ZipCode, new SelectList(ViewBag.ZipCodes, "ZipCode", "CityName"))
-        @Html.TextBoxFor(x => x.ZipCode, new { @class = "form-control" })
+
+        @Html.Label("Phone Number:");
         @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control" })
 
         <button type="submit" class="btn btn-default">Create</button>
     }
 
     <p>Hej @ViewBag.Test </p>
+
+</div>
