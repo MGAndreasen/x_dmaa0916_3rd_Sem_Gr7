@@ -66,8 +66,6 @@ namespace Booking.Client.UserControls
 
         private void Departure_RefreshDepartureBtn_Click(object sender, EventArgs e)
         {
-            Departure_ListDespartures.Items.Clear();
-
             Departure_ListDespartures.DataSource = myService.GetAllDepartures();
             Departure_ListDespartures.ValueMember = "Id";
             Departure_ListDespartures.DisplayMember = "Id";
@@ -82,7 +80,6 @@ namespace Booking.Client.UserControls
 
         private void Departure_RefreshDestinationsBtn_Click(object sender, EventArgs e)
         {
-            Departure_ListDestinations.Items.Clear();
             Departure_ListDestinations.DataSource = myService.GetAllDestinations();
             Departure_ListDestinations.ValueMember = "Id";
             Departure_ListDestinations.DisplayMember = "NameDestination";

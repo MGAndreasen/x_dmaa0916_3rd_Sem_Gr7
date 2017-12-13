@@ -35,7 +35,7 @@ namespace Booking.DB
                     if (obj.Plane != null)
                     {
                         
-                        SqlCommand cmd2 = new SqlCommand("SELECT * FROM dbo.Booking_Seats WHERE Plane_Id=@Pid", con);
+                        SqlCommand cmd2 = new SqlCommand("SELECT * FROM dbo.Booking_SeatSchema WHERE Plane_Id=@Pid", con);
                         cmd2.Parameters.Add("@Pid", SqlDbType.Int).Value = obj.Plane.Id;
 
                         var rdr = cmd2.ExecuteReader();
