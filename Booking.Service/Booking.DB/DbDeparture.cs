@@ -16,6 +16,7 @@ namespace Booking.DB
 
         public void Create(Departure obj)
         {
+            List<SeatSchema> ss = new List<SeatSchema>();
             TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
             {
@@ -30,10 +31,23 @@ namespace Booking.DB
 
                     cmd.ExecuteNonQuery();
 
+                    if (obj.Plane != null)
+                    {
+                        
+                        SqlCommand cmd2 = new SqlCommand("SELECT * FROM dbo.Booking_Seats WHERE Plane_Id=@Pid", con);
+                        cmd2.Parameters.Add("@Pid", SqlDbType.Int).Value = obj.Plane.Id;
 
+                        var rdr = cmd2.ExecuteReader();
+
+                        while (rdr.Read()) 
+                        {
+                            ss.Add(new Seat { Id = (int)rdr["Id"], Number = (int)rdr["Number"] });
+                        }
+                    }
                 }
                 scope.Complete();
 
+             
 
             }
         }
