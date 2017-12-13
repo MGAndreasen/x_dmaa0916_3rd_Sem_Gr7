@@ -244,7 +244,7 @@
 	CREATE TABLE [dbo].[Booking_Seat](
 		[Id] [int] IDENTITY(1,1) NOT NULL,
 		[Row] [int] NOT NULL,
-		[Number] [int] NOT NULL,
+		[Number] [NVarChar] NOT NULL,
 		[Plane_Id] [int] NOT NULL,
 		[Availability] [bit] NOT NULL,
 	 CONSTRAINT [PK_Booking_Seat] PRIMARY KEY CLUSTERED 
@@ -434,9 +434,9 @@
 	GO
 	SET IDENTITY_INSERT [dbo].[Booking_Plane] ON
 	GO
-	INSERT [dbo].[Booking_Plane] ([Id], [Type]) VALUES (1, N'Boeing 737-800')
+	INSERT [dbo].[Booking_Plane] ([Id], [Type]) VALUES (1, N'Boeing 787')
 	GO
-	INSERT [dbo].[Booking_Plane] ([Id], [Type]) VALUES (9, N'Boeing 787')
+	INSERT [dbo].[Booking_Plane] ([Id], [Type]) VALUES (9, N'Boeing 737-800')
 	GO
 	INSERT [dbo].[Booking_Plane] ([Id], [Type]) VALUES (10, N'Boeing 737-8')
 	GO
@@ -445,7 +445,7 @@
 	GO
 	SET IDENTITY_INSERT [dbo].[Booking_Seat] ON
 	GO
-	--INSERT [dbo].[Booking_Seat] ([Id], [Row], [Plane_Id], [Number], [Availability]) VALUES (1, 1, 1, 1, 1)
+	
 	GO
 	SET IDENTITY_INSERT [dbo].[Booking_Seat] OFF
 
