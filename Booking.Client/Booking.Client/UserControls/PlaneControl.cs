@@ -169,7 +169,7 @@ namespace Booking.Client.UserControls
 
                 if (s != null && p != null)
                 {
-                    p.SeatSchema.Remove(s);
+                    p.SeatSchema.RemoveAll(x => x.Id == s.Id);
                 }
                 myService.UpdatePlane(p);
             }
