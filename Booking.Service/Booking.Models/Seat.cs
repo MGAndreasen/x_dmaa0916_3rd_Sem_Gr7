@@ -17,7 +17,7 @@ namespace Booking.Models
         public int Id { get; set; }
 
         [DataMember]
-        public int Number { get; set; }
+        public string Number { get; set; }
 
         [DataMember]
         public int Row { get; set; }

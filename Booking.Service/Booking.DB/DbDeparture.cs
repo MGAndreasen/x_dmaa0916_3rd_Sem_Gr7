@@ -16,6 +16,7 @@ namespace Booking.DB
 
         public void Create(Departure obj)
         {
+            
             List<SeatSchema> ss = new List<SeatSchema>();
             TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
@@ -38,11 +39,35 @@ namespace Booking.DB
                         cmd2.Parameters.Add("@Pid", SqlDbType.Int).Value = obj.Plane.Id;
 
                         var rdr = cmd2.ExecuteReader();
+                        bool Test = false;
 
                         while (rdr.Read()) 
                         {
-                            ss.Add(new Seat { Id = (int)rdr["Id"], Number = (int)rdr["Number"] });
+                            Test = Convert.ToBoolean(rdr["Availability"]);
+
+                            ss.Add(new SeatSchema
+                            {
+                                Id = (int)rdr["Id"],
+                                Layout = (string)rdr["Layout"],
+                                Row = (int)rdr["Row"]
+
+                            });
+                            
+                            
+                            //ss.Add(new SeatSchema { Id = (int)rdr["Id"], Number = (int)rdr["Number"], Row = (int)rdr["Row"], Available = Test });
                         }
+                        foreach (var s in ss)
+                        {
+                            for (int i = 0; i < s.Layout.Length; i++)
+                            {
+                                if (s.Layout[i] != Convert.ToChar("|"))
+                                {
+                                    obj.Seats.Add(new Seat{ Number = (string)s.Layout[i].ToString(), Available=true, Row =s.Row });
+                                }
+                            }
+                        }
+
+                        Update(obj);
                     }
                 }
                 scope.Complete();
