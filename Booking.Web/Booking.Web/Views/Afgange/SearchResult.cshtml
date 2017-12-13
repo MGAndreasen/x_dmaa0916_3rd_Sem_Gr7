@@ -13,11 +13,11 @@
     {
         var client = ViewBag.proxy;
 
-        var d = "";
+        var d = @Request.Form["EndDestinaon"];
 
         client.GetDeparture(d.AsInt());
 
-        @Request.Form["EndDestinaon"]
+        
 
 
 
