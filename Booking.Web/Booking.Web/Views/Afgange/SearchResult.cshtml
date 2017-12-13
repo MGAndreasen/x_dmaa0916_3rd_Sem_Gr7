@@ -12,18 +12,18 @@
     try
     {
         var client = ViewBag.proxy;
-        var depart = client.GetAllDepartures();
 
-        foreach(var d in depart)
-        {
-            <p>@d.Id </p>
-        }
+        var d = @Request.Form["EndDestinaon"];
+
+        client.GetDeparture(d.AsInt());
+
+        
 
 
 
     }
 
-    catch(Exception)
+    catch (Exception)
     {
            <p>NAH NIGGA NAH</p>
     }

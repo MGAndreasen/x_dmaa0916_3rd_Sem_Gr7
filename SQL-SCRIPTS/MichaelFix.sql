@@ -669,13 +669,13 @@
 	GO
 	INSERT [dbo].[Booking_Departure] ([Id], [StartDestination], [EndDestination],[DepartureTime],[Plane_Id]) VALUES (21, 5, 20, convert(datetime, '2018-2-5 20:00'), 10)
 	GO
-	INSERT [dbo].[Booking_Departure] ([Id], [StartDestination], [EndDestination],[DepartureTime],[Plane_Id]) VALUES (22, 5, 20, convert(datetime, '2018-2-5 20:00')+1, 1)
+	INSERT [dbo].[Booking_Departure] ([Id], [StartDestination], [EndDestination],[DepartureTime],[Plane_Id]) VALUES (22, 5, 20, convert(datetime, '2018-2-5 20:00')+1, 10)
 	GO
-	INSERT [dbo].[Booking_Departure] ([Id], [StartDestination], [EndDestination],[DepartureTime],[Plane_Id]) VALUES (23, 5, 20, convert(datetime, '2018-2-5 20:00')+2, 1)
+	INSERT [dbo].[Booking_Departure] ([Id], [StartDestination], [EndDestination],[DepartureTime],[Plane_Id]) VALUES (23, 5, 20, convert(datetime, '2018-2-5 20:00')+2, 10)
 	GO
-	INSERT [dbo].[Booking_Departure] ([Id], [StartDestination], [EndDestination],[DepartureTime],[Plane_Id]) VALUES (24, 5, 20, convert(datetime, '2018-2-5 20:00')+3, 1)
+	INSERT [dbo].[Booking_Departure] ([Id], [StartDestination], [EndDestination],[DepartureTime],[Plane_Id]) VALUES (24, 5, 20, convert(datetime, '2018-2-5 20:00')+3, 10)
 	GO
-	INSERT [dbo].[Booking_Departure] ([Id], [StartDestination], [EndDestination],[DepartureTime],[Plane_Id]) VALUES (25, 5, 20, convert(datetime, '2018-2-5 20:00')+4, 1)
+	INSERT [dbo].[Booking_Departure] ([Id], [StartDestination], [EndDestination],[DepartureTime],[Plane_Id]) VALUES (25, 5, 20, convert(datetime, '2018-2-5 20:00')+4, 10)
 	GO
 	INSERT [dbo].[Booking_Departure] ([Id], [StartDestination], [EndDestination],[DepartureTime],[Plane_Id]) VALUES (26, 5, 25, convert(datetime, '2018-1-20 14:00'), 9)
 	GO
