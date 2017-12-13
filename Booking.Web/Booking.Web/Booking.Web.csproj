@@ -212,7 +212,9 @@
     <Compile Include="Helpers\AuthHelper.cs" />
     <Compile Include="Helpers\ServiceHelper.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\NewUserViewModel.cs" />
     <Compile Include="Models\TilbudModel.cs" />
+    <Compile Include="Models\ZipCodesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -360,6 +362,7 @@
     <Content Include="Views\Auth\MembersOnly.cshtml" />
     <Content Include="Views\Afgange\Index.cshtml" />
     <Content Include="Views\Afgange\SearchResult.cshtml" />
+    <Content Include="Views\Auth\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
