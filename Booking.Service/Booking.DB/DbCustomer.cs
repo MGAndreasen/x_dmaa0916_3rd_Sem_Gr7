@@ -133,13 +133,14 @@ namespace Booking.DB
                             Id = (int)rdr["Id"],
                             FirstName = (string)rdr["FirstName"],
                             LastName = (string)rdr["LastName"],
-                            Email = (string)rdr[""],
+                            Email = (string)rdr["Email"],
                             CPR = (long)rdr["Cpr"],
                             PhoneNumber = (long)rdr["PhoneNo"],
-                            City = dbCity.Get((int)rdr["ZipCode"]),
+                            City = dbCity.Get((int)rdr["City_Id"]),
                             Address = (string)rdr["Address"],
                             Password = (string)rdr["Password"],
                             Confirmed = (bool)rdr["Cofirmed"],
+                            Role = (string)rdr["Roles"]
                         });
                     }
                 }
