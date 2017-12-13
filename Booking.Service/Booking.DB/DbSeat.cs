@@ -51,7 +51,7 @@ namespace Booking.DB
                     {
                         Id = (int)rdr["Id"],
                         Row = (int)rdr["Row_Id"],
-                        Number = (int)rdr["Number"],
+                        Number = (string)rdr["Number"],
                         Available = (bool)rdr["Availability"]
                     };
                 }

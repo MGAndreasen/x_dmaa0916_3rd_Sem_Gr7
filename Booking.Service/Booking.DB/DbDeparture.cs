@@ -183,6 +183,25 @@ namespace Booking.DB
                 }
 
             }
+
+            int c = 0;
+            foreach (var a in departures)
+            {
+                c++;
+                c++;
+                c++;
+
+                foreach (var b in a.Seats)
+                {
+                    c++;
+                }
+
+                foreach (var dd in a.Plane.SeatSchema)
+                {
+                    c++;
+                }
+            }
+            Console.WriteLine("Objects : " + c);
             return departures;
         }
     }

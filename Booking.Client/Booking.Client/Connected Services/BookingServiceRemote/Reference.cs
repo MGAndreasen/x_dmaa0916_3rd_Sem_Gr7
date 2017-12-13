@@ -292,7 +292,7 @@ namespace Booking.Client.BookingServiceRemote {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int NumberField;
+        private string NumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int RowField;
@@ -334,12 +334,12 @@ namespace Booking.Client.BookingServiceRemote {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Number {
+        public string Number {
             get {
                 return this.NumberField;
             }
             set {
-                if ((this.NumberField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.NumberField, value) != true)) {
                     this.NumberField = value;
                     this.RaisePropertyChanged("Number");
                 }
