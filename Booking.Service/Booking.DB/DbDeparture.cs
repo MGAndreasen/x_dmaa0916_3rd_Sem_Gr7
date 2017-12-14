@@ -35,7 +35,7 @@ namespace Booking.DB
                     if (obj.Plane != null)
                     {
                         
-                        SqlCommand cmd2 = new SqlCommand("SELECT * FROM dbo.Booking_SeatSchema WHERE Plane_Id=@Pid", con);
+                        SqlCommand cmd2 = new SqlCommand("SELECT * FROM dbo.Booking_Seat WHERE Plane_Id=@Pid", con);
                         cmd2.Parameters.Add("@Pid", SqlDbType.Int).Value = obj.Plane.Id;
 
                         var rdr = cmd2.ExecuteReader();
@@ -66,13 +66,12 @@ namespace Booking.DB
                                 }
                             }
                         }
-
-                        Update(obj);
                     }
                 }
                 scope.Complete();
+                Update(obj);
 
-             
+
 
             }
         }
@@ -136,8 +135,8 @@ namespace Booking.DB
                     con.Open();
                     SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Departure SET StartDestination=@SD, EndDestination=@ED, DepartureTime=@DT, Plane_Id=@PI WHERE Id=@Id", con);
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
-                    cmd.Parameters.Add("@SD", SqlDbType.Int).Value = obj.StartDestination;
-                    cmd.Parameters.Add("@ED", SqlDbType.Int).Value = obj.EndDestination;
+                    cmd.Parameters.Add("@SD", SqlDbType.Int).Value = obj.StartDestination.Id;
+                    cmd.Parameters.Add("@ED", SqlDbType.Int).Value = obj.EndDestination.Id;
                     cmd.Parameters.Add("@DT", SqlDbType.DateTime).Value = obj.DepartureTime;
                     cmd.Parameters.Add("@PI", SqlDbType.Int).Value = obj.Plane.Id;
 
