@@ -72,16 +72,17 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Customer (Cpr, PhoneNo, City_Id, FirstName, LastName, Email, Address, Password, Cofirmed) VALUES (@Cpr, @PhoneNo, @City, @FirstName, @LastName, @Email. @Address, @Password, @Cofirmed)", con);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Customer (Cpr, PhoneNo, City_Id, FirstName, LastName, Email, Address, Password, Cofirmed, Roles) VALUES (@Cpr, @PhoneNo, @City, @FirstName, @LastName, @Email, @Address, @Password, @Cofirmed, @Roles)", con);
                     cmd.Parameters.Add("Cpr", SqlDbType.BigInt).Value = obj.CPR;
                     cmd.Parameters.Add("PhoneNo", SqlDbType.BigInt).Value = obj.PhoneNumber;
-                    cmd.Parameters.Add("City", SqlDbType.Int).Value = obj.City;
+                    cmd.Parameters.Add("City", SqlDbType.Int).Value = obj.City.Zipcode;
                     cmd.Parameters.Add("FirstName", SqlDbType.NVarChar).Value = obj.FirstName;
                     cmd.Parameters.Add("LastName", SqlDbType.NVarChar).Value = obj.LastName;
                     cmd.Parameters.Add("Email", SqlDbType.NVarChar).Value = obj.Email;
                     cmd.Parameters.Add("Address", SqlDbType.NVarChar).Value = obj.Address;
                     cmd.Parameters.Add("Password", SqlDbType.NVarChar).Value = obj.Password;
                     cmd.Parameters.Add("Cofirmed", SqlDbType.Bit).Value = obj.Confirmed;
+                    cmd.Parameters.Add("Roles", SqlDbType.NVarChar).Value = obj.Role;
 
                     idd = cmd.ExecuteNonQuery();
                 }
