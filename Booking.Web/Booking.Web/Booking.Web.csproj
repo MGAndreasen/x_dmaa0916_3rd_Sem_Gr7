@@ -196,6 +196,7 @@
     </Compile>
     <Compile Include="Helpers\AuthHelper.cs" />
     <Compile Include="Helpers\ServiceHelper.cs" />
+    <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\NewUserViewModel.cs" />
     <Compile Include="Models\TilbudModel.cs" />
