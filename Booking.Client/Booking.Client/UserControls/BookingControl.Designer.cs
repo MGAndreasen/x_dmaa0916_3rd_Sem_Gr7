@@ -30,20 +30,20 @@
         {
             this.listBoxDepartures = new System.Windows.Forms.ListBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.LoadDepBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.UpdateBtn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.CreateBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.LoadCustBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.listBoxCustomers = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.DeleteBtn = new System.Windows.Forms.Button();
+            this.LoadBookBtn = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -69,15 +69,15 @@
             this.label8.TabIndex = 4;
             this.label8.Text = "Select departure";
             // 
-            // button1
+            // LoadDepBtn
             // 
-            this.button1.Location = new System.Drawing.Point(23, 316);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(156, 63);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Load departures";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.LoadDepBtn.Location = new System.Drawing.Point(23, 316);
+            this.LoadDepBtn.Name = "LoadDepBtn";
+            this.LoadDepBtn.Size = new System.Drawing.Size(156, 63);
+            this.LoadDepBtn.TabIndex = 6;
+            this.LoadDepBtn.Text = "Load departures";
+            this.LoadDepBtn.UseVisualStyleBackColor = true;
+            this.LoadDepBtn.Click += new System.EventHandler(this.LoadDepBtn_Click);
             // 
             // groupBox1
             // 
@@ -85,10 +85,10 @@
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.LoadCustBtn);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.listBoxCustomers);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.LoadDepBtn);
             this.groupBox1.Controls.Add(this.listBoxDepartures);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Location = new System.Drawing.Point(12, 13);
@@ -100,7 +100,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button6);
+            this.groupBox4.Controls.Add(this.UpdateBtn);
             this.groupBox4.Location = new System.Drawing.Point(212, 409);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(156, 100);
@@ -108,18 +108,19 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
             // 
-            // button6
+            // UpdateBtn
             // 
-            this.button6.Location = new System.Drawing.Point(41, 28);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 45);
-            this.button6.TabIndex = 1;
-            this.button6.Text = "Update";
-            this.button6.UseVisualStyleBackColor = true;
+            this.UpdateBtn.Location = new System.Drawing.Point(41, 28);
+            this.UpdateBtn.Name = "UpdateBtn";
+            this.UpdateBtn.Size = new System.Drawing.Size(75, 45);
+            this.UpdateBtn.TabIndex = 1;
+            this.UpdateBtn.Text = "Update";
+            this.UpdateBtn.UseVisualStyleBackColor = true;
+            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.CreateBtn);
             this.groupBox2.Location = new System.Drawing.Point(23, 402);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(156, 107);
@@ -127,14 +128,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Create";
             // 
-            // button3
+            // CreateBtn
             // 
-            this.button3.Location = new System.Drawing.Point(36, 35);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 45);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Create";
-            this.button3.UseVisualStyleBackColor = true;
+            this.CreateBtn.Location = new System.Drawing.Point(36, 35);
+            this.CreateBtn.Name = "CreateBtn";
+            this.CreateBtn.Size = new System.Drawing.Size(75, 45);
+            this.CreateBtn.TabIndex = 0;
+            this.CreateBtn.Text = "Create";
+            this.CreateBtn.UseVisualStyleBackColor = true;
+            this.CreateBtn.Click += new System.EventHandler(this.CreateBtn_Click);
             // 
             // label2
             // 
@@ -153,15 +155,15 @@
             this.textBox1.TabIndex = 10;
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Price_KeyPress);
             // 
-            // button2
+            // LoadCustBtn
             // 
-            this.button2.Location = new System.Drawing.Point(212, 316);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(156, 63);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Load customers";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.LoadCustBtn.Location = new System.Drawing.Point(212, 316);
+            this.LoadCustBtn.Name = "LoadCustBtn";
+            this.LoadCustBtn.Size = new System.Drawing.Size(156, 63);
+            this.LoadCustBtn.TabIndex = 9;
+            this.LoadCustBtn.Text = "Load customers";
+            this.LoadCustBtn.UseVisualStyleBackColor = true;
+            this.LoadCustBtn.Click += new System.EventHandler(this.LoadCustBtn_Click);
             // 
             // label1
             // 
@@ -183,8 +185,8 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button5);
-            this.groupBox3.Controls.Add(this.button4);
+            this.groupBox3.Controls.Add(this.DeleteBtn);
+            this.groupBox3.Controls.Add(this.LoadBookBtn);
             this.groupBox3.Controls.Add(this.listBox1);
             this.groupBox3.Location = new System.Drawing.Point(614, 13);
             this.groupBox3.Name = "groupBox3";
@@ -193,25 +195,25 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "List of bookings";
             // 
-            // button5
+            // DeleteBtn
             // 
-            this.button5.Location = new System.Drawing.Point(26, 120);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(118, 37);
-            this.button5.TabIndex = 14;
-            this.button5.Text = "Delete";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.DeleteBtn.Location = new System.Drawing.Point(26, 120);
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.Size = new System.Drawing.Size(118, 37);
+            this.DeleteBtn.TabIndex = 14;
+            this.DeleteBtn.Text = "Delete";
+            this.DeleteBtn.UseVisualStyleBackColor = true;
+            this.DeleteBtn.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button4
+            // LoadBookBtn
             // 
-            this.button4.Location = new System.Drawing.Point(26, 43);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(118, 61);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Load bookings";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.LoadBookBtn.Location = new System.Drawing.Point(26, 43);
+            this.LoadBookBtn.Name = "LoadBookBtn";
+            this.LoadBookBtn.Size = new System.Drawing.Size(118, 61);
+            this.LoadBookBtn.TabIndex = 1;
+            this.LoadBookBtn.Text = "Load bookings";
+            this.LoadBookBtn.UseVisualStyleBackColor = true;
+            this.LoadBookBtn.Click += new System.EventHandler(this.LoadBookBtn_Click);
             // 
             // listBox1
             // 
@@ -243,20 +245,20 @@
 
         private System.Windows.Forms.ListBox listBoxDepartures;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button LoadDepBtn;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listBoxCustomers;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button LoadCustBtn;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button CreateBtn;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button DeleteBtn;
+        private System.Windows.Forms.Button LoadBookBtn;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button UpdateBtn;
     }
 }

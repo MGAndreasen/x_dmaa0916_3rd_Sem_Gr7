@@ -29,21 +29,21 @@ namespace Booking.Client.UserControls
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void LoadDepBtn_Click(object sender, EventArgs e)
         {
             listBoxDepartures.DataSource = myService.GetAllDepartures();
             listBoxDepartures.ValueMember = "Id";
             listBoxDepartures.DisplayMember = "Id";
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void LoadCustBtn_Click(object sender, EventArgs e)
         {
             listBoxCustomers.DataSource = myService.GetAllCustomers();
             listBoxCustomers.ValueMember = "Id";
             listBoxCustomers.DisplayMember = "FirstName";
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void LoadBookBtn_Click(object sender, EventArgs e)
         {
             listBox1.DataSource = myService.GetAllBookings();
             listBox1.ValueMember = "Id";
@@ -63,6 +63,16 @@ namespace Booking.Client.UserControls
             {
                 e.Handled = true;
             }
+        }
+
+        private void CreateBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UpdateBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
