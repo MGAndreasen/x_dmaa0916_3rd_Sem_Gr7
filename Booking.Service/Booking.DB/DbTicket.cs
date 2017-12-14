@@ -37,18 +37,26 @@ namespace Booking.DB
 
         public Ticket Get(int id)
         {
+            Ticket ticket = null;
             DbPassenger dbp = new DbPassenger();
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
 
                 con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Booking_Booking WHERE Id=@Id", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Booking_Ticket WHERE Id=@Id", con);
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
 
                 SqlDataReader rdr = cmd.ExecuteReader();
-                rdr.Read();
-                return new Ticket(rdr.GetInt32(0), dbp.Get(rdr.GetInt32(1)));
+                if (rdr.Read())
+                {
+                    ticket = new Ticket
+                    {
+                        Id = (int)rdr["Id"],
+                        Passenger = dbp.Get((int)rdr["Passenger_Id"])
+                    };
+                }
 
+                return ticket;
             }
 
         }
@@ -61,7 +69,7 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Booking (Passenger_Id) VALUES (@Passenger_Id)", con);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Ticket (Passenger_Id) VALUES (@Passenger_Id)", con);
                     cmd.Parameters.Add("@Passenger_Id", SqlDbType.Int).Value = obj.Passenger;
 
                     cmd.ExecuteNonQuery();
@@ -78,7 +86,7 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Id=@Id, Passenger_Id=@Passenger_Id", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Ticket SET Id=@Id, Passenger_Id=@Passenger_Id", con);
 
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = obj.Id;
                     cmd.Parameters.Add("@Passenger_Id", SqlDbType.Int).Value = obj.Passenger;

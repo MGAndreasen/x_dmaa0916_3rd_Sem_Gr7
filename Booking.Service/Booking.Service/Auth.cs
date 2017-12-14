@@ -48,10 +48,14 @@ namespace Booking.Service
                         c.CPR = 0000000000;
                         c.Confirmed = false;
 
-                        if(uCtrl.CreateUser(c))
+                        if (uCtrl.CreateUser(c))
                         {
                             lykkes = true;
                         }
+                    }
+                    else if (exists != null)
+                    {
+                        lykkes = false;
                     }
                 }
             }
