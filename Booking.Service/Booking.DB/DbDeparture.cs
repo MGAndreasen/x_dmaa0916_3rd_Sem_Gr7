@@ -174,7 +174,6 @@ namespace Booking.DB
                             EndDestination = dbd.Get((int)rdr["EndDestination"]),
                             StartDestination = dbd.Get((int)rdr["StartDestination"]),
                             DepartureTime = (DateTime)rdr["DepartureTime"]
-
                         };
                         // husk seats
                         departures.Add(d);
@@ -183,24 +182,61 @@ namespace Booking.DB
 
             }
 
-            int c = 0;
-            foreach (var a in departures)
+            //int c = 0;
+            //foreach (var a in departures)
+            //{
+            //    c++;
+            //    c++;
+            //    c++;
+
+            //    foreach (var b in a.Seats)
+            //    {
+            //        c++;
+            //    }
+
+            //    foreach (var dd in a.Plane.SeatSchema)
+            //    {
+            //        c++;
+            //    }
+            //}
+            //Console.WriteLine("Objects : " + c);
+            return departures;
+        }
+
+        public IEnumerable<Departure> GetAllDeparturesFromTo(int start, int end)
+        {
+            DbPlane dbp = new DbPlane();
+            DbDestination dbd = new DbDestination();
+
+            List<Departure> departures = new List<Departure>();
+
+            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
-                c++;
-                c++;
-                c++;
+                con.Open();
 
-                foreach (var b in a.Seats)
+                using (SqlCommand cmd = con.CreateCommand())
                 {
-                    c++;
+                    cmd.CommandText = "SELECT * FROM dbo.Booking_Departure Where StartDestination = @start AND EndDestination = @end ORDER BY DepartureTime ASC";
+                    cmd.Parameters.Add("@start", SqlDbType.Int).Value = start;
+                    cmd.Parameters.Add("@end", SqlDbType.Int).Value = end;
+                    var rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        departures.Add(new Departure
+                        {
+                            Id = (int)rdr["Id"],
+                            Plane = dbp.Get((int)rdr["Plane_Id"]),
+                            EndDestination = dbd.Get((int)rdr["EndDestination"]),
+                            StartDestination = dbd.Get((int)rdr["StartDestination"]),
+                            DepartureTime = (DateTime)rdr["DepartureTime"]
+                        });
+                        // husk seats
+                    }
                 }
 
-                foreach (var dd in a.Plane.SeatSchema)
-                {
-                    c++;
-                }
             }
-            Console.WriteLine("Objects : " + c);
+            
             return departures;
         }
     }

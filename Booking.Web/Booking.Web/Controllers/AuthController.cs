@@ -26,7 +26,7 @@ namespace Booking.Web.Controllers
 
             try
             {
-                client = (BookingServiceRemote.ServiceClient)ServiceHelper.GetServiceClient();
+                client = ServiceHelper.GetServiceClient();
                 ViewBag.proxyError = "";
             }
             catch (Exception ex)
@@ -46,7 +46,6 @@ namespace Booking.Web.Controllers
 
                 NewUser.ZipCodes = AllCitys;
             }
-
 
             return View(NewUser);
         }

@@ -35,7 +35,12 @@ namespace Booking.Controller
 
         public IEnumerable<Departure> GetAllDepartures()
         {
-           return DBP.GetAll();
+            return DBP.GetAll();
+        }
+
+        public IEnumerable<Departure> GetAllDeparturesFromTo(int start, int end)
+        {
+           return DBP.GetAllDeparturesFromTo(start,end);
         }
 
         public IEnumerable<Departure> GetAllTilbud()

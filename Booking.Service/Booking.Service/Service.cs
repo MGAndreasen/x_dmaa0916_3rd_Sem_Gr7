@@ -58,6 +58,11 @@ namespace Booking.Service
             return departureCtrl.GetAllDepartures();
         }
 
+        public IEnumerable<Departure> GetAllDeparturesFromTo(int start, int end)
+        {
+            return departureCtrl.GetAllDeparturesFromTo(start, end);
+        }
+
         public IEnumerable<Departure> GetAllTilbud()
         {
             return departureCtrl.GetAllTilbud();

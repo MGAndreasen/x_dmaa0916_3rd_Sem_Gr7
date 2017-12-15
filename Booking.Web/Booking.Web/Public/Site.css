@@ -100,30 +100,27 @@ footer p {
     margin: 0 auto;
 }
 
-#Page_NewUser {
+#Page_NewUser, #Page_Afgange{
     margin: 0 auto;
     width: 470px;
 }
 
-#Page_NewUser form {
+form.ny {
     display: grid;
     grid-template-columns: 200px 1fr;
 }
 
-#Page_NewUser lable {
+lable.ny {
     grid-column: 1 / 2;
+    margin-top: 2px;
+    padding: 4px 10px 4px 10px;
 }
 
-#Page_NewUser input, #Page_NewUser button, #Page_NewUser select {
+input.ny, button.ny, select.ny {
         grid-column: 2 / 3;
         margin-top: 2px;
         padding: 4px 10px 4px 10px;
 }
-
-    #Page_NewUser label {
-        margin-top: 2px;
-        padding: 4px 10px 4px 10px;
-    }
 
 
 /* Override the default bootstrap behavior where horizontal description lists 

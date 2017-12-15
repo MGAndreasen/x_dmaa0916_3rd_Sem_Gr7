@@ -1194,6 +1194,12 @@ namespace Booking.Web.BookingServiceRemote {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllDepartures", ReplyAction="http://tempuri.org/IService/GetAllDeparturesResponse")]
         System.Threading.Tasks.Task<Booking.Web.BookingServiceRemote.Departure[]> GetAllDeparturesAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllDeparturesFromTo", ReplyAction="http://tempuri.org/IService/GetAllDeparturesFromToResponse")]
+        Booking.Web.BookingServiceRemote.Departure[] GetAllDeparturesFromTo(int start, int end);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllDeparturesFromTo", ReplyAction="http://tempuri.org/IService/GetAllDeparturesFromToResponse")]
+        System.Threading.Tasks.Task<Booking.Web.BookingServiceRemote.Departure[]> GetAllDeparturesFromToAsync(int start, int end);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllTilbud", ReplyAction="http://tempuri.org/IService/GetAllTilbudResponse")]
         Booking.Web.BookingServiceRemote.Departure[] GetAllTilbud();
         
@@ -1535,6 +1541,14 @@ namespace Booking.Web.BookingServiceRemote {
         
         public System.Threading.Tasks.Task<Booking.Web.BookingServiceRemote.Departure[]> GetAllDeparturesAsync() {
             return base.Channel.GetAllDeparturesAsync();
+        }
+        
+        public Booking.Web.BookingServiceRemote.Departure[] GetAllDeparturesFromTo(int start, int end) {
+            return base.Channel.GetAllDeparturesFromTo(start, end);
+        }
+        
+        public System.Threading.Tasks.Task<Booking.Web.BookingServiceRemote.Departure[]> GetAllDeparturesFromToAsync(int start, int end) {
+            return base.Channel.GetAllDeparturesFromToAsync(start, end);
         }
         
         public Booking.Web.BookingServiceRemote.Departure[] GetAllTilbud() {
