@@ -243,6 +243,12 @@
   <wsdl:message name="IService_DeleteCity_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteCityResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_GetAllCitys_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCitys" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetAllCitys_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCitysResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_CreateDestination_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateDestination" />
   </wsdl:message>
@@ -496,6 +502,10 @@
     <wsdl:operation name="DeleteCity">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteCity" message="tns:IService_DeleteCity_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteCityResponse" message="tns:IService_DeleteCity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCitys">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllCitys" message="tns:IService_GetAllCitys_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllCitysResponse" message="tns:IService_GetAllCitys_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateDestination">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateDestination" message="tns:IService_CreateDestination_InputMessage" />
@@ -801,6 +811,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteCity">
       <soap12:operation soapAction="http://tempuri.org/IService/DeleteCity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCitys">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetAllCitys" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

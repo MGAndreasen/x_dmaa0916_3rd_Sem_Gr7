@@ -30,5 +30,10 @@ namespace Booking.Controller
         {
             DBCI.Update(obj);
         }
+
+        public IEnumerable<City> GetAllCitys()
+        {
+            return DBCI.GetAll();
+        }
     }
 }

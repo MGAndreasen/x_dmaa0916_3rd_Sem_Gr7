@@ -104,6 +104,8 @@ namespace Booking.Service
         void UpdateCity(City obj);
         [OperationContract]
         void DeleteCity(int id);
+        [OperationContract]
+        IEnumerable<City> GetAllCitys();
 
         #endregion 
 

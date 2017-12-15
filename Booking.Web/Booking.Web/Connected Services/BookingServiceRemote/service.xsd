@@ -278,10 +278,22 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetAllCitys">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllCitysResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetAllCitysResult" nillable="true" type="q18:ArrayOfCity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="CreateDestination">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q18:Destination" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q19:Destination" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -300,14 +312,14 @@
   <xs:element name="GetDestinationResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetDestinationResult" nillable="true" type="q19:Destination" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetDestinationResult" nillable="true" type="q20:Destination" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateDestination">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q20:Destination" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q21:Destination" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -336,14 +348,14 @@
   <xs:element name="GetAllDestinationsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetAllDestinationsResult" nillable="true" type="q21:ArrayOfDestination" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetAllDestinationsResult" nillable="true" type="q22:ArrayOfDestination" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreatePassenger">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q22:Passenger" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q23:Passenger" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -362,14 +374,14 @@
   <xs:element name="GetPassengerResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetPassengerResult" nillable="true" type="q23:Passenger" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetPassengerResult" nillable="true" type="q24:Passenger" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdatePassenger">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q24:Passenger" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q25:Passenger" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -398,14 +410,14 @@
   <xs:element name="GetAllPassengersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetAllPassengersResult" nillable="true" type="q25:ArrayOfPassenger" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetAllPassengersResult" nillable="true" type="q26:ArrayOfPassenger" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreatePayment">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q26:Payment" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q27:Payment" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -424,14 +436,14 @@
   <xs:element name="GetPaymentResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetPaymentResult" nillable="true" type="q27:Payment" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetPaymentResult" nillable="true" type="q28:Payment" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdatePayment">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q28:Payment" />
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q29:Payment" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -455,7 +467,7 @@
   <xs:element name="CreatePlane">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q29:Plane" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q30:Plane" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -474,14 +486,14 @@
   <xs:element name="GetPlaneResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetPlaneResult" nillable="true" type="q30:Plane" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetPlaneResult" nillable="true" type="q31:Plane" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdatePlane">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q31:Plane" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q32:Plane" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -510,14 +522,14 @@
   <xs:element name="GetAllPlanesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetAllPlanesResult" nillable="true" type="q32:ArrayOfPlane" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetAllPlanesResult" nillable="true" type="q33:ArrayOfPlane" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateSeat">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q33:Seat" />
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q34:Seat" />
         <xs:element minOccurs="0" name="planeId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -537,14 +549,14 @@
   <xs:element name="GetSeatResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetSeatResult" nillable="true" type="q34:Seat" />
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetSeatResult" nillable="true" type="q35:Seat" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateSeat">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q35:Seat" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q36:Seat" />
         <xs:element minOccurs="0" name="planeId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -569,7 +581,7 @@
   <xs:element name="CreateTicket">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q36:Ticket" />
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q37:Ticket" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -588,14 +600,14 @@
   <xs:element name="GetTicketResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetTicketResult" nillable="true" type="q37:Ticket" />
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="GetTicketResult" nillable="true" type="q38:Ticket" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateTicket">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q38:Ticket" />
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/Booking.Models" minOccurs="0" name="obj" nillable="true" type="q39:Ticket" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

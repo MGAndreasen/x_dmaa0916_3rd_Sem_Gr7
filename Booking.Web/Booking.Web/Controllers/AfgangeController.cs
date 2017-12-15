@@ -16,7 +16,7 @@ namespace Booking.Web.Controllers
 
             try
             {
-                var client = ServiceHelper.GetServiceClientWithCredentials();
+                var client = ServiceHelper.GetServiceClient();
                 ViewBag.proxy = client;
                 ViewBag.proxyError = "";
             }
@@ -34,7 +34,7 @@ namespace Booking.Web.Controllers
         {
             try
             {
-                var client = ServiceHelper.GetServiceClientWithCredentials();
+                var client = ServiceHelper.GetServiceClient();
                 ViewBag.Proxy = client;
                 ViewBag.Error = "";
 

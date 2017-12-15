@@ -7,7 +7,7 @@
     <h2>Login</h2>
     <h4>@ViewBag.StatusMessage</h4>
 
-    @using (Html.BeginForm("Index", "Auth", FormMethod.Post))
+    @using (Html.BeginForm("SignUp", "Auth", FormMethod.Post))
     {
         @Html.Label("Email:");
         @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
@@ -28,9 +28,7 @@
         @Html.TextBoxFor(x => x.Address, new { @class = "form-control" })
 
         @Html.Label("ZipCode:");
-        @Html.TextBoxFor(x => x.ZipCode, new { @class = "form-control" })
-
-        //Html.DropDownListFor(x => x.ZipCode, new SelectList(Model.ZipCodes, "ZipCode", "CityName"))
+        @Html.DropDownListFor(x => x.ZipCode, new SelectList(Model.ZipCodes, "ZipCode", "CityName"))
 
 
         @Html.Label("Phone Number:");

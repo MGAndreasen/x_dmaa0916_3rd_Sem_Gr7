@@ -221,6 +221,11 @@ namespace Booking.Service
             cityCtrl.Delete(id);
         }
 
+        public IEnumerable<City> GetAllCitys()
+        {
+            return cityCtrl.GetAllCitys();
+        }
+
         #endregion
 
         #region Destination

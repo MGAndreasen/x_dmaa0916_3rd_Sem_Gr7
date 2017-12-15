@@ -97,7 +97,32 @@ namespace Booking.DB
                 }
                 scope.Complete();
             }
+        }
 
+        public IEnumerable<City> GetAll()
+        {
+            List<City> citys = new List<City>();
+
+            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+            {
+                con.Open();
+
+                using (SqlCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM dbo.Booking_City";
+                    var rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        citys.Add(new City
+                        {
+                            Zipcode = (int)rdr["ZipCode"],
+                            CityName = (string)rdr["Name"]                            
+                        });
+                    }
+                }
+            }
+            return citys;
         }
     }
 }

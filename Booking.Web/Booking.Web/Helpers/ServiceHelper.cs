@@ -9,7 +9,7 @@ namespace Booking.Web.Helpers
 {
     public class ServiceHelper
     {
-        public static ServiceClient GetServiceClientWithCredentials()
+        public static ServiceClient GetServiceClient()
         {
             string username = "Guest";
             string password = "Guest";
@@ -26,7 +26,7 @@ namespace Booking.Web.Helpers
             return client;
         }
 
-        public static AuthClient GetAuthServiceClient()
+        public static AuthClient GetAuthClient()
         {
             return new AuthClient("WSHttpBinding_IAuth");
         }
