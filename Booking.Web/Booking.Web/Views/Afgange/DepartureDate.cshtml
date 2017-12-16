@@ -1,0 +1,27 @@
+﻿@model Booking.Web.Models.BookingViewModel
+
+<div class="booking_partial">
+    <div class="badget someShadow">2</div>
+
+    @{
+        if (Model.FromDestination > 0 && Model.ToDestination > 0)
+        {
+            if (Model.OneWay)
+            {
+                <h2>Departure date</h2>
+            }
+            else
+            {
+                <h2>Departure / Return dates</h2>
+            }
+
+
+            using (Html.BeginForm("SelectDestination", "Afgange", FormMethod.Post, new { @class = "ny" }))
+            {
+                
+            }
+
+        }
+
+    }
+</div>

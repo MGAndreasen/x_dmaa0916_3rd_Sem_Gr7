@@ -19,7 +19,13 @@ namespace Booking.Web.Controllers
         public ActionResult SelectDestination()
         {
             BookingViewModel Bookingvm = null;
+            List<Destination> Destinations = new List<Destination>();
+            List<Departure> Departures = new List<Departure>();
 
+            ViewBag.Message = "Book a flight";
+
+
+            // Snup modellen fra Sessionen hvis vi har været igang allerede...
             if (Session["BookingModel"] == null)
             {
                 Bookingvm = new BookingViewModel();
@@ -29,10 +35,7 @@ namespace Booking.Web.Controllers
                 Bookingvm = (BookingViewModel)Session["BookingModel"];
             }
 
-            List<Destination> Destinations = new List<Destination>();
-
-            ViewBag.Message = "Book a flight";
-
+            
             try
             {
                 var client = ServiceHelper.GetServiceClient();
@@ -44,6 +47,26 @@ namespace Booking.Web.Controllers
                 foreach (var d in DestResult)
                 {
                     Destinations.Add(new Destination { Id = d.Id, Name = d.NameDestination });
+                }
+
+                // Set Aalborg defaults
+                if (Bookingvm.FromDestination == 0)
+                {
+                    // Fra Aalborg
+                    Bookingvm.FromDestination = Destinations.SingleOrDefault(x => x.Name == "Aalborg").Id;
+
+                    // Til noget vi ved har lidt data på sig!
+                    Bookingvm.ToDestination = Destinations.SingleOrDefault(x => x.Name == "Nuuk").Id;
+
+                    // Hent evt. Departures
+                    var DeptResult = client.GetAllDeparturesFromTo(Bookingvm.FromDestination, Bookingvm.ToDestination);
+
+                    foreach (var d in DeptResult)
+                    {
+                        Departures.Add(new Departure { Id = d.Id, When = d.DepartureTime });
+                    }
+
+                    Bookingvm.Departures = Departures;
                 }
 
                 Bookingvm.Destinations = Destinations;
@@ -72,13 +95,13 @@ namespace Booking.Web.Controllers
                 ViewBag.Error = "";
 
                 var DestResult = client.GetAllDestinations();
-                var DeptResult = client.GetAllDeparturesFromTo(Bookingvm.FromDestination, Bookingvm.ToDestination);
 
                 foreach (var d in DestResult)
                 {
                     Destinations.Add(new Destination { Id = d.Id, Name = d.NameDestination });
                 }
 
+                var DeptResult = client.GetAllDeparturesFromTo(Bookingvm.FromDestination, Bookingvm.ToDestination);
                 foreach (var d in DeptResult)
                 {
                     Departures.Add(new Departure { Id = d.Id, When = d.DepartureTime });
@@ -95,6 +118,59 @@ namespace Booking.Web.Controllers
             Session["BookingModel"] = Bookingvm;
 
             return RedirectToAction("SelectDestination", "Afgange");
+        }
+
+
+        public ActionResult SelectDeparture()
+        {
+            BookingViewModel Bookingvm = null;
+            List<Destination> Destinations = new List<Destination>();
+            ViewBag.Message = "Book a flight";
+
+
+            // Snup modellen fra Sessionen hvis vi har været igang allerede...
+            if (Session["BookingModel"] == null)
+            {
+                Bookingvm = new BookingViewModel();
+            }
+            else
+            {
+                Bookingvm = (BookingViewModel)Session["BookingModel"];
+            }
+
+
+            try
+            {
+                var client = ServiceHelper.GetServiceClient();
+                ViewBag.proxy = client;
+                ViewBag.proxyError = "";
+
+                var DestResult = client.GetAllDestinations();
+
+                foreach (var d in DestResult)
+                {
+                    Destinations.Add(new Destination { Id = d.Id, Name = d.NameDestination });
+                }
+
+
+                // Set Aalborg defaults
+                if (Bookingvm.FromDestination == 0)
+                {
+                    // Fra Aalborg
+                    Bookingvm.FromDestination = Destinations.SingleOrDefault(x => x.Name == "Aalborg").Id;
+
+                    // Til noget vi ved har lidt data på sig!
+                    Bookingvm.ToDestination = Destinations.SingleOrDefault(x => x.Name == "Nuuk").Id;
+                }
+
+                Bookingvm.Destinations = Destinations;
+            }
+            catch (Exception ex)
+            {
+                ViewBag.proxyError = ex.ToString();
+            }
+
+            return View(Bookingvm);
         }
 
     }

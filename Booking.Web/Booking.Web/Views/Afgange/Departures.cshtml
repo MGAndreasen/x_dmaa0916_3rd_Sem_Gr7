@@ -1,0 +1,27 @@
+﻿@model Booking.Web.Models.BookingViewModel
+
+<div class="booking_partial someShadow">
+    <div class="badget">4</div>
+
+    @{
+        if (Model.Departures.Count() > 0)
+        {
+
+            <h2>Departures</h2>
+            foreach (var d in Model.Departures)
+            {
+                using (Html.BeginForm("SelectDeparture", "Afgange", FormMethod.Post, new { @class = "ny" }))
+                {
+                    <div onclick="this.parentNode.submit();" style="background-color:lightpink;">
+                        <p>@d.When</p>
+                        @Html.HiddenFor(x => x.Departure, d.Id)
+                    </div>
+                }
+            }
+        }
+        else
+        {
+            <h2>Beklager, men vi har ingen afgange på denne Rute!</h2>
+        }
+    }
+</div>

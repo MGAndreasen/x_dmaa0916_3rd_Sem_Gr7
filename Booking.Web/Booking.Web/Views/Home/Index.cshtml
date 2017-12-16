@@ -1,4 +1,36 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<div class="homePoster">&nbsp;</div>
+<br />
+<br />
+<br />
+<div id="slider" class="someShadow">
+    <div>
+        <img src="https://fb-cms-prod.s3.amazonaws.com/d7files/hi_res_images/header/2075_rom.jpg" />
+    </div>
+    <div>
+        <img src="https://www.guidelondon.org.uk/wp-content/uploads/2016/01/London-skyline-with-Big-Ben-and-the-London-Eye-at-dusk-1900x700.jpg" />
+    </div>
+    <div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/New_York_NYC.jpg" />
+    </div>
+    <div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Nuuk_city_below_Sermitsiaq.JPG/1200px-Nuuk_city_below_Sermitsiaq.JPG" />
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+    
+    $("#slider > div:gt(0)").hide();
+    $("#slider").height($("#slider > div > img").height());
+    setInterval(function () {
+        $('#slider > div:first')
+            .fadeOut(1500)
+            .next()
+            .fadeIn(1500)
+            .end()
+            .appendTo('#slider');
+    }, 5000);
+
+    });
+</script>

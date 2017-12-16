@@ -32,11 +32,10 @@ h1, h2, h3, h4 {
 }
 
 .homePoster {
-    background-color: #222;
     width: 100%;
-    height: 300px;
     background-image: url('/Public/poster.jpg');
-    background-size: cover;
+    background-size: 100% 520px;
+    background-repeat: no-repeat;
 }
 
 #topMenu {
@@ -76,7 +75,7 @@ h1, h2, h3, h4 {
 
             #topMenu li a:hover {
                 text-decoration: none;
-                color: red;
+                color: #d81939;
             }
 
 footer p {
@@ -96,43 +95,96 @@ footer p {
 
 /* Set padding to keep content from hitting the edges */
 .lePage {
-    padding-top: 54px;
+    padding-top: 70px;
     margin: 0 auto;
+    min-height: 550px;
 }
 
-#Page_NewUser, #Page_Afgange{
+#Page_NewUser, #Page_Afgange {
     margin: 0 auto;
     width: 470px;
 }
 
-form.ny {
-    display: grid;
-    grid-template-columns: 200px 1fr;
+div.booking_partial {
+    background-color: #d81939;
+    color: #fff;
+    padding: 14px;
+    border-radius: 9px;
 }
 
-lable.ny {
-    grid-column: 1 / 2;
+div.booking_partial h2{
+    margin-top: -20px;
+}
+
+div.badget {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 800;
+    color: red;
+    background-color: #FFF;
+    width: 20px;
+    padding: 6px;
+    position: relative;
+    top: -25px;
+    left: -25px;
+    border: 1px solid #e6dcdc;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.someShadow {
+    -webkit-box-shadow: 0px 4px 13px 0px rgba(0,0,0,0.44);
+    -moz-box-shadow: 0px 4px 13px 0px rgba(0,0,0,0.44);
+    box-shadow: 0px 4px 13px 0px rgba(0,0,0,0.44);
+}
+form.ny {
+    display: grid;
+    grid-template-columns: 150px 220px 1fr;
+}
+
+label.ny {
+    grid-column: 1;
     margin-top: 2px;
     padding: 4px 10px 4px 10px;
 }
 
 input.ny, button.ny, select.ny {
-        grid-column: 2 / 3;
-        margin-top: 2px;
-        padding: 4px 10px 4px 10px;
+    grid-column: 2;
+    margin-top: 2px;
+    padding: 4px 10px 4px 10px;
 }
 
+span.ny {
+    color: red;
+    grid-column: 3;
+    margin-top: 2px;
+    margin-left: 10px;
+    padding: 4px;
+}
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
 .dl-horizontal dt {
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
     max-width: 280px;
 }
+
+/* Slider */
+#slider {
+    margin: 0px auto;
+    position: relative;
+    width: 640px;
+    height: 140px;
+}
+
+    #slider img {
+        min-height: 140px;
+        width: 100%;
+    }
+
+    #slider > div {
+        position: absolute;
+        min-height: 140px;
+    }

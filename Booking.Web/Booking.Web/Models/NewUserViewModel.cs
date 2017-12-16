@@ -8,35 +8,34 @@ namespace Booking.Web.Models
 {
     public class NewUserViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "* Required!")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
-        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "* Required!")]
         public string Password { get; set; }
 
-        [Required]
-        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "* Required!")]
+        [Compare("Password", ErrorMessage = "Password doesn't match!")]
         public string Password2 { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "* Required!")]
         public string FirstName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "* Required!")]
         public string LastName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "* Required!")]
         public long PhoneNumber { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "* Required!")]
         public string Address { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "* Required!")]
         [Range(999, 9999)]
         public int ZipCode { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "* Required!")]
         [Display(Name = "CityName")]
         public IEnumerable<ZipCodesViewModel> ZipCodes { get; set; }
 

@@ -11,28 +11,37 @@
     {
         @Html.Label("Email:", new { @class = "ny" });
         @Html.TextBoxFor(x => x.Email, new { @class = "ny" })
+        @Html.ValidationMessageFor(x => x.Email, "", new { @class = "ny" })
 
         @Html.Label("Password:", new { @class = "ny" });
         @Html.PasswordFor(x => x.Password, new { @class = "ny" })
+        @Html.ValidationMessageFor(x => x.Password, "", new { @class = "ny" })
 
         @Html.Label("Password (confirm):");
         @Html.PasswordFor(x => x.Password2, new { @class = "ny" })
+        @Html.ValidationMessageFor(x => x.Password2, "", new { @class = "ny" })
 
         @Html.Label("Firstname:", new { @class = "ny" });
         @Html.TextBoxFor(x => x.FirstName, new { @class = "ny" })
+        @Html.ValidationMessageFor(x => x.FirstName, "", new { @class = "ny" })
 
         @Html.Label("Lastname:", new { @class = "ny" });
         @Html.TextBoxFor(x => x.LastName, new { @class = "ny" })
+        @Html.ValidationMessageFor(x => x.LastName, "", new { @class = "ny" })
 
         @Html.Label("Address:", new { @class = "ny" });
         @Html.TextBoxFor(x => x.Address, new { @class = "ny" })
+        @Html.ValidationMessageFor(x => x.Address, "", new { @class = "ny" });
 
         @Html.Label("ZipCode:", new { @class = "ny" });
         @Html.DropDownListFor(x => x.ZipCode, new SelectList(Model.ZipCodes, "ZipCode", "CityName"), new { @class = "ny" })
+        @Html.ValidationMessageFor(x => x.ZipCode, "", new { @class = "ny" })
 
         @Html.Label("Phone Number:", new { @class = "ny" });
         @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "ny" })
+        @Html.ValidationMessageFor(x => x.PhoneNumber, "", new { @class = "ny" })
 
-        <button type="submit" class="btn btn-default">Create</button>
+        
+        <button type="submit" class="btn btn-default ny">Create</button>
     }
 </div>

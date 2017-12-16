@@ -4,12 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Norwegian</title>
-    <link rel="stylesheet" type="text/css" href="~/Public/Site.css">
-    <link rel="stylesheet" type="text/css" href="~/Public/tilbud.css">
+    <link rel="stylesheet" type="text/css" href="~/Public/Site.css?noCache=@(new Random().GetHashCode().ToString())">
+    <link rel="stylesheet" type="text/css" href="~/Public/tilbud.css?noCache=@(new Random().GetHashCode().ToString())">
+    <script src="~/Public/jquery-3.2.1.min.js"></script>
 </head>
 <body>
     @Html.Partial("_Menu")
-    <div class="lePage">
+    <div class="lePage homePoster">
         @RenderBody()
     </div>
     <br />
@@ -21,9 +22,5 @@
     </div>
     @Html.Partial("_Footer")
 
-    @Scripts.Render("~/bundles/jquery")
-
-
-    @RenderSection("scripts", required: false)
 </body>
 </html>
