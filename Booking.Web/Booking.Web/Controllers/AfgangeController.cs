@@ -16,14 +16,17 @@ namespace Booking.Web.Controllers
             return RedirectToAction("SelectDestination", "Afgange");
         }
 
+        // Layout View
+        [HttpGet]
         public ActionResult SelectDestination()
         {
-            BookingViewModel Bookingvm = null;
+            // Opret ny model, eller henter nuværende model fra session.
+            BookingViewModel Bookingvm = GetBookingViewModel();
+
             List<Destination> Destinations = new List<Destination>();
             List<Departure> Departures = new List<Departure>();
 
             ViewBag.Message = "Book a flight";
-
 
             // Snup modellen fra Sessionen hvis vi har været igang allerede...
             if (Session["BookingModel"] == null)
@@ -79,7 +82,7 @@ namespace Booking.Web.Controllers
             return View(Bookingvm);
         }
 
-
+        // POST View
         [HttpPost]
         public ActionResult SelectDestination(BookingViewModel Bookingvm)
         {
@@ -120,7 +123,7 @@ namespace Booking.Web.Controllers
             return RedirectToAction("SelectDestination", "Afgange");
         }
 
-
+        // Partial Views
         public ActionResult SelectDeparture()
         {
             BookingViewModel Bookingvm = null;
@@ -173,5 +176,23 @@ namespace Booking.Web.Controllers
             return View(Bookingvm);
         }
 
+
+        // Helper funktioner
+        private BookingViewModel GetBookingViewModel()
+        {
+            BookingViewModel Bookingvm = null;
+
+            // Snup modellen fra Sessionen hvis vi har været igang allerede...
+            if (Session["BookingModel"] == null)
+            {
+                Bookingvm = new BookingViewModel();
+            }
+            else
+            {
+                Bookingvm = (BookingViewModel)Session["BookingModel"];
+            }
+
+            return Bookingvm;
+        }
     }
 }

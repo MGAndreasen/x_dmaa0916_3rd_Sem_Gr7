@@ -11,7 +11,15 @@
 <body>
     @Html.Partial("_Menu")
     <div class="lePage homePoster">
-        @RenderBody()
+        <div class="leftOffers" style="float: left; margin-top: 350px;">
+            @Html.Partial("_LeftOffers")
+        </div>
+        <div>
+            @RenderBody()
+        </div>
+        <div class="rightOffers" style="float:right;">
+            @Html.Partial("_RightOffers")
+        </div>
     </div>
     <br />
     <div style="margin-left: 10px; margin-right: 10px;">

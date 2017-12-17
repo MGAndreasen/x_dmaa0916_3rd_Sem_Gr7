@@ -11,9 +11,9 @@ namespace Booking.Controller
     public class SeatCtrl
     {
         private static DbSeat dbs = new DbSeat();
-        public void Create(Seat obj, int plainID)
+        public void Create(Seat obj, int departureID)
         {
-            dbs.Create(obj, plainID);
+            dbs.Create(obj, departureID);
         }
 
         public void Delete(int id)
@@ -26,9 +26,14 @@ namespace Booking.Controller
             return dbs.Get(id);
         }
 
-        public void Update(Seat obj, int planeId)
+        public IEnumerable<Seat> GetAll(int departureID)
         {
-            dbs.Update(obj, planeId);
+            return dbs.GetAll(departureID);
+        }
+
+        public void Update(Seat obj, int departureId)
+        {
+            dbs.Update(obj, departureId);
         }
     }
 }

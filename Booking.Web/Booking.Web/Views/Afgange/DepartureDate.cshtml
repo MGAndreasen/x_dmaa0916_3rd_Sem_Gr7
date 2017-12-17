@@ -18,8 +18,44 @@
 
             using (Html.BeginForm("SelectDestination", "Afgange", FormMethod.Post, new { @class = "ny" }))
             {
-                
+                <fieldset id="OneWay">
+                    @Html.Label("Return")
+                    @Html.RadioButton("OneWay", 0, new { @class = "ny", onClick = "" })
+
+                    @Html.Label("One-Way")
+                    @Html.RadioButton("OneWay", 1, new { @class = "ny", onClick = "" })
+                </fieldset>
+
+                @Html.Label("Departure Date:", new { @class = "ny" })
+                @Html.TextBoxFor(x => x.OneWayDate, new { @class = "ny" })
+
+                @Html.Label("Return Date:", new { @class = "ny", @style = "display: none;" })
+                @Html.TextBoxFor(x => x.ReturnDate, new { @class = "ny", @style = "display: none;" })
             }
+
+            <script>
+                $(document).ready(function () {
+
+                    $("#Return, #OneWay").click(function () {
+                        console.log('Here')
+
+                        if ($('#OneWay').is(':checked')) {
+                            $('#ReturnDate').hide();
+                            console.log('hmm')
+                        }
+                        else {
+                            $('#ReturnDate').show();
+                            console.log('hmm2')
+                        }
+                    });
+
+                    if ($('#Return').is(':checked')) {
+                        $('#Return').click();
+                        console.log('Here2')
+                    }
+
+                });
+            </script>
 
         }
 

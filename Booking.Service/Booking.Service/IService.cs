@@ -175,11 +175,13 @@ namespace Booking.Service
         #region SeatCtrl
 
         [OperationContract]
-        void CreateSeat(Seat obj, int planeId);
+        void CreateSeat(Seat obj, int departureId);
         [OperationContract]
         Seat GetSeat(int id);
         [OperationContract]
-        void UpdateSeat(Seat obj, int planeId);
+        IEnumerable<Seat> GetAllSeat(int departureID);
+        [OperationContract]
+        void UpdateSeat(Seat obj, int departureId);
         [OperationContract]
         void DeleteSeat(int id);
 

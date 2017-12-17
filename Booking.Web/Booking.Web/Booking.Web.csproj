@@ -341,11 +341,12 @@
     <Content Include="Views\Auth\MembersOnly.cshtml" />
     <Content Include="Views\Afgange\SelectDestination.cshtml" />
     <Content Include="Views\Auth\SignUp.cshtml" />
-    <Content Include="Views\Afgange\SelectDeparture.cshtml" />
     <Content Include="Views\Afgange\Passengers.cshtml" />
     <Content Include="Views\Afgange\Departures.cshtml" />
     <Content Include="Views\Afgange\Destinations.cshtml" />
     <Content Include="Views\Afgange\DepartureDate.cshtml" />
+    <Content Include="Views\Shared\_LeftOffers.cshtml" />
+    <Content Include="Views\Shared\_RightOffers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

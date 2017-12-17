@@ -1,3 +1,36 @@
 ﻿@model Booking.Web.Models.BookingViewModel
 
-<div>Passengers:</div>
+<div class="booking_partial someShadow">
+    <div class="badget">5</div>
+     <h2>Passengers</h2>
+    @{
+        if (Model.Passengers.Count() > 0)
+        {
+            using (Html.BeginForm("SelectDestination", "Afgange", FormMethod.Post, new { @class = "ny" }))
+            {
+                @Html.Hidden("numPassengers","0")
+                <div><button type="submit" class="ny" style="width: 20px; height: 20px; display: inline-block;" onClick="document.getElementById(numPassengers).nodeValue + 1;">+</button> / <button type="submit" class="ny" style="width: 20px; height: 20px; display: inline-block;">-</button></div>
+
+                for (int i = 0; i < Model.Passengers.Count(); i++)
+                {
+                    @Html.Label("Passenger " + i + ":", new { @class = "ny" });
+
+                    <input type="hidden" name="Passengers_Id[@i]" value="@Model.Passengers[i].Id" />
+                    <input type="hidden" name="Passengers_SeatNumber[@i]" value="@Model.Passengers[i].SeatNumber" />
+
+                    @Html.LabelFor(x => x.Passengers[i].FirstName, new { @class = "ny" });
+                    <input type="text" name="Passengers_FirstName[@i]" value="@Model.Passengers[i].FirstName" />
+
+                    @Html.LabelFor(x => x.Passengers[i].LastName, new { @class = "ny" });
+                    <input type="text" name="Passengers_LastName[@i]" value="@Model.Passengers[i].LastName" />
+
+                    @Html.LabelFor(x => x.Passengers[i].PassportId, new { @class = "ny" });
+                    <input type="text" name="Passengers_PassportId[@i]" value="@Model.Passengers[i].PassportId" />
+
+                    @Html.LabelFor(x => x.Passengers[i].CPR, new { @class = "ny" });
+                    <input type="text" name="Passengers_CPR[@i]" value="@Model.Passengers[i].CPR" />
+                }
+            }
+        }
+    }
+</div>

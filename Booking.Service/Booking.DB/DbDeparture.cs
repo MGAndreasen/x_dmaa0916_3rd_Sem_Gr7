@@ -14,65 +14,79 @@ namespace Booking.DB
     {
         private DataAccess data = DataAccess.Instance;
 
+        private DbSeat dbSeat = new DbSeat();
+
         public void Create(Departure obj)
         {
-            
-            List<SeatSchema> ss = new List<SeatSchema>();
+
+            List<SeatSchema> seatSchemas = new List<SeatSchema>();
             TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
             {
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Departure (StartDestination, EndDestination, DepartureTime, Plane_Id) VALUES (@StartDestination, @EndDestination, @DepartureTime, @Plane_Id)", con);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Departure (StartDestination, EndDestination, DepartureTime, Plane_Id) VALUES (@StartDestination, @EndDestination, @DepartureTime, @Plane_Id); SELECT SCOPE_IDENTITY()", con);
                     cmd.Parameters.Add("@StartDestination", SqlDbType.Int).Value = obj.StartDestination.Id;
                     cmd.Parameters.Add("@EndDestination", SqlDbType.Int).Value = obj.EndDestination.Id;
                     cmd.Parameters.Add("@DepartureTime", SqlDbType.DateTime).Value = obj.DepartureTime;
                     cmd.Parameters.Add("@Plane_Id", SqlDbType.Int).Value = obj.Plane.Id;
 
-                    cmd.ExecuteNonQuery();
+                    obj.Id = Convert.ToInt32(cmd.ExecuteScalar());
 
                     if (obj.Plane != null)
                     {
-                        
-                        SqlCommand cmd2 = new SqlCommand("SELECT * FROM dbo.Booking_Seat WHERE Plane_Id=@Pid", con);
+
+                        SqlCommand cmd2 = new SqlCommand("SELECT * FROM dbo.Booking_SeatSchema WHERE Plane_Id=@Pid", con);
                         cmd2.Parameters.Add("@Pid", SqlDbType.Int).Value = obj.Plane.Id;
 
                         var rdr = cmd2.ExecuteReader();
-                        bool Test = false;
+                        //bool Test = false;
 
-                        while (rdr.Read()) 
+                        while (rdr.Read())
                         {
-                            Test = Convert.ToBoolean(rdr["Availability"]);
-
-                            ss.Add(new SeatSchema
+                            seatSchemas.Add(new SeatSchema
                             {
                                 Id = (int)rdr["Id"],
                                 Layout = (string)rdr["Layout"],
                                 Row = (int)rdr["Row"]
 
                             });
-                            
-                            
-                            //ss.Add(new SeatSchema { Id = (int)rdr["Id"], Number = (int)rdr["Number"], Row = (int)rdr["Row"], Available = Test });
                         }
-                        foreach (var s in ss)
+
+                        if (obj.Seats == null)
                         {
-                            for (int i = 0; i < s.Layout.Length; i++)
+                            obj.Seats = new List<Seat>();
+                        }
+
+                        foreach (var seatrow in seatSchemas)
+                        {
+                            for (int i = 0; i < seatrow.Layout.Length; i++)
                             {
-                                if (s.Layout[i] != Convert.ToChar("|"))
+                                if (seatrow.Layout[i] != Convert.ToChar("|"))
                                 {
-                                    obj.Seats.Add(new Seat{ Number = (string)s.Layout[i].ToString(), Available=true, Row =s.Row });
+                                    // Det her er noget gris, vi burde kunne tilgå SeatsCtrl her fra, men kan vi ikke pga. noget cirkulær reference,
+                                    //så vi burde flytte ALT logik et lag længere op i BLL for at kunne gøre det smukkere.
+                                    // -- Vh. Michael
+                                    //dbSeat.Create(new Seat { Number = (string)seatrow.Layout[i].ToString(), Available = true, Row = seatrow.Row }, obj.Plane.Id);
+
+                                    obj.Seats.Add(new Seat { Number = (string)seatrow.Layout[i].ToString(), Available = true, Row = seatrow.Row });
                                 }
                             }
                         }
                     }
                 }
+                 
                 scope.Complete();
-                Update(obj);
+                //Vi bliver nød til at afslutte transactionen her fordi vi kalder den også i DBSeat så de kolidere i en SQL manager netværks fejl!
+                // det skal flyttes over i CTRL stortset altsammen!
 
-
-
+                
+                foreach (var s in obj.Seats)
+                {
+                    dbSeat.Create(s, obj.Id);
+                }
+                //Update(obj);
             }
         }
 
@@ -118,7 +132,8 @@ namespace Booking.DB
                     Plane = dbp.Get((int)rdr["Plane_Id"]),
                     EndDestination = dbd.Get((int)rdr["EndDestination"]),
                     StartDestination = dbd.Get((int)rdr["StartDestination"]),
-                    DepartureTime = (DateTime)rdr["DepartureTime"]
+                    DepartureTime = (DateTime)rdr["DepartureTime"],
+                    Seats = dbSeat.GetAll((int)rdr["Id"])
                 };
 
                 // husk at tilføje seats til listen
@@ -154,7 +169,7 @@ namespace Booking.DB
             List<Departure> departures = new List<Departure>();
 
             Departure d = null;
-            
+
 
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
@@ -182,24 +197,6 @@ namespace Booking.DB
 
             }
 
-            //int c = 0;
-            //foreach (var a in departures)
-            //{
-            //    c++;
-            //    c++;
-            //    c++;
-
-            //    foreach (var b in a.Seats)
-            //    {
-            //        c++;
-            //    }
-
-            //    foreach (var dd in a.Plane.SeatSchema)
-            //    {
-            //        c++;
-            //    }
-            //}
-            //Console.WriteLine("Objects : " + c);
             return departures;
         }
 
@@ -236,7 +233,7 @@ namespace Booking.DB
                 }
 
             }
-            
+
             return departures;
         }
     }

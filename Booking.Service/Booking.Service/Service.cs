@@ -363,6 +363,11 @@ namespace Booking.Service
             return seatCtrl.Get(id);
         }
 
+        public IEnumerable<Seat> GetAllSeat(int departureId)
+        {
+            return seatCtrl.GetAll(departureId);
+        }
+
         public void UpdateSeat(Seat obj, int planeId)
         {
             seatCtrl.Update(obj, planeId);

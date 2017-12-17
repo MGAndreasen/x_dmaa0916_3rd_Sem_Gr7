@@ -60,7 +60,33 @@ namespace Booking.DB
             return s;
         }
 
-        public void Create(Seat obj, int planeId)
+        public List<Seat> GetAll(int departureId)
+        {
+            List<Seat> sList = new List<Seat>();
+
+            using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Booking_Seat WHERE Departure_Id=@DepartureId", con);
+                cmd.Parameters.Add("@DepartureId", SqlDbType.Int).Value = departureId;
+
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while(rdr.Read())
+                {
+                    sList.Add(new Seat
+                    {
+                        Id = (int)rdr["Id"],
+                        Row = (int)rdr["Row_Id"],
+                        Number = (string)rdr["Number"],
+                        Available = (bool)rdr["Availability"]
+                    });
+                }
+
+            }
+            return sList;
+        }
+
+        public void Create(Seat obj, int departureId)
         {
             TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
@@ -68,10 +94,10 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Seat (Row, Number, PlaneId, Availability) VALUES (@Row, @Number, @PlaneID, @Availability)", con);
-                    cmd.Parameters.Add("@Row", SqlDbType.Int).Value = obj.Id;
-                    cmd.Parameters.Add("@Number", SqlDbType.Int).Value = obj.Number;
-                    cmd.Parameters.Add("@PlaneId", SqlDbType.Int).Value = planeId;
+                    SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Booking_Seat (Row, Number, Departure_Id, Availability) VALUES (@Row, @Number, @DepartureId, @Availability)", con);
+                    cmd.Parameters.Add("@Row", SqlDbType.Int).Value = obj.Row;
+                    cmd.Parameters.Add("@Number", SqlDbType.NVarChar).Value = obj.Number;
+                    cmd.Parameters.Add("@DepartureId", SqlDbType.Int).Value = departureId;
                     cmd.Parameters.Add("@Availability", SqlDbType.Bit).Value = obj.Available;
 
                     cmd.ExecuteNonQuery();
@@ -80,7 +106,7 @@ namespace Booking.DB
                 scope.Complete();
             }
         }
-        public void Update(Seat obj, int planeId)
+        public void Update(Seat obj, int departureId)
         {
             TransactionOptions isoLevel = ScopeHelper.ScopeHelper.GetDefault();
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, isoLevel))
@@ -88,12 +114,12 @@ namespace Booking.DB
                 using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Row=@Row, Number=@Number, PlaneId=@PlaneId, Availability=@Availability WHERE Id=@id", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE dbo.Booking_Booking SET Row=@Row, Number=@Number, Departure_Id=@DepartureId, Availability=@Availability WHERE Id=@id", con);
 
                     cmd.Parameters.Add("@id", SqlDbType.Int).Value = obj.Id;
                     cmd.Parameters.Add("@Row", SqlDbType.Int).Value = obj.Row;
-                    cmd.Parameters.Add("@Number", SqlDbType.Int).Value = obj.Number;
-                    cmd.Parameters.Add("@PlaneId", SqlDbType.Int).Value = planeId;
+                    cmd.Parameters.Add("@Number", SqlDbType.NVarChar).Value = obj.Number;
+                    cmd.Parameters.Add("@DepartureId", SqlDbType.Int).Value = departureId;
                     cmd.Parameters.Add("@Availability", SqlDbType.Bit).Value = obj.Available;
 
                     cmd.ExecuteNonQuery();

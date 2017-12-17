@@ -131,10 +131,10 @@
 	BEGIN
 	CREATE TABLE [dbo].[Booking_Booking](
 		[Id] [int] IDENTITY(1,1) NOT NULL,
-		[Payment_Id] [int] NOT NULL,
+		[Payment_Id] [int] NULL,
 		[Customer_Id] [int] NOT NULL,
 		[Departure_Id] [int] NOT NULL,
-		[Date] [date] NOT NULL,
+		[Date] [date] NULL,
 		[Price] [int] NOT NULL,
 	 CONSTRAINT [PK_Booking_Booking] PRIMARY KEY CLUSTERED 
 	(
@@ -245,7 +245,7 @@
 		[Id] [int] IDENTITY(1,1) NOT NULL,
 		[Row] [int] NOT NULL,
 		[Number] [NVarChar] NOT NULL,
-		[Plane_Id] [int] NOT NULL,
+		[Departure_Id] [int] NOT NULL,
 		[Availability] [bit] NOT NULL,
 	 CONSTRAINT [PK_Booking_Seat] PRIMARY KEY CLUSTERED 
 	(

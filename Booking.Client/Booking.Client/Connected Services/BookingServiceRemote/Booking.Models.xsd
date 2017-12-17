@@ -116,6 +116,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfBookings" nillable="true" type="tns:ArrayOfBookings" />
+  <xs:complexType name="ArrayOfCity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="City" nillable="true" type="tns:City" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCity" nillable="true" type="tns:ArrayOfCity" />
   <xs:complexType name="ArrayOfDestination">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Destination" nillable="true" type="tns:Destination" />
