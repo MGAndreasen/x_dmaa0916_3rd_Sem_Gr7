@@ -97,6 +97,8 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="start" type="xs:int" />
         <xs:element minOccurs="0" name="end" type="xs:int" />
+        <xs:element minOccurs="0" name="fromDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="toDate" type="xs:dateTime" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

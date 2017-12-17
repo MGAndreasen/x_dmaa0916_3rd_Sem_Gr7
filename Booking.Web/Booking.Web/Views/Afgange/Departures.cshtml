@@ -4,18 +4,32 @@
     <div class="badget">4</div>
 
     @{
-        if (Model.Departures.Count() > 0)
+        if (Model.OneWayDate != "")
         {
 
             <h2>Departures</h2>
             foreach (var d in Model.Departures)
             {
+
                 
-                    <div onclick="this.parentNode.submit();" style="background-color:lightpink;">
+                    <p>@d.When</p>
+                    
+                
+
+            }
+
+            if (Model.ReturnDate != "")
+            {
+                <h2>Returns</h2>
+                foreach (var d in Model.Returns)
+                {
+
+                    
                         <p>@d.When</p>
-                        @Html.HiddenFor(x => x.Departure, d.Id)
-                    </div>
-             
+                        
+                    
+
+                }
             }
         }
         else

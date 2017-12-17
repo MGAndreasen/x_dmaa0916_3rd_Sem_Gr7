@@ -38,9 +38,9 @@ namespace Booking.Controller
             return DBP.GetAll();
         }
 
-        public IEnumerable<Departure> GetAllDeparturesFromTo(int start, int end)
+        public IEnumerable<Departure> GetAllDeparturesFromTo(int start, int end, DateTime fromDate, DateTime toDate)
         {
-           return DBP.GetAllDeparturesFromTo(start,end);
+           return DBP.GetAllDeparturesFromTo(start,end, fromDate, toDate);
         }
 
         public IEnumerable<Departure> GetAllTilbud()

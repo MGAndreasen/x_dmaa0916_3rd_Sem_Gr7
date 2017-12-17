@@ -89,6 +89,7 @@ namespace Booking.Web.Controllers
         {
             List<Destination> Destinations = new List<Destination>();
             List<Departure> Departures = new List<Departure>();
+            List<Departure> Returns = new List<Departure>();
 
             //ViewBag.Message = "Vælge afgang";
 
@@ -98,22 +99,37 @@ namespace Booking.Web.Controllers
                 ViewBag.Proxy = client;
                 ViewBag.Error = "";
 
+                // Destinationer
                 var DestResult = client.GetAllDestinations();
-
                 foreach (var d in DestResult)
                 {
                     Destinations.Add(new Destination { Id = d.Id, Name = d.NameDestination });
                 }
+                Bookingvm.Destinations = Destinations;
 
+                // Departures (from -> to)
                 var DeptResult = client.GetAllDeparturesFromTo(Bookingvm.FromDestination, Bookingvm.ToDestination);
                 foreach (var d in DeptResult)
                 {
-                    Departures.Add(new Departure { Id = d.Id, When = d.DepartureTime });
+                    if (d.DepartureTime >= DateTime.Now)
+                    {
+                        Departures.Add(new Departure { Id = d.Id, When = d.DepartureTime });
+                    }
                 }
 
-                Bookingvm.Destinations = Destinations;
-                Bookingvm.Departures = Departures;
-
+                // Departures Retur (to -> from)
+                if (!Bookingvm.OneWay)
+                {
+                    DeptResult = client.GetAllDeparturesFromTo(Bookingvm.ToDestination, Bookingvm.FromDestination);
+                    foreach (var d in DeptResult)
+                    {
+                        if (d.DepartureTime >= DateTime.Now)
+                        {
+                            Returns.Add(new Departure { Id = d.Id, When = d.DepartureTime });
+                        }
+                    }
+                }
+                Bookingvm.Returns = Returns;
 
                 // Valider Datoer
                 DateTime OneWayDate;

@@ -28,12 +28,14 @@ namespace Booking.Web.Models
         public List<Passenger> Passengers { get; set; }
         public IEnumerable<Destination> Destinations { get; set; }
         public IEnumerable<Departure> Departures { get; set; }
+        public IEnumerable<Departure> Returns { get; set; }
 
         public BookingViewModel()
         {
             Passengers = new List<Passenger>();
             Destinations = new List<Destination>();
             Departures = new List<Departure>();
+            Returns = new List<Departure>();
 
             // Add default Passenger
             Passengers.Add(new Passenger());

@@ -16,6 +16,8 @@ namespace Booking.Client
         {
             InitializeComponent();
 
+            bool demoData = false; // For at lave demo data.
+
             //Tilføjer UserControl til hver tab.
             tabPagePassengers.Controls.Add(new PassengersControl(curUser));
             tabPageDeparture.Controls.Add(new DepartureControl(curUser));
@@ -29,7 +31,60 @@ namespace Booking.Client
             myService.ClientCredentials.UserName.UserName = currentUser.Email;
             myService.ClientCredentials.UserName.Password = currentUser.Password;
 
+            //Create Demo departure data
+            if (demoData)
+            {
+                // Init vores randomizer
+                Random rnd = new Random();
 
+                // Hent alle Destinationer
+                var allDestinations = myService.GetAllDestinations();
+
+                // Hent alle PlaneTyper
+                var allPlaneTypes = myService.GetAllPlanes();
+
+                //Kun for Aalborg og Retur...
+                var startdest = allDestinations.Find(x => x.NameDestination == "Aalborg");
+                // For hver destination
+                //foreach (var startdest in allDestinations)
+                //{
+                    foreach (var enddest in allDestinations)
+                    {
+                        if (startdest.Id == enddest.Id)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            for (int i = 1; i < DateTime.DaysInMonth(2018, 01); i++)
+                            {
+                                var d = new Departure
+                                {
+                                    StartDestination = startdest,
+                                    EndDestination = enddest,
+                                    DepartureTime = Convert.ToDateTime(i.ToString() + "/01/2018 "+rnd.Next(00,23) + ":"+rnd.Next(00,59)),
+                                    Plane = allPlaneTypes[rnd.Next(0, allPlaneTypes.Count)]
+                                };
+
+                                myService.CreateDepartureAsync(d);
+                            }
+
+                        for (int i = 1; i < DateTime.DaysInMonth(2018, 01); i++)
+                        {
+                            var d = new Departure
+                            {
+                                StartDestination = enddest,
+                                EndDestination = startdest,
+                                DepartureTime = Convert.ToDateTime(i.ToString() + "/01/2018 " + rnd.Next(00, 23) + ":" + rnd.Next(00, 59)),
+                                Plane = allPlaneTypes[rnd.Next(0, allPlaneTypes.Count)]
+                            };
+
+                            myService.CreateDepartureAsync(d);
+                        }
+                    }
+                    }
+                //}
+            }
         }
     }
 }

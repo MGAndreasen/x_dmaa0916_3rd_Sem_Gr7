@@ -1195,10 +1195,10 @@ namespace Booking.Client.BookingServiceRemote {
         System.Threading.Tasks.Task<System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Departure>> GetAllDeparturesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllDeparturesFromTo", ReplyAction="http://tempuri.org/IService/GetAllDeparturesFromToResponse")]
-        System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Departure> GetAllDeparturesFromTo(int start, int end);
+        System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Departure> GetAllDeparturesFromTo(int start, int end, System.DateTime fromDate, System.DateTime toDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllDeparturesFromTo", ReplyAction="http://tempuri.org/IService/GetAllDeparturesFromToResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Departure>> GetAllDeparturesFromToAsync(int start, int end);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Departure>> GetAllDeparturesFromToAsync(int start, int end, System.DateTime fromDate, System.DateTime toDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllTilbud", ReplyAction="http://tempuri.org/IService/GetAllTilbudResponse")]
         System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Departure> GetAllTilbud();
@@ -1549,12 +1549,12 @@ namespace Booking.Client.BookingServiceRemote {
             return base.Channel.GetAllDeparturesAsync();
         }
         
-        public System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Departure> GetAllDeparturesFromTo(int start, int end) {
-            return base.Channel.GetAllDeparturesFromTo(start, end);
+        public System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Departure> GetAllDeparturesFromTo(int start, int end, System.DateTime fromDate, System.DateTime toDate) {
+            return base.Channel.GetAllDeparturesFromTo(start, end, fromDate, toDate);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Departure>> GetAllDeparturesFromToAsync(int start, int end) {
-            return base.Channel.GetAllDeparturesFromToAsync(start, end);
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Departure>> GetAllDeparturesFromToAsync(int start, int end, System.DateTime fromDate, System.DateTime toDate) {
+            return base.Channel.GetAllDeparturesFromToAsync(start, end, fromDate, toDate);
         }
         
         public System.Collections.Generic.List<Booking.Client.BookingServiceRemote.Departure> GetAllTilbud() {

@@ -58,7 +58,7 @@ namespace Booking.Service
         IEnumerable<Departure> GetAllDepartures();
 
         [OperationContract]
-        IEnumerable<Departure> GetAllDeparturesFromTo(int start, int end);
+        IEnumerable<Departure> GetAllDeparturesFromTo(int start, int end, DateTime fromDate, DateTime toDate);
 
         [OperationContract]
         IEnumerable<Departure> GetAllTilbud();

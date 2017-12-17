@@ -200,7 +200,7 @@ namespace Booking.DB
             return departures;
         }
 
-        public IEnumerable<Departure> GetAllDeparturesFromTo(int start, int end)
+        public IEnumerable<Departure> GetAllDeparturesFromTo(int start, int end, DateTime fromDate, DateTime toDate)
         {
             DbPlane dbp = new DbPlane();
             DbDestination dbd = new DbDestination();
@@ -213,9 +213,11 @@ namespace Booking.DB
 
                 using (SqlCommand cmd = con.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM dbo.Booking_Departure Where StartDestination = @start AND EndDestination = @end ORDER BY DepartureTime ASC";
+                    cmd.CommandText = "SELECT * FROM dbo.Booking_Departure Where StartDestination = @start AND EndDestination = @end AND DepartureTime >= @fromDate AND DepartureTime <= toDate ORDER BY DepartureTime ASC";
                     cmd.Parameters.Add("@start", SqlDbType.Int).Value = start;
                     cmd.Parameters.Add("@end", SqlDbType.Int).Value = end;
+                    cmd.Parameters.Add("@fromDate", SqlDbType.DateTime).Value = fromDate;
+                    cmd.Parameters.Add("@toDate", SqlDbType.DateTime).Value = toDate;
                     var rdr = cmd.ExecuteReader();
 
                     while (rdr.Read())
@@ -223,9 +225,9 @@ namespace Booking.DB
                         departures.Add(new Departure
                         {
                             Id = (int)rdr["Id"],
-                            Plane = dbp.Get((int)rdr["Plane_Id"]),
-                            EndDestination = dbd.Get((int)rdr["EndDestination"]),
-                            StartDestination = dbd.Get((int)rdr["StartDestination"]),
+                            //Plane = dbp.Get((int)rdr["Plane_Id"]),
+                            //EndDestination = dbd.Get((int)rdr["EndDestination"]),
+                            //StartDestination = dbd.Get((int)rdr["StartDestination"]),
                             DepartureTime = (DateTime)rdr["DepartureTime"]
                         });
                         // husk seats

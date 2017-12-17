@@ -58,9 +58,9 @@ namespace Booking.Service
             return departureCtrl.GetAllDepartures();
         }
 
-        public IEnumerable<Departure> GetAllDeparturesFromTo(int start, int end)
+        public IEnumerable<Departure> GetAllDeparturesFromTo(int start, int end, DateTime fromDate, DateTime toDate)
         {
-            return departureCtrl.GetAllDeparturesFromTo(start, end);
+            return departureCtrl.GetAllDeparturesFromTo(start, end, fromDate, toDate);
         }
 
         public IEnumerable<Departure> GetAllTilbud()
