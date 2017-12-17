@@ -1,6 +1,6 @@
 ﻿@model Booking.Web.Models.BookingViewModel
 
-<div class="booking_partial">
+<div class="booking_partial someShadow">
     <div class="badget someShadow">2</div>
 
     @{
@@ -16,44 +16,69 @@
             }
 
 
-            using (Html.BeginForm("SelectDestination", "Afgange", FormMethod.Post, new { @class = "ny" }))
-            {
-                <fieldset id="OneWay">
-                    @Html.Label("Return")
-                    @Html.RadioButton("OneWay", 0, new { @class = "ny", onClick = "" })
+            
+                <fieldset id="TravelType" class="ny">
+                    
+                    @if (Model.OneWay)
+                    {
+                        @Html.Label("Return", new { @for = "OneWay-1" })
+                        @Html.RadioButtonFor(x => x.OneWay, false, new { @class = "ny", @id = "OneWay-1" })
+                        @Html.Label("One-Way", new { @for = "OneWay-2" })
+                        @Html.RadioButtonFor(x => x.OneWay, true, new { @class = "ny", @id = "OneWay-2", @checked = "checked" })
+                    }
+                    else
+                    {
+                        @Html.Label("Return", new { @for = "OneWay-1" })
+                        @Html.RadioButtonFor(x => x.OneWay, false, new { @class = "ny", @id = "OneWay-1", @checked = "checked" })
+                        @Html.Label("One-Way", new { @for = "OneWay-2" })
+                        @Html.RadioButtonFor(x => x.OneWay, true, new { @class = "ny", @id = "OneWay-2" })
+                    }
 
-                    @Html.Label("One-Way")
-                    @Html.RadioButton("OneWay", 1, new { @class = "ny", onClick = "" })
+                    
                 </fieldset>
 
                 @Html.Label("Departure Date:", new { @class = "ny" })
                 @Html.TextBoxFor(x => x.OneWayDate, new { @class = "ny" })
 
-                @Html.Label("Return Date:", new { @class = "ny", @style = "display: none;" })
+                @Html.Label("Return Date:", new { @class = "ny", @id="lblReturnDate", @style = "display: none;" })
                 @Html.TextBoxFor(x => x.ReturnDate, new { @class = "ny", @style = "display: none;" })
-            }
+            
 
             <script>
                 $(document).ready(function () {
+                    $(function () {
+                        $("#OneWayDate").attr("readonly", "readonly");
+                        $("#ReturnDate").attr("readonly", "readonly");
+                        $("#OneWayDate").datepicker();
+                        $("#ReturnDate").datepicker();
 
-                    $("#Return, #OneWay").click(function () {
-                        console.log('Here')
+                        $("OneWay").checkboxradio();
+                        $("#TravelType").controlgroup();
 
-                        if ($('#OneWay').is(':checked')) {
-                            $('#ReturnDate').hide();
-                            console.log('hmm')
+                        if ($('input[name=OneWay]:checked').val() == "False")
+                        {
+                            $("#ReturnDate, #lblReturnDate").show();
                         }
-                        else {
-                            $('#ReturnDate').show();
-                            console.log('hmm2')
-                        }
+
+                        $("OneWay").checkboxradio("refresh");
+
+                        $("#OneWay-1, #OneWay-2").change(function () {
+                            if ($('input[name=OneWay]:checked').val() == "True") {
+                                $("#ReturnDate, #lblReturnDate").hide();
+                            }
+                            else
+                            {
+                                $("#ReturnDate, #lblReturnDate").show();
+                            }
+
+                            $(this).closest("form").submit();
+                        });
+
+                        $("#ReturnDate, #OneWayDate").change(function () {
+                            $(this).closest("form").submit();
+                        });
+                        
                     });
-
-                    if ($('#Return').is(':checked')) {
-                        $('#Return').click();
-                        console.log('Here2')
-                    }
-
                 });
             </script>
 

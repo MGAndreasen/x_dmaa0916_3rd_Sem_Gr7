@@ -10,13 +10,12 @@
             <h2>Departures</h2>
             foreach (var d in Model.Departures)
             {
-                using (Html.BeginForm("SelectDestination", "Afgange", FormMethod.Post, new { @class = "ny" }))
-                {
+                
                     <div onclick="this.parentNode.submit();" style="background-color:lightpink;">
                         <p>@d.When</p>
                         @Html.HiddenFor(x => x.Departure, d.Id)
                     </div>
-                }
+             
             }
         }
         else

@@ -2,6 +2,7 @@
 using Booking.Web.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -38,7 +39,7 @@ namespace Booking.Web.Controllers
                 Bookingvm = (BookingViewModel)Session["BookingModel"];
             }
 
-            
+
             try
             {
                 var client = ServiceHelper.GetServiceClient();
@@ -89,7 +90,7 @@ namespace Booking.Web.Controllers
             List<Destination> Destinations = new List<Destination>();
             List<Departure> Departures = new List<Departure>();
 
-            ViewBag.Message = "Vælge afgang";
+            //ViewBag.Message = "Vælge afgang";
 
             try
             {
@@ -112,6 +113,37 @@ namespace Booking.Web.Controllers
 
                 Bookingvm.Destinations = Destinations;
                 Bookingvm.Departures = Departures;
+
+
+                // Valider Datoer
+                DateTime OneWayDate;
+                DateTime ReturnDate;
+
+                if (!DateTime.TryParseExact(Bookingvm.OneWayDate, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture, DateTimeStyles.None, out OneWayDate))
+                {
+                    Bookingvm.OneWayDate = "";
+                }
+
+                if (!DateTime.TryParseExact(Bookingvm.ReturnDate, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture, DateTimeStyles.None, out ReturnDate))
+                {
+                    Bookingvm.ReturnDate = "";
+                }
+
+                if (Bookingvm.OneWay)
+                {
+                    Bookingvm.ReturnDate = "";
+                }
+                else
+                {
+                    if (Bookingvm.OneWayDate != "" && Bookingvm.ReturnDate != "")
+                    {
+                        if (OneWayDate > ReturnDate)
+                        {
+                            Bookingvm.ReturnDate = "";
+                        }
+                    }
+                }
+
             }
             catch (Exception ex)
             {

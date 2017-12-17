@@ -4,11 +4,14 @@
     ViewBag.Title = "Vælge Fra / Til";
 }
 <div id="Page_Afgange">
-    @Html.Partial("Destinations", Model)
-    <br />
-    @Html.Partial("DepartureDate", Model)
-    <br />
-    @Html.Partial("Departures", Model)
-    <br />
-    @Html.Partial("Passengers", Model)
+    @using (Html.BeginForm("SelectDestination", "Afgange", FormMethod.Post, new { @class = "ny" }))
+    {
+        @Html.Partial("Destinations", Model)
+        <br />
+        @Html.Partial("DepartureDate", Model)
+        <br />
+        @Html.Partial("Departures", Model)
+        <br />
+        @Html.Partial("Passengers", Model)
+    }
 </div>

@@ -112,9 +112,9 @@ div.booking_partial {
     border-radius: 9px;
 }
 
-div.booking_partial h2{
-    margin-top: -20px;
-}
+    div.booking_partial h2 {
+        margin-top: -20px;
+    }
 
 div.badget {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -136,10 +136,15 @@ div.badget {
     -moz-box-shadow: 0px 4px 13px 0px rgba(0,0,0,0.44);
     box-shadow: 0px 4px 13px 0px rgba(0,0,0,0.44);
 }
-form.ny {
+
+.booking_partial {
     display: grid;
     grid-template-columns: 150px 220px 1fr;
 }
+
+    .booking_partial h2 {
+        grid-column: span 3 / auto;
+    }
 
 label.ny {
     grid-column: 1;
@@ -159,6 +164,11 @@ span.ny {
     margin-top: 2px;
     margin-left: 10px;
     padding: 4px;
+}
+
+fieldset.ny {
+    grid-column: span 2 / auto;
+    border: 0px;
 }
 
 .dl-horizontal dt {

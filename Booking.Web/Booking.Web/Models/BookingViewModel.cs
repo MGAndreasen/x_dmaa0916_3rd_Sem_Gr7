@@ -47,6 +47,8 @@ namespace Booking.Web.Models
 
             Passengers[2].FirstName = "Tester3";
             Passengers[2].LastName = "Man3";
+
+            OneWay = false;
         }
     }
 }

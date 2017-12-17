@@ -6,8 +6,6 @@
     @{
         if (Model.Passengers.Count() > 0)
         {
-            using (Html.BeginForm("SelectDestination", "Afgange", FormMethod.Post, new { @class = "ny" }))
-            {
                 @Html.Hidden("numPassengers","0")
                 <div><button type="submit" class="ny" style="width: 20px; height: 20px; display: inline-block;" onClick="document.getElementById(numPassengers).nodeValue + 1;">+</button> / <button type="submit" class="ny" style="width: 20px; height: 20px; display: inline-block;">-</button></div>
 
@@ -30,7 +28,6 @@
                     @Html.LabelFor(x => x.Passengers[i].CPR, new { @class = "ny" });
                     <input type="text" name="Passengers_CPR[@i]" value="@Model.Passengers[i].CPR" />
                 }
-            }
         }
     }
 </div>
