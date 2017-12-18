@@ -384,6 +384,12 @@
   <wsdl:message name="IService_GetSeat_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetSeatResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_GetAllSeat_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSeat" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetAllSeat_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSeatResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_UpdateSeat_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateSeat" />
   </wsdl:message>
@@ -601,6 +607,10 @@
     <wsdl:operation name="GetSeat">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetSeat" message="tns:IService_GetSeat_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetSeatResponse" message="tns:IService_GetSeat_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSeat">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllSeat" message="tns:IService_GetAllSeat_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllSeatResponse" message="tns:IService_GetAllSeat_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateSeat">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateSeat" message="tns:IService_UpdateSeat_InputMessage" />
@@ -1031,6 +1041,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetSeat">
       <soap12:operation soapAction="http://tempuri.org/IService/GetSeat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSeat">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetAllSeat" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

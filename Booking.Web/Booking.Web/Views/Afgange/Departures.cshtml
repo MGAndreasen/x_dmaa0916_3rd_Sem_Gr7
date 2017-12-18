@@ -1,40 +1,47 @@
 ﻿@model Booking.Web.Models.BookingViewModel
+@using System.Globalization
+@if ((Model.OneWayDate != "" && Model.OneWay) || (!Model.OneWay && Model.OneWayDate != "" && Model.ReturnDate != ""))
+{
+    DateTime returnDate;
+    DateTime onewayDate;
+    <div class="booking_partial someShadow">
+        <div class="badget">4</div>
 
-<div class="booking_partial someShadow">
-    <div class="badget">4</div>
-
-    @{
-        if (Model.OneWayDate != "")
-        {
-
+        @if (Model.Departures.Count() > 0)
+                {
             <h2>Departures</h2>
-            foreach (var d in Model.Departures)
+            if (DateTime.TryParseExact(Model.OneWayDate, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, DateTimeStyles.None, out onewayDate))
             {
-
-                
-                    <p>@d.When</p>
-                    
-                
-
-            }
-
-            if (Model.ReturnDate != "")
-            {
-                <h2>Returns</h2>
-                foreach (var d in Model.Returns)
+                foreach (var d in Model.Departures)
                 {
 
-                    
-                        <p>@d.When</p>
-                        
-                    
+                    if (d.When.Year == onewayDate.Year && d.When.Month == onewayDate.Month && d.When.Day == onewayDate.Day)
+                    {
+                    <p>@d.When</p>
+                    }
+                }
+            }
 
+            if (Model.Returns.Count() > 0 && Model.ReturnDate != "")
+            {
+                <h2>Returns</h2>
+                //dt = Convert.ToDateTime(Model.ReturnDate);
+                if (DateTime.TryParseExact(Model.ReturnDate, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, DateTimeStyles.None, out returnDate))
+                {
+                    foreach (var d in Model.Returns)
+                    {
+                        if (d.When.Year == returnDate.Year && d.When.Month == returnDate.Month && d.When.Day == returnDate.Day)
+                        {
+                            <p>@d.When</p>
+                        }
+                    }
                 }
             }
         }
         else
         {
-            <h2>Beklager, men vi har ingen afgange på denne Rute!</h2>
+            <h2>Beklager, men vi har ingen afgange!</h2>
         }
-    }
-</div>
+
+    </div>
+}

@@ -10,7 +10,7 @@
             @Html.DropDownListFor(x => x.FromDestination, new SelectList(Model.Destinations, "Id", "Name"), new { @class = "ny" })
 
             @Html.Label("To:", new { @class = "ny" });
-            @Html.DropDownListFor(x => x.ToDestination, new SelectList(Model.Destinations, "Id", "Name"), new { @class = "ny", @onchange = "this.parentNode.submit();" })
+            @Html.DropDownListFor(x => x.ToDestination, new SelectList(Model.Destinations, "Id", "Name"), new { @class = "ny" })
 
        
     }

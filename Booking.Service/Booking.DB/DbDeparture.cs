@@ -213,7 +213,7 @@ namespace Booking.DB
 
                 using (SqlCommand cmd = con.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM dbo.Booking_Departure Where StartDestination = @start AND EndDestination = @end AND DepartureTime >= @fromDate AND DepartureTime <= toDate ORDER BY DepartureTime ASC";
+                    cmd.CommandText = "SELECT * FROM dbo.Booking_Departure Where StartDestination = @start AND EndDestination = @end AND DepartureTime >= @fromDate AND DepartureTime <= @toDate ORDER BY DepartureTime ASC";
                     cmd.Parameters.Add("@start", SqlDbType.Int).Value = start;
                     cmd.Parameters.Add("@end", SqlDbType.Int).Value = end;
                     cmd.Parameters.Add("@fromDate", SqlDbType.DateTime).Value = fromDate;

@@ -37,6 +37,9 @@ namespace Booking.Web.Models
             Departures = new List<Departure>();
             Returns = new List<Departure>();
 
+            OneWayDate = "";
+            ReturnDate = "";
+
             // Add default Passenger
             Passengers.Add(new Passenger());
             Passengers.Add(new Passenger());

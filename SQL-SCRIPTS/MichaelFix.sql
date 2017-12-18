@@ -359,10 +359,6 @@
 	GO
 	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (5, N'Aalborg')
 	GO
-	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (7, N'Gjøl')
-	GO
-	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (8, N'Tel-Aviv')
-	GO
 	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (9, N'Barcelona')
 	GO
 	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (10, N'Stockholm')
@@ -373,37 +369,17 @@
 	GO
 	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (13, N'Amsterdam')
 	GO
-	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (14, N'Melbourne')
-	GO
-	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (15, N'Cape Town')
-	GO
-	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (16, N'Libanon')
-	GO
 	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (17, N'Bangkok')
-	GO
-	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (18, N'Tokyo')
-	GO
-	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (19, N'Shanghai')
-	GO
-	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (20, N'Beijing')
 	GO
 	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (21, N'Madrid')
 	GO
 	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (22, N'Rom')
-	GO
-	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (23, N'Firenze')
 	GO
 	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (24, N'København')
 	GO
 	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (25, N'Helsinki')
 	GO
 	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (26, N'Nuuk')
-	GO
-	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (27, N'Seoul')
-	GO
-	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (28, N'Kampala')
-	GO
-	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (29, N'Detroit')
 	GO
 	INSERT [dbo].[Booking_Destination] ([Id], [NameDestination]) VALUES (30, N'Dubai')
 	GO
