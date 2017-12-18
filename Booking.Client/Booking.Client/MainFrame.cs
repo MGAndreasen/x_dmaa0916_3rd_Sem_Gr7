@@ -45,44 +45,65 @@ namespace Booking.Client
 
                 //Kun for Aalborg og Retur...
                 var startdest = allDestinations.Find(x => x.NameDestination == "Aalborg");
+                var enddest = allDestinations.Find(x => x.NameDestination == "Oslo");
+
+                var d = new Departure
+                {
+                    StartDestination = startdest,
+                    EndDestination = enddest,
+                    DepartureTime = Convert.ToDateTime("13/01/2018 22:25:00"),
+                    Plane = allPlaneTypes[rnd.Next(0, allPlaneTypes.Count)]
+                };
+                myService.CreateDepartureAsync(d);
+
+
+                var r = new Departure
+                {
+                    StartDestination = enddest,
+                    EndDestination = startdest,
+                    DepartureTime = Convert.ToDateTime("14/01/2018 18:45:00"),
+                    Plane = allPlaneTypes[rnd.Next(0, allPlaneTypes.Count)]
+                };
+                myService.CreateDepartureAsync(r);
+
                 // For hver destination
                 //foreach (var startdest in allDestinations)
                 //{
-                    foreach (var enddest in allDestinations)
-                    {
-                        if (startdest.Id == enddest.Id)
-                        {
-                            continue;
-                        }
-                        else
-                        {
-                            for (int i = 1; i < DateTime.DaysInMonth(2018, 01); i++)
-                            {
-                                var d = new Departure
-                                {
-                                    StartDestination = startdest,
-                                    EndDestination = enddest,
-                                    DepartureTime = Convert.ToDateTime(i.ToString() + "/01/2018 "+rnd.Next(00,23) + ":"+rnd.Next(00,59)),
-                                    Plane = allPlaneTypes[rnd.Next(0, allPlaneTypes.Count)]
-                                };
+                //foreach (var enddest in allDestinations)
+                //    {
+                //        if (startdest.Id == enddest.Id)
+                //        {
+                //            continue;
+                //        }
+                //        else
+                //        {
+                //            for (int i = 1; i < DateTime.DaysInMonth(2018, 01); i++)
+                //            {
+                //                var d = new Departure
+                //                {
+                //                    StartDestination = startdest,
+                //                    EndDestination = enddest,
+                //                    DepartureTime = Convert.ToDateTime(i.ToString() + "/01/2018 "+rnd.Next(00,23) + ":"+rnd.Next(00,59)),
+                //                    Plane = allPlaneTypes[rnd.Next(0, allPlaneTypes.Count)]
+                //                };
 
-                                myService.CreateDepartureAsync(d);
-                            }
+                //                myService.CreateDepartureAsync(d);
+                //            }
 
-                        for (int i = 1; i < DateTime.DaysInMonth(2018, 01); i++)
-                        {
-                            var d = new Departure
-                            {
-                                StartDestination = enddest,
-                                EndDestination = startdest,
-                                DepartureTime = Convert.ToDateTime(i.ToString() + "/01/2018 " + rnd.Next(00, 23) + ":" + rnd.Next(00, 59)),
-                                Plane = allPlaneTypes[rnd.Next(0, allPlaneTypes.Count)]
-                            };
+                //        for (int i = 1; i < DateTime.DaysInMonth(2018, 01); i++)
+                //        {
+                //            var d = new Departure
+                //            {
+                //                StartDestination = enddest,
+                //                EndDestination = startdest,
+                //                DepartureTime = Convert.ToDateTime(i.ToString() + "/01/2018 " + rnd.Next(00, 23) + ":" + rnd.Next(00, 59)),
+                //                Plane = allPlaneTypes[rnd.Next(0, allPlaneTypes.Count)]
+                //            };
 
-                            myService.CreateDepartureAsync(d);
-                        }
-                    }
-                    }
+                //            myService.CreateDepartureAsync(d);
+                //        }
+                //    }
+                //    }
                 //}
             }
         }

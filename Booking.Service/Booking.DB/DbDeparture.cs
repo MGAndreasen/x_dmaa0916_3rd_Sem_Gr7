@@ -170,7 +170,6 @@ namespace Booking.DB
 
             Departure d = null;
 
-
             using (SqlConnection con = new SqlConnection(data.GetConnectionString()))
             {
                 con.Open();

@@ -41,11 +41,51 @@ namespace Booking.Web.Controllers
             }
 
 
+
+
             try
             {
                 var client = ServiceHelper.GetServiceClient();
                 ViewBag.proxy = client;
                 ViewBag.proxyError = "";
+
+                // Ingen customer uden at være logget ind!
+                if (!AuthHelper.IsLoggedIn())
+                {
+                    Bookingvm.Customer = 0;
+                }
+                else
+                {
+                    Bookingvm.Customer = AuthHelper.CurrentUser.Id;
+                    if (Bookingvm.Passengers.Count() == 1)
+                    {
+                        if (Bookingvm.Passengers[0].FirstName == null && Bookingvm.Passengers[0].LastName == null)
+                        {
+                            var cust = client.GetCustomer(Bookingvm.Customer);
+                            Bookingvm.Passengers[0].FirstName = cust.FirstName;
+                            Bookingvm.Passengers[0].LastName = cust.LastName;
+                            Bookingvm.Passengers[0].CPR = cust.CPR;
+                        }
+                    }
+                }
+
+                if (Bookingvm.numOfPassengers != Bookingvm.Passengers.Count)
+                {
+                    if (Bookingvm.numOfPassengers > Bookingvm.Passengers.Count)
+                    {
+                        for (int i = Bookingvm.Passengers.Count; i < Bookingvm.numOfPassengers; i++)
+                        {
+                            Bookingvm.Passengers.Add(new Booking.Web.BookingServiceRemote.Passenger { });
+                        }
+                    }
+                    else
+                    {
+                        for (int i = Bookingvm.Passengers.Count; i > Bookingvm.numOfPassengers; i--)
+                        {
+                            Bookingvm.Passengers.Remove(Bookingvm.Passengers.Last());
+                        }
+                    }
+                }
 
                 var DestResult = client.GetAllDestinations();
 
@@ -67,11 +107,11 @@ namespace Booking.Web.Controllers
                 // Departures (from -> to)
                 //if (Bookingvm.OneWayDate == "")
                 //{
-                    var DeptResult = client.GetAllDeparturesFromTo(Bookingvm.FromDestination, Bookingvm.ToDestination, DateTime.Now, DateTime.Now.AddDays(60));
-                    foreach (var d in DeptResult)
-                    {
-                        Departures.Add(new Departure { Id = d.Id, When = d.DepartureTime });
-                    }
+                var DeptResult = client.GetAllDeparturesFromTo(Bookingvm.FromDestination, Bookingvm.ToDestination, DateTime.Now, DateTime.Now.AddDays(60));
+                foreach (var d in DeptResult)
+                {
+                    Departures.Add(new Departure { Id = d.Id, When = d.DepartureTime });
+                }
                 //}
                 //else
                 //{
@@ -86,23 +126,23 @@ namespace Booking.Web.Controllers
                 // Departures Retur (to -> from)
                 //if (!Bookingvm.OneWay)
                 //{
-                    //if (Bookingvm.ReturnDate == "")
-                    //{
-                        var ReturnResult = client.GetAllDeparturesFromTo(Bookingvm.ToDestination, Bookingvm.FromDestination, DateTime.Now, DateTime.Now.AddDays(60));
-                        foreach (var d in ReturnResult)
-                        {
-                            Returns.Add(new Departure { Id = d.Id, When = d.DepartureTime });
-                        }
-                    //}
-                    //else
-                    //{
-                    //    DateTime dt = DateTime.ParseExact(Bookingvm.ReturnDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-                    //    var ReturnResult = client.GetAllDeparturesFromTo(Bookingvm.ToDestination, Bookingvm.FromDestination, dt, dt.AddDays(60));
-                    //    foreach (var d in ReturnResult)
-                    //    {
-                    //        Returns.Add(new Departure { Id = d.Id, When = d.DepartureTime });
-                    //    }
-                    //}
+                //if (Bookingvm.ReturnDate == "")
+                //{
+                var ReturnResult = client.GetAllDeparturesFromTo(Bookingvm.ToDestination, Bookingvm.FromDestination, DateTime.Now, DateTime.Now.AddDays(60));
+                foreach (var d in ReturnResult)
+                {
+                    Returns.Add(new Departure { Id = d.Id, When = d.DepartureTime });
+                }
+                //}
+                //else
+                //{
+                //    DateTime dt = DateTime.ParseExact(Bookingvm.ReturnDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                //    var ReturnResult = client.GetAllDeparturesFromTo(Bookingvm.ToDestination, Bookingvm.FromDestination, dt, dt.AddDays(60));
+                //    foreach (var d in ReturnResult)
+                //    {
+                //        Returns.Add(new Departure { Id = d.Id, When = d.DepartureTime });
+                //    }
+                //}
                 //}
 
                 Bookingvm.Departures = Departures;
@@ -125,8 +165,6 @@ namespace Booking.Web.Controllers
             List<Departure> Departures = new List<Departure>();
             List<Departure> Returns = new List<Departure>();
 
-            //ViewBag.Message = "Vælge afgang";
-
             try
             {
                 var client = ServiceHelper.GetServiceClient();
@@ -145,12 +183,12 @@ namespace Booking.Web.Controllers
                 DateTime OneWayDate;
                 DateTime ReturnDate;
 
-                if (!DateTime.TryParseExact(Bookingvm.OneWayDate, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, DateTimeStyles.None, out OneWayDate))
+                if (!DateTime.TryParseExact(Bookingvm.OneWayDate, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture, DateTimeStyles.None, out OneWayDate))
                 {
                     Bookingvm.OneWayDate = "";
                 }
 
-                if (!DateTime.TryParseExact(Bookingvm.ReturnDate, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, DateTimeStyles.None, out ReturnDate))
+                if (!DateTime.TryParseExact(Bookingvm.ReturnDate, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture, DateTimeStyles.None, out ReturnDate))
                 {
                     Bookingvm.ReturnDate = "";
                 }
@@ -170,7 +208,6 @@ namespace Booking.Web.Controllers
                     }
                 }
 
-
                 // Departures (from -> to)
                 if (Bookingvm.OneWayDate == "")
                 {
@@ -182,7 +219,7 @@ namespace Booking.Web.Controllers
                 }
                 else
                 {
-                    DateTime dt = DateTime.ParseExact(Bookingvm.OneWayDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    DateTime dt = DateTime.ParseExact(Bookingvm.OneWayDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
                     var DeptResult = client.GetAllDeparturesFromTo(Bookingvm.FromDestination, Bookingvm.ToDestination, dt, dt.AddDays(60));
                     foreach (var d in DeptResult)
                     {
@@ -205,7 +242,7 @@ namespace Booking.Web.Controllers
                     }
                     else
                     {
-                        DateTime dt = DateTime.ParseExact(Bookingvm.ReturnDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                        DateTime dt = DateTime.ParseExact(Bookingvm.ReturnDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
                         var ReturnResult = client.GetAllDeparturesFromTo(Bookingvm.ToDestination, Bookingvm.FromDestination, dt, dt.AddDays(60));
                         foreach (var d in ReturnResult)
                         {
@@ -214,6 +251,9 @@ namespace Booking.Web.Controllers
                     }
                 }
                 Bookingvm.Returns = Returns;
+
+                //for()
+
 
             }
             catch (Exception ex)

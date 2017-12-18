@@ -182,6 +182,7 @@ namespace Booking.Web.Controllers
             }
             else
             {
+                lvm.Id = hmm.Id;
                 lvm.Email = hmm.Email;
                 lvm.Password = hmm.Password;
 

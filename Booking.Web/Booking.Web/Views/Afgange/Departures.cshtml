@@ -8,33 +8,28 @@
         <div class="badget">4</div>
 
         @if (Model.Departures.Count() > 0)
-                {
+        {
             <h2>Departures</h2>
-            if (DateTime.TryParseExact(Model.OneWayDate, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, DateTimeStyles.None, out onewayDate))
+            if (DateTime.TryParseExact(Model.OneWayDate, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture, DateTimeStyles.None, out onewayDate))
             {
-                foreach (var d in Model.Departures)
-                {
+                //for(int i = Model.Departures.Count()-1; i == 0; i--)
+                //{
+                Model.Departures = Model.Departures.Where(r => r.When.Date == onewayDate.Date);
 
-                    if (d.When.Year == onewayDate.Year && d.When.Month == onewayDate.Month && d.When.Day == onewayDate.Day)
-                    {
-                    <p>@d.When</p>
-                    }
-                }
+                @Html.Label("Departure:", new { @class = "ny" });
+                @Html.DropDownListFor(x => x.Departure, new SelectList(Model.Departures, "Id", "When"), new { @class = "ny" })
+
             }
 
             if (Model.Returns.Count() > 0 && Model.ReturnDate != "")
             {
-                <h2>Returns</h2>
-                //dt = Convert.ToDateTime(Model.ReturnDate);
-                if (DateTime.TryParseExact(Model.ReturnDate, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, DateTimeStyles.None, out returnDate))
+                if (DateTime.TryParseExact(Model.ReturnDate, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture, DateTimeStyles.None, out returnDate))
                 {
-                    foreach (var d in Model.Returns)
-                    {
-                        if (d.When.Year == returnDate.Year && d.When.Month == returnDate.Month && d.When.Day == returnDate.Day)
-                        {
-                            <p>@d.When</p>
-                        }
-                    }
+
+                    Model.Returns = Model.Returns.Where(r => r.When.Date == returnDate.Date);
+
+                    @Html.Label("Return:", new { @class = "ny" });
+                    @Html.DropDownListFor(x => x.DepartureReturn, new SelectList(Model.Returns, "Id", "When"), new { @class = "ny" })
                 }
             }
         }
@@ -43,5 +38,12 @@
             <h2>Beklager, men vi har ingen afgange!</h2>
         }
 
+        <script>
+            $(document).ready(function () {
+                $("#DepartureReturn, #Departure").change(function () {
+                    $(this).closest("form").submit();
+                });
+            });
+        </script>
     </div>
 }

@@ -1,0 +1,22 @@
+﻿@model Booking.Web.Models.BookingViewModel
+
+<div class="booking_partial someShadow">
+    <div class="badget">3</div>
+
+    @if (Model.Departures.Count() > 0)
+    {
+        <h2>Number of Passengers</h2>
+
+        @Html.Label("Number of Passengers:", new { @class = "ny" });
+        @Html.DropDownListFor(x => x.numOfPassengers, new SelectList(Model.numPassengersList,"num", "display"), new { @class = "ny" })
+    }
+
+
+    <script>
+        $(document).ready(function () {
+            $("#numOfPassengers").change(function () {
+                $(this).closest("form").submit();
+            });
+        });
+    </script>
+</div>

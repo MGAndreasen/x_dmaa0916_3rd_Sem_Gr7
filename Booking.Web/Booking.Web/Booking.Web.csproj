@@ -202,6 +202,7 @@
     <Compile Include="Models\Destination.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\NewUserViewModel.cs" />
+    <Compile Include="Models\numPassenger.cs" />
     <Compile Include="Models\TilbudModel.cs" />
     <Compile Include="Models\ZipCodesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -357,6 +358,8 @@
     <Content Include="Views\Afgange\DepartureDate.cshtml" />
     <Content Include="Views\Shared\_LeftOffers.cshtml" />
     <Content Include="Views\Shared\_RightOffers.cshtml" />
+    <Content Include="Views\Afgange\NumberOfPassengers.cshtml" />
+    <Content Include="Views\Afgange\Booking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
