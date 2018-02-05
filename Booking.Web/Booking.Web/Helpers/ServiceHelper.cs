@@ -14,7 +14,7 @@ namespace Booking.Web.Helpers
             string username = "Guest";
             string password = "Guest";
 
-            if (AuthHelper.IsLoggedIn())
+            if (AuthHelper.IsLoggedIn() && AuthHelper.CurrentUser.Email != null && AuthHelper.CurrentUser.Password != null)
             {
                     username = AuthHelper.CurrentUser.Email.ToLower();
                     password = AuthHelper.CurrentUser.Password;

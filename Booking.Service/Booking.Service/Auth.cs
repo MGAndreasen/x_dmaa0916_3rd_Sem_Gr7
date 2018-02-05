@@ -68,29 +68,30 @@ namespace Booking.Service
         public User Login(string email, string password)
         {
             // Tjaa....
+
             email = email.ToLower();
 
-            // Forsøg at finde Useren med brugernavn
-            var user = uCtrl.GetUser(email);
+                // Forsøg at finde Useren med brugernavn
+                var user = uCtrl.GetUser(email);
 
-            // Tjek at der faktisk blev retuneret en bruger
-            if (user != null)
-            {
-                // Tjek om brugerens password matcher det tilsendte fra klienten
-                if (user.Password.ToString() == password)
+                // Tjek at der faktisk blev retuneret en bruger
+                if (user != null)
                 {
-                    // Hvis match,
+                    // Tjek om brugerens password matcher det tilsendte fra klienten
+                    if (user.Password.ToString() == password)
+                    {
+                        // Hvis match,
 
-                    // Så log, og
-                    Console.WriteLine("AuthService: user " + user.Email + " just authed!");
+                        // Så log, og
+                        Console.WriteLine("AuthService: user " + user.Email + " just authed!");
 
-                    //retuner User objected
-                    return user;
+                        //retuner User objected
+                        return user;
+                    }
+
+                    Console.WriteLine("AuthService: password for " + user.Email + " not correct!");
+                    return null;
                 }
-
-                Console.WriteLine("AuthService: password for " + user.Email + " not correct!");
-                return null;
-            }
 
             Console.WriteLine("AuthService: " + user.Email + " not found!");
             // Fall thrue, return null hvis det tidligere ikke lykkes.
