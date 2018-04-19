@@ -34,7 +34,7 @@ namespace Booking.DB
         public string GetConnectionString()
         {
             //return ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-            return "Server=kraka.ucn.dk;Database=dmaa0916_128844;User Id=dmaa0916_128844;Password=Password1!;Integrated Security=false; MultipleActiveResultSets=true";
+            return "Server=kraka.ucn.dk;Database=dmaa0916_128844;User Id=dmaa0916_128844;Password=Password1!;Integrated Security=false; MultipleActiveResultSets=true; Encrypt=True; TrustServerCertificate=True";
         }
 
     }

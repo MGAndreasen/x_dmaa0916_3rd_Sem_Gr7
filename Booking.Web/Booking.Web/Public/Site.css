@@ -105,6 +105,11 @@ footer p {
     width: 470px;
 }
 
+#Page_NewUser form {
+    display: grid;
+    grid-template-columns: 150px 220px 1fr;
+}
+
 div.booking_partial {
     background-color: #d81939;
     color: #fff;
@@ -145,6 +150,7 @@ div.badget {
     .booking_partial h2 {
         grid-column: span 3 / auto;
     }
+
 
 label.ny {
     grid-column: 1;
