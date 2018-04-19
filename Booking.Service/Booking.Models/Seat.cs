@@ -12,7 +12,8 @@ namespace Booking.Models
 
 
         // Properties
-
+        [DataMember]
+        public string Test { get; set; }
         [DataMember]
         public int Id { get; set; }
 
